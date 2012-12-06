@@ -5,5 +5,4 @@ SetEnv REGISTER_GLOBALS 0
 SetEnv PHP_VER 5
 RewriteEngine On
 
-RewriteRule ^fr/(.*)$ /webtuts/index.php?page=$1 [L]
-RewriteRule ^en/(.*)$ /webtuts/index.php?page=$1 [L]
+RewriteRule ^([a-z]{2})/(.*)$ /index.php?url=$0 [L]

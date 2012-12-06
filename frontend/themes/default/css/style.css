@@ -184,6 +184,7 @@ a:hover { text-decoration: none; }
     width: 100%;
     outline: none;
     border:none;
+    background: none;
 }
 
 /** Footer **/
