@@ -25,13 +25,19 @@
 	/* Class de mailing */
 	require(_path_library_.'resources/mail.class.php');
 	
+	require('kernel.app.php');
+
 	/* Langage */
-	require(_kernel_lang_path_);
+	if(!empty($lang))
+		require(_path_lang_.$lang.".php");
+	else
+		require(_path_lang_.$Session->read('langue').".php");
+
+	
 
 	/* 
 		Modele
 	*/
 	require(_path_library_.'modele/index.php');
-	require(_path_lang_.$Session->read('langue').".php");
 
 ?>

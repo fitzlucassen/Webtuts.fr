@@ -30,7 +30,7 @@
     <body>
 	<div id="box">
 
-	    <div style="position: absolute;z-index: -1;top: 60px;left: 0px;width: 100%;height: 25px;background: #851126;">
+	    <div style="position: absolute;z-index: -1;top: 35px;left: 0px;width: 100%;height: 25px;background: #851126;">
 	    </div>
 
 	    <h1>Webtuts.fr</h1>
