@@ -34,7 +34,7 @@
 	    $this->headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 
 	    $this->headers .= 'To: ' . $this->to . "\r\n";
-	    $this->headers .= 'From: WEBTUTS' . $this->nom . ' <' . $this->from . '>' . "\r\n";
+	    $this->headers .= 'From: ' . $this->nom . ' <' . $this->from . '>' . "\r\n";
 
 	    return $this;
 	}

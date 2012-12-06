@@ -16,7 +16,7 @@
 <meta name="Distribution" content="global">
 <meta name="Geography" content="Paris, France, 75019">
 
-<link rel="icon" type="images/png" href="<?php echo _host_absolute_ . _theme_path_ ?>images/favicon.gif" />
+<link rel="icon" type="images/png" href="<?php echo _host_absolute_ . _theme_path_ ?>images/favicon.ico" />
 <link type="text/css" rel="stylesheet" href="<?php echo _host_absolute_ . _theme_path_ ?>css/style.css" />
 
 <!-- Required script -->

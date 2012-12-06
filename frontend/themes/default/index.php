@@ -30,7 +30,9 @@
     <body>
 	<div id="box">
 
-	    <div style="position: absolute;z-index: -1;top: 35px;left: 0px;width: 100%;height: 25px;background: #851126;">
+	    <div class="header-bar">
+	    </div>
+	    <div class="header-bar darken">
 	    </div>
 
 	    <h1>Webtuts.fr</h1>
@@ -75,13 +77,13 @@
 	    
 	    <div id="footer">
 		&copy; Webtuts.fr - 
-		<a href="<?php echo _host_absolute_; ?>set_language.php?lang=fr" class="image">
+		<a href="<?php echo _host_absolute_; ?>fr/" class="image">
 		    <img src="<?php echo _host_absolute_ . _theme_path_; ?>images/flag_fr.png" alt="Traduire en français"/>
 		</a>
 		&nbsp;
-		<a href="<?php echo _host_absolute_; ?>set_language.php?lang=en" class="image">
+		<a href="<?php echo _host_absolute_; ?>en/" class="image">
 		    <img src="<?php echo _host_absolute_ . _theme_path_; ?>images/flag_en.png" alt="Translate in English"/>
-		</a> - 
+		</a> -
 		<a href="mailto:contact@webtuts.fr">Contact</a>
 	    </div>
 

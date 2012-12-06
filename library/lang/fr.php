@@ -13,6 +13,6 @@ define("INVALID_EMAIL", "Mail invalide !");
 define("YOUR_EMAIL", "Votre adresse mail");
 
 define("IN_CONSTRUCTION", "Le site est en construction");
-define("DESCRIPTION_AND_SUBSCRIBE", "Il a pour vocation de vous apprendre toutes les petites (et grosses) astuces des sombres langages du web.<br/><br/>Inscrivez-vous dors et déjà à la newsletter pour être les premiers informés du lancement du site.");
+define("DESCRIPTION_AND_SUBSCRIBE", "Il a pour vocation de vous apprendre toutes les petites (et grosses) astuces des sombres langages du web.<br/><br/>Inscrivez-vous d'ores et déjà à la newsletter pour être les premiers informés du lancement du site.");
 
 ?>
