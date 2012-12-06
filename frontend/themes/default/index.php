@@ -5,8 +5,13 @@
     if(!empty($_POST["mail"])) {
         $send = true;
         if(mysql_result(mysql_query("SELECT COUNT(*) FROM newsletter WHERE mail='".mysql_real_escape_string($_POST["mail"])."'"), 0)==0) {
-            if(filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL))
+            if(filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL)){
                 mysql_query("INSERT INTO newsletter (mail) VALUES ('".mysql_real_escape_string($_POST["mail"])."')");
+		
+		$Mail = new Mail(htmlspecialchars($_POST["mail"]), "Webtuts", "contact@webtuts.fr", BODY_MAIL_NEWSLETTER );
+		$Mail->setSubject(HEADER_MAIL_NEWSLETTER);
+		$Mail->sendMail();
+	    }
             else 
                 $error = "mailError";
         }
@@ -30,33 +35,56 @@
 
 	    <h1>Webtuts.fr</h1>
 
-	    <p>Le site est en construction. Abonnez vous à notre newsletter :</p>
+	    <h3><?php echo IN_CONSTRUCTION; ?></h3><br/>
+	    <p><?php echo DESCRIPTION_AND_SUBSCRIBE; ?></p>
 
 	    <div id="contact">
-		<?php if($send && empty($error)) : ?>
-		<p id="send-message">Envoyé !</p>
-		<?php elseif($send && !empty($error)) : ?>
-		    <?php if( $error == "allreadySigned") : ?>
-		    <p id="error-message">Mail déjà enregistré !</p>
-		    <?php else : ?>
-		    <p id="error-message">Mail invalide !</p>
-		    <?php endif; ?>
-		<?php else: ?>
+		<?php 
+		    if($send && empty($error)) :
+		?>
+		<p id="send-message"><?php echo SENT; ?></p>
+		<?php
+		    elseif($send && !empty($error)) :
+		?>
+		    <?php
+			if( $error == "allreadySigned") :
+		    ?>
+		<p id="error-message"><?php echo ALREADY_RECORD; ?></p>
+		    <?php 
+			else : 
+		    ?>
+		<p id="error-message"><?php echo INVALID_EMAIL; ?></p>
+		    <?php
+			endif;
+		    ?>
+		<?php
+		    else:
+		?>
 		<div id="sender" onClick="getElementById('saveme').submit();">
 		    >
 		</div>
 		<div id="input">
 		    <div id="container">
-			<form id="saveme" action="" method="POST" enctype="multipart/form-data">
-			    <input type="text" placeholder="Votre adresse mail" id="mail" name="mail"/>
+			<form id="saveme" action="<?php echo $Session->read('langue'); ?>/home" method="POST" enctype="multipart/form-data">
+			    <input type="text" placeholder="<?php echo YOUR_EMAIL; ?>" id="mail" name="mail"/>
 			</form>
 		    </div>
 		</div>
-		<?php endif; ?>
+		<?php
+		    endif;
+		?>
 	    </div>
 	    
 	    <div id="footer">
-		&copy; Webtuts.fr - <a href="mailto:contact@webtuts.fr">Contact</a>
+		&copy; Webtuts.fr - 
+		<a href="<?php echo _host_absolute_; ?>set_language.php?lang=fr" class="image">
+		    <img src="<?php echo _host_absolute_ . _theme_path_; ?>images/flag_fr.png" alt="Traduire en français"/>
+		</a>
+		&nbsp;
+		<a href="<?php echo _host_absolute_; ?>set_language.php?lang=en" class="image">
+		    <img src="<?php echo _host_absolute_ . _theme_path_; ?>images/flag_en.png" alt="Translate in English"/>
+		</a> - 
+		<a href="mailto:contact@webtuts.fr">Contact</a>
 	    </div>
 
 	</div><!-- END #container -->

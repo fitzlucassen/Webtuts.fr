@@ -16,12 +16,12 @@
 <meta name="Distribution" content="global">
 <meta name="Geography" content="Paris, France, 75019">
 
-<link rel="icon" type="images/png" href="<?php echo _theme_path_ ?>images/favicon.gif" />
-<link type="text/css" rel="stylesheet" href="<?php echo _theme_path_ ?>css/style.css" />
+<link rel="icon" type="images/png" href="<?php echo _host_absolute_ . _theme_path_ ?>images/favicon.gif" />
+<link type="text/css" rel="stylesheet" href="<?php echo _host_absolute_ . _theme_path_ ?>css/style.css" />
 
 <!-- Required script -->
-<script type="text/javascript" src="<?php echo _theme_path_ ?>js/jquery.js"></script>
-<script type="text/javascript" src="<?php echo _theme_path_ ?>js/jfunction.js"></script>
+<script type="text/javascript" src="<?php echo _host_absolute_ . _theme_path_ ?>js/jquery.js"></script>
+<script type="text/javascript" src="<?php echo _host_absolute_ . _theme_path_ ?>js/jfunction.js"></script>
 
 <script type="text/javascript">
     var _gaq = _gaq || [];

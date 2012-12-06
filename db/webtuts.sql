@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.2deb1ubuntu1
+-- version 3.5.1
 -- http://www.phpmyadmin.net
 --
--- Serveur: localhost
--- Généré le : Lun 26 Novembre 2012 à 20:02
--- Version du serveur: 5.1.63
--- Version de PHP: 5.3.2-1ubuntu4.18.1~gandi
+-- Client: localhost
+-- Généré le: Jeu 06 Décembre 2012 à 00:10
+-- Version du serveur: 5.5.24-log
+-- Version de PHP: 5.3.13
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -33,11 +34,6 @@ CREATE TABLE IF NOT EXISTS `access` (
   KEY `code_lang_name` (`code_lang_name`),
   KEY `code_lang_description` (`code_lang_description`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Contenu de la table `access`
---
-
 
 -- --------------------------------------------------------
 
@@ -65,11 +61,6 @@ CREATE TABLE IF NOT EXISTS `article` (
   KEY `image` (`image`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Contenu de la table `article`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -82,11 +73,6 @@ CREATE TABLE IF NOT EXISTS `article_tag` (
   KEY `id_article` (`id_article`),
   KEY `id_tag` (`id_tag`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `article_tag`
---
-
 
 -- --------------------------------------------------------
 
@@ -102,11 +88,6 @@ CREATE TABLE IF NOT EXISTS `category` (
   KEY `code_lang_name` (`code_lang_name`),
   KEY `code_lang_description` (`code_lang_description`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Contenu de la table `category`
---
-
 
 -- --------------------------------------------------------
 
@@ -126,11 +107,6 @@ CREATE TABLE IF NOT EXISTS `comment` (
   KEY `autor` (`autor`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Contenu de la table `comment`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -148,11 +124,6 @@ CREATE TABLE IF NOT EXISTS `image` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Contenu de la table `image`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -163,14 +134,16 @@ CREATE TABLE IF NOT EXISTS `newsletter` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `mail` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Contenu de la table `newsletter`
 --
 
 INSERT INTO `newsletter` (`id`, `mail`) VALUES
-(14, 'quentin.deneuve@fozeek.fr');
+(14, 'quentin.deneuve@fozeek.fr'),
+(15, 'thibault.dulon@gmail.com'),
+(16, 'plop@plop.fr');
 
 -- --------------------------------------------------------
 
@@ -187,11 +160,6 @@ CREATE TABLE IF NOT EXISTS `node` (
   KEY `code_lang_description` (`code_lang_description`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Contenu de la table `node`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -207,11 +175,6 @@ CREATE TABLE IF NOT EXISTS `tag` (
   KEY `code_lang_description` (`code_lang_description`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Contenu de la table `tag`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -224,11 +187,6 @@ CREATE TABLE IF NOT EXISTS `translate` (
   `text` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Contenu de la table `translate`
---
-
 
 -- --------------------------------------------------------
 
@@ -243,11 +201,6 @@ CREATE TABLE IF NOT EXISTS `url_rewriting` (
   PRIMARY KEY (`id`),
   KEY `code_lang_name` (`code_lang_name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Contenu de la table `url_rewriting`
---
-
 
 -- --------------------------------------------------------
 
@@ -271,11 +224,6 @@ CREATE TABLE IF NOT EXISTS `user` (
   KEY `image` (`image`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Contenu de la table `user`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -289,7 +237,6 @@ CREATE TABLE IF NOT EXISTS `user_access` (
   KEY `id_user` (`id_user`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Contenu de la table `user_access`
---
-
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

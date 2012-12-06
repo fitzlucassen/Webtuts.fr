@@ -76,7 +76,11 @@ body {
     color: #4b483a;
     background: #E5E5E5;
 }
-
+h3{
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 20px;
+}
 a:link, a:visited { color: #4b483a; text-decoration: underline; }
 a:hover { text-decoration: none; }
 
@@ -112,19 +116,6 @@ a:hover { text-decoration: none; }
     margin-top: 20px;
     margin-bottom: 20px;
     height: 38px;
-    
-    box-shadow: 4px 4px 8px rgba(0,0,0,0.6);
-    -webkit-box-shadow: 4px 4px 8px rgba(0,0,0,0.6);
-    -moz-box-shadow: 4px 4px 8px rgba(0,0,0,0.6);
-    -o-box-shadow: 4px 4px 8px rgba(0,0,0,0.6);
-    -ms-box-shadow: 4px 4px 8px rgba(0,0,0,0.6);
-}
-#box #contact.active {
-    box-shadow: 4px 4px 8px rgba(22,49,77,0.6);
-    -webkit-box-shadow: 4px 4px 8px rgba(22,49,77,0.6);
-    -moz-box-shadow: 4px 4px 8px rgba(22,49,77,0.6);
-    -o-box-shadow: 4px 4px 8px rgba(22,49,77,0.6);
-    -ms-box-shadow: 4px 4px 8px rgba(22,49,77,0.6);
 }
 
 #box #send-message {
@@ -150,6 +141,12 @@ a:hover { text-decoration: none; }
     color: white;
     text-shadow: none;
     
+    border: 1px solid gray;
+    border-radius: 4px;
+    -o-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    
     transition-property: all;
     transition-duration: 0.5s;
     -webkit-transition-property: all;
@@ -162,6 +159,9 @@ a:hover { text-decoration: none; }
 #box #contact #sender:hover {
     background: #333;
 }
+#box #contact #sender:active{
+    border: none;
+}
 #box #contact #input {
     overflow: hidden;
     background: white;
@@ -169,7 +169,13 @@ a:hover { text-decoration: none; }
 }
 
 #box #contact #input #container {
-    padding: 5px;
+    padding: 5px 10px;
+    
+    box-shadow: inset 4px 4px 15px rgba(0,0,0,0.6);
+    -webkit-box-shadow:inset 4px 4px 15px rgba(0,0,0,0.6);
+    -moz-box-shadow: inset 4px 4px 10px rgba(0,0,0,0.6);
+    -o-box-shadow: inset 4px 4px 10px rgba(0,0,0,0.6);
+    -ms-box-shadow: inset 4px 4px 10px rgba(0,0,0,0.6);
 }
 
 #box #contact #input #container input {
@@ -178,4 +184,14 @@ a:hover { text-decoration: none; }
     width: 100%;
     outline: none;
     border:none;
+}
+
+/** Footer **/
+#footer img{
+    width: 28px;
+    vertical-align: middle;
+}
+#footer a.image{
+    border: none;
+    text-decoration: none;
 }

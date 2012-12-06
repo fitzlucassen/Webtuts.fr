@@ -1,4 +1,4 @@
-<?php session_start();
+<?php
 
 	/* ERROR REPORTING */
 	error_reporting(E_ALL);
@@ -9,5 +9,4 @@
 
 	/* THEME */
 	require_once(_path_themes_.'default/index.php');
-
 ?>
