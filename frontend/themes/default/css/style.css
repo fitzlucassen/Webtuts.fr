@@ -163,27 +163,28 @@ a:hover { text-decoration: none; }
     border: none;
 }
 #box #contact #input {
-    overflow: hidden;
     background: white;
     height: 38px;
+    float:right;
+    width: 310px;
 }
-
-#box #contact #input #container {
-    padding: 5px 10px;
+#box #contact #input form {
+    height: 100%;
+    width: 100%;
+}
+#box #contact #input input {
+    font-size: 16px;
+    font-family: 'Segoe UI';
+    width: 290px;
+    height: 100%;
+    border:none;
+    padding: 0 10px 10px 10px !important;
     
-    box-shadow: inset 4px 4px 15px rgba(0,0,0,0.6);
+        box-shadow: inset 4px 4px 15px rgba(0,0,0,0.6);
     -webkit-box-shadow:inset 4px 4px 15px rgba(0,0,0,0.6);
     -moz-box-shadow: inset 4px 4px 10px rgba(0,0,0,0.6);
     -o-box-shadow: inset 4px 4px 10px rgba(0,0,0,0.6);
     -ms-box-shadow: inset 4px 4px 10px rgba(0,0,0,0.6);
-}
-
-#box #contact #input #container input {
-    font-size: 16px;
-    font-family: 'Segoe UI';
-    width: 100%;
-    outline: none;
-    border:none;
 }
 
 /** Footer **/

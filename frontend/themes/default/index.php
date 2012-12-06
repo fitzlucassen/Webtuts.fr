@@ -64,11 +64,9 @@
 		    >
 		</div>
 		<div id="input">
-		    <div id="container">
-			<form id="saveme" action="<?php echo $Session->read('langue'); ?>/home" method="POST" enctype="multipart/form-data">
-			    <input type="text" placeholder="<?php echo YOUR_EMAIL; ?>" id="mail" name="mail"/>
-			</form>
-		    </div>
+		    <form id="saveme" action="<?php echo _host_absolute_ . $Session->read('langue'); ?>/home" method="POST" enctype="multipart/form-data">
+			<input type="text" placeholder="<?php echo YOUR_EMAIL; ?>" id="mail" name="mail"/>
+		    </form>
 		</div>
 		<?php
 		    endif;
