@@ -71,6 +71,7 @@ input:-moz-placeholder {
 
 /* Our Css */
 body {
+    min-width: 640px;
     font-size: 100%;
     font-family: 'Segoe UI','Lucida Grande', tahoma, verdana, arial, sans-serif; 
     color: #4b483a;
@@ -209,6 +210,51 @@ a:hover { text-decoration: none; }
     background: #630004;
     box-shadow: 0 0 10px #630004;
 }
+
+
+#barre-middle {
+    z-index: 999999;
+    position: absolute;
+    top: 35px;
+    height: 35px;
+    width: 100%;
+    border-radius: 0px 2px 2px px;
+}
+
+#barre-middle-content {
+    width: 640px;
+    margin: auto;
+    height: 35px;   
+}
+
+#corner-left {
+    float: left;
+    overflow: hidden;
+    height: 35px;
+    width: 10px;
+    border-radius: 0px 4px 4px 0px;
+    background: url(../images/barre.jpg);  
+}
+
+#corner-right {
+    float: right;
+    overflow: hidden;
+    height: 35px;
+    width: 10px;
+    border-radius: 4px 0px 0px 4px;
+    background: url(../images/barre.jpg);  
+}
+
+.bar-corner {
+    height: 25px;
+    background: #851126;
+}
+
+.bar-corner-dark {
+    height: 10px;
+    background: #630004;
+}
+
 /** Footer **/
 #footer img{
     width: 28px;

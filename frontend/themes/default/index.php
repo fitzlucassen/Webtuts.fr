@@ -37,6 +37,25 @@
 
 	    <h1>Webtuts.fr</h1>
 
+	    <div id="barre-middle">
+	    	<div id="barre-middle-content">
+	    		<div id="corner-right">
+	    			<div class="bar-corner">
+	    			</div>
+	    			<div class="bar-corner-dark">
+	    			</div>
+	    		</div>
+	    		<div id="corner-left">
+	    			<div class="bar-corner">
+	    			</div>
+	    			<div class="bar-corner-dark">
+	    			</div>
+	    		</div>
+	    		<div style="clear: both;">
+	    		</div>
+	    	</div>
+	    </div>
+
 	    <h3><?php echo IN_CONSTRUCTION; ?></h3><br/>
 	    <p><?php echo DESCRIPTION_AND_SUBSCRIBE; ?></p>
 
