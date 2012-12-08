@@ -103,7 +103,8 @@
 		<a href="<?php echo _host_absolute_; ?>en/" class="image">
 		    <img src="<?php echo _host_absolute_ . _theme_path_; ?>images/flag_en.png" alt="Translate in English"/>
 		</a> -
-		<a href="mailto:contact@webtuts.fr">Contact</a>
+		<a href="mailto:contact@webtuts.fr">Contact</a> - 
+		<iframe src="http://www.facebook.com/plugins/like.php?href=http://facebook.com/webtuts.fr&layout=button_count&show_faces=false&width=100&action=like&colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="margin-bottom: -10px;margin-left: 5px;border:none; overflow:hidden; width: 100px; height:25px"></iframe>
 	    </div>
 
 	</div><!-- END #container -->
