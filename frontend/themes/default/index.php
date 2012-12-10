@@ -24,6 +24,9 @@
 <html>
     <head>
 	<?php include("partials/meta.php"); ?>
+	<script language="javascript">
+	   document.getElementById('mail').focus();
+	</script>
 	<title>Webtuts</title>
     </head>
 
@@ -34,6 +37,7 @@
 	    </div>
 	    <div class="header-bar darken">
 	    </div>
+	    
 
 	    <h1>Webtuts.fr</h1>
 
@@ -56,43 +60,48 @@
 	    	</div>
 	    </div>
 
+
 	    <h3><?php echo IN_CONSTRUCTION; ?></h3><br/>
 	    <p><?php echo DESCRIPTION_AND_SUBSCRIBE; ?></p>
 
-	    <div id="contact">
-		<?php 
-		    if($send && empty($error)) :
-		?>
-		<p id="send-message"><?php echo SENT; ?></p>
-		<?php
-		    elseif($send && !empty($error)) :
-		?>
-		    <?php
-			if( $error == "allreadySigned") :
-		    ?>
-		<p id="error-message"><?php echo ALREADY_RECORD; ?></p>
-		    <?php 
-			else : 
-		    ?>
-		<p id="error-message"><?php echo INVALID_EMAIL; ?></p>
-		    <?php
-			endif;
-		    ?>
-		<?php
-		    else:
-		?>
-		<div id="sender" onClick="getElementById('saveme').submit();">
-		    >
+	    <div id="newsletter">
+		    <div id="contact">
+				<?php 
+				    if($send && empty($error)) :
+				?>
+				<p id="send-message"><?php echo SENT; ?></p>
+				<?php
+				    elseif($send && !empty($error)) :
+				?>
+				    <?php
+					if( $error == "allreadySigned") :
+				    ?>
+				<p id="error-message"><?php echo ALREADY_RECORD; ?></p>
+				    <?php 
+					else : 
+				    ?>
+				<p id="error-message"><?php echo INVALID_EMAIL; ?></p>
+				    <?php
+					endif;
+				    ?>
+				<?php
+				    else:
+				?>
+				
+				<form id="saveme" action="<?php echo _host_absolute_ . $lang; ?>/home" method="POST" enctype="multipart/form-data">
+						
+					<div id="content">
+						<div id="sender" onClick="getElementById('saveme').submit();">
+						    >
+						</div>
+						<input placeholder="Adresse email" type="text" id="mail" name="mail"/>
+					</div>
+				</form>
+				<?php
+				    endif;
+				?>
+		    </div>
 		</div>
-		<div id="input">
-		    <form id="saveme" action="<?php echo _host_absolute_ . $Session->read('langue'); ?>/home" method="POST" enctype="multipart/form-data">
-			<input type="text" placeholder="<?php echo YOUR_EMAIL; ?>" id="mail" name="mail"/>
-		    </form>
-		</div>
-		<?php
-		    endif;
-		?>
-	    </div>
 	    
 	    <div id="footer">
 		&copy; Webtuts.fr - 
