@@ -65,43 +65,40 @@
 	    <p><?php echo DESCRIPTION_AND_SUBSCRIBE; ?></p>
 
 	    <div id="newsletter">
-		    <div id="contact">
-				<?php 
-				    if($send && empty($error)) :
-				?>
-				<p id="send-message"><?php echo SENT; ?></p>
-				<?php
-				    elseif($send && !empty($error)) :
-				?>
-				    <?php
-					if( $error == "allreadySigned") :
-				    ?>
-				<p id="error-message"><?php echo ALREADY_RECORD; ?></p>
-				    <?php 
-					else : 
-				    ?>
-				<p id="error-message"><?php echo INVALID_EMAIL; ?></p>
-				    <?php
-					endif;
-				    ?>
-				<?php
-				    else:
-				?>
-				
-				<form id="saveme" action="<?php echo _host_absolute_ . $lang; ?>/home" method="POST" enctype="multipart/form-data">
-						
-					<div id="content">
-						<div id="sender" onClick="getElementById('saveme').submit();">
-						    >
-						</div>
-						<input placeholder="Adresse email" type="text" id="mail" name="mail"/>
-					</div>
-				</form>
-				<?php
-				    endif;
-				?>
+		<?php 
+		    if($send && empty($error)) :
+		?>
+		<p id="send-message"><?php echo SENT; ?></p>
+		<?php
+		    elseif($send && !empty($error)) :
+		?>
+		    <?php
+			if( $error == "allreadySigned") :
+		    ?>
+		<p id="error-message"><?php echo ALREADY_RECORD; ?></p>
+		    <?php 
+			else : 
+		    ?>
+		<p id="error-message"><?php echo INVALID_EMAIL; ?></p>
+		    <?php
+			endif;
+		    ?>
+		<?php
+		    else:
+		?>
+
+		<form id="saveme" action="<?php echo _host_absolute_ . $lang; ?>/home" method="POST" enctype="multipart/form-data">
+		    <div id="content">
+			<div id="sender" onClick="getElementById('saveme').submit();">
+			    >
+			</div>
+			<input placeholder="Adresse email" type="text" id="mail" name="mail"/>
 		    </div>
-		</div>
+		</form>
+		<?php
+		    endif;
+		?>
+	    </div>
 	    
 	    <div id="footer">
 		&copy; Webtuts.fr - 
