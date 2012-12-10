@@ -3,7 +3,7 @@
 
 	define("_host_", "portail/");
 	//define("_host_absolute_", "/");
-	define("_host_absolute_", "/webtuts/");
+	define("_host_absolute_", "/");
 
 	/* library */
 	define("_path_library_", _host_."library/");
