@@ -101,53 +101,66 @@ a:hover { text-decoration: none; }
     font-size: 7em;
     font-family: 'Lucida Grande';
     color: Black;
-    background: #E5E5E5 url(../images/bg.png) left top;
     width: 640px;
-    
+    background: #E5E5E5 url(../images/bg.png) left top;
 }
 
-#box #contact {
+#box #newsletter {
+    border-bottom: 1px solid white;
     margin: auto;
-    overflow: hidden;
-    width: 350px;
-    border: 1px solid gray;
+    width: 374px;
     border-radius: 4px;
     -o-border-radius: 4px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     margin-top: 20px;
     margin-bottom: 20px;
-    height: 38px;
 }
 
-#box #send-message {
-    display: block;
-    padding: 9px;
-    color: rgb(22,49,77);
-}
-
-#box #error-message {
-    display: block;
-    padding: 9px;
-    color: #851126;
-}
-
-#box #contact #sender {
-    cursor: pointer;
-    font-size: 2em;
-    text-align: center;
-    float: right;
-    width: 38px;
-    height: 38px;
-    background: #444;
-    color: white;
-    text-shadow: none;
-    
-    border: 1px solid gray;
+#box #contact {
+    background: #630004;
+    padding: 1px;
     border-radius: 4px;
     -o-border-radius: 4px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
+}
+
+#box #contact #content {
+    text-align: left;
+    overflow: hidden;
+    border-top: 1px solid #e3a8b1;
+    border-radius: 4px;
+    -o-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+#box #send-message {
+    display: block;
+    padding: 8px;
+    color: white;
+    text-shadow: 0px 1px 0px #410d15;
+}
+
+#box #error-message {
+    display: block;
+    padding: 8px;
+    color: white;
+    text-shadow: 0px 1px 0px #410d15;
+}
+
+#box #contact #sender {
+    color: white;
+    height: 31px;
+    background: #851126;
+    width: 42px;
+    line-height: 26px;
+    float: right;
+    cursor: pointer;
+    font-size: 2em;
+    text-align: center;
+    text-shadow: none; 
     
     transition-property: all;
     transition-duration: 0.5s;
@@ -159,7 +172,7 @@ a:hover { text-decoration: none; }
     -o-transition-duration: 0.5s;
 }
 #box #contact #sender:hover {
-    background: #333;
+    background: #631e29;
 }
 #box #contact #sender:active{
     border: none;
@@ -180,19 +193,16 @@ a:hover { text-decoration: none; }
     height: 100%;
     width: 100%;
 }
-#box #contact #input input {
+#box #contact input {
+    margin: 0px;
+    border: none;
     font-size: 16px;
-    font-family: 'Segoe UI';
-    width: 290px;
-    height: 100%;
-    border:none;
-    padding: 0 10px 10px 10px !important;
-    
-    box-shadow: inset 4px 4px 15px rgba(0,0,0,0.6);
-    -webkit-box-shadow:inset 4px 4px 15px rgba(0,0,0,0.6);
-    -moz-box-shadow: inset 4px 4px 10px rgba(0,0,0,0.6);
-    -o-box-shadow: inset 4px 4px 10px rgba(0,0,0,0.6);
-    -ms-box-shadow: inset 4px 4px 10px rgba(0,0,0,0.6);
+    padding: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 306px;
+    outline: none;
+    background: white;
 }
 /** Header **/
 .header-bar{
@@ -208,9 +218,7 @@ a:hover { text-decoration: none; }
     height: 10px;
     top: 60px;
     background: #630004;
-    box-shadow: 0 0 10px #630004;
 }
-
 
 #barre-middle {
     z-index: 999999;
