@@ -1,0 +1,14 @@
+<?php
+
+/*
+	Class Categorie
+	Description : 
+		-
+		-
+*/
+
+
+
+
+
+?>
