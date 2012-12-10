@@ -160,6 +160,8 @@ a:hover { text-decoration: none; }
     text-shadow: none;
     
     margin-bottom: -4px;
+    
+    overflow: hidden;
 
     border-top-right-radius: 4px;
     -o-border-top-right-radius: 4px;
