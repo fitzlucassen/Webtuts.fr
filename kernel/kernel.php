@@ -29,10 +29,9 @@
 
 	/* Langage */
 	if(!empty($lang))
-		require(_path_lang_.$lang.".php");
+	    require(_path_lang_.$lang.".php");
 	else
-		require(_path_lang_.$Session->read('langue').".php");
-
+	    require(_path_lang_.$Session->read('langue').".php");
 	
 
 	/* 

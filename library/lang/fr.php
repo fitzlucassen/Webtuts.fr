@@ -2,7 +2,7 @@
 
 define("HEADER_MAIL_NEWSLETTER", "Merci de votre souscription !");
 define("BODY_MAIL_NEWSLETTER", "Bonjour,<br/>Vous venez de souscrire à la newsletter du site Webtuts.fr et nous vous en remercions.<br/>
-				Grâce à cela, vous ferez partie des premiers informés de la date de lancement du site ainsi que ses actualitées.
+				Grâce à cela, vous ferez partie des premiers informés de la date de lancement du site ainsi que de ses actualitées.
 				Vous pourrez évidemment, lors de sa mise en ligne, vous désinscrire de cette newsletter.<br/><br/>
 				En espérant que nous vous aiderons très vite !<br/>
 				L'équipe Webtuts.");
