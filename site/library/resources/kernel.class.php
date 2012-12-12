@@ -78,8 +78,6 @@ class Kernel {
 				$route[$value] = $tmp[$cpt];
 			$cpt++;
 		}
-
-		
 		
 
 		if(!empty($route[Kernel::$CODE_LANG])) {

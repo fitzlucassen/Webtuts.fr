@@ -1,15 +1,28 @@
 <?php
 	/*
 		Fichier de configuration : 
-		Contient toutes les informations necessaires a fournir par l'administrateur et à écrire en dur.
+		Contient toutes les informations necessaires à fournir par l'administrateur et à écrire en dur.
 	*/
-	/* host url */
 
+
+	/* 
+		Définition du theme par défaut
+	*/
 	define("__theme__", "default");
 
-	/* DEBUG MODE du kernel (affiche ou non une page d'erreur) */
+	/* 
+		DEBUG MODE 
+		Commentaires :
+			- Permet de passer le kernel en mode débug ou non : affichage de page d'erreurs.
+		Possibilités :
+			true		active le mode débug
+			false		désative le mode débug
+	*/
 	$_KERNEL_DEBUG_ = true;
 
+	/*
+		Langues
+	*/
 	$_LANG_DEFAULT_ = "fr";
 	$_LANG_ACCEPTED_ = array("fr", "en");
 
