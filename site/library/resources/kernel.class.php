@@ -9,6 +9,8 @@ class Kernel {
 	public static $CONTROLLER;
 	public static $LANG;
 	public static $SESSION;
+	public static $RESPONSE;
+	public static $URL;
 
 
 
@@ -43,6 +45,7 @@ class Kernel {
 
 	public function setKernel($url, $path_type) {
 		
+		Kernel::$URL = $url;
 		/*
 		///categorie-nom/article-nom/
 
@@ -112,6 +115,7 @@ class Kernel {
 			$params[] = $value;
 		}
 		$return = $bundle->$controllerName($tmp);
+		Kernel::$RESPONSE = $return;
 		
 		$appRoute = $return->getRoute();
 

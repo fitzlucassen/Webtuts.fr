@@ -22,7 +22,6 @@
 	else $url = "";
 	$response = $_kernel->setKernel($url, array(Kernel::$CODE_LANG, Kernel::$CODE_APP, Kernel::$CODE_CONTROLLER));
 	$url = "";
-
 	/*
 		Mise à disposition des variables pour le thème et gestion des erreurs.
 	*/
@@ -36,10 +35,7 @@
 
 	}
 	else {
-		if($_KERNEL_DEBUG_)
-			header("Location:"._host_.$_LANG_DEFAULT_."/error/".$response->get("code"));
-		else
-			header("Location:"._host_.$_LANG_DEFAULT_);
+		$WT_ERROR = $response;
 	}
 		
 	$_kernel = null;
