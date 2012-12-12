@@ -34,9 +34,6 @@
 		$response = null;
 
 	}
-	else {
-		$WT_ERROR = $response;
-	}
 		
 	$_kernel = null;
 	$response = null;
