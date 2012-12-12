@@ -7,10 +7,7 @@
 		-
 */
 
-class User extends Std {
+
+class Connection {
 
 }
-
-
-
-?>

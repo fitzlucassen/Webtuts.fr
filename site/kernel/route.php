@@ -1,19 +1,23 @@
 <?php
 	
+	define("_host_", "site/");
+	//define("_host_absolute_", "/");
+	define("_host_absolute_", "/");
+
 	/* Apps */
-	define("__apps_dir__", __root__."apps/");
+	define("__apps_dir__", _host_."apps/");
 
 	/* library */
-	define("__library_dir__", __root__."library/");
+	define("__library_dir__", _host_."library/");
 
 	/* langages */
-	define("__lang_dir__", __library_dir__."lang/");
+	define("__lang_dir__", _host_."lang/");
 
 	/* frontend */
-	define("__frontend_dir__", __root__."frontend/");
+	define("__frontend_dir__", _host_."frontend/");
 
 	/* Backend */
-	define("__backend_dir__", __root__."backend/");
+	define("__backend_dir__", _host_."backend/");
 
 	/* themes */
 	define("__themes_dir__", __frontend_dir__."themes/");

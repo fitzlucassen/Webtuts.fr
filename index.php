@@ -5,8 +5,8 @@
 	ini_set("display_errors", 1);
 
 	/* KERNEL */
-	require_once('portail/kernel/kernel.php');
+	require_once('site/kernel/kernel.php');
 
 	/* THEME */
-	require_once(_path_themes_.'default/index.php');
+	require_once(__themes_dir__.'default/index.php');
 ?>

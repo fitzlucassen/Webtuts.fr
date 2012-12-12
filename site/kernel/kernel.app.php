@@ -26,9 +26,9 @@
 	}
 	else {
 		if($_KERNEL_DEBUG_)
-			header("Location:".__host__.$_LANG_DEFAULT_."/error/".$response->get("code"));
+			header("Location:"._host_.$_LANG_DEFAULT_."/error/".$response->get("code"));
 		else
-			header("Location:".__host__.$_LANG_DEFAULT_);
+			header("Location:"._host_.$_LANG_DEFAULT_);
 	}
 		
 	$_kernel = null;
