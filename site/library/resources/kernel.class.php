@@ -5,17 +5,24 @@ class Kernel {
 	public static $CODE_APP = 1;
 	public static $CODE_CONTROLLER = 2;
 
+	public static $APP;
+	public static $CONTROLLER;
+	public static $LANG;
+	public static $SESSION;
+	public static $RESPONSE;
+	public static $URL;
+
 
 
 	static public function get($attr) {
 		if($attr=="app")
-			return $this->app;
+			return Kernel::$APP;
 		elseif($attr=="controller")
-			return $this->controller;
-		elseif($attr=="lang")
-			return $this->lang;
+			return Kernel::$CONTROLLER;
 		elseif($attr=="session")
-			return $this->session;
+			return Kernel::$SESSION;
+		elseif($attr=="lang")
+			return Kernel::$LANG;
 		else
 			return new Error(1);
 		
@@ -29,7 +36,7 @@ class Kernel {
 
 
 	public function startSession() {
-		$this->session = new Session();
+		Kernel::$SESSION = new Session();
 	}
 
 	private function set($attr, $value) {
@@ -37,6 +44,32 @@ class Kernel {
 	}
 
 	public function setKernel($url, $path_type) {
+		
+		Kernel::$URL = $url;
+		/*
+		///categorie-nom/article-nom/
+
+		///categorie-{%1}/article-{%2}/
+
+		///blog/tags/mes-fesses/
+
+		$resultatSQL = mysql_query("SELECT * FROM rewritingurl A, routeurl B WHERE A.idroute=B.id");
+		while($ligne = mysql_fetch_array($resultatSQL))  { 
+		 	echo "Exp : ";
+		 	$expression = $ligne["matchurl"];
+		 	$found = true;
+		 	$cpt = 1;
+		 	$var = "{%".$cpt."}";
+		 	echo "[".$var." : ".$expression."]";
+		 	while(preg_match($var, $expression)!==false) {
+		 		echo "lol";
+		 		str_replace($var, "(.*)",$expression);
+		 		$cpt++;
+		 		$var = "\{\%".$cpt."\}";
+		 	}
+		 	echo $expression."<br />";
+		} */
+
 		if(!empty($url))
 			$tmp = explode("/", $url);
 		else
@@ -48,8 +81,6 @@ class Kernel {
 				$route[$value] = $tmp[$cpt];
 			$cpt++;
 		}
-
-		
 		
 
 		if(!empty($route[Kernel::$CODE_LANG])) {
@@ -57,10 +88,10 @@ class Kernel {
 			if(!in_array($route[Kernel::$CODE_LANG], $this->_LANG_ACCEPTED_))
 				array_unshift($route, $this->_LANG_DEFAULT_);
 			else
-				$this->set("lang", $route[Kernel::$CODE_LANG]);
+				Kernel::$LANG = $route[Kernel::$CODE_LANG];
 		}
 		else
-			$this->set("lang", $this->_LANG_DEFAULT_);
+			Kernel::$LANG = $this->_LANG_DEFAULT_;
 
 		// Appel de l'app et du controller
 		if(empty($route[Kernel::$CODE_APP]))
@@ -76,7 +107,7 @@ class Kernel {
 			if($this->_KERNEL_DEBUG_)
 				return new Error(343);
 			else
-				header("Location:".__host__.$this->get("lang")."/".$route[Kernel::$CODE_APP]);
+				header("Location:"._host_.$this->get("lang")."/".$route[Kernel::$CODE_APP]);
 		}
 		$controllerName = $route[Kernel::$CODE_CONTROLLER]."Controller";
 		$params = array();
@@ -84,17 +115,18 @@ class Kernel {
 			$params[] = $value;
 		}
 		$return = $bundle->$controllerName($tmp);
+		Kernel::$RESPONSE = $return;
 		
 		$appRoute = $return->getRoute();
 
 		if(!empty($appRoute[0]))
-			$this->set("app", $appRoute[0]);
+			Kernel::$APP = $appRoute[0];
 		else
-			$this->set("app", "home");
+			Kernel::$APP =  "home";
 		if(!empty($appRoute[1]))
-			$this->set("controller", $appRoute[1]);
+			Kernel::$CONTROLLER = $appRoute[1];
 		else
-			$this->set("controller", "index");
+			Kernel::$CONTROLLER = "index";
 
 
 		return $return;

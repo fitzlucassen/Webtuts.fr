@@ -18,7 +18,7 @@
 	
 	/* Password */
 	//$_CONFIG_sql_password = "webtuts2013";
-	$_CONFIG_sql_password = "";
+	$_CONFIG_sql_password = "root";
 	
 	/* Prefix tables */
 	define("_sql_prefix_", "");

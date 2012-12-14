@@ -1,12 +1,29 @@
 <?php
 
+	/*
+		Webtuts Blog © 2012
+		Created by :
+			Richard Ettou
+			Jonathan Bicheux
+			Thibault Dulon
+			Quentin Deneuve
+	*/
+
 	/* ERROR REPORTING */
 	error_reporting(E_ALL);
 	ini_set("display_errors", 1);
 
-	/* KERNEL */
-	require_once('portail/kernel/kernel.php');
+	/* 
+		Appel du kernel
+		kernels disponibles : 
+			- site/kernel/kernel.php			Blog
+			- portail/kernel/kernel.php 		Portail abonement newsletter
 
-	/* THEME */
-	require_once(_path_themes_.'default/index.php');
+	*/
+	require_once('site/kernel/kernel.php');
+
+	/* 
+		Appel du theme
+	*/
+	require_once(__themes_dir__.'default/index.php');
 ?>

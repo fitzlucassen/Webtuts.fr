@@ -13,6 +13,9 @@
 
 
 	*/
+		echo $code;
+		echo Kernel::get("app")."<br />";
+		echo Kernel::get("controller");
 
 
 ?>
