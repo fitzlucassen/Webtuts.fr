@@ -354,16 +354,26 @@ class Sql2 {
 				$requete .= " ".$this->OPE_LOGIC_TAB[$value[0]]." ".$value[1]." ".$value[2]." ".$cote2.$value[3].$cote2." ";
 			}
 			else {
-				$requete .= "(";
-				foreach ($value->where as $key2 => $value2) {
-					if(is_string($value2[3]) && !$value2[4]) $cote2='\''; else $cote2='';
-					$requete .= " ".$this->OPE_LOGIC_TAB[$value2[0]]." ".$value2[1]." ".$value2[2]." ".$cote2.$value2[3].$cote2." ";
-				}
-				$requete .= ")";
+				$requete .= $this->getWhereStringRecursive($value);
 			}
 		}
 		return $requete;
 	}
+
+	private function getWhereStringRecursive($object) {
+		$requete = "(";
+		foreach ($object->where as $key2 => $value2) {
+			if(!is_object($value2)) {
+				if(is_string($value2[3]) && !$value2[4]) $cote2='\''; else $cote2='';
+				$requete .= " ".$this->OPE_LOGIC_TAB[$value2[0]]." ".$value2[1]." ".$value2[2]." ".$cote2.$value2[3].$cote2." ";
+			}
+			else
+				$requete .= $this->getWhereStringRecursive($value2);
+		}
+		$requete .= ")";
+		return $requete;
+	}
+
 	/*
 
 	public function fetchOne($rang = 0) {
@@ -414,12 +424,13 @@ class Sql2 {
 
 class SqlTerms {
 
-	public function where($attribut, $condition=null, $param=null, $typeVar=null) {
+	static public function where($attribut, $condition=null, $param=null, $typeVar=null) {
+		$object = new SqlTerms();
 		if(is_object($attribut))
-			$this->where[] = $attribut;
+			$object->where[] = $attribut;
 		else
-			$this->where[] = array("where", $attribut, $condition, $param, $typeVar);
-		return $this;
+			$object->where[] = array("where", $attribut, $condition, $param, $typeVar);
+		return $object;
 	}
 
 	public function andWhere($attribut, $condition=null, $param=null, $typeVar=null) {
