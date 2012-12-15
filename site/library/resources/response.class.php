@@ -6,7 +6,10 @@
 class Response {
 
 	public function __construct($vars, $route=null) {
-		$this->vars = $vars;
+		if(is_array($vars))
+			$this->vars = $vars;
+		else
+			$this->vars = array("return" => $vars);
 		$this->route = $route;
 	}
 
