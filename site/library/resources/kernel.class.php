@@ -97,9 +97,6 @@ class Kernel {
 		if(empty($route[Kernel::$CODE_APP]))
 			$route[Kernel::$CODE_APP] = "home";
 		$bundleName = ucfirst($route[Kernel::$CODE_APP])."App";
-		if(file_exists(__apps_dir__.$route[Kernel::$CODE_APP].'/index.php'))
-			require(__apps_dir__.$route[Kernel::$CODE_APP].'/index.php');
-		else return new Error(342);
 		$bundle = new $bundleName();
 		if(empty($route[Kernel::$CODE_CONTROLLER]) || is_numeric($route[Kernel::$CODE_CONTROLLER])) 
 			$route[Kernel::$CODE_CONTROLLER] = "index";
