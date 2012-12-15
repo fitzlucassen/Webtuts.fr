@@ -13,7 +13,10 @@
 
 
 	*/
-		echo $code;
+		$article->get("category")->get("name");
+		echo "<pre>";
+		print_r($article);
+		echo "</pre>";
 		echo Kernel::get("app")."<br />";
 		echo Kernel::get("controller");
 

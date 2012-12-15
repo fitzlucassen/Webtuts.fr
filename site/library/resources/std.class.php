@@ -26,11 +26,17 @@ class Std {
 			$this->_class=get_class($this);
 		else
 			$this->_class=$class;
-		if($params==null) 
-			$this->getConnection();
+		if($params==null) {} 
 		else
 			$this->hydrate($params);
 		return $this;
+	}
+	
+	public function setTypage($typages) {
+		foreach ($typages as $value) {
+			$nomAttribut = "__".$value["name_column"];
+			$this->$nomAttribut = $value["type"];
+		}
 	}
 
 	static public function n($class) {
@@ -59,21 +65,33 @@ class Std {
 
 	/* Getter */
 	public function get($attribut) {
-		if(isset($this->$attribut))
+		if(isset($this->$attribut)) {
 			// Connection Objet non créée
-			if(is_array($this->$attribut)) {
-				$tmp = $this->$attribut;
-				$objectName = $tmp[0];
-				if($objectName!="collection") { // Object
-					$this->$attribut = new $objectName($tmp[1]);
+			$typeAttribut = "__".$attribut;
+			$tmp = explode(" ", $this->$typeAttribut);
+			if(!is_object($this->$attribut) && ($tmp[0]=="class" || $tmp[0]=="collection")) {
+				$typeLink = $tmp[0];
+				if($typeLink=="class") { // Object
+					$objectName = $tmp[1];
+					$this->$attribut = Sql2::create()->from($objectName)->where("id", Sql2::$OPE_EQUAL, $this->$attribut)->fetchClass();
 				}
-				else { // Collection of object
-					$this->$attribut = new $objectName();
-					$this->setCollection($attribut, $tmp[1], $tmp[2]);
+				elseif($typeLink=="collection") { // Collection of object
+					$this->setCollection($attribut, $tmp[1], $this->$attribut);
 				}
 				return $this->$attribut;
-			} else
+			} 
+			elseif(!is_object($this->$attribut) && ($tmp[0]=="type")) {
+				/*
+					Gestion des type particulier.
+				*/
+				if($tmp[1]=="lang") {
+					$this->$attribut = new Lang($this->$attribut);
+				}
 				return $this->$attribut;
+			} 
+			else
+				return $this->$attribut;
+		}
 		else
 			return new Error(1);
 	}
@@ -102,13 +120,11 @@ class Std {
 			$clone = Sql2::create()->from(strtolower($this->_class))->where("id", Sql2::$OPE_EQUAL, $id)->fetchClass();
 			foreach ($clone as $attribut => $valeur)
 				$this->$attribut = $valeur;
-			$this->getConnection();
 			return $this;
 		}
 		else if(is_array($id)) {
 			foreach ($id as $attribut => $valeur)
 				$this->$attribut = $valeur;
-			$this->getConnection();
 			return $this;
 		}
 		else
@@ -172,50 +188,43 @@ class Std {
 		else
 			return new Error(1);
 	}
-
+/*
 	private function getConnection() {
 		foreach (get_object_vars($this) as $key => $value) {
 			if($key!="_class") {
-				if($key[0]=="_" && $key[1]!="_") {
-					$tmp = explode("_", $key);
-					$tmp2 = $tmp[2];
-					if($tmp[1]=="collection") {// Si classe spéciale
-						$tmp4 = $tmp[4];
-						$this->$tmp4 = array($tmp[1], $tmp[2], $tmp[3]);
-					} else
-						$this->$tmp2 = array($tmp[1], $value);
-					unset($this->$key);
+				if($key[0]=="_" && $key[1]="_") {
+					$keyAttribut = strtok($key, "__");
+					$type = explode($value, " ");
+					if($type[0]=="collection")
+						$this->$keyAttribut = array($type[0], $type[1], $this->$keyAttribut);
+					elseif($type[0]=="class")
+						$this->$keyAttribut = array($type[0], $type[1], $this->$keyAttribut);
+					//...
+					
 				}
-				if($key[0]=="_" && $key[1]=="_") // Liaison d'object inverse (OSEF)
-					unset($this->$key);
 			}
 		}
 	}
-
+*/
 	private function setCollection($attribut, $type, $class) {
-		// Recupération de tous les attributs de la classe à retourner
-		if($type==1) { 
-			$cpt = 0;
-			$result = mysql_query("SHOW COLUMNS FROM ".$class);
-			while ($row = mysql_fetch_assoc($result)) {
-				$select[$cpt] = "A.".$row["Field"];
-				$cpt++;
-	   		}	
-	   		$table = $class."_".strtolower($this->_class);
-	   		if(!Sql2::table_exist($table))
-	   			$table = strtolower($this->_class)."_".$class;
-			$this->$attribut = Sql2::create()
-								->select($select)
-								->from($class, $table)
-								->where("A.id", Sql2::$OPE_EQUAL ,"B.id_".$class, Sql2::$TYPE_NO_QUOTE)
-								->andWhere("B.id_".strtolower($this->_class), Sql2::$OPE_EQUAL, $this->id)
-								->fetchClassArray();
-		} elseif($type==2) {
-			$this->$attribut = Sql2::create()
-								->from($class)
-								->where("__link_".strtolower($this->_class), Sql2::$OPE_EQUAL, $this->id)
-								->fetchClassArray();
-		}
+		$this->$attribut = new Collection();
+		// Recupération de tous les attributs de la classe à retourner 
+		$cpt = 0;
+		$result = mysql_query("SHOW COLUMNS FROM ".$class);
+		while ($row = mysql_fetch_assoc($result)) {
+			$select[$cpt] = "A.".$row["Field"];
+			$cpt++;
+   		}	
+   		$table = $class."_".strtolower($this->_class);
+   		if(!Sql2::table_exist($table))
+   			$table = strtolower($this->_class)."_".$class;
+		$this->$attribut = Sql2::create()
+							->select($select)
+							->from($class, $table)
+							->where("A.id", Sql2::$OPE_EQUAL ,"B.id_".$class, Sql2::$TYPE_NO_QUOTE)
+							->andWhere("B.id_".strtolower($this->_class), Sql2::$OPE_EQUAL, $this->id)
+							->fetchClassArray();
+
 		$this->$attribut->setObject($this);
 		$this->$attribut->setTarget($class);
 	}

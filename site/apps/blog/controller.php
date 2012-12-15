@@ -2,8 +2,8 @@
 
 class BlogApp {
 	public function IndexController($params) {
-		$return = null;//App::getClassArray("article");
-		return new Response(array('articles' => $return));
+		$return = App::getClass("article", 1);
+		return new Response(array('article' => $return));
 	}
 
 	public function ArticleController($params) {

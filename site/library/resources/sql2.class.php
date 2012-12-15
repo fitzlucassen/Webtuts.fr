@@ -191,7 +191,7 @@ class Sql2 {
 	private function getRequete() {
 		$requete = "";
 		if($this->type == Sql2::$TYPE_SELECT)
-			$requete = $this->getSelectRequete();
+			$requete = $this->getselectRequete();
 		elseif($this->type == Sql2::$TYPE_INSERT)
 			$requete = $this->getInsertRequete();
 		elseif($this->type == Sql2::$TYPE_UPDATE)
@@ -244,7 +244,7 @@ class Sql2 {
 				$requete .= ", ".$this->limit[1];
 		}
 
-		return $requete; 
+		return $requete;
 	}
 
 	private function getInsertRequete() {
@@ -297,11 +297,23 @@ class Sql2 {
 				$class = "Std";
 			else $class = $this->class;
 			$return = mysql_fetch_object(mysql_query($requete), $class);
-			$return->setNameClass($this->class);
+			if(method_exists($return,'setNameClass')) {
+				$return->setNameClass($this->class);
+				$return->setTypage(Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->class))->fetchArray());
+			}
 			return $return;
 		}
 		else
 			return new Error(2);
+	}
+
+	public function fetchArray() {
+		$requete = $this->getRequete();
+		$return = array();
+		$resultat = mysql_query($requete);
+		while($ligne = mysql_fetch_array($resultat)) 
+			$return[] = $ligne;
+		return $return;
 	}
 
 	public function fetchClassArray() {
@@ -338,13 +350,13 @@ class Sql2 {
 		$requete = "";
 		foreach ($this->where as $key => $value) {
 			if(!is_object($value)) {
-				if(is_string($value[3]) && $value[4]) $cote2='\''; else $cote2='';
+				if(is_string($value[3]) && !$value[4]) $cote2='\''; else $cote2='';
 				$requete .= " ".$this->OPE_LOGIC_TAB[$value[0]]." ".$value[1]." ".$value[2]." ".$cote2.$value[3].$cote2." ";
 			}
 			else {
 				$requete .= "(";
 				foreach ($value->where as $key2 => $value2) {
-					if(is_string($value2[3]) && $value2[4]) $cote2='\''; else $cote2='';
+					if(is_string($value2[3]) && !$value2[4]) $cote2='\''; else $cote2='';
 					$requete .= " ".$this->OPE_LOGIC_TAB[$value2[0]]." ".$value2[1]." ".$value2[2]." ".$cote2.$value2[3].$cote2." ";
 				}
 				$requete .= ")";
