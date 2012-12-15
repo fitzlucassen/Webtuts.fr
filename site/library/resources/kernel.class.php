@@ -114,7 +114,10 @@ class Kernel {
 		$return = $bundle->$controllerName($tmp);
 		Kernel::$RESPONSE = $return;
 		
-		$appRoute = $return->getRoute();
+		if($return->hasRoute())
+			$appRoute = $return->getRoute();
+		else
+			$appRoute = array($route[Kernel::$CODE_APP], $route[Kernel::$CODE_CONTROLLER]);
 
 		if(!empty($appRoute[0]))
 			Kernel::$APP = $appRoute[0];

@@ -5,9 +5,9 @@
 
 class Response {
 
-	public function __construct($templates, $vars) {
+	public function __construct($vars, $route=null) {
 		$this->vars = $vars;
-		$this->templates = $templates;
+		$this->route = $route;
 	}
 
 	public function getVars() {
@@ -15,7 +15,14 @@ class Response {
 	}
 
 	public function getRoute() {
-		return $this->templates;
+		return $this->route;
+	}
+
+	public function hasRoute() {
+		if($this->route==null)
+			return false;
+		else
+			return true;
 	}
 
 
