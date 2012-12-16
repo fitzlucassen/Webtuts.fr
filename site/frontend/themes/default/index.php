@@ -13,11 +13,18 @@
 
 
 	*/
-	
+	/*
 		$table = App::getTable("user");
 		echo $table->count();
 		echo "<pre>";
 		print_r($table);
+		echo "</pre>";
+
+		*/
+		echo "<pre>";
+		$result = App::getClass("category", 1);
+		$result->get("articles");
+		print_r($result);
 		echo "</pre>";
 
 		//print_r(SqlTerms::where("id", Sql2::$OPE_EQUAL, 3));

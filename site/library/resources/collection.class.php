@@ -38,8 +38,7 @@ class Collection {
 	*/
 	public function add() {
 		if(count($this->object)>0) {
-
-
+			
 		}
 		else
 			return new Error(1);

@@ -157,7 +157,7 @@ class Sql2 {
 		return new $class();
 	}
 
-	public function where($attribut, $condition=null, $param=null, $typeVar=null) {
+	public function where($attribut, $condition=null, $param=null, $typeVar=true) {
 		if(is_object($attribut))
 			$this->where[] = $attribut;
 		else
@@ -165,14 +165,14 @@ class Sql2 {
 		return $this;
 	}
 
-	public function andWhere($attribut, $condition=null, $param=null, $typeVar=null) {
+	public function andWhere($attribut, $condition=null, $param=null, $typeVar=true) {
 		if(is_object($attribut))
 			$this->where[] = $attribut;
 		else
 			$this->where[] = array("andwhere", $attribut, $condition, $param, $typeVar);
 		return $this;
 	}
-	public function orWhere($attribut, $condition=null, $param=null, $typeVar=null) {
+	public function orWhere($attribut, $condition=null, $param=null, $typeVar=true) {
 		if(is_object($attribut))
 			$this->where[] = $attribut;
 		else
@@ -321,8 +321,10 @@ class Sql2 {
 			$class = $this->class;
 			$collection = new Collection();
 			$sql = mysql_query($requete);
-			while($result = mysql_fetch_assoc($sql))
-				$collection->hydrate(Std::n($class)->hydrate($result));
+			while($result = mysql_fetch_assoc($sql)) {
+				$types = Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->class))->fetchArray();
+				$collection->hydrate(OrmStdAbstract::n($class)->hydrate($result, $types));
+			}
 			return $collection;
 		}
 		else
@@ -364,7 +366,7 @@ class Sql2 {
 			$requete .= " WHERE ";
 			foreach ($this->where as $key => $value) {
 				if(!is_object($value)) {
-					if(is_string($value[3]) && !$value[4]) $cote2='\''; else $cote2='';
+					if(is_string($value[3]) && $value[4]) $cote2='\''; else $cote2='';
 					$requete .= " ".$this->OPE_LOGIC_TAB[$value[0]]." ".$value[1]." ".$value[2]." ".$cote2.$value[3].$cote2." ";
 				}
 				else {
@@ -379,7 +381,7 @@ class Sql2 {
 		$requete = "(";
 		foreach ($object->where as $key2 => $value2) {
 			if(!is_object($value2)) {
-				if(is_string($value2[3]) && !$value2[4]) $cote2='\''; else $cote2='';
+				if(is_string($value2[3]) && $value2[4]) $cote2='\''; else $cote2='';
 				$requete .= " ".$this->OPE_LOGIC_TAB[$value2[0]]." ".$value2[1]." ".$value2[2]." ".$cote2.$value2[3].$cote2." ";
 			}
 			else
@@ -439,7 +441,7 @@ class Sql2 {
 
 class SqlTerms {
 
-	static public function where($attribut, $condition=null, $param=null, $typeVar=null) {
+	static public function where($attribut, $condition=null, $param=null, $typeVar=true) {
 		$object = new SqlTerms();
 		if(is_object($attribut))
 			$object->where[] = $attribut;
@@ -448,14 +450,14 @@ class SqlTerms {
 		return $object;
 	}
 
-	public function andWhere($attribut, $condition=null, $param=null, $typeVar=null) {
+	public function andWhere($attribut, $condition=null, $param=null, $typeVar=true) {
 		if(is_object($attribut))
 			$this->where[] = $attribut;
 		else
 			$this->where[] = array("andwhere", $attribut, $condition, $param, $typeVar);
 		return $this;
 	}
-	public function orWhere($attribut, $condition=null, $param=null, $typeVar=null) {
+	public function orWhere($attribut, $condition=null, $param=null, $typeVar=true) {
 		if(is_object($attribut))
 			$this->where[] = $attribut;
 		else

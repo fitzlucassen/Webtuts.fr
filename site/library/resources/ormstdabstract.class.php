@@ -69,27 +69,29 @@ abstract class OrmStdAbstract {
 		if(isset($this->$attribut)) {
 			// Connection Objet non créée
 			$typeAttribut = "__".$attribut;
-			$tmp = explode(" ", $this->$typeAttribut);
-			if(!is_object($this->$attribut) && ($tmp[0]=="class" || $tmp[0]=="collection")) {
-				$typeLink = $tmp[0];
-				if($typeLink=="class") { // Object
-					$objectName = $tmp[1];
-					$this->$attribut = Sql2::create()->from($objectName)->where("id", Sql2::$OPE_EQUAL, $this->$attribut)->fetchClass();
-				}
-				elseif($typeLink=="collection") { // Collection of object
-					$this->setCollection($attribut, $tmp[1], $this->$attribut);
-				}
-				return $this->$attribut;
-			} 
-			elseif(!is_object($this->$attribut) && ($tmp[0]=="type")) {
-				/*
-					Gestion des type particulier.
-				*/
-				if($tmp[1]=="lang") {
-					$this->$attribut = new Lang($this->$attribut);
-				}
-				return $this->$attribut;
-			} 
+			if(isset($this->$typeAttribut)) {	// Pas prendre en compte $this->id et $this->_class
+				$tmp = explode(" ", $this->$typeAttribut);
+				if(!is_object($this->$attribut) && ($tmp[0]=="class" || $tmp[0]=="collection")) {
+					$typeLink = $tmp[0];
+					if($typeLink=="class") { // Object
+						$objectName = $tmp[1];
+						$this->$attribut = Sql2::create()->from($objectName)->where("id", Sql2::$OPE_EQUAL, $this->$attribut)->fetchClass();
+					}
+					elseif($typeLink=="collection") { // Collection of object
+						$this->setCollection($attribut, $tmp[1]);
+					}
+					return $this->$attribut;
+				} 
+				elseif(!is_object($this->$attribut) && ($tmp[0]=="type")) {
+					/*
+						Gestion des type particulier.
+					*/
+					if($tmp[1]=="lang") {
+						$this->$attribut = new Lang($this->$attribut);
+					}
+					return $this->$attribut;
+				} 
+			}
 			else
 				return $this->$attribut;
 		}
@@ -116,16 +118,18 @@ abstract class OrmStdAbstract {
 		return $this;
 	}
 
-	public function hydrate($id) {
+	public function hydrate($id, $types) {
 		if(is_numeric($id)) {
 			$clone = Sql2::create()->from(strtolower($this->_class))->where("id", Sql2::$OPE_EQUAL, $id)->fetchClass();
 			foreach ($clone as $attribut => $valeur)
 				$this->$attribut = $valeur;
+			$this->setTypage($types);
 			return $this;
 		}
 		else if(is_array($id)) {
 			foreach ($id as $attribut => $valeur)
 				$this->$attribut = $valeur;
+			$this->setTypage($types);
 			return $this;
 		}
 		else
@@ -207,7 +211,7 @@ abstract class OrmStdAbstract {
 		}
 	}
 */
-	private function setCollection($attribut, $type, $class) {
+	private function setCollection($attribut, $class) {
 		$this->$attribut = new Collection();
 		// Recupération de tous les attributs de la classe à retourner 
 		$cpt = 0;
@@ -219,6 +223,12 @@ abstract class OrmStdAbstract {
    		$table = $class."_".strtolower($this->_class);
    		if(!Sql2::table_exist($table))
    			$table = strtolower($this->_class)."_".$class;
+   		echo Sql2::create()
+							->select($select)
+							->from($class, $table)
+							->where("A.id", Sql2::$OPE_EQUAL ,"B.id_".$class, Sql2::$TYPE_NO_QUOTE)
+							->andWhere("B.id_".strtolower($this->_class), Sql2::$OPE_EQUAL, $this->id, Sql2::$TYPE_NO_QUOTE)
+							->showRequete();
 		$this->$attribut = Sql2::create()
 							->select($select)
 							->from($class, $table)
