@@ -223,12 +223,6 @@ abstract class OrmStdAbstract {
    		$table = $class."_".strtolower($this->_class);
    		if(!Sql2::table_exist($table))
    			$table = strtolower($this->_class)."_".$class;
-   		echo Sql2::create()
-							->select($select)
-							->from($class, $table)
-							->where("A.id", Sql2::$OPE_EQUAL ,"B.id_".$class, Sql2::$TYPE_NO_QUOTE)
-							->andWhere("B.id_".strtolower($this->_class), Sql2::$OPE_EQUAL, $this->id, Sql2::$TYPE_NO_QUOTE)
-							->showRequete();
 		$this->$attribut = Sql2::create()
 							->select($select)
 							->from($class, $table)
