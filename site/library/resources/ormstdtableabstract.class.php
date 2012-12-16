@@ -5,8 +5,11 @@ abstract class OrmStdTableAbstract {
 	
 	public $_name;
 
-	public function __construct($name) {
-		$this->_name = $name;
+	public function __construct() {
+		 $name = get_class($this);
+		 $name = strstr($name, 'Table', true);
+		 $name = mb_strtolower($name);
+		 $this->_name = $name;
 	}
 
 	public function count() {

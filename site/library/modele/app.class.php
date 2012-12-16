@@ -43,7 +43,11 @@ class App {
 	}
 
 	static public function getTable($table) {
-		return new StdTable($table);
+		$tableName = ucfirst($table)."Table";
+		if(!class_exists($tableName))
+			return new StdTable($table);
+		else 
+			return new $tableName();
 	}
 
 /*

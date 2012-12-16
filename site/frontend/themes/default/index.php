@@ -16,6 +16,9 @@
 	
 		$table = App::getTable("user");
 		echo $table->count();
+		echo "<pre>";
+		print_r($table);
+		echo "</pre>";
 
 		//print_r(SqlTerms::where("id", Sql2::$OPE_EQUAL, 3));
 		//echo "<pre>";
