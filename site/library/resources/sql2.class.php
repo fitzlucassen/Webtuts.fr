@@ -229,7 +229,6 @@ class Sql2 {
     	$requete .= " ".chr($cpt+64)."";
 
 		// WHERE
-		$requete .= " WHERE ";
 		$requete .= $this->getWhereString();
 
 		// ORDER BY
@@ -346,15 +345,31 @@ class Sql2 {
 			return new Error(3);
 	}
 
+	public function fetch($rang=0) {
+		if($this->type == Sql::$_SELECT) {
+			$requete = $this->getRequete();
+			$resultat = mysql_query($requete);
+			if($resultat)
+				return mysql_result($resultat, $rang);
+			else
+				return new Error(45);
+		}
+		else
+			return new Error(3);
+	}
+
 	private function getWhereString() {
 		$requete = "";
-		foreach ($this->where as $key => $value) {
-			if(!is_object($value)) {
-				if(is_string($value[3]) && !$value[4]) $cote2='\''; else $cote2='';
-				$requete .= " ".$this->OPE_LOGIC_TAB[$value[0]]." ".$value[1]." ".$value[2]." ".$cote2.$value[3].$cote2." ";
-			}
-			else {
-				$requete .= $this->getWhereStringRecursive($value);
+		if(!empty($this->where)) {
+			$requete .= " WHERE ";
+			foreach ($this->where as $key => $value) {
+				if(!is_object($value)) {
+					if(is_string($value[3]) && !$value[4]) $cote2='\''; else $cote2='';
+					$requete .= " ".$this->OPE_LOGIC_TAB[$value[0]]." ".$value[1]." ".$value[2]." ".$cote2.$value[3].$cote2." ";
+				}
+				else {
+					$requete .= $this->getWhereStringRecursive($value);
+				}
 			}
 		}
 		return $requete;

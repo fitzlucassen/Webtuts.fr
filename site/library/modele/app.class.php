@@ -13,7 +13,7 @@ class App {
 	static public function getClass($class, $param=0) {
 		if(!empty($param)) {
 			if(is_array($param)) {
-				return App::createClass($class, $param)->fetchClass();
+				return App::requete($class, $param)->fetchClass();
 			}
 			else if(is_numeric($param))
 				return Sql2::create()->from($class)->where("id", Sql2::$OPE_EQUAL, $param)->fetchClass();
@@ -43,7 +43,7 @@ class App {
 	}
 
 	static public function getTable($table) {
-
+		return new StdTable($table);
 	}
 
 /*

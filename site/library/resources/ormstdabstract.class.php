@@ -10,6 +10,7 @@
 abstract class OrmStdAbstract {
 
 	public $_class;
+	static public $types = array(); 
 
 	public function setNameClass($class) {
 		$this->_class = $class;
