@@ -7,7 +7,7 @@
 		-
 */
 
-class Commentaire extends Std {
+class Commentaire extends OrmStdAbstract {
 
 
 }

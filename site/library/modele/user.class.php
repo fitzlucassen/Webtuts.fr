@@ -7,7 +7,7 @@
 		-
 */
 
-class User extends Std {
+class User extends OrmStdAbstract {
 
 }
 

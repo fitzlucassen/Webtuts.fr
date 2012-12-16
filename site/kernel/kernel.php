@@ -12,6 +12,9 @@
 	/* Collection */
 	require(__library_dir__.'resources/collection.class.php');
 
+	/* ORMSTDAbstract Class */
+	require(__library_dir__.'resources/ormstdabstract.class.php');
+
 	/* STD Class */
 	require(__library_dir__.'resources/std.class.php');
 

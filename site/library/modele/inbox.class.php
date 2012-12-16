@@ -7,7 +7,7 @@
 		-
 */
 
-class Inbox {
+class Inbox extends OrmStdAbstract{
 
 	/* Attributs */
 	var $id;									// int 					Identifiant

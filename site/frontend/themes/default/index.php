@@ -14,9 +14,10 @@
 
 	*/
 	
-		print_r(SqlTerms::where("id", Sql2::$OPE_EQUAL, 3));
-
-
+		//print_r(SqlTerms::where("id", Sql2::$OPE_EQUAL, 3));
+		echo "<pre>";
+		print_r(App::getClass("user", 1));
+		echo "</pre>";
 		//echo Sql2::create()->from("user")->where(SqlTerms::where(SqlTerms::where("id", Sql2::$OPE_EQUAL, 3)->andWhere("id2", Sql2::$OPE_EQUAL, 3))->andWhere("id3", Sql2::$OPE_EQUAL, 3))->andWhere("id4", Sql2::$OPE_EQUAL, 3)->showRequete();
 
 /*

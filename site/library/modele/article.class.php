@@ -7,7 +7,7 @@
 		-
 */
 
-class Article extends Std {
+class Article extends OrmStdAbstract {
 
 	
 
