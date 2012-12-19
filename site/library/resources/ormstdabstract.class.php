@@ -10,12 +10,30 @@
 abstract class OrmStdAbstract {
 
 	public $_class;
-	//public $_attributes = array();
-	//public $_types = array();
+	public $_attributes = array();
+	public $_types = array();
 
 
 	public function setNameClass($class) {
 		$this->_class = $class;
+	}
+
+	public function __get($name) {
+		if($name[0]=="_" && $name[1]=="_")
+			return $this->_types[strtok($name, "__")];
+		elseif($name[0]=="_")
+			return $this->$name;
+		else
+			return $this->_attributes[$name];
+	}
+
+	public function __set($name, $value) {
+		if($name[0]=="_" && $name[1]=="_")
+			$this->_types[strtok($name, "__")] = $value;
+		elseif($name[0]=="_")
+			$this->$name = $value;
+		else
+			$this->_attributes[$name] = $value;
 	}
 
 	public function exist() {
@@ -66,39 +84,41 @@ abstract class OrmStdAbstract {
 		return $bool;
 	}
 
+	public function getClass() {
+		return $this->_class;
+	}
+
 	/* Getter */
 	public function get($attribut) {
-		if(isset($this->$attribut)) {
-			// Connection Objet non créée
-			$typeAttribut = "__".$attribut;
-			if(isset($this->$typeAttribut)) {	// Pas prendre en compte $this->id et $this->_class
-				$tmp = explode(" ", $this->$typeAttribut);
-				if(!is_object($this->$attribut) && ($tmp[0]=="class" || $tmp[0]=="collection")) {
-					$typeLink = $tmp[0];
-					if($typeLink=="class") { // Object
-						$objectName = $tmp[1];
-						$this->$attribut = Sql2::create()->from($objectName)->where("id", Sql2::$OPE_EQUAL, $this->$attribut)->fetchClass();
-					}
-					elseif($typeLink=="collection") { // Collection of object
-						$this->setCollection($attribut, $tmp[1]);
-					}
-					return $this->$attribut;
-				} 
-				elseif(!is_object($this->$attribut) && ($tmp[0]=="type")) {
-					/*
-						Gestion des type particulier.
-					*/
-					if($tmp[1]=="lang") {
-						$this->$attribut = new Lang($this->$attribut);
-					}
-					return $this->$attribut;
-				} 
-			}
-			else
+		if($attribut == "id")
+			return $this->id;
+		$typeAttribut = "__".$attribut;
+		$typeAttribut = $this->$typeAttribut;
+		if(!empty($typeAttribut)) {	// Pas prendre en compte $this->id et $this->_class
+			$tmp = explode(" ", $typeAttribut);
+			if(!is_object($this->$attribut) && ($tmp[0]=="class" || $tmp[0]=="collection")) {
+				$typeLink = $tmp[0];
+				if($typeLink=="class") { // Object
+					$objectName = $tmp[1];
+					$this->$attribut = Sql2::create()->from($objectName)->where("id", Sql2::$OPE_EQUAL, $this->$attribut)->fetchClass();
+				}
+				elseif($typeLink=="collection") { // Collection of object
+					$this->setCollection($attribut, $tmp[1]);
+				}
 				return $this->$attribut;
+			} 
+			elseif(!is_object($this->$attribut) && ($tmp[0]=="type")) {
+				/*
+					Gestion des type particulier.
+				*/
+				if($tmp[1]=="lang") {
+					$this->$attribut = new Lang($this->$attribut);
+				}
+				return $this->$attribut;
+			} 
 		}
 		else
-			return new Error(1);
+			return $this->$attribut;
 	}
 
 	/*functions */
@@ -230,8 +250,7 @@ abstract class OrmStdAbstract {
 							->from($class, $table)
 							->where("A.id", Sql2::$OPE_EQUAL ,"B.id_".$class, Sql2::$TYPE_NO_QUOTE)
 							->andWhere("B.id_".strtolower($this->_class), Sql2::$OPE_EQUAL, $this->id)
-							->fetchClassArray();
-
+							->fetchClassArray();		
 		$this->$attribut->setObject($this);
 		$this->$attribut->setTarget($class);
 	}

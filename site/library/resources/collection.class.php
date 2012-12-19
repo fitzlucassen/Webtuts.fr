@@ -27,7 +27,7 @@ class Collection {
 
 	public function setObject($object) {
 		$this->object["id"] = $object->get("id");
-		$this->object["name"] = $object->get("_class");
+		$this->object["name"] = $object->getClass();
 	}
 	public function setTarget($class) {
 		$this->target = $class;
@@ -38,7 +38,7 @@ class Collection {
 	*/
 	public function add() {
 		if(count($this->object)>0) {
-			
+
 		}
 		else
 			return new Error(1);

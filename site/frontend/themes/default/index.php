@@ -23,9 +23,10 @@
 		*/
 		echo "<pre>";
 		$result = App::getClass("category", 1);
-		$result->get("articles");
-		print_r($result);
+		print_r($result->get("articles"));
 		echo "</pre>";
+
+
 
 		//print_r(SqlTerms::where("id", Sql2::$OPE_EQUAL, 3));
 		//echo "<pre>";
