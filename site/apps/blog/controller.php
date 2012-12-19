@@ -7,7 +7,7 @@ class BlogApp {
 	}
 
 	public function ArticleController($params) {
-		return new Response(array('category' => $params[2], 'article' => $params[3]));
+		return new Response("blog/", Response::$STATUS_REDIRECT);
 	}
 }
 

@@ -28,9 +28,7 @@
 	if(get_class($response)!="Error") {
 
 		// Création des variables pour le thème
-		foreach ($response->getVars() as $key => $value) {
-			$$key = $value;
-		}
+		extract($response->getVars());
 		$response = null;
 
 	}
