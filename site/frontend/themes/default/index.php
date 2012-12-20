@@ -23,7 +23,8 @@
 		*/
 		echo "<pre>";
 		$result = App::getClass("category", 1);
-		print_r($result->get("articles"));
+		$result->get("articles");
+		print_r($result->articles);
 		echo "</pre>";
 
 
