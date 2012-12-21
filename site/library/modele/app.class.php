@@ -30,9 +30,9 @@ class App {
 
 	static public function getClassArray($class, $param=null) {
 		if(!empty($param))
-			return App::requete($class, $param)->fetchArray();
+			return App::requete($class, $param)->fetchClassArray();
 		else
-			return Sql::create()->from($class)->fetchArray();
+			return Sql2::create()->from($class)->fetchClassArray();
 	}
 
 	static public function createClass($class, $params) {

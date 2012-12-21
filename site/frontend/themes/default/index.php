@@ -24,7 +24,7 @@
 		echo "<pre>";
 		$result = App::getClass("category", 1);
 		$result->get("articles");
-		print_r($result->articles);
+		print_r($result = App::getClassArray("category"));
 		echo "</pre>";
 
 
