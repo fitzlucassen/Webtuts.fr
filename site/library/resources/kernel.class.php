@@ -96,17 +96,17 @@ class Kernel {
 		// Appel de l'app et du controller
 		if(empty($route[Kernel::$CODE_APP]))
 			$route[Kernel::$CODE_APP] = "home";
-		$bundleName = ucfirst($route[Kernel::$CODE_APP])."App";
+		$bundleName = ucfirst($route[Kernel::$CODE_APP])."Controller";
 		$bundle = new $bundleName();
 		if(empty($route[Kernel::$CODE_CONTROLLER]) || is_numeric($route[Kernel::$CODE_CONTROLLER])) 
 			$route[Kernel::$CODE_CONTROLLER] = "index";
-		if(!method_exists($bundle,$route[Kernel::$CODE_CONTROLLER]."Controller")) {
+		if(!method_exists($bundle,$route[Kernel::$CODE_CONTROLLER]."Action")) {
 			if($this->_KERNEL_DEBUG_)
 				return new Error(343);
 			else
 				header("Location:"._host_.$this->get("lang")."/".$route[Kernel::$CODE_APP]);
 		}
-		$controllerName = $route[Kernel::$CODE_CONTROLLER]."Controller";
+		$controllerName = $route[Kernel::$CODE_CONTROLLER]."Action";
 		$params = array();
 		foreach ($route as $key => $value) {
 			$params[] = $value;
