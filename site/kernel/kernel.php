@@ -7,6 +7,9 @@
 	require('route.php');
 
 	/* Connexion a la bd */
+	require(__library_dir__.'resources/controller.class.php');
+
+	/* Connexion a la bd */
 	require(__library_dir__.'resources/error.class.php');
 
 	/* Collection */
