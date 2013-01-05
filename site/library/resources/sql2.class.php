@@ -332,10 +332,10 @@ class Sql2 {
 	}
 
 	public function execute() {
-		if($this->type == Sql::$_INSERT || $this->type == Sql::$_UPDATE){
+		if($this->type == Sql2::$_INSERT || $this->type == Sql2::$_UPDATE){
 			$requete = $this->getRequete();
 			if(mysql_query($requete)) {
-				if($this->type == Sql::$_INSERT)
+				if($this->type == Sql2::$_INSERT)
 					return Sql2::create()->from(mb_strtolower($this->class))->where("id", Sql2::$OPE_EQUAL, mysql_insert_id())->fetchClass();
 				else
 					return true;
