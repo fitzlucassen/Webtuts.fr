@@ -11,7 +11,7 @@ class Kernel {
 	public static $SESSION;
 	public static $RESPONSE;
 	public static $URL;
-
+	public static $CACHE;
 
 
 	static public function get($attr) {
@@ -23,6 +23,8 @@ class Kernel {
 			return Kernel::$SESSION;
 		elseif($attr=="lang")
 			return Kernel::$LANG;
+		elseif($attr=="cache")
+			return Kernel::$CACHE;
 		else
 			return new Error(1);
 		
@@ -37,6 +39,12 @@ class Kernel {
 
 	public function startSession() {
 		Kernel::$SESSION = new Session();
+	}
+
+	public function startCache($folder, $time = null) {
+		if($time == null)
+			$time = 10;
+		Kernel::$CACHE = new Cache($folder, $time);
 	}
 
 	private function set($attr, $value) {

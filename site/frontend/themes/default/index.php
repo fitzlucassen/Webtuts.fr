@@ -50,7 +50,7 @@
 ?>
 <html>
 	<head>
-		<?php include("partials/meta.php"); ?>
+		<?php include("partials/meta.php");//Kernel::get("cache")->inc(_theme_path_."partials/meta.php"); ?>
 		<title>Page d'accueil Webtuts</title>
 	</head>
 	<body>
@@ -63,7 +63,6 @@
 			
 				<!-- Home page -->
 				<div id="home-page">
-				
 					<!-- Introduction -->
 					<div id="explanation-text">
 						<div class="border-title">

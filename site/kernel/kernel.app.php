@@ -15,6 +15,11 @@
 	$_kernel->startSession();
 
 	/*
+		Gestion du cache pour les themes
+	*/
+	$_kernel->startCache("/cache/themes");
+
+	/*
 		Appel de l'application et du controller par routing
 	*/
 	if(!empty($_GET["url"]))
