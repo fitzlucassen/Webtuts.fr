@@ -1,13 +1,13 @@
 <header>
 	<div id="top-header">
 		<div id="oiseau-anime">
-			<img src="images/oeuil-oiseau.png" alt="oeuil de l'oiseau" class="bird-eye" id="left-eye"/>
-			<img src="images/oeuil-oiseau.png" alt="oeuil de l'oiseau" class="bird-eye" id="right-eye"/>
+			<img src="<?php echo _theme_path_ . 'images/'; ?>oeuil-oiseau.png" alt="oeuil de l'oiseau" class="bird-eye" id="left-eye"/>
+			<img src="<?php echo _theme_path_ . 'images/'; ?>oeuil-oiseau.png" alt="oeuil de l'oiseau" class="bird-eye" id="right-eye"/>
 		</div>
 		
 		<div id="login-box">
 			<a href="#">
-				<img src="images/membership.png" alt="Accéder à la page récapitulatif de votre compte" />
+				<img src="<?php echo _theme_path_ . 'images/'; ?>membership.png" alt="Accéder à la page récapitulatif de votre compte" />
 				Mon Profil
 			</a>
 			
@@ -21,11 +21,11 @@
 		<div class="right search-flag-container">
 			<div id="flag-box">
 				<a href="#">
-					<img src="images/flag_fr.png" alt="Traduire le site en français" />
+					<img src="<?php echo _theme_path_ . 'images/'; ?>flag_fr.png" alt="Traduire le site en français" />
 					<span class="flag-caption">FR</span>
 				</a>
 				<a href="#">
-					<img src="images/flag_en.png" alt="Traduire le site en anglais" />
+					<img src="<?php echo _theme_path_ . 'images/'; ?>/flag_en.png" alt="Traduire le site en anglais" />
 					<span class="flag-caption">EN</span>
 				</a>
 			</div>
@@ -49,7 +49,7 @@
 		
 		<div id="logo">
 			<a href="#">
-				<img src="images/logo.png" alt="logo de webtuts, retour accueil" />
+				<img src="<?php echo _theme_path_ . 'images/'; ?>logo.png" alt="logo de webtuts, retour accueil" />
 			</a>
 		</div>
 		
