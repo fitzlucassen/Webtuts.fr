@@ -67,7 +67,7 @@
 					<div id="explanation-text">
 						<div class="border-title">
 							<h1 class="middle-title">
-								Webtuts - Les sombres langages du web par catégorie
+								Webtuts - Les sombres langages du web par catégorie <?php echo Kernel::get("app")." : ".Kernel::get("controller")." : ".Kernel::get("action")." : ".Kernel::get("lang"); ?>
 							</h1>
 						</div>
 						

@@ -25,7 +25,7 @@
 	if(!empty($_GET["url"]))
 		$url = $_GET["url"];
 	else $url = "";
-	$response = $_kernel->setKernel($url, array(Kernel::$CODE_LANG, Kernel::$CODE_APP, Kernel::$CODE_CONTROLLER));
+	$response = $_kernel->setKernel($url, array(Kernel::$CODE_LANG, Kernel::$CODE_CONTROLLER, Kernel::$CODE_ACTION));
 	$url = "";
 	/*
 		Mise à disposition des variables pour le thème et gestion des erreurs.
