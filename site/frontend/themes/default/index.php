@@ -85,7 +85,7 @@
 									<span>Intégration</span>
 								</a>
 								<a href="#">
-									<img src="<?php echo _theme_path_ . 'images/'; ?>puzzle.png" alt="" />
+									<img src="<?php echo '/'._theme_path_ . 'images/'; ?>puzzle.png" alt="" />
 								</a>
 							</li>
 							<!-- TODO: DELETE -->
@@ -94,7 +94,7 @@
 									<span>Développement Fonctionnel</span>
 								</a>
 								<a href="#">
-									<img src="<?php echo _theme_path_ . 'images/'; ?>outils.png" alt="" />
+									<img src="<?php echo '/'._theme_path_ . 'images/'; ?>outils.png" alt="" />
 								</a>
 							</li>
 							<li>
@@ -102,7 +102,7 @@
 									<span>Animation</span>
 								</a>
 								<a href="#">
-									<img src="<?php echo _theme_path_ . 'images/'; ?>etoile.png" alt="" />
+									<img src="<?php echo '/'._theme_path_ . 'images/'; ?>etoile.png" alt="" />
 								</a>
 							</li>
 							<li>
@@ -110,7 +110,7 @@
 									<span>Logiciels</span>
 								</a>
 								<a href="#">
-									<img src="<?php echo _theme_path_ . 'images/'; ?>ecusson.png" alt="" />
+									<img src="<?php echo '/'._theme_path_ . 'images/'; ?>ecusson.png" alt="" />
 								</a>
 							</li>
 							<li>
@@ -118,7 +118,7 @@
 									<span>Référencement</span>
 								</a>
 								<a href="#">
-									<img src="<?php echo _theme_path_ . 'images/'; ?>coupe.png" alt="" />
+									<img src="<?php echo '/'._theme_path_ . 'images/'; ?>coupe.png" alt="" />
 								</a>
 							</li>
 							<li>
@@ -126,7 +126,7 @@
 									<span>Autres</span>
 								</a>
 								<a href="#">
-									<img src="<?php echo _theme_path_ . 'images/'; ?>dossier.png" alt="" />
+									<img src="<?php echo '/'._theme_path_ . 'images/'; ?>dossier.png" alt="" />
 								</a>
 							</li>
 							<!-- End TODO -->
@@ -144,7 +144,7 @@
 						
 						<div class="one-article">
 							<div class="left">
-								<img src="<?php echo _theme_path_ . 'images/'; ?>article-image.png" alt="" width="339px" height="216px" />
+								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>article-image.png" alt="" width="339px" height="216px" />
 							</div>
 							
 							<div class="left article-content">
@@ -160,7 +160,7 @@
 								</p>
 								<p class="comment">
 									<a href="#">
-										<img src="<?php echo _theme_path_ . 'images/'; ?>bulle.png" alt="Voir les commentaires" />
+										<img src="<?php echo '/'._theme_path_ . 'images/'; ?>bulle.png" alt="Voir les commentaires" />
 										13 commentaires
 									</a>
 								</p>
@@ -168,7 +168,7 @@
 							<div class="cl"></div>
 							
 							<div class="article-category left">
-								<img src="<?php echo _theme_path_ . 'images/'; ?>angle.png" alt="angle du bandeau" />
+								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>angle.png" alt="angle du bandeau" />
 								Animation
 							</div>
 							<div class="article-tags left">
@@ -192,7 +192,7 @@
 						<!-- TODO: DELETE -->
 						<div class="one-article">
 							<div class="left">
-								<img src="<?php echo _theme_path_ . 'images/'; ?>article-image.png" alt="" width="339px" height="216px" />
+								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>article-image.png" alt="" width="339px" height="216px" />
 							</div>
 							
 							<div class="left article-content">
@@ -208,7 +208,7 @@
 								</p>
 								<p class="comment">
 									<a href="#">
-										<img src="<?php echo _theme_path_ . 'images/'; ?>bulle.png" alt="Voir les commentaires" />
+										<img src="<?php echo '/'._theme_path_ . 'images/'; ?>bulle.png" alt="Voir les commentaires" />
 										13 commentaires
 									</a>
 								</p>
@@ -217,7 +217,7 @@
 							<div class="cl"></div>
 							
 							<div class="article-category left">
-								<img src="<?php echo _theme_path_ . 'images/'; ?>angle.png" alt="angle du bandeau" />
+								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>angle.png" alt="angle du bandeau" />
 								Animation
 							</div>
 							<div class="article-tags left">
@@ -291,19 +291,19 @@
 						
 						<div id="social-box" class="aside-box">
 							<a href="#">
-								<img src="<?php echo _theme_path_ . 'images/'; ?>facebook.png" alt="Suivez nous sur facebook" />
+								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>facebook.png" alt="Suivez nous sur facebook" />
 								Facebook
 							</a>
 							<a href="#">
-								<img src="<?php echo _theme_path_ . 'images/'; ?>twitter.png" alt="Suivez nous sur Twitter" />
+								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>twitter.png" alt="Suivez nous sur Twitter" />
 								Twitter
 							</a>
 							<a href="#">
-								<img src="<?php echo _theme_path_ . 'images/'; ?>rss.png" alt="Abonnez vous à notre flux RSS" />
+								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>rss.png" alt="Abonnez vous à notre flux RSS" />
 								Flux RSS
 							</a>
 							<a href="#">
-								<img src="<?php echo _theme_path_ . 'images/'; ?>newsletter.png" alt="Abonnez vous à notre newsletter" />
+								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>newsletter.png" alt="Abonnez vous à notre newsletter" />
 								Newsletter
 							</a>
 							<div class="cl"></div>

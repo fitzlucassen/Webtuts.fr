@@ -11,6 +11,12 @@
 	define("__theme__", "default");
 
 	/* 
+		Définition de l'application
+	*/
+	define("__app__", "frontend");
+	//define("__app__", "backend");
+
+	/* 
 		DEBUG MODE 
 		Commentaires :
 			- Permet de passer le kernel en mode débug ou non : affichage de page d'erreurs.
