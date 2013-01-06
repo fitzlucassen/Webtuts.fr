@@ -2,9 +2,8 @@
 
 class Kernel {
 	public static $CODE_LANG = 0;
-	public static $CODE_APP = 1;
-	public static $CODE_CONTROLLER = 2;
-	public static $CODE_ACTION = 3;
+	public static $CODE_CONTROLLER = 1;
+	public static $CODE_ACTION = 2;
 
 	public static $APP;
 	public static $CONTROLLER;
@@ -94,6 +93,7 @@ class Kernel {
 				$route[$value] = $tmp[$cpt];
 			$cpt++;
 		}
+
 		
 
 		if(!empty($route[Kernel::$CODE_LANG])) {
@@ -105,6 +105,7 @@ class Kernel {
 		}
 		else
 			Kernel::$LANG = $this->_LANG_DEFAULT_;
+
 
 		// Appel de l'app et du controller
 		if(empty($route[Kernel::$CODE_CONTROLLER]))
