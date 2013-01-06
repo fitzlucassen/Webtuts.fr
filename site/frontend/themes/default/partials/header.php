@@ -6,7 +6,7 @@
 		</div>
 		
 		<div id="login-box">
-			<a href="#">
+			<a href="/user/subscription">
 				<img src="<?php echo '/'._theme_path_ . 'images/'; ?>membership.png" alt="Accéder à la page récapitulatif de votre compte" />
 				Mon Profil
 			</a>
@@ -42,7 +42,7 @@
 	
 	<nav>
 		<ul id="left-nav">
-			<li><a href="#">Accueil</a></li>
+			<li><a href="/">Accueil</a></li>
 			<li><a href="#">Categories</a></li>
 			<li><a href="#">Articles</a></li>			
 		</ul>
