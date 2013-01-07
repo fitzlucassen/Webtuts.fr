@@ -294,13 +294,6 @@ nav #logo img{
 	-o-transition-property: all;
 	-o-transition-duration: 0.5s;
 }
-nav #logo img:hover{
-	transform: rotate(360deg);
-	-ms-transform: rotate(360deg);
-	-webkit-transform: rotate(360deg);
-	-o-transform: rotate(360deg);
-	-moz-transform: rotate(360deg);
-}
 nav ul > li {
 	float:left;
 	display: block;

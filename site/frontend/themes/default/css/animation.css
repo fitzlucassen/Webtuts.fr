@@ -8,12 +8,6 @@
 	left: 0;
 	z-index: 999;
 }
-#oiseau-anime:hover{
-	animation: decolle 1s;
-	-moz-animation: decolle 1s;
-	-webkit-animation: decolle 1s;
-	-o-animation: decolle 1s;
-}
 .bird-eye{
 	position: absolute;
 	top: 30px;
@@ -41,35 +35,6 @@
 	-webkit-animation-iteration-count: infinite;
 	-o-animation: birdEyeLeft 6s;
 	-o-animation-iteration-count: infinite;
-}
-
-/** DECOLLE **/
-@keyframes decolle
-{
-	from {bottom: -5px;animation-timing-function: ease-out;}
-	50% {bottom: 10px;animation-timing-function: ease-in;}
-	to {bottom: -5px;animation-timing-function: ease-out;}
-}
-
-@-moz-keyframes decolle
-{
-	from {bottom: -5px;}
-	50% {bottom: 10px;}
-	to {bottom: -5px;}
-}
-
-@-webkit-keyframes decolle
-{
-	from {bottom: -5px;-webkit-animation-timing-function: ease-out;}
-	50% {bottom: 10px;-webkit-animation-timing-function: ease-in;}
-	to {bottom: -5px;-webkit-animation-timing-function: ease-out;}
-}
-
-@-o-keyframes decolle
-{
-	from {bottom: -5px;}
-	50% {bottom: 10px;}
-	to {bottom: -5px;}
 }
 
 /** EYE **/
