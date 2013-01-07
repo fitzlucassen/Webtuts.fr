@@ -40,7 +40,7 @@
 	/* User */
 	$_CONFIG_sql_user = "root";
 	/* Password */
-	$_CONFIG_sql_password = "";
+	$_CONFIG_sql_password = "root";
 	/* Prefix tables */
 	define("__SQL_prefix__", "");
 	/* Database */
