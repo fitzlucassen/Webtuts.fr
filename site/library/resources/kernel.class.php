@@ -4,6 +4,7 @@ class Kernel {
 	public static $CODE_LANG = 0;
 	public static $CODE_CONTROLLER = 1;
 	public static $CODE_ACTION = 2;
+	public static $CODE_PARAM = 3;
 
 	public static $APP;
 	public static $CONTROLLER;
@@ -125,7 +126,7 @@ class Kernel {
 		foreach ($route as $key => $value) {
 			$params[] = $value;
 		}
-		$return = $bundle->$controllerName($tmp);
+		$return = $bundle->$controllerName($route);
 		Kernel::$RESPONSE = $return;
 		
 		if($return->hasRoute())

@@ -9,6 +9,10 @@ class BlogController extends Controller {
 	public function ArticleAction($params) {
 		return $this->generateUrl("blog/");
 	}
+
+	public function CategorieAction($params) {
+		return $this->render(array('cat' => $params[3]));
+	}
 }
 
 ?>

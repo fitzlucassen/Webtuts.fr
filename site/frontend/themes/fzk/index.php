@@ -45,28 +45,21 @@
 
 		echo $article->get("category")->get("name")->get("fr");
 	 */
-	 define("_theme_path_", __themes_dir__ . "default/");
+	 define("_theme_path_", __themes_dir__ . "fzk/");
 
 ?>
-<html>
+<html style="background: #E5E5E5;">
 	<head>
 		<?php include("partials/meta.php");//Kernel::get("cache")->inc(_theme_path_."partials/meta.php"); ?>
 		<title>Page d'accueil Webtuts</title>
-		<script></script>
 	</head>
 	<body>
-		<div id="global">
+		<div style="padding: 20px;">
 			<!-- Header -->
 			<?php include("partials/header.php"); ?>
 			
-			<!-- Content -->
-			<div id="content">
+			<?php include(_theme_path_."pages/".Kernel::get("controller").'/'.Kernel::get("action").".php"); ?>
 			
-				<!-- Home page -->
-				<div id="home-page">
-					<?php include(_theme_path_."pages/".Kernel::get("controller").'/'.Kernel::get("action").".php"); ?>
-				</div>
-			</div>
 			
 			<!-- Footer -->
 			<?php include("partials/footer.php"); ?>
