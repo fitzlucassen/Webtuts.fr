@@ -52,6 +52,7 @@
 	<head>
 		<?php include("partials/meta.php");//Kernel::get("cache")->inc(_theme_path_."partials/meta.php"); ?>
 		<title>Page d'accueil Webtuts</title>
+		<script></script>
 	</head>
 	<body>
 		<div id="global">
