@@ -8,7 +8,7 @@
 	/* 
 		Définition du theme par défaut
 	*/
-	define("__theme__", "fzk");
+	define("__theme__", "default");
 
 	/* 
 		Définition de l'application
