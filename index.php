@@ -25,5 +25,5 @@
 	/* 
 		Appel du theme
 	*/
-	require_once(__themes_dir__.'default/index.php');
+	require_once(__themes_dir__.__theme__.'/index.php');
 ?>
