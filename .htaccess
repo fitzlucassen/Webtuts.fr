@@ -9,4 +9,4 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 #RewriteRule ^cache/(.*)$ /cache_all_directory/$0 [L,R]
-RewriteRule ^(.*)/(.*)$ /index.php?url=$0
+RewriteRule ^(.*)/(.*)$ /index.php?url=$0 [L]
