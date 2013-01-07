@@ -2,27 +2,32 @@
 
 class Kernel {
 	public static $CODE_LANG = 0;
-	public static $CODE_APP = 1;
-	public static $CODE_CONTROLLER = 2;
+	public static $CODE_CONTROLLER = 1;
+	public static $CODE_ACTION = 2;
 
 	public static $APP;
 	public static $CONTROLLER;
+	public static $ACTION;
 	public static $LANG;
 	public static $SESSION;
 	public static $RESPONSE;
 	public static $URL;
-
+	public static $CACHE;
 
 
 	static public function get($attr) {
 		if($attr=="app")
-			return Kernel::$APP;
+			return __app__;
 		elseif($attr=="controller")
 			return Kernel::$CONTROLLER;
+		elseif($attr=="action")
+			return Kernel::$ACTION;
 		elseif($attr=="session")
 			return Kernel::$SESSION;
 		elseif($attr=="lang")
 			return Kernel::$LANG;
+		elseif($attr=="cache")
+			return Kernel::$CACHE;
 		else
 			return new Error(1);
 		
@@ -32,11 +37,18 @@ class Kernel {
 		$this->_KERNEL_DEBUG_ = $_KERNEL_DEBUG_;
 		$this->_LANG_ACCEPTED_ = $_LANG_ACCEPTED_;
 		$this->_LANG_DEFAULT_ = $_LANG_DEFAULT_;
+		Kernel::$LANG = $_LANG_DEFAULT_;
 	}
 
 
 	public function startSession() {
 		Kernel::$SESSION = new Session();
+	}
+
+	public function startCache($folder, $time = null) {
+		if($time == null)
+			$time = 10;
+		Kernel::$CACHE = new Cache($folder, $time);
 	}
 
 	private function set($attr, $value) {
@@ -81,6 +93,7 @@ class Kernel {
 				$route[$value] = $tmp[$cpt];
 			$cpt++;
 		}
+
 		
 
 		if(!empty($route[Kernel::$CODE_LANG])) {
@@ -93,20 +106,21 @@ class Kernel {
 		else
 			Kernel::$LANG = $this->_LANG_DEFAULT_;
 
+
 		// Appel de l'app et du controller
-		if(empty($route[Kernel::$CODE_APP]))
-			$route[Kernel::$CODE_APP] = "home";
-		$bundleName = ucfirst($route[Kernel::$CODE_APP])."Controller";
+		if(empty($route[Kernel::$CODE_CONTROLLER]))
+			$route[Kernel::$CODE_CONTROLLER] = "home";
+		$bundleName = ucfirst($route[Kernel::$CODE_CONTROLLER])."Controller";
 		$bundle = new $bundleName();
-		if(empty($route[Kernel::$CODE_CONTROLLER]) || is_numeric($route[Kernel::$CODE_CONTROLLER])) 
-			$route[Kernel::$CODE_CONTROLLER] = "index";
-		if(!method_exists($bundle,$route[Kernel::$CODE_CONTROLLER]."Action")) {
+		if(empty($route[Kernel::$CODE_ACTION]) || is_numeric($route[Kernel::$CODE_ACTION])) 
+			$route[Kernel::$CODE_ACTION] = "index";
+		if(!method_exists($bundle,$route[Kernel::$CODE_ACTION]."Action")) {
 			if($this->_KERNEL_DEBUG_)
 				return new Error(343);
 			else
-				header("Location:"._host_.$this->get("lang")."/".$route[Kernel::$CODE_APP]);
+				header("Location:"._host_.$this->get("lang")."/".$route[Kernel::$CODE_CONTROLLER]);
 		}
-		$controllerName = $route[Kernel::$CODE_CONTROLLER]."Action";
+		$controllerName = $route[Kernel::$CODE_ACTION]."Action";
 		$params = array();
 		foreach ($route as $key => $value) {
 			$params[] = $value;
@@ -117,18 +131,16 @@ class Kernel {
 		if($return->hasRoute())
 			$appRoute = $return->getRoute();
 		else
-			$appRoute = array($route[Kernel::$CODE_APP], $route[Kernel::$CODE_CONTROLLER]);
+			$appRoute = array($route[Kernel::$CODE_CONTROLLER], $route[Kernel::$CODE_ACTION]);
 
 		if(!empty($appRoute[0]))
-			Kernel::$APP = $appRoute[0];
+			Kernel::$CONTROLLER = $appRoute[0];
 		else
-			Kernel::$APP =  "home";
+			Kernel::$CONTROLLER =  "home";
 		if(!empty($appRoute[1]))
-			Kernel::$CONTROLLER = $appRoute[1];
+			Kernel::$ACTION = $appRoute[1];
 		else
-			Kernel::$CONTROLLER = "index";
-
-
+			Kernel::$ACTION = "index";
 		return $return;
 	}
 }
