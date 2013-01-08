@@ -2,13 +2,12 @@
 					<div id="explanation-text">
 						<div class="border-title">
 							<h1 class="middle-title">
-								Webtuts - Les sombres langages du web par catégorie
+							    <?php echo WEBTUTS_TITLE; ?>
 							</h1>
 						</div>
 						
 						<p>
-							Les experts de Webtuts décryptent pour vous tous les langages du web ! Apprenez et créez votre propre site pas à pas gràce à nos conseils.<br/>
-							Plus de 120 tutoriaux mis à votre disposition pour vous rendre l'internet facile : Foncez !
+						    <?php echo WEBTUTS_INTRODUCTION_TEXT; ?>
 						</p>
 					</div>
 					
@@ -67,14 +66,14 @@
 							<!-- End TODO -->
 						</ul>
 						<div class="button big-button">
-							<a href="#">Voir toutes les catgories</a>
+							<a href="#"><?php echo SEE_CATEGORIES; ?></a>
 						</div>
 					</div>
 					
 					<!-- Home page content -->
 					<div id="middle-column">
 						<div class="border-title">
-							<h1 class="middle-title border-until">Derniers Articles</h1>
+							<h1 class="middle-title border-until"><?php echo LAST_ARTICLE; ?></h1>
 						</div>
 						
 						<div class="one-article">
@@ -84,26 +83,26 @@
 							
 							<div class="left article-content">
 								<h2>Le HTML5, super ! Mais qu'est-ce que c'est et à quoi ça sert ?</h2>
-								<p class="article-caption"><span class="date">Le 16/12/2012 par</span> <a href="#">Jonathan</a></p>
+								<p class="article-caption"><span class="date"><?php echo THE; ?> 16/12/2012 <?php echo BY; ?></span> <a href="#">Jonathan</a></p>
 								<p class="content-introduction">
 									Lorem ipsum dolor sit amet, consecterus us adipiscing elit.
 									Lorem ipsum dolor sit amet, consecterus us adipiscing elit.
 									Lorem ipsum dolor sit amet, consecterus us adipiscing elit.
 									Lorem ipsum dolor sit amet, consecterus us adipiscing elit.
 								</p>
-								<p class="show-more">[...] <a href="#">Voir la suite</a>
+								<p class="show-more">[...] <a href="#"><?php echo SEE_MORE; ?></a>
 								</p>
 								<p class="comment">
 									<a href="#">
-										<img src="<?php echo '/'._theme_path_ . 'images/'; ?>bulle.png" alt="Voir les commentaires" />
-										13 commentaires
+										<img src="<?php echo '/'._theme_path_ . 'images/'; ?>bulle.png" alt="<?php echo ALT_SEE_COMMENTS; ?>" />
+										13 <?php echo COMMENTS; ?>
 									</a>
 								</p>
 							</div>
 							<div class="cl"></div>
 							
 							<div class="article-category left">
-								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>angle.png" alt="angle du bandeau" />
+								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>angle.png" alt="<?php echo ALT_HEADBAND; ?>" />
 								Animation
 							</div>
 							<div class="article-tags left">
@@ -132,27 +131,26 @@
 							
 							<div class="left article-content">
 								<h2>Le HTML5, super ! Mais qu'est-ce que c'est et à quoi ça sert ?</h2>
-								<p class="article-caption"><span class="date">Le 16/12/2012 par</span> <a href="#">Jonathan</a></p>
+								<p class="article-caption"><span class="date"><?php echo THE; ?> 16/12/2012 <?php echo BY; ?></span> <a href="#">Jonathan</a></p>
 								<p class="content-introduction">
 									Lorem ipsum dolor sit amet, consecterus us adipiscing elit.
 									Lorem ipsum dolor sit amet, consecterus us adipiscing elit.
 									Lorem ipsum dolor sit amet, consecterus us adipiscing elit.
 									Lorem ipsum dolor sit amet, consecterus us adipiscing elit.
 								</p>
-								<p class="show-more">[...] <a href="#">Voir la suite</a>
+								<p class="show-more">[...] <a href="#"><?php echo SEE_MORE; ?></a>
 								</p>
 								<p class="comment">
 									<a href="#">
-										<img src="<?php echo '/'._theme_path_ . 'images/'; ?>bulle.png" alt="Voir les commentaires" />
-										13 commentaires
+										<img src="<?php echo '/'._theme_path_ . 'images/'; ?>bulle.png" alt="<?php echo ALT_SEE_COMMENTS; ?>" />
+										13 <?php echo COMMENTS; ?>
 									</a>
 								</p>
 							</div>
-							
 							<div class="cl"></div>
 							
 							<div class="article-category left">
-								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>angle.png" alt="angle du bandeau" />
+								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>angle.png" alt="<?php echo ALT_HEADBAND; ?>" />
 								Animation
 							</div>
 							<div class="article-tags left">
@@ -179,21 +177,21 @@
 					<aside>
 						<!-- News -->
 						<div class="border-title">
-							<h1 class="right-title">Actualités</h1>
+							<h1 class="right-title"><?php echo NEWS_WORD; ?></h1>
 						</div>
 						
 						<div id="news-box" class="aside-box">
 							<div class="one-news">
 								<div class="border-title">
-									<h4 class="left-title">Titre Actualité n°1 - <span class="date">le 14/12/2012</span></h4>
+									<h4 class="left-title">Titre Actualité n°1 - <span class="date"><?php echo THE; ?> 14/12/2012</span></h4>
 								</div>
 								
 								<p>Ici les 140 premiers caractères de l'actualité n°1 servant à résumer l'actualité avant de pouvoir la consulter. L'internaute voit si elle l'intéresse ou non.
 								<div class="news-footer">
-									<p class="show-more">[...] <a href="#">Voir la suite</a>
+									<p class="show-more">[...] <a href="#"><?php echo SEE_MORE; ?></a>
 									</p>
 									<p class="comment">
-										<a href="#">13 commentaires</a>
+										<a href="#">13 <?php echo COMMENTS; ?></a>
 									</p>
 								</div>
 							</div>
@@ -201,52 +199,52 @@
 							<!-- TODO: DELETE -->
 							<div class="one-news">
 								<div class="border-title">
-									<h4 class="left-title">Titre Actualité n°1 - <span class="date">le 14/12/2012</span></h4>
+									<h4 class="left-title">Titre Actualité n°1 - <span class="date"><?php echo THE; ?> 14/12/2012</span></h4>
 								</div>
 								
 								<p>Ici les 140 premiers caractères de l'actualité n°1 servant à résumer l'actualité avant de pouvoir la consulter. L'internaute voit si elle l'intéresse ou non.
 								<div class="news-footer">
-									<p class="show-more">[...] <a href="#">Voir la suite</a>
+									<p class="show-more">[...] <a href="#"><?php echo SEE_MORE; ?></a>
 									</p>
 									<p class="comment">
-										<a href="#">13 commentaires</a>
+										<a href="#">13 <?php echo COMMENTS; ?></a>
 									</p>
 								</div>
 							</div>
 							<!-- End TODO -->
 							<div class="button big-button">
-								<a href="#">Voir toute l'actualité</a>
+								<a href="#"><?php echo SEE_NEWS; ?></a>
 							</div>
 						</div>
 						
 						<!-- Social -->
 						<div class="border-title">
-							<h1 class="right-title">Suivez Webtuts !</h1>
+							<h1 class="right-title"><?php echo FOLLOW_WEBTUTS; ?></h1>
 						</div>
 						
 						<div id="social-box" class="aside-box">
 							<a href="#">
-								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>facebook.png" alt="Suivez nous sur facebook" />
+								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>facebook.png" alt="<?php echo ALT_FOLLOW_US_FACEBOOK; ?>" />
 								Facebook
 							</a>
 							<a href="#">
-								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>twitter.png" alt="Suivez nous sur Twitter" />
+								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>twitter.png" alt="<?php echo ALT_FOLLOW_US_TWITTER; ?>" />
 								Twitter
 							</a>
 							<a href="#">
-								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>rss.png" alt="Abonnez vous à notre flux RSS" />
-								Flux RSS
+								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>rss.png" alt="<?php echo ALT_SUBSCRIBE_RSS; ?>" />
+								<?php echo RSS; ?>
 							</a>
 							<a href="#">
-								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>newsletter.png" alt="Abonnez vous à notre newsletter" />
-								Newsletter
+								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>newsletter.png" alt="<?php echo ALT_SUBSCRIBE_NEWSLETTER; ?>" />
+								<?php echo NEWSLETTERS; ?>
 							</a>
 							<div class="cl"></div>
 						</div>
 						
 						<!-- Twitter feedback -->
 						<div class="border-title">
-							<h1 class="right-title">Ca se passe sur Twitter</h1>
+							<h1 class="right-title"><?php echo HAPPENS_ON_TWITTER; ?></h1>
 						</div>
 						
 						<!-- TODO: put twitter feedback -->

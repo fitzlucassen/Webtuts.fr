@@ -19,7 +19,7 @@
 <meta property="og:title" content="Webtuts" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://webtuts.fr" />
-<meta property="og:image" content="<?php echo _host_absolute_ . _theme_path_ ?>images/favicon.gif" />
+<meta property="og:image" content="<?php echo _host_absolute_ . _theme_path_ ?>images/favicon.ico" />
 <meta property="og:description" content="Webtuts, un blog de tutoriels visant à enseigner la réalisation de son propre site web grâces à diverses astuces et techniques expliquées de façon détaillés. Le développement de ce même blog sera, le plus souvent possible, prit comme exemple à ces tutoriaux." />
 
 <link rel="icon" type="images/png" href="<?php echo _host_absolute_ . _theme_path_ ?>images/favicon.ico" />

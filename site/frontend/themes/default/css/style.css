@@ -84,6 +84,8 @@ input:-moz-placeholder {
 body {
     font-size: 100%;
     font-family: 'Ubuntu-C', arial, sans-serif; 
+    
+    background: #edefed;
 }
 h1, h2, h3, h4, h5, h6{
 	font-family: 'Segoe UI','Lucida Grande', tahoma, verdana, arial, sans-serif; 
@@ -184,6 +186,8 @@ header #top-header{
 	position: relative;
 	
 	background: transparent url(../images/header-background.png) left top repeat-x;
+	
+	border-bottom: 1px solid #666;
 }
 header #top-header #login-box{
 	float: left;
@@ -260,6 +264,8 @@ nav{
 	height: 51px;
 	position: relative;
 	background: transparent url(../images/nav-background.png) left top repeat-x;
+	
+	border-bottom: 1px solid #666;
 }
 nav ul{
 	position: absolute;
@@ -337,6 +343,10 @@ footer #top-footer{
 	padding-top: 20px;
 	
 	background: transparent url(../images/header-background.png) left top;
+	
+	border-bottom: 1px solid #666;
+	border-top: 1px solid #999;
+
 }
 footer #top-footer .footer-box-container{
 	width: 900px;

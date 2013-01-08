@@ -41,103 +41,103 @@
 @keyframes birdEyeLeft
 {
 	0%   {top: 30px;left:10px;}
-	10%   {top: 30px;left:10px;}
+	10%  {top: 30px;left:10px;}
 	20%  {top: 40px;left:15px;}
 	40%  {top: 40px;left:15px;}
-	50%  {top: 40px;left:5px;}
-	60%  {top: 40px;left:5px;}
-	80%  {top: 30px;left:20px;}
-	90%  {top: 30px;left:20px;}
+	50%  {top: 40px;left:10px;}
+	60%  {top: 40px;left:10px;}
+	80%  {top: 35px;left:18px;}
+	90%  {top: 35px;left:18px;}
 	100% {top: 30px;left:10px;}
 }
 
 @-moz-keyframes birdEyeLeft
 {
 	0%   {top: 30px;left:10px;}
-	10%   {top: 30px;left:10px;}
+	10%  {top: 30px;left:10px;}
 	20%  {top: 40px;left:15px;}
 	40%  {top: 40px;left:15px;}
-	50%  {top: 40px;left:5px;}
-	60%  {top: 40px;left:5px;}
-	80%  {top: 30px;left:20px;}
-	90%  {top: 30px;left:20px;}
+	50%  {top: 40px;left:10px;}
+	60%  {top: 40px;left:10px;}
+	80%  {top: 35px;left:18px;}
+	90%  {top: 35px;left:18px;}
 	100% {top: 30px;left:10px;}
 }
 
 @-webkit-keyframes birdEyeLeft
 {
 	0%   {top: 30px;left:10px;}
-	10%   {top: 30px;left:10px;}
+	10%  {top: 30px;left:10px;}
 	20%  {top: 40px;left:15px;}
 	40%  {top: 40px;left:15px;}
-	50%  {top: 40px;left:5px;}
-	60%  {top: 40px;left:5px;}
-	80%  {top: 30px;left:20px;}
-	90%  {top: 30px;left:20px;}
+	50%  {top: 40px;left:10px;}
+	60%  {top: 40px;left:10px;}
+	80%  {top: 35px;left:18px;}
+	90%  {top: 35px;left:18px;}
 	100% {top: 30px;left:10px;}
 }
 
 @-o-keyframes birdEyeLeft
 {
 	0%   {top: 30px;left:10px;}
-	10%   {top: 30px;left:10px;}
+	10%  {top: 30px;left:10px;}
 	20%  {top: 40px;left:15px;}
 	40%  {top: 40px;left:15px;}
-	50%  {top: 40px;left:5px;}
-	60%  {top: 40px;left:5px;}
-	80%  {top: 30px;left:20px;}
-	90%  {top: 30px;left:20px;}
+	50%  {top: 40px;left:10px;}
+	60%  {top: 40px;left:10px;}
+	80%  {top: 35px;left:18px;}
+	90%  {top: 35px;left:18px;}
 	100% {top: 30px;left:10px;}
 }
 /* right */
 @keyframes birdEyeRight
 {
-	0%   {top: 30px;right:15px;}
-	10%   {top: 30px;right:15px;}
+	0%   {top: 30px;right:13px;}
+	10%  {top: 30px;right:13px;}
 	20%  {top: 40px;right:15px;}
 	40%  {top: 40px;right:15px;}
-	50%  {top: 40px;right:20px;}
-	60%  {top: 40px;right:20px;}
-	80%  {top: 30px;right:8px;}
-	90%  {top: 30px;right:8px;}
-	100% {top: 30px;right:15px;}
+	50%  {top: 40px;right:18px;}
+	60%  {top: 40px;right:18px;}
+	80%  {top: 35px;right:8px;}
+	90%  {top: 35px;right:8px;}
+	100% {top: 30px;right:13px;}
 }
 
 @-moz-keyframes birdEyeRight
 {
-	0%   {top: 30px;right:15px;}
-	10%   {top: 30px;right:15px;}
+	0%   {top: 30px;right:13px;}
+	10%  {top: 30px;right:13px;}
 	20%  {top: 40px;right:15px;}
 	40%  {top: 40px;right:15px;}
-	50%  {top: 40px;right:20px;}
-	60%  {top: 40px;right:20px;}
-	80%  {top: 30px;right:8px;}
-	90%  {top: 30px;right:8px;}
-	100% {top: 30px;right:15px;}
+	50%  {top: 40px;right:18px;}
+	60%  {top: 40px;right:18px;}
+	80%  {top: 35px;right:8px;}
+	90%  {top: 35px;right:8px;}
+	100% {top: 30px;right:13px;}
 }
 
 @-webkit-keyframes birdEyeRight
 {
-	0%   {top: 30px;right:15px;}
-	10%   {top: 30px;right:15px;}
+	0%   {top: 30px;right:13px;}
+	10%  {top: 30px;right:13px;}
 	20%  {top: 40px;right:15px;}
 	40%  {top: 40px;right:15px;}
-	50%  {top: 40px;right:20px;}
-	60%  {top: 40px;right:20px;}
-	80%  {top: 30px;right:8px;}
-	90%  {top: 30px;right:8px;}
-	100% {top: 30px;right:15px;}
+	50%  {top: 40px;right:18px;}
+	60%  {top: 40px;right:18px;}
+	80%  {top: 35px;right:8px;}
+	90%  {top: 35px;right:8px;}
+	100% {top: 30px;right:13px;}
 }
 
 @-o-keyframes birdEyeRight
 {
-	0%   {top: 30px;right:15px;}
-	10%   {top: 30px;right:15px;}
+	0%   {top: 30px;right:13px;}
+	10%  {top: 30px;right:13px;}
 	20%  {top: 40px;right:15px;}
 	40%  {top: 40px;right:15px;}
-	50%  {top: 40px;right:20px;}
-	60%  {top: 40px;right:20px;}
-	80%  {top: 30px;right:8px;}
-	90%  {top: 30px;right:8px;}
-	100% {top: 30px;right:15px;}
+	50%  {top: 40px;right:18px;}
+	60%  {top: 40px;right:18px;}
+	80%  {top: 35px;right:8px;}
+	90%  {top: 35px;right:8px;}
+	100% {top: 30px;right:13px;}
 }

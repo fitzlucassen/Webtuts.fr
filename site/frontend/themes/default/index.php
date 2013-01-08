@@ -6,7 +6,6 @@
 
 		Kernel::get("app");
 		Kernel::get("controller");
-		Kernel::get("lang");
 
 
 		Ensuite vous faites ce que vous voulez ;D
@@ -46,6 +45,7 @@
 		echo $article->get("category")->get("name")->get("fr");
 	 */
 	 define("_theme_path_", __themes_dir__ . "default/");
+	 include(__library_dir__ . "lang/" . Kernel::get("lang") . ".php");
 
 ?>
 <html>
