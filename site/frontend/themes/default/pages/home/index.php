@@ -17,62 +17,48 @@
 							<li>
 								<a href="#">
 									<span>Intégration</span>
-								</a>
-								<a href="#">
 									<img src="<?php echo '/'._theme_path_ . 'images/'; ?>puzzle.png" alt="" />
 								</a>
 							</li>
 							<!-- TODO: DELETE -->
 							<li>
 								<a href="#">
-									<span>Développement Fonctionnel</span>
-								</a>
-								<a href="#">
+									<span>Développement<br/>Fonctionnel</span>
 									<img src="<?php echo '/'._theme_path_ . 'images/'; ?>outils.png" alt="" />
 								</a>
 							</li>
 							<li>
 								<a href="#">
 									<span>Animation</span>
-								</a>
-								<a href="#">
 									<img src="<?php echo '/'._theme_path_ . 'images/'; ?>etoile.png" alt="" />
 								</a>
 							</li>
 							<li>
 								<a href="#">
 									<span>Logiciels</span>
-								</a>
-								<a href="#">
 									<img src="<?php echo '/'._theme_path_ . 'images/'; ?>ecusson.png" alt="" />
 								</a>
 							</li>
 							<li>
 								<a href="#">
 									<span>Référencement</span>
-								</a>
-								<a href="#">
 									<img src="<?php echo '/'._theme_path_ . 'images/'; ?>coupe.png" alt="" />
 								</a>
 							</li>
 							<li>
 								<a href="#">
 									<span>Autres</span>
-								</a>
-								<a href="#">
 									<img src="<?php echo '/'._theme_path_ . 'images/'; ?>dossier.png" alt="" />
 								</a>
 							</li>
 							<!-- End TODO -->
 						</ul>
-						<div class="button big-button">
-							<a href="#"><?php echo SEE_CATEGORIES; ?></a>
-						</div>
+					    <div class="cl"></div>
 					</div>
 					
 					<!-- Home page content -->
 					<div id="middle-column">
-						<div class="border-title">
+						<div class="border-title" id="main-title-article">
 							<h1 class="middle-title border-until"><?php echo LAST_ARTICLE; ?></h1>
 						</div>
 						
@@ -90,14 +76,16 @@
 									Lorem ipsum dolor sit amet, consecterus us adipiscing elit.
 									Lorem ipsum dolor sit amet, consecterus us adipiscing elit.
 								</p>
-								<p class="show-more">[...] <a href="#"><?php echo SEE_MORE; ?></a>
-								</p>
-								<p class="comment">
-									<a href="#">
-										<img src="<?php echo '/'._theme_path_ . 'images/'; ?>bulle.png" alt="<?php echo ALT_SEE_COMMENTS; ?>" />
-										13 <?php echo COMMENTS; ?>
-									</a>
-								</p>
+								<div class="more-container">
+								    <p class="show-more">[...] <a href="#"><?php echo SEE_MORE; ?></a>
+								    </p>
+								    <p class="comment">
+									    <a href="#">
+										    <img src="<?php echo '/'._theme_path_ . 'images/'; ?>bulle.png" alt="<?php echo ALT_SEE_COMMENTS; ?>" />
+										    13 <?php echo COMMENTS; ?>
+									    </a>
+								    </p>
+								</div>
 							</div>
 							<div class="cl"></div>
 							
@@ -138,14 +126,16 @@
 									Lorem ipsum dolor sit amet, consecterus us adipiscing elit.
 									Lorem ipsum dolor sit amet, consecterus us adipiscing elit.
 								</p>
-								<p class="show-more">[...] <a href="#"><?php echo SEE_MORE; ?></a>
-								</p>
-								<p class="comment">
-									<a href="#">
-										<img src="<?php echo '/'._theme_path_ . 'images/'; ?>bulle.png" alt="<?php echo ALT_SEE_COMMENTS; ?>" />
-										13 <?php echo COMMENTS; ?>
-									</a>
-								</p>
+								<div class="more-container">
+								    <p class="show-more">[...] <a href="#"><?php echo SEE_MORE; ?></a>
+								    </p>
+								    <p class="comment">
+									    <a href="#">
+										    <img src="<?php echo '/'._theme_path_ . 'images/'; ?>bulle.png" alt="<?php echo ALT_SEE_COMMENTS; ?>" />
+										    13 <?php echo COMMENTS; ?>
+									    </a>
+								    </p>
+								</div>
 							</div>
 							<div class="cl"></div>
 							
@@ -193,6 +183,7 @@
 									<p class="comment">
 										<a href="#">13 <?php echo COMMENTS; ?></a>
 									</p>
+									<div class="cl"></div>
 								</div>
 							</div>
 							
@@ -209,11 +200,16 @@
 									<p class="comment">
 										<a href="#">13 <?php echo COMMENTS; ?></a>
 									</p>
+									<div class="cl"></div>
 								</div>
 							</div>
 							<!-- End TODO -->
-							<div class="button big-button">
-								<a href="#"><?php echo SEE_NEWS; ?></a>
+							<div class="marginAuto">
+							    <div class="button big-button">
+								<span>
+								    <a href="#"><?php echo SEE_NEWS; ?></a>
+								</span>
+							    </div>
 							</div>
 						</div>
 						
@@ -223,20 +219,16 @@
 						</div>
 						
 						<div id="social-box" class="aside-box">
-							<a href="#">
-								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>facebook.png" alt="<?php echo ALT_FOLLOW_US_FACEBOOK; ?>" />
+							<a href="#" id="facebook-social">
 								Facebook
 							</a>
-							<a href="#">
-								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>twitter.png" alt="<?php echo ALT_FOLLOW_US_TWITTER; ?>" />
+							<a href="#" id="twitter-social">
 								Twitter
 							</a>
-							<a href="#">
-								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>rss.png" alt="<?php echo ALT_SUBSCRIBE_RSS; ?>" />
+							<a href="#" id="rss-social">
 								<?php echo RSS; ?>
 							</a>
-							<a href="#">
-								<img src="<?php echo '/'._theme_path_ . 'images/'; ?>newsletter.png" alt="<?php echo ALT_SUBSCRIBE_NEWSLETTER; ?>" />
+							<a href="#" id="newsletter-social">
 								<?php echo NEWSLETTERS; ?>
 							</a>
 							<div class="cl"></div>

@@ -30,7 +30,7 @@
     define("WEBTUTS_INTRODUCTION_TEXT", "Les experts de Webtuts décryptent pour vous tous les langages du web ! 
 					 Apprenez et créez votre propre site pas à pas gràce à nos conseils.<br/>
 					 Plus de 120 tutoriaux mis à votre disposition pour vous rendre l'internet facile : Foncez !");
-    define("SEE_CATEGORIES", "Voir toutes les catgories");
+    define("SEE_CATEGORIES", "Voir toutes les catégories");
     define("LAST_ARTICLE", "Derniers Articles");
     define("THE", "Le");
     define("BY", "par");

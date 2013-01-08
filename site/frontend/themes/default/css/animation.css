@@ -15,25 +15,25 @@
 #right-eye{
 	right: 15px;
 	
-	animation: birdEyeRight 6s;
+	animation: birdEyeRight 4s;
 	animation-iteration-count: infinite;
-	-moz-animation: birdEyeRight 6s;
+	-moz-animation: birdEyeRight 4s;
 	-moz-animation-iteration-count: infinite;
-	-webkit-animation: birdEyeRight 6s;
+	-webkit-animation: birdEyeRight 4s;
 	-webkit-animation-iteration-count: infinite;
-	-o-animation: birdEyeRight 6s;
+	-o-animation: birdEyeRight 4s;
 	-o-animation-iteration-count: infinite;
 }
 #left-eye{
 	left: 10px;
 
-	animation: birdEyeLeft 6s;
+	animation: birdEyeLeft 4s;
 	animation-iteration-count: infinite;
-	-moz-animation: birdEyeLeft 6s;
+	-moz-animation: birdEyeLeft 4s;
 	-moz-animation-iteration-count: infinite;
-	-webkit-animation: birdEyeLeft 6s;
+	-webkit-animation: birdEyeLeft 4s;
 	-webkit-animation-iteration-count: infinite;
-	-o-animation: birdEyeLeft 6s;
+	-o-animation: birdEyeLeft 4s;
 	-o-animation-iteration-count: infinite;
 }
 
