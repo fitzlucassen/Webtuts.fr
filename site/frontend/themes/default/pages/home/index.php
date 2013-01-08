@@ -241,7 +241,8 @@
 						
 						<!-- TODO: put twitter feedback -->
 						<div id="twitter-box" class="aside-box">
-
+						    <a class="twitter-timeline" href="https://twitter.com/webtuts_fr" data-widget-id="288663232435077120">Tweets de @webtuts_fr</a>
+						    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 						</div>
 					</aside>
 					
