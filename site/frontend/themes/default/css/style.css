@@ -142,7 +142,7 @@ a:hover { text-decoration: none; }
 	z-index: -1;
 }
 #main-title-article{
-    margin-left: 14px;
+    margin-left: 13px;
 }
 .button{
 	position: absolute;
@@ -407,7 +407,6 @@ footer #bottom-footer{
 	
 	border-left: 1px solid #999;
 	border-right: 1px solid #999;
-
 	
 	box-shadow: 0 0 5px rgba(0,0,0,0.6);
 	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.6);
