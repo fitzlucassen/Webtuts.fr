@@ -350,11 +350,14 @@ class Sql2 {
 	public function fetch($rang=0) {
 		if($this->type == Sql::$_SELECT) {
 			$requete = $this->getRequete();
-			$resultat = mysql_query($requete);
-			if($resultat)
-				return mysql_result($resultat, $rang);
+			if ($resultat = @mysql_query($requete)) {
+				if(@mysql_num_rows($resultat)>0)
+					return mysql_result($resultat, $rang);
+				else
+					return false;
+			}
 			else
-				return new Error(45);
+				return false;
 		}
 		else
 			return new Error(3);

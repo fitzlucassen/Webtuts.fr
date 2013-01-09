@@ -58,7 +58,7 @@ class Kernel {
 
 	public function setKernel($url, $path_type) {
 		
-		Kernel::$URL = $url;
+		
 		/*
 		///categorie-nom/article-nom/
 
@@ -82,6 +82,15 @@ class Kernel {
 		 	}
 		 	echo $expression."<br />";
 		} */
+
+		if($newUrl = Sql2::create()->select("replaceurl")->from("rewritingurl")->where("app", Sql2::$OPE_EQUAL, __app__)->andWhere("matchurl", Sql2::$OPE_EQUAL, $url)->fetch()) {
+			$url = $newUrl;
+		}
+
+		Kernel::$URL = $url;
+
+
+
 
 		if(!empty($url))
 			$tmp = explode("/", $url);
