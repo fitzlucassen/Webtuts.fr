@@ -14,12 +14,12 @@
 	define("__lang_dir__", _host_."lang/");
 
 	/* frontend */
-	define("__frontend_dir__", _host_."frontend/");
+	define("__app_dir__", _host_.__app__."/");
 
 	/* Backend */
 	define("__backend_dir__", _host_."backend/");
 
 	/* themes */
-	define("__themes_dir__", __frontend_dir__."themes/");
+	define("__themes_dir__", __app_dir__."themes/");
 
 ?>
