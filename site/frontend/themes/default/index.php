@@ -61,11 +61,7 @@
 			
 			<!-- Content -->
 			<div id="content">
-			
-				<!-- Home page -->
-				<div id="home-page">
-					<?php include(_theme_path_."pages/".Kernel::get("controller").'/'.Kernel::get("action").".php"); ?>
-				</div>
+			    <?php include(_theme_path_."pages/".Kernel::get("controller").'/'.Kernel::get("action").".php"); ?>
 			</div>
 			
 			<!-- Footer -->

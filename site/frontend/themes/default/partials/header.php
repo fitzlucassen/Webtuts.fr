@@ -43,12 +43,12 @@
 	<nav>
 		<ul id="left-nav">
 			<li><a href="/"><?php echo HOME; ?></a></li>
-			<li><a href="#"><?php echo CATEGORY; ?></a></li>
-			<li><a href="#"><?php echo ARTICLE; ?></a></li>			
+			<li><a href="/blog/categories"><?php echo CATEGORY; ?></a></li>
+			<li><a href="/blog/articles"><?php echo ARTICLE; ?></a></li>			
 		</ul>
 		
 		<div id="logo">
-			<a href="#">
+			<a href="/">
 				<img src="<?php echo '/'._theme_path_ . 'images/'; ?>logo.png" alt="<?php echo ALT_LOGO; ?>" />
 			</a>
 		</div>

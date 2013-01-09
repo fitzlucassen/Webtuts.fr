@@ -57,4 +57,15 @@
     
     // Placeholders
     define("PL_SEARCH", "Search");
+    
+    
+    /**********
+     *  USER  *
+     **********/
+    
+    // Label text
+    define("SUBSCRIPTION_TITLE", "Subscribe on Webtuts !");
+    define("SUBSCRIPTION_TEXT", "Afin de bénéficier de nombreux avantages sur notre site et participer à notre vie communautaire, inscrivez-vous ! C'est gratuit !");
+    define("MANDATORY_INFORMATIONS", "Mandatory Informations");
+    define("OPTIONAL_INFORMATIONS", "Optional Informations");
 ?>

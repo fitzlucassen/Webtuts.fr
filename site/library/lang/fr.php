@@ -57,4 +57,43 @@
     
     // Placeholders
     define("PL_SEARCH", "Rechercher");
+    
+    /**********
+     *  USER  *
+     **********/
+    
+    // Label text
+    define("SUBSCRIPTION_TITLE", "Inscrivez-vous sur Webtuts !");
+    define("SUBSCRIPTION_TEXT", "Afin de bénéficier de nombreux avantages sur notre site et participer à notre vie communautaire, inscrivez-vous ! C'est gratuit !");
+    define("MANDATORY_INFORMATIONS", "Informations obligatoires");
+    define("OPTIONAL_INFORMATIONS", "Informations facultatives");
+    
+    define("LBL_NAME", "Nom");
+    define("LBL_FIRSTNAME", "Prénom");
+    define("LBL_PSEUDO", "Pseudo");
+    define("LBL_EMAIL", "E-mail");
+    define("LBL_PAYS", "Pays");
+    define("LBL_VILLE", "Ville");
+    define("LBL_REGION", "Région");
+    define("LBL_CIVILITE", "Civilité");   
+    define("LBL_MAN", "M");
+    define("LBL_WOMAN", "Mme");
+    define("LBL_LANGAGE", "Langages connus");
+    
+    // Placeholders
+    define("PL_NAME", "Votre nom");
+    define("PL_FIRSTNAME", "Votre prénom");
+    define("PL_PSEUDO", "Votre pseudo");
+    define("PL_EMAIL", "Votre e-mail");
+    define("PL_VILLE", "Votre ville");
+
+    /**********
+     *  BLOG  *
+     **********/
+    
+    // Label text
+    define("CATEGORIES_TITLE", "Les différentes catégories d'article");
+    define("CATEGORIES_TEXT", "Vous trouverez ici la liste de toutes les catégories de tutoriels du blog.
+				Cliquez sur l'une d'elle afin de voir l'intégralité des tutoriels de celle-ci.");
+    
 ?>

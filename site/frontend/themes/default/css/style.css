@@ -115,7 +115,8 @@ a:hover { text-decoration: none; }
 	
 	font-size: 18px;
 	color: black;
-	background-color: rgb(237,235,235);
+	background: transparent url(../images/bg.png) left top;
+
 }
 .right-title{
 	float: right;
@@ -125,6 +126,9 @@ a:hover { text-decoration: none; }
 	padding-left: 20px;
 	color: black;
 	background-color: rgb(237,235,235);
+
+	background: transparent url(../images/bg.png) left top;
+
 }
 .left-title{
 	float: left;
@@ -134,7 +138,9 @@ a:hover { text-decoration: none; }
 	padding-right: 10px;
 	padding-top: 3px;
 	color: black;
-	background-color: #fff;
+	
+	background: transparent url(../images/bg.png) left top;
+
 }
 .border-title{
 	height: 30px;
@@ -500,6 +506,7 @@ footer #bottom-footer{
 	
 	padding: 20px;
 }
+
 #home-page #middle-column h1.border-until{
 	width: 200px;
 }
@@ -639,4 +646,22 @@ aside #social-box #newsletter-social:hover{
 	margin-bottom: 10px;
 	font-size: 14px;
 	line-height: 16px;
+}
+
+/** MEMBERSHIP **/
+#subscription-page .middle-column{	
+    padding: 20px;
+    margin-top: 40px;
+}
+#subscription-page #explanation-text{
+    margin-bottom: 40px;
+    text-align: center;
+}
+#subscription-page .left-column{
+    float: left;
+    width: 470px;
+}
+#subscription-page .right-column{
+    float: right;
+    width: 470px;
 }
