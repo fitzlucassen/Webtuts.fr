@@ -7,7 +7,7 @@ class Response {
 
 	static public $STATUS_REDIRECT = 1;
 
-	public function __construct($vars, $route=null) {
+	public function __construct($vars = null, $route=null) {
 		if($route!=Response::$STATUS_REDIRECT) {
 			if(is_array($vars))
 				$this->vars = $vars;

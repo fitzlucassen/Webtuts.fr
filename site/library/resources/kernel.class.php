@@ -6,6 +6,8 @@ class Kernel {
 	public static $CODE_ACTION = 2;
 	public static $CODE_PARAM = 3;
 
+	public static $CONTROLLER_WITHOUT_NEEDS = array("404");
+
 	public static $APP;
 	public static $CONTROLLER;
 	public static $ACTION;
@@ -118,30 +120,37 @@ class Kernel {
 
 
 		// Appel de l'app et du controller
-		if(empty($route[Kernel::$CODE_CONTROLLER]))
-			$route[Kernel::$CODE_CONTROLLER] = "home";
-		$bundleName = ucfirst($route[Kernel::$CODE_CONTROLLER])."Controller";
-		$bundle = new $bundleName();
-		if(empty($route[Kernel::$CODE_ACTION]) || is_numeric($route[Kernel::$CODE_ACTION])) 
-			$route[Kernel::$CODE_ACTION] = "index";
-		if(!method_exists($bundle,$route[Kernel::$CODE_ACTION]."Action")) {
-			if($this->_KERNEL_DEBUG_)
-				return new Error(343);
+		if(!in_array($route[Kernel::$CODE_CONTROLLER], Kernel::$CONTROLLER_WITHOUT_NEEDS)) {
+			if(empty($route[Kernel::$CODE_CONTROLLER]))
+				$route[Kernel::$CODE_CONTROLLER] = "home";
+			$bundleName = ucfirst($route[Kernel::$CODE_CONTROLLER])."Controller";
+			$bundle = new $bundleName();
+			if(empty($route[Kernel::$CODE_ACTION]) || is_numeric($route[Kernel::$CODE_ACTION])) 
+				$route[Kernel::$CODE_ACTION] = "index";
+			if(!method_exists($bundle,$route[Kernel::$CODE_ACTION]."Action")) {
+				if($this->_KERNEL_DEBUG_)
+					return new Error(343);
+				else
+					header("Location:"._host_.$this->get("lang")."/".$route[Kernel::$CODE_CONTROLLER]);
+			}
+			$controllerName = $route[Kernel::$CODE_ACTION]."Action";
+			$params = array();
+			foreach ($route as $key => $value) {
+				$params[] = $value;
+			}
+			$return = $bundle->$controllerName($route);
+			Kernel::$RESPONSE = $return;
+			
+			if($return->hasRoute())
+				$appRoute = $return->getRoute();
 			else
-				header("Location:"._host_.$this->get("lang")."/".$route[Kernel::$CODE_CONTROLLER]);
+				$appRoute = array($route[Kernel::$CODE_CONTROLLER], $route[Kernel::$CODE_ACTION]);
 		}
-		$controllerName = $route[Kernel::$CODE_ACTION]."Action";
-		$params = array();
-		foreach ($route as $key => $value) {
-			$params[] = $value;
+		else {
+			$return = new Response();
+			Kernel::$RESPONSE = $return;
+			$appRoute = array($route[Kernel::$CODE_CONTROLLER], "index");
 		}
-		$return = $bundle->$controllerName($route);
-		Kernel::$RESPONSE = $return;
-		
-		if($return->hasRoute())
-			$appRoute = $return->getRoute();
-		else
-			$appRoute = array($route[Kernel::$CODE_CONTROLLER], $route[Kernel::$CODE_ACTION]);
 
 		if(!empty($appRoute[0]))
 			Kernel::$CONTROLLER = $appRoute[0];
