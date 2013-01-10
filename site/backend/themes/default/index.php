@@ -14,44 +14,59 @@
 					<span style="float: left;font-size: 1.5em;padding: 6px;">Webtuts.fr</span>
 					<div style="clear: left;margin-bottom: 20px;">
 					</div>
-					<a href="/category" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">CATEGORY</a>
-						<a href="/category/list" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
-							<img style="float: left;" src="<?php img("icons/chart_organisation.png") ?>" />
-							<span style="display: inline-block;float: left;margin-left: 4px;">List</span>
+					<a style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">BLOG</a>
+						<a href="/category" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+							<img style="float: left;" src="<?php img("icons/folder.png") ?>" />
+							<span style="display: inline-block;float: left;margin-left: 6px;">Categories</span>
 							<span style="clear: left;display: block;"></span>
 						</a>
-						<a href="/category/add" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
-							<img style="float: left;" src="<?php img("icons/chart_organisation_add.png") ?>" />
-							<span style="display: inline-block;float: left;margin-left: 4px;">Add</span>
-							<span style="clear: left;display: block;"></span>
-						</a>
-					<a href="/article" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">ARTICLE</a>
-						<a href="/article/list" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
-							<img style="float: left;" src="<?php img("icons/chart_organisation.png") ?>" />
-							<span style="display: inline-block;float: left;margin-left: 4px;">List</span>
-							<span style="clear: left;display: block;"></span>
-						</a>
-						<a href="/article/add" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
-							<img style="float: left;" src="<?php img("icons/chart_organisation_add.png") ?>" />
-							<span style="display: inline-block;float: left;margin-left: 4px;">Add</span>
-							<span style="clear: left;display: block;"></span>
-						</a>
-					<a href="/comment" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">COMMENT</a>
-					<a href="/node" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">NODE</a>
-					<a href="/page" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">PAGE</a>
-						<a href="/page/list" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+						<a href="/article" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
 							<img style="float: left;" src="<?php img("icons/page_green.png") ?>" />
-							<span style="display: inline-block;float: left;margin-left: 4px;">List</span>
+							<span style="display: inline-block;float: left;margin-left: 6px;">Articles</span>
 							<span style="clear: left;display: block;"></span>
 						</a>
-						<a href="/page/add" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
-							<img style="float: left;" src="<?php img("icons/page_add.png") ?>" />
-							<span style="display: inline-block;float: left;margin-left: 4px;">Add</span>
+						<a href="/comment" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+							<img style="float: left;" src="<?php img("icons/comments.png") ?>" />
+							<span style="display: inline-block;float: left;margin-left: 6px;">Comments</span>
 							<span style="clear: left;display: block;"></span>
 						</a>
-					<a href="/tag" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">TAG</a>
-					<a href="/user" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">USER</a>
-					<a href="/param" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">PARAM</a>
+						<a href="/node" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+							<img style="float: left;" src="<?php img("icons/box.png") ?>" />
+							<span style="display: inline-block;float: left;margin-left: 6px;">Nodes</span>
+							<span style="clear: left;display: block;"></span>
+						</a>
+						<a href="/page" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+							<img style="float: left;" src="<?php img("icons/page_white_stack.png") ?>" />
+							<span style="display: inline-block;float: left;margin-left: 6px;">Pages</span>
+							<span style="clear: left;display: block;"></span>
+						</a>
+						<a href="/tag" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+							<img style="float: left;" src="<?php img("icons/tag_green.png") ?>" />
+							<span style="display: inline-block;float: left;margin-left: 6px;">Tags</span>
+							<span style="clear: left;display: block;"></span>
+						</a>
+						<a href="/user" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+							<img style="float: left;" src="<?php img("icons/group.png") ?>" />
+							<span style="display: inline-block;float: left;margin-left: 6px;">Users</span>
+							<span style="clear: left;display: block;"></span>
+						</a>
+						<br />
+					<a style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">SITE</a>
+						<a href="/param" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+							<img style="float: left;" src="<?php img("icons/cog.png") ?>" />
+							<span style="display: inline-block;float: left;margin-left: 6px;">params</span>
+							<span style="clear: left;display: block;"></span>
+						</a>
+						<a href="/statistic" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+							<img style="float: left;" src="<?php img("icons/chart_bar.png") ?>" />
+							<span style="display: inline-block;float: left;margin-left: 6px;">Statistics</span>
+							<span style="clear: left;display: block;"></span>
+						</a>
+						<a href="/mail" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+							<img style="float: left;" src="<?php img("icons/email.png") ?>" />
+							<span style="display: inline-block;float: left;margin-left: 6px;">Mail</span>
+							<span style="clear: left;display: block;"></span>
+						</a>
 				</div>
 			</div>
 			<div style="overflow: hidden;">
