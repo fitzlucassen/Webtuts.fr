@@ -130,6 +130,9 @@ a:hover { text-decoration: none; }
 	background: transparent url(../images/bg.png) left top;
 
 }
+#home-page h4.left-title{
+    background: #fff;
+}
 .left-title{
 	float: left;
 	height: 20px;
@@ -649,12 +652,16 @@ aside #social-box #newsletter-social:hover{
 }
 
 /** MEMBERSHIP **/
-#subscription-page .middle-column{	
+.middle-column{	
     padding: 20px;
     margin-top: 40px;
 }
-#subscription-page #explanation-text{
+#explanation-text-page{
     margin-bottom: 40px;
+    color: rgb(106,104,104);
+    font-size: 16px;
+    margin: 10px 0;
+    line-height: 20px;
     text-align: center;
 }
 #subscription-page .left-column{

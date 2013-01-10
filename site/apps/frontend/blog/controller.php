@@ -14,11 +14,11 @@ class BlogController extends Controller {
 		return $this->render(array('cat' => $params[3]));
 	}
 	public function ArticlesAction($params) {
-		return $this->generateUrl("blog/");
+		return $this->render(array('article' => null));
 	}
 
 	public function CategoriesAction($params) {
-		return $this->render(array('cat' => $params[3]));
+		return $this->render(array('article' => null));
 	}
 }
 

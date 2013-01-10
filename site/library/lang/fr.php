@@ -92,7 +92,7 @@
      **********/
     
     // Label text
-    define("CATEGORIES_TITLE", "Les différentes catégories d'article");
+    define("CATEGORIES_TITLE", "Les différentes catégories d'articles");
     define("CATEGORIES_TEXT", "Vous trouverez ici la liste de toutes les catégories de tutoriels du blog.
 				Cliquez sur l'une d'elle afin de voir l'intégralité des tutoriels de celle-ci.");
     

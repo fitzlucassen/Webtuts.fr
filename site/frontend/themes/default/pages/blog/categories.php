@@ -15,7 +15,7 @@
 		</h1>
 	</div>
 	
-	<div id="explanation-text">
+	<div id="explanation-text-page">
 	    <p><?php echo CATEGORIES_TEXT; ?></p>
 	</div>
     </div>
