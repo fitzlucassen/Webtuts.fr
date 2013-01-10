@@ -15,7 +15,7 @@ class Lang {
 		if(isset($this->$lang))
 			return $this->$lang;
 		else
-			return new Error(345);
+			return "This text does'nt exist in this language !";
 	}
 
 }

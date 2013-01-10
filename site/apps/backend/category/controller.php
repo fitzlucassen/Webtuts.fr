@@ -27,8 +27,8 @@ class CategoryController extends Controller {
 	}
 
 	public function ListAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$categories = App::getClassArray("category");
+		return $this->render(array('categories' => $categories));
 	}
 }
 
