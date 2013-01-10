@@ -12,6 +12,3 @@
 </div>
 <div style="height: 1px;width: 100%;border-top: 1px solid #F2F2F2;">
 </div>
-
-<div style="padding: 20px;">
-</div>

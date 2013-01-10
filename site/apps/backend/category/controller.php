@@ -2,28 +2,26 @@
 
 class CategoryController extends Controller {
 	public function IndexAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		return $this->redirect("category/list");
 	}
 
 	public function ShowAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$category = App::getClass("category", $params[3]);
+		return $this->render(array('category' => $category));
 	}
 
 	public function AddAction($params) {
-		//$return = App::getClass("user", 2);
 		return $this->render(array('user' => null));
 	}
 
 	public function DeleteAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$category = App::getClass("category", $params[3]);
+		return $this->render(array('category' => $category));
 	}
 
 	public function UpdateAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$category = App::getClass("category", $params[3]);
+		return $this->render(array('category' => $category));
 	}
 
 	public function ListAction($params) {
