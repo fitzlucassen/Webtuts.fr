@@ -11,60 +11,60 @@
 			<div style="float: left;width: 240px;height: 100%;background: #ECEFF6;border-right: 1px solid #E5E5E5;">
 				<div style="padding: 20px;">
 					<img src="<?php img("logo.png"); ?>" style="float: left;width: 50px;" alt="logo"/>
-					<span style="float: left;font-size: 1.5em;padding: 6px;">Webtuts.fr</span>
+					<span style="float: left;font-size: 1.5em;padding: 6px;">Webtuts</span>
 					<div style="clear: left;margin-bottom: 20px;">
 					</div>
-					<a style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">BLOG</a>
-						<a href="/category" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+					<a style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;"><?php echo strtoupper(text("menu_blog")); ?></a>
+						<a href="<?php echo createLink("/category"); ?>" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
 							<img style="float: left;" src="<?php img("icons/folder.png") ?>" />
-							<span style="display: inline-block;float: left;margin-left: 6px;">Categories</span>
+							<span style="display: inline-block;float: left;margin-left: 6px;"><?php echo ucfirst(text("menu_categories")); ?></span>
 							<span style="clear: left;display: block;"></span>
 						</a>
-						<a href="/article" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+						<a href="<?php echo createLink("/article"); ?>" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
 							<img style="float: left;" src="<?php img("icons/page_green.png") ?>" />
-							<span style="display: inline-block;float: left;margin-left: 6px;">Articles</span>
+							<span style="display: inline-block;float: left;margin-left: 6px;"><?php echo ucfirst(text("menu_articles")); ?></span>
 							<span style="clear: left;display: block;"></span>
 						</a>
-						<a href="/comment" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+						<a href="<?php echo createLink("/comment"); ?>" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
 							<img style="float: left;" src="<?php img("icons/comments.png") ?>" />
-							<span style="display: inline-block;float: left;margin-left: 6px;">Comments</span>
+							<span style="display: inline-block;float: left;margin-left: 6px;"><?php echo ucfirst(text("menu_comments")); ?></span>
 							<span style="clear: left;display: block;"></span>
 						</a>
-						<a href="/node" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+						<a href="<?php echo createLink("/node"); ?>" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
 							<img style="float: left;" src="<?php img("icons/box.png") ?>" />
-							<span style="display: inline-block;float: left;margin-left: 6px;">Nodes</span>
+							<span style="display: inline-block;float: left;margin-left: 6px;"><?php echo ucfirst(text("menu_nodes")); ?></span>
 							<span style="clear: left;display: block;"></span>
 						</a>
-						<a href="/page" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+						<a href="<?php echo createLink("/page"); ?>" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
 							<img style="float: left;" src="<?php img("icons/page_white_stack.png") ?>" />
-							<span style="display: inline-block;float: left;margin-left: 6px;">Pages</span>
+							<span style="display: inline-block;float: left;margin-left: 6px;"><?php echo ucfirst(text("menu_pages")); ?></span>
 							<span style="clear: left;display: block;"></span>
 						</a>
-						<a href="/tag" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+						<a href="<?php echo createLink("/tag"); ?>" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
 							<img style="float: left;" src="<?php img("icons/tag_green.png") ?>" />
-							<span style="display: inline-block;float: left;margin-left: 6px;">Tags</span>
+							<span style="display: inline-block;float: left;margin-left: 6px;"><?php echo ucfirst(text("menu_tags")); ?></span>
 							<span style="clear: left;display: block;"></span>
 						</a>
-						<a href="/user" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+						<a href="<?php echo createLink("/user"); ?>" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
 							<img style="float: left;" src="<?php img("icons/group.png") ?>" />
-							<span style="display: inline-block;float: left;margin-left: 6px;">Users</span>
+							<span style="display: inline-block;float: left;margin-left: 6px;"><?php echo ucfirst(text("menu_users")); ?></span>
 							<span style="clear: left;display: block;"></span>
 						</a>
 						<br />
-					<a style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">SITE</a>
-						<a href="/param" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+					<a style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;"><?php echo strtoupper(text("menu_site")); ?></a>
+						<a href="<?php echo createLink("/param"); ?>" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
 							<img style="float: left;" src="<?php img("icons/cog.png") ?>" />
-							<span style="display: inline-block;float: left;margin-left: 6px;">params</span>
+							<span style="display: inline-block;float: left;margin-left: 6px;"><?php echo ucfirst(text("menu_params")); ?></span>
 							<span style="clear: left;display: block;"></span>
 						</a>
-						<a href="/statistic" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+						<a href="<?php echo createLink("/statistic"); ?>" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
 							<img style="float: left;" src="<?php img("icons/chart_bar.png") ?>" />
-							<span style="display: inline-block;float: left;margin-left: 6px;">Statistics</span>
+							<span style="display: inline-block;float: left;margin-left: 6px;"><?php echo ucfirst(text("menu_statistics")); ?></span>
 							<span style="clear: left;display: block;"></span>
 						</a>
-						<a href="/mail" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+						<a href="<?php echo createLink("/mail"); ?>" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
 							<img style="float: left;" src="<?php img("icons/email.png") ?>" />
-							<span style="display: inline-block;float: left;margin-left: 6px;">Mail</span>
+							<span style="display: inline-block;float: left;margin-left: 6px;"><?php echo ucfirst(text("menu_mail")); ?></span>
 							<span style="clear: left;display: block;"></span>
 						</a>
 				</div>

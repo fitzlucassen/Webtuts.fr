@@ -12,6 +12,7 @@ class Kernel {
 	public static $CONTROLLER;
 	public static $ACTION;
 	public static $LANG;
+	public static $LANG_DEFAULT;
 	public static $SESSION;
 	public static $RESPONSE;
 	public static $URL;
@@ -29,6 +30,8 @@ class Kernel {
 			return Kernel::$SESSION;
 		elseif($attr=="lang")
 			return Kernel::$LANG;
+		elseif($attr=="langdefault")
+			return Kernel::$LANG_DEFAULT;
 		elseif($attr=="cache")
 			return Kernel::$CACHE;
 		else
@@ -41,6 +44,7 @@ class Kernel {
 		$this->_LANG_ACCEPTED_ = $_LANG_ACCEPTED_;
 		$this->_LANG_DEFAULT_ = $_LANG_DEFAULT_;
 		Kernel::$LANG = $_LANG_DEFAULT_;
+		Kernel::$LANG_DEFAULT = $_LANG_DEFAULT_;
 	}
 
 
