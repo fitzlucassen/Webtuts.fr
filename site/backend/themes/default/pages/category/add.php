@@ -1,7 +1,7 @@
 <div style="padding :20px;">
 	<div style="padding-bottom: 10px;border-bottom: 1px solid #E5E5E5;margin-bottom: 10px;">
 		<div style="font-size: 1.6em;float: left;">
-			Ajout d'une catégorie
+			Add category
 		</div>
 		<div style="clear: both;">
 		</div>
