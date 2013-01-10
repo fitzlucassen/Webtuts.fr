@@ -120,7 +120,12 @@ class Kernel {
 
 
 		// Appel de l'app et du controller
-		if(empty($route[Kernel::$CODE_CONTROLLER]) || !in_array($route[Kernel::$CODE_CONTROLLER], Kernel::$CONTROLLER_WITHOUT_NEEDS)) {
+		if(in_array($route[Kernel::$CODE_CONTROLLER], Kernel::$CONTROLLER_WITHOUT_NEEDS)) {
+			$return = new Response();
+			Kernel::$RESPONSE = $return;
+			$appRoute = array($route[Kernel::$CODE_CONTROLLER], "index");
+		}
+		else {
 			if(empty($route[Kernel::$CODE_CONTROLLER]))
 				$route[Kernel::$CODE_CONTROLLER] = "home";
 			$bundleName = ucfirst($route[Kernel::$CODE_CONTROLLER])."Controller";
@@ -138,18 +143,13 @@ class Kernel {
 			foreach ($route as $key => $value) {
 				$params[] = $value;
 			}
+			$controllerName = ucfirst($controllerName);
 			$return = $bundle->$controllerName($route);
 			Kernel::$RESPONSE = $return;
-			
 			if($return->hasRoute())
 				$appRoute = $return->getRoute();
 			else
 				$appRoute = array($route[Kernel::$CODE_CONTROLLER], $route[Kernel::$CODE_ACTION]);
-		}
-		else {
-			$return = new Response();
-			Kernel::$RESPONSE = $return;
-			$appRoute = array($route[Kernel::$CODE_CONTROLLER], "index");
 		}
 
 		if(!empty($appRoute[0]))

@@ -7,8 +7,6 @@
 	function loadClass($class) {
 		if(file_exists(__apps_dir__.__app__.'/'.str_replace("controller", "",mb_strtolower($class)).'/index.php')) // Debug for class_exists()
 			require(__apps_dir__.__app__.'/'.str_replace("controller", "",mb_strtolower($class)).'/index.php');
-		else
-			header("Location:/404");
 	}
 
 	function create_link($string) {
