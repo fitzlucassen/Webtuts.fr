@@ -18,7 +18,8 @@ class BlogController extends Controller {
 	}
 
 	public function CategoriesAction($params) {
-		return $this->render(array('article' => null));
+		$cats = App::getClassArray("category");
+		return $this->render(array('categories' => $cats));
 	}
 }
 

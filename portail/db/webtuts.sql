@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.2deb1ubuntu1
+-- version 3.5.1
 -- http://www.phpmyadmin.net
 --
--- Serveur: localhost
--- Généré le : Mar 08 Janvier 2013 à 19:01
--- Version du serveur: 5.1.66
--- Version de PHP: 5.3.2-1ubuntu4.18.1~gandi
+-- Client: localhost
+-- Généré le: Jeu 10 Janvier 2013 à 11:16
+-- Version du serveur: 5.5.24-log
+-- Version de PHP: 5.3.13
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -31,11 +32,6 @@ CREATE TABLE IF NOT EXISTS `access` (
   `description` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Contenu de la table `access`
---
-
 
 -- --------------------------------------------------------
 
@@ -62,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `article` (
 --
 
 INSERT INTO `article` (`id`, `deleted`, `category`, `node`, `autor`, `date`, `image`, `title`, `text`, `views`) VALUES
-(1, 0, 1, 0, 1, '2012-12-15 00:00:00', 0, 0, 0, 32);
+(1, 0, 1, 1, 1, '2012-12-15 00:00:00', 0, 4, 5, 32);
 
 -- --------------------------------------------------------
 
@@ -93,11 +89,6 @@ CREATE TABLE IF NOT EXISTS `article_tag` (
   `id_tag` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Contenu de la table `article_tag`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -109,15 +100,18 @@ CREATE TABLE IF NOT EXISTS `category` (
   `name` int(11) NOT NULL,
   `description` int(11) NOT NULL,
   `articles` int(11) NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Contenu de la table `category`
 --
 
-INSERT INTO `category` (`id`, `name`, `description`, `articles`) VALUES
-(1, 4, 2, 0);
+INSERT INTO `category` (`id`, `name`, `description`, `articles`, `image`) VALUES
+(1, 1, 2, 1, 'C:\\wamp\\www\\webtuts\\site\\frontend\\themes\\default\\images\\puzzle.png'),
+(2, 6, 8, 0, 'C:\\wamp\\www\\webtuts\\site\\frontend\\themes\\default\\images\\etoile.png'),
+(3, 9, 10, 0, 'C:\\wamp\\www\\webtuts\\site\\frontend\\themes\\default\\images\\ecusson.png');
 
 -- --------------------------------------------------------
 
@@ -134,11 +128,6 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `deleted` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Contenu de la table `comment`
---
-
 
 -- --------------------------------------------------------
 
@@ -157,11 +146,6 @@ CREATE TABLE IF NOT EXISTS `image` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Contenu de la table `image`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -174,15 +158,23 @@ CREATE TABLE IF NOT EXISTS `lang` (
   `lang` text NOT NULL,
   `text` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Contenu de la table `lang`
 --
 
 INSERT INTO `lang` (`id`, `id_lang`, `lang`, `text`) VALUES
-(1, 1, 'fr', 'Commencement'),
-(2, 1, 'en', 'Begin');
+(1, 1, 'fr', 'Intégration'),
+(2, 2, 'fr', 'Ici vous apprendrez les secrets du "Savoir faire un beau site"'),
+(3, 4, 'fr', 'Le HTML5, super ! Mais qu''est-ce que c''est et à quoi ça sert ?'),
+(4, 5, 'fr', 'Lorem ipsum dolor sit amet, consecterus us adipiscing elit. Lorem ipsum dolor sit amet, consecterus us adipiscing elit. Lorem ipsum dolor sit amet, consecterus us adipiscing elit. Lorem ipsum dolor sit amet, consecterus us adipiscing elit.'),
+(5, 3, 'fr', 'Article'),
+(6, 7, 'fr', 'Actualité'),
+(7, 6, 'fr', 'Animation'),
+(8, 8, 'fr', 'Ici vous apprendrez à dynamiser vos site web grâce à des animations innovante ou utiles pour vos sites web'),
+(9, 9, 'fr', 'Logiciels'),
+(10, 10, 'fr', 'Ici vous apprendrez à vous servir de certain logiciels très utiles pour faciliter vos développements.');
 
 -- --------------------------------------------------------
 
@@ -224,28 +216,23 @@ CREATE TABLE IF NOT EXISTS `node` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Contenu de la table `node`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Structure de la table `ORM_columns_types`
+-- Structure de la table `orm_columns_types`
 --
 
-CREATE TABLE IF NOT EXISTS `ORM_columns_types` (
+CREATE TABLE IF NOT EXISTS `orm_columns_types` (
   `name_table` text NOT NULL,
   `name_column` text NOT NULL,
   `type` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `ORM_columns_types`
+-- Contenu de la table `orm_columns_types`
 --
 
-INSERT INTO `ORM_columns_types` (`name_table`, `name_column`, `type`) VALUES
+INSERT INTO `orm_columns_types` (`name_table`, `name_column`, `type`) VALUES
 ('access', 'name', 'type lang'),
 ('access', 'description', 'type lang'),
 ('article', 'deleted', 'type bool'),
@@ -297,15 +284,19 @@ INSERT INTO `ORM_columns_types` (`name_table`, `name_column`, `type`) VALUES
 
 CREATE TABLE IF NOT EXISTS `rewritingurl` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `idroute` int(11) NOT NULL,
+  `app` text NOT NULL,
+  `replaceurl` text NOT NULL,
   `matchurl` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `rewritingurl`
 --
 
+INSERT INTO `rewritingurl` (`id`, `app`, `replaceurl`, `matchurl`) VALUES
+(1, 'backend', 'comment/show', 'let-me-show-a-comment'),
+(2, 'frontend', 'blog/categories', 'let-me-show-categories');
 
 -- --------------------------------------------------------
 
@@ -320,11 +311,6 @@ CREATE TABLE IF NOT EXISTS `routeurl` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Contenu de la table `routeurl`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -337,11 +323,6 @@ CREATE TABLE IF NOT EXISTS `tag` (
   `description` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Contenu de la table `tag`
---
-
 
 -- --------------------------------------------------------
 
@@ -384,7 +365,6 @@ CREATE TABLE IF NOT EXISTS `user_access` (
   `id_access` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Contenu de la table `user_access`
---
-
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
