@@ -29,6 +29,6 @@
 		if($lang != "")
 			echo $lang;
 		else
-			echo "This text does'nt has this traduction !";
+			echo "This text does'nt has its traduction !";
 	}
 ?>
