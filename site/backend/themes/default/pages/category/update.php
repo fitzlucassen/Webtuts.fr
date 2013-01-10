@@ -13,17 +13,20 @@
 		</div>
 	</div>
 
-	<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
-		Name
-	</div>
-	<div style="overflow: hidden;padding: 10px;">
-		<input type="text" value="<?php print_r($category->get("name")->get("fr")); ?>"/>
-	</div>
+	<form action="" method="post">
+		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
+			Name
+		</div>
+		<div style="overflow: hidden;padding: 10px;">
+			<input name="name" type="text" value="<?php print_r($category->get("name")->get("fr")); ?>"/>
+		</div>
 
-	<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
-		Description
-	</div>
-	<div style="overflow: hidden;padding: 10px;">
-		<textarea><?php print_r($category->get("description")->get("fr")); ?></textarea>
-	</div>
+		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
+			Description
+		</div>
+		<div style="overflow: hidden;padding: 10px;">
+			<textarea name="description"><?php print_r($category->get("description")->get("fr")); ?></textarea>
+		</div>
+		<input type="submit">
+	</form>
 </div>

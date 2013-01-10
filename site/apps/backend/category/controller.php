@@ -20,8 +20,14 @@ class CategoryController extends Controller {
 	}
 
 	public function UpdateAction($params) {
-		$category = App::getClass("category", $params[3]);
-		return $this->render(array('category' => $category));
+		$method = $this->getRequest();
+		if($method->isMethod("post")) {
+			return $this->redirect("/category/show/".$params[3]);
+		}
+		else {
+			$category = App::getClass("category", $params[3]);
+			return $this->render(array('category' => $category));
+		}
 	}
 
 	public function ListAction($params) {
