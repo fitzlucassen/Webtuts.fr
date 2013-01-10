@@ -120,7 +120,7 @@ class Kernel {
 
 
 		// Appel de l'app et du controller
-		if(in_array($route[Kernel::$CODE_CONTROLLER], Kernel::$CONTROLLER_WITHOUT_NEEDS)) {
+		if(!empty($route[Kernel::$CODE_CONTROLLER]) && in_array($route[Kernel::$CODE_CONTROLLER], Kernel::$CONTROLLER_WITHOUT_NEEDS)) {
 			$return = new Response();
 			Kernel::$RESPONSE = $return;
 			$appRoute = array($route[Kernel::$CODE_CONTROLLER], "index");
