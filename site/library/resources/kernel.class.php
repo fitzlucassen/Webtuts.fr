@@ -118,6 +118,8 @@ class Kernel {
 		else
 			Kernel::$LANG = $this->_LANG_DEFAULT_;
 
+		define("__lang__", Kernel::$LANG);
+
 
 		// Appel de l'app et du controller
 		if(!empty($route[Kernel::$CODE_CONTROLLER]) && in_array($route[Kernel::$CODE_CONTROLLER], Kernel::$CONTROLLER_WITHOUT_NEEDS)) {

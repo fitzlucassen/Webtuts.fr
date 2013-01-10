@@ -5,9 +5,9 @@
 			<?php print_r($category->get("name")->get("fr")); ?>
 		</div>
 		<div style="overflow: hidden;padding-top:10px;padding-left: 20px;">
-			<a href="/category/show/<?php echo $category->get("id"); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;">Déscription</a>
-			<a href="/category/update/<?php echo $category->get("id"); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;">Modification</a>
-			<a href="/category/delete/<?php echo $category->get("id"); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;">Supression</a>
+			<a href="/category/show/<?php echo $category->get("id"); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;">Description</a>
+			<a href="/category/update/<?php echo $category->get("id"); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;">Update</a>
+			<a href="/category/delete/<?php echo $category->get("id"); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;">Delete</a>
 		</div>
 		<div style="clear: both;">
 		</div>

@@ -11,11 +11,19 @@ class Lang {
 		}
 	}
 
-	public function get($lang) {
+	public function get($lang = __lang__) {
 		if(isset($this->$lang))
 			return $this->$lang;
 		else
-			return "This text does'nt exist in this language !";
+			return "";
+	}
+
+	public function __toString() {
+		$lang = __lang__;
+		if(isset($this->$lang))
+			return $this->$lang;
+		else
+			return "";
 	}
 
 }

@@ -6,3 +6,26 @@ a {
 a:hover {
 	text-decoration: underline;
 }
+
+input {
+	margin: 0px;
+	padding: 4px;
+	border-radius: 3px;
+	border: 1px solid #B9B9B9;
+	outline: none;
+	font-size: 1em;
+	width: 100%;
+	max-width: 400px;
+}
+
+textarea {
+	margin: 0px;
+	padding: 4px;
+	border-radius: 3px;
+	border: 1px solid #B9B9B9;
+	outline: none;
+	font-size: 1em;
+	width: 100%;
+	max-width: 100%;
+	min-height: 130px;
+}

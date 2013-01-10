@@ -1,13 +1,4 @@
-<?php
- 	define("_theme_path_", __themes_dir__ . "default/");
-	//include(__library_dir__ . "lang/" . Kernel::get("lang") . ".php");
-	function partial($page) {
-		include(_theme_path_."partials/".$page.".php");
-	}
-	function img($name) {
-		echo '/'._theme_path_ . 'images/'.$name;
-	}
-?>
+<?php define("_theme_path_", __themes_dir__ . "default/"); include("functions.php"); ?>
 <html>
 	<head>
 		<?php include("partials/meta.php");//Kernel::get("cache")->inc(_theme_path_."partials/meta.php"); ?>
@@ -23,14 +14,34 @@
 					<span style="float: left;font-size: 1.5em;padding: 6px;">Webtuts.fr</span>
 					<div style="clear: left;margin-bottom: 20px;">
 					</div>
-					<a href="/category" style="display: block;padding: 5px;">Category</a>
-					<a href="/article" style="display: block;padding: 5px;">Article</a>
-					<a href="/comment" style="display: block;padding: 5px;">Comment</a>
-					<a href="/node" style="display: block;padding: 5px;">Node</a>
-					<a href="/page" style="display: block;padding: 5px;">Page</a>
-					<a href="/tag" style="display: block;padding: 5px;">Tag</a>
-					<a href="/user" style="display: block;padding: 5px;">User</a>
-					<a href="/param" style="display: block;padding: 5px;">Param</a>
+					<a href="/category" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">CATEGORY</a>
+						<a href="/category/list" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+							<img style="float: left;" src="<?php img("icons/chart_organisation.png") ?>" />
+							<span style="display: inline-block;float: left;margin-left: 4px;">List</span>
+							<span style="clear: left;display: block;"></span>
+						</a>
+						<a href="/category/add" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+							<img style="float: left;" src="<?php img("icons/chart_organisation_add.png") ?>" />
+							<span style="display: inline-block;float: left;margin-left: 4px;">Add</span>
+							<span style="clear: left;display: block;"></span>
+						</a>
+					<a href="/article" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">ARTICLE</a>
+					<a href="/comment" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">COMMENT</a>
+					<a href="/node" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">NODE</a>
+					<a href="/page" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">PAGE</a>
+						<a href="/page/list" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+							<img style="float: left;" src="<?php img("icons/page_green.png") ?>" />
+							<span style="display: inline-block;float: left;margin-left: 4px;">List</span>
+							<span style="clear: left;display: block;"></span>
+						</a>
+						<a href="/page/add" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+							<img style="float: left;" src="<?php img("icons/page_add.png") ?>" />
+							<span style="display: inline-block;float: left;margin-left: 4px;">Add</span>
+							<span style="clear: left;display: block;"></span>
+						</a>
+					<a href="/tag" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">TAG</a>
+					<a href="/user" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">USER</a>
+					<a href="/param" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">PARAM</a>
 				</div>
 			</div>
 			<div style="overflow: hidden;">
