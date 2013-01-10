@@ -2,7 +2,7 @@
 	<div style="padding-bottom: 10px;border-bottom: 1px solid #E5E5E5;margin-bottom: 20px;">
 		<div style="font-size: 1.6em;float: left;">
 			<span style="color: grey;">Category :</span> 
-			<?php print_r($category->get("name")->get("fr")); ?>
+			<?php lang($category->get("name")->get("fr")); ?>
 		</div>
 		<div style="overflow: hidden;padding-top:10px;padding-left: 20px;">
 			<a href="/category/show/<?php echo $category->get("id"); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;">Description</a>

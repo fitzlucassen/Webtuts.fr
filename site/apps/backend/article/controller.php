@@ -2,33 +2,37 @@
 
 class ArticleController extends Controller {
 	public function IndexAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		return $this->redirect("article/list");
 	}
 
 	public function ShowAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$article = App::getClass("article", $params[3]);
+		return $this->render(array('article' => $article));
 	}
 
 	public function AddAction($params) {
-		//$return = App::getClass("user", 2);
 		return $this->render(array('user' => null));
 	}
 
 	public function DeleteAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$article = App::getClass("article", $params[3]);
+		return $this->render(array('article' => $article));
 	}
 
 	public function UpdateAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$method = $this->getRequest();
+		if($method->isMethod("post")) {
+			return $this->redirect("/article/show/".$params[3]);
+		}
+		else {
+			$article = App::getClass("article", $params[3]);
+			return $this->render(array('article' => $article));
+		}
 	}
 
 	public function ListAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$articles = App::getClassArray("article");
+		return $this->render(array('articles' => $articles));
 	}
 }
 

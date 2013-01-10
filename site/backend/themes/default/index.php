@@ -26,6 +26,16 @@
 							<span style="clear: left;display: block;"></span>
 						</a>
 					<a href="/article" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">ARTICLE</a>
+						<a href="/article/list" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+							<img style="float: left;" src="<?php img("icons/chart_organisation.png") ?>" />
+							<span style="display: inline-block;float: left;margin-left: 4px;">List</span>
+							<span style="clear: left;display: block;"></span>
+						</a>
+						<a href="/article/add" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
+							<img style="float: left;" src="<?php img("icons/chart_organisation_add.png") ?>" />
+							<span style="display: inline-block;float: left;margin-left: 4px;">Add</span>
+							<span style="clear: left;display: block;"></span>
+						</a>
 					<a href="/comment" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">COMMENT</a>
 					<a href="/node" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">NODE</a>
 					<a href="/page" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;">PAGE</a>
