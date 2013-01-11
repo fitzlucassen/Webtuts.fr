@@ -3,18 +3,12 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Jeu 10 Janvier 2013 à 11:16
--- Version du serveur: 5.5.24-log
--- Version de PHP: 5.3.13
+-- Généré le: Ven 11 Janvier 2013 à 10:32
+-- Version du serveur: 5.5.25
+-- Version de PHP: 5.4.4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Base de données: `webtuts`
@@ -26,7 +20,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `access`
 --
 
-CREATE TABLE IF NOT EXISTS `access` (
+CREATE TABLE `access` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` int(11) NOT NULL,
   `description` int(11) NOT NULL,
@@ -39,11 +33,12 @@ CREATE TABLE IF NOT EXISTS `access` (
 -- Structure de la table `article`
 --
 
-CREATE TABLE IF NOT EXISTS `article` (
+CREATE TABLE `article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` tinyint(1) NOT NULL,
   `category` int(11) NOT NULL,
   `node` int(11) NOT NULL,
+  `tag` int(11) NOT NULL,
   `autor` int(11) NOT NULL,
   `date` datetime NOT NULL,
   `image` int(11) NOT NULL,
@@ -57,8 +52,8 @@ CREATE TABLE IF NOT EXISTS `article` (
 -- Contenu de la table `article`
 --
 
-INSERT INTO `article` (`id`, `deleted`, `category`, `node`, `autor`, `date`, `image`, `title`, `text`, `views`) VALUES
-(1, 0, 1, 1, 1, '2012-12-15 00:00:00', 0, 4, 5, 32);
+INSERT INTO `article` (`id`, `deleted`, `category`, `node`, `tag`, `autor`, `date`, `image`, `title`, `text`, `views`) VALUES
+(1, 0, 1, 1, 0, 1, '2012-12-15 00:00:00', 0, 4, 5, 32);
 
 -- --------------------------------------------------------
 
@@ -66,7 +61,7 @@ INSERT INTO `article` (`id`, `deleted`, `category`, `node`, `autor`, `date`, `im
 -- Structure de la table `article_category`
 --
 
-CREATE TABLE IF NOT EXISTS `article_category` (
+CREATE TABLE `article_category` (
   `id_category` int(11) NOT NULL,
   `id_article` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -84,10 +79,17 @@ INSERT INTO `article_category` (`id_category`, `id_article`) VALUES
 -- Structure de la table `article_tag`
 --
 
-CREATE TABLE IF NOT EXISTS `article_tag` (
+CREATE TABLE `article_tag` (
   `id_article` int(11) NOT NULL,
   `id_tag` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `article_tag`
+--
+
+INSERT INTO `article_tag` (`id_article`, `id_tag`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -95,12 +97,12 @@ CREATE TABLE IF NOT EXISTS `article_tag` (
 -- Structure de la table `category`
 --
 
-CREATE TABLE IF NOT EXISTS `category` (
+CREATE TABLE `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` int(11) NOT NULL,
   `description` int(11) NOT NULL,
   `articles` int(11) NOT NULL,
-  `image` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `image` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
@@ -109,9 +111,9 @@ CREATE TABLE IF NOT EXISTS `category` (
 --
 
 INSERT INTO `category` (`id`, `name`, `description`, `articles`, `image`) VALUES
-(1, 1, 2, 1, 'C:\\wamp\\www\\webtuts\\site\\frontend\\themes\\default\\images\\puzzle.png'),
-(2, 6, 8, 0, 'C:\\wamp\\www\\webtuts\\site\\frontend\\themes\\default\\images\\etoile.png'),
-(3, 9, 10, 0, 'C:\\wamp\\www\\webtuts\\site\\frontend\\themes\\default\\images\\ecusson.png');
+(1, 1, 2, 1, 0),
+(2, 6, 8, 0, 0),
+(3, 9, 10, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -119,7 +121,7 @@ INSERT INTO `category` (`id`, `name`, `description`, `articles`, `image`) VALUES
 -- Structure de la table `comment`
 --
 
-CREATE TABLE IF NOT EXISTS `comment` (
+CREATE TABLE `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `article` int(11) NOT NULL,
   `autor` int(11) NOT NULL,
@@ -135,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
 -- Structure de la table `image`
 --
 
-CREATE TABLE IF NOT EXISTS `image` (
+CREATE TABLE `image` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
   `type` text NOT NULL,
@@ -152,29 +154,31 @@ CREATE TABLE IF NOT EXISTS `image` (
 -- Structure de la table `lang`
 --
 
-CREATE TABLE IF NOT EXISTS `lang` (
+CREATE TABLE `lang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_lang` int(11) NOT NULL,
   `lang` text NOT NULL,
   `text` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Contenu de la table `lang`
 --
 
 INSERT INTO `lang` (`id`, `id_lang`, `lang`, `text`) VALUES
-(1, 1, 'fr', 'Intégration'),
+(1, 1, 'fr', 'Int&eacute;gration'),
 (2, 2, 'fr', 'Ici vous apprendrez les secrets du "Savoir faire un beau site"'),
-(3, 4, 'fr', 'Le HTML5, super ! Mais qu''est-ce que c''est et à quoi ça sert ?'),
+(3, 4, 'fr', 'Le HTML5, super !'),
 (4, 5, 'fr', 'Lorem ipsum dolor sit amet, consecterus us adipiscing elit. Lorem ipsum dolor sit amet, consecterus us adipiscing elit. Lorem ipsum dolor sit amet, consecterus us adipiscing elit. Lorem ipsum dolor sit amet, consecterus us adipiscing elit.'),
 (5, 3, 'fr', 'Article'),
 (6, 7, 'fr', 'Actualité'),
 (7, 6, 'fr', 'Animation'),
-(8, 8, 'fr', 'Ici vous apprendrez à dynamiser vos site web grâce à des animations innovante ou utiles pour vos sites web'),
+(8, 8, 'fr', 'Ici vous apprendrez &agrave; dynamiser vos site web gr&acirc;ce &agrave; des animations innovante ou utiles pour vos sites web'),
 (9, 9, 'fr', 'Logiciels'),
-(10, 10, 'fr', 'Ici vous apprendrez à vous servir de certain logiciels très utiles pour faciliter vos développements.');
+(10, 10, 'fr', 'Ici vous apprendrez &agrave; vous servir de certain logiciels tr&egrave;s utiles pour faciliter vos d&eacute;veloppements.'),
+(11, 11, 'fr', 'PHP'),
+(12, 12, 'fr', 'Tous les scripts utilisant PHP');
 
 -- --------------------------------------------------------
 
@@ -182,7 +186,7 @@ INSERT INTO `lang` (`id`, `id_lang`, `lang`, `text`) VALUES
 -- Structure de la table `newsletter`
 --
 
-CREATE TABLE IF NOT EXISTS `newsletter` (
+CREATE TABLE `newsletter` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `mail` text NOT NULL,
   PRIMARY KEY (`id`)
@@ -209,7 +213,7 @@ INSERT INTO `newsletter` (`id`, `mail`) VALUES
 -- Structure de la table `node`
 --
 
-CREATE TABLE IF NOT EXISTS `node` (
+CREATE TABLE `node` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` int(11) NOT NULL,
   `description` int(11) NOT NULL,
@@ -222,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `node` (
 -- Structure de la table `orm_columns_types`
 --
 
-CREATE TABLE IF NOT EXISTS `orm_columns_types` (
+CREATE TABLE `orm_columns_types` (
   `name_table` text NOT NULL,
   `name_column` text NOT NULL,
   `type` text NOT NULL
@@ -274,7 +278,8 @@ INSERT INTO `orm_columns_types` (`name_table`, `name_column`, `type`) VALUES
 ('user', 'image', 'class image'),
 ('user', 'civility', 'type string'),
 ('user', 'password', 'type string'),
-('category', 'articles', 'collection article');
+('category', 'articles', 'collection article'),
+('article', 'tag', 'collection tag');
 
 -- --------------------------------------------------------
 
@@ -282,7 +287,7 @@ INSERT INTO `orm_columns_types` (`name_table`, `name_column`, `type`) VALUES
 -- Structure de la table `rewritingurl`
 --
 
-CREATE TABLE IF NOT EXISTS `rewritingurl` (
+CREATE TABLE `rewritingurl` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `app` text NOT NULL,
   `replaceurl` text NOT NULL,
@@ -295,8 +300,7 @@ CREATE TABLE IF NOT EXISTS `rewritingurl` (
 --
 
 INSERT INTO `rewritingurl` (`id`, `app`, `replaceurl`, `matchurl`) VALUES
-(1, 'backend', 'comment/show', 'let-me-show-a-comment'),
-(2, 'frontend', 'blog/categories', 'let-me-show-categories');
+(1, 'backend', 'comment/show', 'let-me-show-a-comment');
 
 -- --------------------------------------------------------
 
@@ -304,7 +308,7 @@ INSERT INTO `rewritingurl` (`id`, `app`, `replaceurl`, `matchurl`) VALUES
 -- Structure de la table `routeurl`
 --
 
-CREATE TABLE IF NOT EXISTS `routeurl` (
+CREATE TABLE `routeurl` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `appname` text NOT NULL,
   `controllername` text NOT NULL,
@@ -317,12 +321,19 @@ CREATE TABLE IF NOT EXISTS `routeurl` (
 -- Structure de la table `tag`
 --
 
-CREATE TABLE IF NOT EXISTS `tag` (
+CREATE TABLE `tag` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` int(11) NOT NULL,
   `description` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `tag`
+--
+
+INSERT INTO `tag` (`id`, `name`, `description`) VALUES
+(1, 11, 12);
 
 -- --------------------------------------------------------
 
@@ -330,7 +341,7 @@ CREATE TABLE IF NOT EXISTS `tag` (
 -- Structure de la table `user`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` tinyint(1) NOT NULL,
   `banned` double NOT NULL,
@@ -360,11 +371,7 @@ INSERT INTO `user` (`id`, `deleted`, `banned`, `pseudo`, `name`, `surname`, `mai
 -- Structure de la table `user_access`
 --
 
-CREATE TABLE IF NOT EXISTS `user_access` (
+CREATE TABLE `user_access` (
   `id_user` int(11) NOT NULL,
   `id_access` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
