@@ -30,4 +30,13 @@
 	</div>
 	<div style="clear: left;">
 	</div>
+
+	<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
+		<?php echo ucfirst(text("image")); ?>
+	</div>
+	<div style="overflow: hidden;padding: 15px;">
+		<?php echo $category->get("image")->get("name").".".$category->get("image")->get("type"); ?>
+	</div>
+	<div style="clear: left;">
+	</div>
 </div>
