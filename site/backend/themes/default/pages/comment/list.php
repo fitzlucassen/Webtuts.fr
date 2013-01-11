@@ -11,7 +11,7 @@
 	<a href="<?php echo createLink("/comment/show/".$comment->get("id")); ?>">
 	<div style="border-bottom: 1px solid #E5E5E5;padding: 15px;">	
 		<div style="float: left;width: 200px;">
-			<?php echo $comment->get("autor")->get("pseudo"); ?>
+			<?php echo $comment->get("author")->get("pseudo"); ?>
 		</div>
 		<div style="overflow: hidden;padding-top: 1px;padding-left: 10px;">
 			<span style="font-size: 0.8em;color: grey;"><?php echo $comment->get("text"); ?></span>
