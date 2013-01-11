@@ -99,5 +99,6 @@
     define("SEE_TUTO", "Voir les tutoriels de cette catégorie");
     define("TUTOS", "tutoriels");
     define("CATEGORY_IMAGE", "image de la catégorie");
+    define("ARTICLE_IMAGE", "image de l'article");
     
 ?>

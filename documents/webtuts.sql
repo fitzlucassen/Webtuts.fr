@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Ven 11 Janvier 2013 à 11:19
+-- Généré le: Ven 11 Janvier 2013 à 13:58
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.3.13
 
@@ -44,22 +44,24 @@ CREATE TABLE IF NOT EXISTS `article` (
   `deleted` tinyint(1) NOT NULL,
   `category` int(11) NOT NULL,
   `node` int(11) NOT NULL,
-  `tag` int(11) NOT NULL,
-  `autor` int(11) NOT NULL,
+  `tags` int(11) NOT NULL,
+  `author` int(11) NOT NULL,
   `date` datetime NOT NULL,
   `image` int(11) NOT NULL,
   `title` int(11) NOT NULL,
   `text` int(11) NOT NULL,
   `views` int(11) NOT NULL,
+  `comments` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `article`
 --
 
-INSERT INTO `article` (`id`, `deleted`, `category`, `node`, `tag`, `autor`, `date`, `image`, `title`, `text`, `views`) VALUES
-(1, 0, 1, 1, 0, 1, '2012-12-15 00:00:00', 0, 4, 5, 32);
+INSERT INTO `article` (`id`, `deleted`, `category`, `node`, `tags`, `author`, `date`, `image`, `title`, `text`, `views`, `comments`) VALUES
+(1, 0, 1, 0, 1, 1, '2012-12-15 00:00:00', 0, 4, 5, 32, 0),
+(2, 0, 0, 1, 0, 1, '2013-01-11 00:00:00', 0, 31, 32, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -82,6 +84,24 @@ INSERT INTO `article_category` (`id_category`, `id_article`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `article_comment`
+--
+
+CREATE TABLE IF NOT EXISTS `article_comment` (
+  `id_article` int(11) NOT NULL,
+  `id_comment` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `article_comment`
+--
+
+INSERT INTO `article_comment` (`id_article`, `id_comment`) VALUES
+(1, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `article_tag`
 --
 
@@ -95,7 +115,8 @@ CREATE TABLE IF NOT EXISTS `article_tag` (
 --
 
 INSERT INTO `article_tag` (`id_article`, `id_tag`) VALUES
-(1, 1);
+(1, 2),
+(1, 3);
 
 -- --------------------------------------------------------
 
@@ -133,12 +154,19 @@ INSERT INTO `category` (`id`, `name`, `description`, `articles`, `image`) VALUES
 CREATE TABLE IF NOT EXISTS `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `article` int(11) NOT NULL,
-  `autor` int(11) NOT NULL,
+  `author` int(11) NOT NULL,
   `text` text NOT NULL,
   `date` datetime NOT NULL,
   `deleted` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `comment`
+--
+
+INSERT INTO `comment` (`id`, `article`, `author`, `text`, `date`, `deleted`) VALUES
+(1, 1, 1, 'Coooool !', '2013-02-11 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -181,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `lang` (
   `lang` text NOT NULL,
   `text` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
 
 --
 -- Contenu de la table `lang`
@@ -199,13 +227,27 @@ INSERT INTO `lang` (`id`, `id_lang`, `lang`, `text`) VALUES
 (9, 9, 'fr', 'Logiciels'),
 (10, 10, 'fr', 'Ici vous apprendrez &agrave; vous servir de certain logiciels tr&egrave;s utiles pour faciliter vos d&eacute;veloppements.'),
 (11, 11, 'fr', 'PHP'),
-(12, 12, 'fr', 'Tous les scripts utilisant PHP'),
+(12, 12, 'fr', 'Tous les tutoriels utilisant le langage PHP'),
 (13, 13, 'fr', 'D&eacute;veloppement<br/>Fonctionnel'),
 (14, 14, 'fr', 'Ici vous apprendrez &agrave; g&eacute;rez la partit fonctionnel de votre site, c''est &agrave; dire la partie "Intelligente" de celui-ci.'),
 (15, 15, 'fr', 'R&eacute;f&eacute;rencement'),
 (16, 16, 'fr', 'Pour que votre site soit visible, il est essentiel d''accorder une grande importance au r&eacute;f&eacute;rencement de celui-ci afin de devenir "SEO friendly" ! C''est par ici !'),
 (17, 17, 'fr', 'Autres'),
-(18, 18, 'fr', 'Tous les tutoriels inclassable dans les autres cat&eacute;gories seront dans celle-ci. Vous pourrez des articles divers sur le travail d''un web-developer par exemple.');
+(18, 18, 'fr', 'Tous les tutoriels inclassable dans les autres cat&eacute;gories seront dans celle-ci. Vous pourrez des articles divers sur le travail d''un web-developer par exemple.'),
+(19, 19, 'fr', 'HTML'),
+(20, 20, 'fr', 'Tous les tutoriels utilisant le langage HTML'),
+(21, 21, 'fr', 'CSS'),
+(22, 22, 'fr', 'Tous les tutoriels utilisant le langage CSS'),
+(23, 23, 'fr', 'Javascript'),
+(24, 24, 'fr', 'Tous les tutoriels utilisant le langage javascript'),
+(25, 25, 'fr', 'JQuery'),
+(26, 26, 'fr', 'Tous les tutoriels utilisant la bibliothèque JQuery, basé sur javascript'),
+(27, 27, 'fr', 'tutoriel'),
+(28, 28, 'fr', 'Les types de contenu étant des tutoriels'),
+(29, 29, 'fr', 'actualité'),
+(30, 30, 'fr', 'Les types de contenu étant des actualités'),
+(31, 31, 'fr', 'Webtuts se lance sur le web !'),
+(32, 32, 'fr', 'Cras elit ante, consequat sit amet tempor aliquet, condimentum vitae augue. Vivamus venenatis lectus et nunc auctor pulvinar a et elit. Integer vitae ipsum mauris, id posuere urna. Morbi ac dui eros, vel feugiat mi. Nam tortor sem, dictum et cursus sed, molestie non sapien. Suspendisse et ligula dolor. Vivamus commodo, nulla vel commodo convallis, nulla diam mattis magna, sed sollicitudin metus nisl sit amet arcu. Morbi et elementum dolor.');
 
 -- --------------------------------------------------------
 
@@ -245,7 +287,15 @@ CREATE TABLE IF NOT EXISTS `node` (
   `name` int(11) NOT NULL,
   `description` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `node`
+--
+
+INSERT INTO `node` (`id`, `name`, `description`) VALUES
+(1, 27, 28),
+(2, 29, 30);
 
 -- --------------------------------------------------------
 
@@ -269,7 +319,7 @@ INSERT INTO `orm_columns_types` (`name_table`, `name_column`, `type`) VALUES
 ('article', 'deleted', 'type bool'),
 ('article', 'category', 'class category'),
 ('article', 'node', 'class node'),
-('article', 'autor', 'class user'),
+('article', 'author', 'class user'),
 ('article', 'date', 'type datetime'),
 ('article', 'image', 'class image'),
 ('article', 'title', 'type lang'),
@@ -278,7 +328,7 @@ INSERT INTO `orm_columns_types` (`name_table`, `name_column`, `type`) VALUES
 ('category', 'name', 'type lang'),
 ('category', 'description', 'type lang'),
 ('comment', 'article', 'class article'),
-('comment', 'autor', 'class user'),
+('comment', 'author', 'class user'),
 ('comment', 'text', 'type text'),
 ('comment', 'date', 'type datetime'),
 ('comment', 'deleted', 'type bool'),
@@ -306,8 +356,9 @@ INSERT INTO `orm_columns_types` (`name_table`, `name_column`, `type`) VALUES
 ('user', 'civility', 'type string'),
 ('user', 'password', 'type string'),
 ('category', 'articles', 'collection article'),
-('article', 'tag', 'collection tag'),
-('category', 'image', 'class image');
+('article', 'tags', 'collection tag'),
+('category', 'image', 'class image'),
+('article', 'comments', 'collection comment');
 
 -- --------------------------------------------------------
 
@@ -354,14 +405,18 @@ CREATE TABLE IF NOT EXISTS `tag` (
   `name` int(11) NOT NULL,
   `description` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Contenu de la table `tag`
 --
 
 INSERT INTO `tag` (`id`, `name`, `description`) VALUES
-(1, 11, 12);
+(1, 11, 12),
+(2, 19, 20),
+(3, 21, 22),
+(4, 23, 24),
+(5, 25, 26);
 
 -- --------------------------------------------------------
 
