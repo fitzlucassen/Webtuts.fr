@@ -2,7 +2,7 @@
 	<div style="padding-bottom: 10px;border-bottom: 1px solid #E5E5E5;margin-bottom: 20px;">
 		<div style="font-size: 1.6em;float: left;">
 			<span style="color: grey;"><?php echo ucfirst(text("comment")); ?> :</span> 
-			<?php echo minifyTitle($comment->get("text")); ?>
+			<?php echo minifyText($comment->get("text")); ?>
 		</div>
 		<div style="overflow: hidden;padding-top:10px;padding-left: 20px;">
 			<a href="<?php echo createLink("/comment/show/".$comment->get("id")); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;"><?php echo ucfirst(text("description")); ?></a>
