@@ -169,7 +169,7 @@ class Kernel {
 		return $return;
 	}
 
-	public static getUrl($url) {
+	public static function getUrl($url) {
 		if($newUrl = Sql2::create()->select("matchurl")->from("rewritingurl")->where("app", Sql2::$OPE_EQUAL, __app__)->andWhere("replaceurl", Sql2::$OPE_EQUAL, $url)->fetch()) {
 			return $newUrl;
 		}
