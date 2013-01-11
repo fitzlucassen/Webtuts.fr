@@ -14,7 +14,7 @@
 	<div class="content-container">
 	    <?php foreach($cats as $cat){
 		    if($cat->get("image")){
-			$url_image = __upload_dir__ . $cat->get("image")->get("name") . "." . $cat->get("image")->get("type");
+			$url_image = "/" . __upload_dir__ . $cat->get("image")->get("name") . "." . $cat->get("image")->get("type");
 		    }
 		    else {
 			$url_image = '/'._theme_path_ . 'images/' . 'article-image.png';
@@ -22,14 +22,16 @@
 	    ?>
 		
 		<div class="one-article no-float">
-		    <div class="left">
-			    <img src="<?php echo $url_image; ?>" alt="<?php echo CATEGORY_IMAGE . " " . $cat->get("name"); ?>" width="339px" height="216px" />
+		    <div class="left" style="width: 339px; height: 216px;text-align: center;">
+			    <img src="<?php echo $url_image; ?>" alt="<?php echo CATEGORY_IMAGE . " " . $cat->get("name"); ?>" />
 		    </div>
 
 		    <div class="left article-content">
 			    <h2><?php echo $cat->get("name"); ?></h2>
 			    <p class="content-introduction">
-				    <?php echo $cat->get("description"); ?>
+				    <?php
+					echo $cat->get("description");
+				    ?>
 			    </p>
 			    <div class="more-container">
 				<p class="show-more">[...] <a href="#"><?php echo SEE_TUTO; ?></a>

@@ -46,12 +46,13 @@
 	 */
 	 define("_theme_path_", __themes_dir__ . "default/");
 	 include(__library_dir__ . "lang/" . Kernel::get("lang") . ".php");
+ 	 include("functions.php");
 
 ?>
 <html>
 	<head>
 		<?php include("partials/meta.php");//Kernel::get("cache")->inc(_theme_path_."partials/meta.php"); ?>
-		<title>Page d'accueil Webtuts</title>
+	    <title><?php echo get_title_from_url(Kernel::get("controller"),Kernel::get("action")); ?></title>
 		<script></script>
 	</head>
 	<body>

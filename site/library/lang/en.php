@@ -100,5 +100,6 @@
     define("SEE_TUTO", "Voir les tutoriels de cette catégorie");
     define("TUTOS", "tutoriels");
     define("CATEGORY_IMAGE", "The image of the category");
+    define("ARTICLE_IMAGE", "The image of the article");
 
 ?>

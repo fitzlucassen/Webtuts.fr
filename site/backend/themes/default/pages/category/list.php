@@ -13,10 +13,10 @@
 	<?php foreach ($categories as $categorie) : ?>
 	<div style="border-bottom: 1px solid #E5E5E5;padding: 15px;">	
 		<div style="float: left;width: 200px;">
-			<a href="<?php echo createLink("/category/show/".$categorie->get("id")); ?>"><?php lang($categorie->get("name")); ?></a> 
+			<a href="<?php echo createLink("/category/show/".$categorie->get("id")); ?>"><?php echo lang($categorie->get("name")); ?></a> 
 		</div>
 		<div style="overflow: hidden;padding-top: 1px;padding-left: 10px;">
-			<span style="font-size: 0.8em;color: grey;"><?php lang($categorie->get("description")); ?></span>
+			<span style="font-size: 0.8em;color: grey;"><?php echo lang($categorie->get("description")); ?></span>
 		</div>
 		<div style="clear: both;">
 		</div>
