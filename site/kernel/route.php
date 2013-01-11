@@ -21,5 +21,8 @@
 
 	/* themes */
 	define("__themes_dir__", __app_dir__."themes/");
+	
+	/* upload */
+	define("__upload_dir__", _host_."upload/");
 
 ?>

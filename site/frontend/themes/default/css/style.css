@@ -672,3 +672,23 @@ aside #social-box #newsletter-social:hover{
     float: right;
     width: 470px;
 }
+
+/** BLOG **/
+.content-container{
+    width: 630px;
+    float: left;
+}
+.no-float{
+    float: none !important;
+    margin-top: 20px;
+}
+.article-category a{
+    color: #fff;
+}
+#categories-page .article-content h2{
+    font-size: 24px;
+}
+#categories-page aside{
+    padding: 10px 0 !important;
+    float: right;
+}

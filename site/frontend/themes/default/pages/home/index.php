@@ -16,44 +16,21 @@
     <!-- Categories sum up nav -->
     <div id="categories-box">
 	    <ul id="categories-nav">
+		<?php foreach($cats as $cat) { 
+			if($cat->get("image")){
+			    $url_image = __upload_dir__ . $cat->get("image")->get("name") . "." . $cat->get("image")->get("type");
+			}
+			else {
+			    $url_image = '/'._theme_path_ . 'images/' . 'article-image.png';
+			}
+		?>
 		    <li>
 			    <a href="#">
-				    <span>Intégration</span>
-				    <img src="<?php echo '/'._theme_path_ . 'images/'; ?>puzzle.png" alt="" />
+				    <span><?php echo $cat->get("name"); ?></span>
+				    <img src="<?php echo $url_image; ?>" alt="<?php echo CATEGORY_IMAGE . " " . $cat->get("name"); ?>" width="<?php echo $cat->get("image")->get("width"); ?>" />
 			    </a>
 		    </li>
-		    <!-- TODO: DELETE -->
-		    <li>
-			    <a href="#">
-				    <span>Développement<br/>Fonctionnel</span>
-				    <img src="<?php echo '/'._theme_path_ . 'images/'; ?>outils.png" alt="" />
-			    </a>
-		    </li>
-		    <li>
-			    <a href="#">
-				    <span>Animation</span>
-				    <img src="<?php echo '/'._theme_path_ . 'images/'; ?>etoile.png" alt="" />
-			    </a>
-		    </li>
-		    <li>
-			    <a href="#">
-				    <span>Logiciels</span>
-				    <img src="<?php echo '/'._theme_path_ . 'images/'; ?>ecusson.png" alt="" />
-			    </a>
-		    </li>
-		    <li>
-			    <a href="#">
-				    <span>Référencement</span>
-				    <img src="<?php echo '/'._theme_path_ . 'images/'; ?>coupe.png" alt="" />
-			    </a>
-		    </li>
-		    <li>
-			    <a href="#">
-				    <span>Autres</span>
-				    <img src="<?php echo '/'._theme_path_ . 'images/'; ?>dossier.png" alt="" />
-			    </a>
-		    </li>
-		    <!-- End TODO -->
+		<?php } ?>
 	    </ul>
 	<div class="cl"></div>
     </div>
