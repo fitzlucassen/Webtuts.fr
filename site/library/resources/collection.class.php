@@ -8,12 +8,13 @@
 */
 
 
-class Collection {
+class Collection implements Countable, Iterator {
 
 	var $array;
 	var $count;
 	var $object = array();
 	var $target;
+	private $position = 0;
 
 	public function __construct() {
 		$this->array = array();
@@ -62,6 +63,22 @@ class Collection {
 
 	public function count() {
 		return $this->count;
+	}
+
+	public function rewind() {
+		$this->position=0;
+	}
+	public function key() {
+		return $this->position;
+	}
+	public function current() {
+		return $this->array[$this->position];
+	}
+	public function next() {
+		++$this->position;
+	}
+	public function valid() {
+		return isset($this->array[$this->position]);
 	}
 
 }

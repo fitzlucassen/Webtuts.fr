@@ -35,7 +35,11 @@
 		<?php echo ucfirst(text("image")); ?>
 	</div>
 	<div style="overflow: hidden;padding: 15px;">
-		<?php echo $category->get("image")->get("name").".".$category->get("image")->get("type"); ?>
+		<?php if($category->get("image")) { ?>
+			<?php echo $category->get("image")->get("name").".".$category->get("image")->get("type"); ?>
+		<?php } else { ?>
+			pas d'image
+		<?php } ?>
 	</div>
 	<div style="clear: left;">
 	</div>

@@ -10,17 +10,17 @@
 		</div>
 	</div>
 
-	<?php for ($cpt=0;$cpt<$categories->count();$cpt++) : ?>
+	<?php foreach ($categories as $categorie) : ?>
 	<div style="border-bottom: 1px solid #E5E5E5;padding: 15px;">	
 		<div style="float: left;width: 200px;">
-			<a href="<?php echo createLink("/category/show/".$categories->get($cpt)->get("id")); ?>"><?php lang($categories->get($cpt)->get("name")); ?></a> 
+			<a href="<?php echo createLink("/category/show/".$categorie->get("id")); ?>"><?php lang($categorie->get("name")); ?></a> 
 		</div>
 		<div style="overflow: hidden;padding-top: 1px;padding-left: 10px;">
-			<span style="font-size: 0.8em;color: grey;"><?php lang($categories->get($cpt)->get("description")); ?></span>
+			<span style="font-size: 0.8em;color: grey;"><?php lang($categorie->get("description")); ?></span>
 		</div>
 		<div style="clear: both;">
 		</div>
 	</div>
-	<?php endfor; ?>
+	<?php endforeach; ?>
 
 </div>
