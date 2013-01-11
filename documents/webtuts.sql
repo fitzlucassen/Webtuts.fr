@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Ven 11 Janvier 2013 à 10:32
+-- Généré le: Ven 11 Janvier 2013 à 10:48
 -- Version du serveur: 5.5.25
 -- Version de PHP: 5.4.4
 
@@ -111,7 +111,7 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`, `description`, `articles`, `image`) VALUES
-(1, 1, 2, 1, 0),
+(1, 1, 2, 1, 1),
 (2, 6, 8, 0, 0),
 (3, 9, 10, 0, 0);
 
@@ -146,7 +146,14 @@ CREATE TABLE `image` (
   `deleted` tinyint(1) NOT NULL,
   `size` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `image`
+--
+
+INSERT INTO `image` (`id`, `name`, `type`, `width`, `height`, `deleted`, `size`) VALUES
+(1, 'hello', 'png', 100, 100, 0, 1234);
 
 -- --------------------------------------------------------
 
@@ -279,7 +286,8 @@ INSERT INTO `orm_columns_types` (`name_table`, `name_column`, `type`) VALUES
 ('user', 'civility', 'type string'),
 ('user', 'password', 'type string'),
 ('category', 'articles', 'collection article'),
-('article', 'tag', 'collection tag');
+('article', 'tag', 'collection tag'),
+('category', 'image', 'class image');
 
 -- --------------------------------------------------------
 
