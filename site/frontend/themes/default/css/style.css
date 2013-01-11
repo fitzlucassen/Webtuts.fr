@@ -19,6 +19,11 @@
     font-family: "Wisdom Script";
     src: url("Wisdom Script.otf");
 }
+@font-face
+{
+    font-family: "GearedSlab";
+    src: url("GearedSlab.ttf");
+}
 
 /* Reset */
 html, body, div, span, applet, object, iframe,
@@ -130,8 +135,12 @@ a:hover { text-decoration: none; }
 	background: transparent url(../images/bg.png) left top;
 
 }
-#home-page h4.left-title{
+h4.left-title{
     background: #fff;
+    color: rgb(51,86,129);
+}
+h4.left-title span{
+    color: #000 !important;
 }
 .left-title{
 	float: left;
@@ -337,7 +346,7 @@ nav ul > li {
 	width: 120px;
 	height: 36px;
 	
-	padding-top: 15px;
+	padding-top: 14px;
 	text-align: center;
 }
 nav ul > li:hover a{
@@ -345,8 +354,8 @@ nav ul > li:hover a{
 }
 nav ul > li > a{
 	color: rgb(236,235,232) !important;
-	font-family: "Wisdom Script";
-	font-size: 18px;
+	font-family: "GearedSlab";
+	font-size: 22px;
 	
 	transition-property: all;
 	transition-duration: 0.5s;
@@ -522,6 +531,8 @@ footer #bottom-footer{
 	
 	padding: 10px;
 	float: right;
+	position: relative;
+	
 }
 .one-article .article-content{
 	width: 252px;
@@ -570,6 +581,7 @@ footer #bottom-footer{
 	color: rgb(236,235,232);
 	text-align: center;
 	padding-top: 21px;
+	z-index: 9999;
 }
 .one-article .article-category img{
 	position: absolute;
@@ -591,6 +603,64 @@ footer #bottom-footer{
 	-moz-border-radius: 2px;
 	-o-border-radius: 2px;
 	-ms-border-radius: 2px;
+}
+.one-article .hover-article{
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    width: 626px;
+    height: 268px;
+    overflow: hidden;
+    font-size: 40px;
+    font-family: 'Segoe UI';
+    
+}
+.one-article .hover-article .left-hover{
+    position: absolute;
+    width: 313px;
+    height: 165px;
+    
+    padding-top: 105px;
+    text-align: right;
+    
+    top: 0;
+    left: -313px;
+    
+    background: rgba(0,0,0,0.6);
+    
+    transition-property: all;
+    transition-duration: 1s;
+    -webkit-transition-property: all;
+    -webkit-transition-duration: 1s;
+}
+.one-article .hover-article .right-hover{
+    position: absolute;
+    width: 313px;
+    height: 165px;
+    
+    padding-top: 105px;
+    text-align: left;
+
+    top: 0;
+    right: -313px;
+    
+    background: rgba(0,0,0,0.6);
+    
+    transition-property: all;
+    transition-duration: 1s;
+    -webkit-transition-property: all;
+    -webkit-transition-duration: 1s;
+
+}
+.one-article .hover-article a{
+    color: #fff !important;
+}
+.one-article .hover-article:hover .left-hover{
+    left: 0;
+}
+.one-article .hover-article:hover .right-hover{
+    right: 0;
 }
 
 /** SIDEBAR **/
@@ -644,6 +714,9 @@ aside #social-box #newsletter-social:hover{
 #news-box{
 	padding: 10px 5px 15px 5px;
 }
+.news-footer{
+    margin-top: 20px;
+}
 .one-news{
 	margin-bottom: 10px;
 	font-size: 14px;
@@ -687,7 +760,7 @@ aside #social-box #newsletter-social:hover{
 #categories-page .article-content h2{
     font-size: 24px;
 }
-#categories-page aside{
+#categories-page aside, #articles-page aside{
     padding: 10px 0 !important;
     float: right;
 }

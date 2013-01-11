@@ -14,12 +14,32 @@ class BlogController extends Controller {
 		return $this->render(array('cat' => $params[3]));
 	}
 	public function ArticlesAction($params) {
-		return $this->render(array('article' => null));
+		$articles_all = App::getClassArray("article");
+		$articles = array();
+		$news = array();
+		
+		foreach($articles_all as $art){
+		    if($art->get("category")){
+			$articles[] = $art;
+		    } else {
+			$news[] = $art;
+		    }
+		}
+		return $this->render(array('articles' => $articles, "news" => $news));
 	}
 
 	public function CategoriesAction($params) {
 		$cats = App::getClassArray("category");
-		return $this->render(array('cats' => $cats));
+		
+		$articles_all = App::getClassArray("article");
+		$news = array();
+		
+		foreach($articles_all as $art){
+		    if(!$art->get("category")){
+			$news[] = $art;
+		    }
+		}
+		return $this->render(array('cats' => $cats, "news" => $news));
 	}
 }
 

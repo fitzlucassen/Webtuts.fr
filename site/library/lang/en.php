@@ -65,7 +65,7 @@
     
     // Label text
     define("SUBSCRIPTION_TITLE", "Subscribe on Webtuts !");
-    define("SUBSCRIPTION_TEXT", "Afin de bénéficier de nombreux avantages sur notre site et participer à notre vie communautaire, inscrivez-vous ! C'est gratuit !");
+    define("SUBSCRIPTION_TEXT", "To benefit from many advantages over our site, join our community, register now! It's free!");
     define("MANDATORY_INFORMATIONS", "Mandatory Informations");
     define("OPTIONAL_INFORMATIONS", "Optional Informations");
     
@@ -93,11 +93,14 @@
      **********/
     
     // Label text
-    define("CATEGORIES_TITLE", "Les différentes catégories d'articles");
-    define("CATEGORIES_TEXT", "Vous trouverez ici la liste de toutes les catégories de tutoriels du blog.
-				Cliquez sur l'une d'elle afin de voir l'intégralité des tutoriels de celle-ci.");
+    define("CATEGORIES_TITLE", "The different article categories");
+    define("CATEGORIES_TEXT", "You will find here the list of all webtuts-article categories.
+				Click on one of them to see all tuts.");
+    define("ARTICLES_TITLE", "All the Webtuts tutoriels");
+    define("ARTICLES_TEXT", "You will find here the list of all webtuts-article.
+				Click on one of them to see it.");
     
-    define("SEE_TUTO", "Voir les tutoriels de cette catégorie");
+    define("SEE_TUTO", "See all tuts from this categorie");
     define("TUTOS", "tutoriels");
     define("CATEGORY_IMAGE", "The image of the category");
     define("ARTICLE_IMAGE", "The image of the article");

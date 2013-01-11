@@ -10,7 +10,7 @@
     define("QUICK_SEARCH", "Recherche rapide");
     define("SEARCH", "Rechercher");
     define("HOME", "Accueil");
-    define("CATEGORY", "Categories");
+    define("CATEGORY", "Catégories");
     define("ARTICLE", "Articles");
     define("NEWS", "Actus");
     define("CONTACT", "Contact");
@@ -95,8 +95,11 @@
     define("CATEGORIES_TITLE", "Les différentes catégories d'articles");
     define("CATEGORIES_TEXT", "Vous trouverez ici la liste de toutes les catégories de tutoriels du blog.
 				Cliquez sur l'une d'elle afin de voir l'intégralité des tutoriels de celle-ci.");
+    define("ARTICLES_TITLE", "Tous les tutoriels de Webtuts");
+    define("ARTICLES_TEXT", "Vous trouverez ici la liste de tous les tutoriels du blog.
+				Cliquez sur l'un d'eux afin de voir l'intégralité de celui-ci.");
     
-    define("SEE_TUTO", "Voir les tutoriels de cette catégorie");
+    define("SEE_TUTO", "Voir les tutoriels");
     define("TUTOS", "tutoriels");
     define("CATEGORY_IMAGE", "image de la catégorie");
     define("ARTICLE_IMAGE", "image de l'article");
