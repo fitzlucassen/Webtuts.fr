@@ -72,28 +72,36 @@ class App {
 	}*/
 
 	private static function requete($class, $param) {
+		/*
+
+		"where" => array("nothave" = "category")
+		SELECT id
+		FROM article
+		WHERE id NOT 
+		IN (
+			SELECT id_article
+			FROM article_category
+		)
+		Sql2::create()->from("category")->where("id", $Sql2::$NOTIN, "(".$Sql2::create()->select("id")->from("article_category")->shpwRequete().")", false);
+
+		*/
+		
 		$return = Sql2::create()->from($class);
 		if(array_key_exists("where", $param)) {
 			if(!is_array($param["where"]))
 				return new Error(1);
-			$tab = $param["where"];
-			$where = "";
-			$cpt = 0;
-			foreach ($tab as $key => $value) {
-				if($cpt!=0) $where .= " AND ";
-				$where .= $key;
-					if(is_array($value)) {
-						$where .= " ".$value[0];
-						$where .= " ".$value[1];
-					}
-					else {
-						$where .= " ".SQL::$DEFAULT;
-						$where .= " ".$value;
-					}
+			$where = $param["where"];
+			//$return->where("id_article", Sql2::$OPE_NOT_IN, "(".Sql2::create()->select("id")->from("article_category")->showRequete().")", false);
+			$cpt=0;
+			foreach ($where as $key => $value) {
+				if($key=="nothave")
+					$link = Sql2::$OPE_NOT_IN;
+				elseif($key=="have")
+					$link = Sql2::$OPE_IN;
+				if($key=="nothave" || $key=="have")
+					$return->where("id", $link, "(".Sql2::create()->select("id_".$class)->from($class."_".$value)->showRequete().")", false)->fetchClassArray();
 				$cpt++;
 			}
-
-			$return->where($where);
 		}
 		if(array_key_exists("orderBy", $param)) {
 			if(is_array($param["orderBy"]))	{

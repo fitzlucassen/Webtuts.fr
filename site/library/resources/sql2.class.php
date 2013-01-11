@@ -25,6 +25,8 @@ class Sql2 {
 	public static $OPE_LOWER_EQUAL = "<=";
 	public static $OPE_UPPER = ">";
 	public static $OPE_LOWER = "<";
+	public static $OPE_IN = "IN";
+	public static $OPE_NOT_IN = "NOT IN";
 	
 	private $OPE_LOGIC_TAB = array("where" => "", "andwhere" => "AND", "orwhere" => "OR");
 
@@ -287,7 +289,6 @@ class Sql2 {
 		else
 			return new Error(4);
 	}
-
 	
 	public function fetchClass() {
 		if($this->type==Sql2::$TYPE_SELECT)	{
