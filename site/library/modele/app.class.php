@@ -70,9 +70,9 @@ class App {
 	public function fetch() {
 		return $this->classArray->fetchArray();
 	}*/
-/*
+
 	private static function requete($class, $param) {
-		$return = Sql::create()->from($class);
+		$return = Sql2::create()->from($class);
 		if(array_key_exists("where", $param)) {
 			if(!is_array($param["where"]))
 				return new Error(1);
@@ -121,7 +121,7 @@ class App {
 		}
 		return $return;
 	}
-*/
+
 
 
 }

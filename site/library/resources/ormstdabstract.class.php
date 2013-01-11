@@ -115,7 +115,7 @@ abstract class OrmStdAbstract {
 					$this->$attribut = new Lang($this->$attribut);
 				}
 				return $this->$attribut;
-			} 
+			}
 		}
 		else
 			return $this->$attribut;
