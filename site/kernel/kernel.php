@@ -9,6 +9,9 @@
 	/* Cache */
 	require(__library_dir__.'resources/cache.class.php');
 
+	/* Request */
+	require(__library_dir__.'resources/request.class.php');
+
 	/* Connexion a la bd */
 	require(__library_dir__.'resources/controller.class.php');
 

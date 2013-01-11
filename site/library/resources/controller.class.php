@@ -14,6 +14,10 @@ abstract class Controller {
 		header("Location:".$url);
 	}
 
+	public function getRequest() {
+		return new Request();
+	}
+
 }
 
 ?>

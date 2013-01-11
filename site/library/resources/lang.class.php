@@ -11,11 +11,19 @@ class Lang {
 		}
 	}
 
-	public function get($lang) {
+	public function get($lang = __lang__) {
 		if(isset($this->$lang))
 			return $this->$lang;
 		else
-			return new Error(345);
+			return "";
+	}
+
+	public function __toString() {
+		$lang = __lang__;
+		if(isset($this->$lang))
+			return $this->$lang;
+		else
+			return "";
 	}
 
 }

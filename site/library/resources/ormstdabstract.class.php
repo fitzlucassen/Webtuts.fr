@@ -94,7 +94,7 @@ abstract class OrmStdAbstract {
 			return $this->id;
 		$typeAttribut = "__".$attribut;
 		$typeAttribut = $this->$typeAttribut;
-		if(!empty($typeAttribut)) {	// Pas prendre en compte $this->id et $this->_class
+		if(!empty($typeAttribut) && !is_object($this->$attribut)) {	// Pas prendre en compte $this->id et $this->_class
 			$tmp = explode(" ", $typeAttribut);
 			if(!is_object($this->$attribut) && ($tmp[0]=="class" || $tmp[0]=="collection")) {
 				$typeLink = $tmp[0];
