@@ -2,7 +2,7 @@
 	<div style="padding-bottom: 10px;border-bottom: 1px solid #E5E5E5;margin-bottom: 10px;">
 		<div style="font-size: 1.6em;float: left;">
 			<span style="color: grey;"><?php echo ucfirst(text("article")); ?> :</span> 
-			<?php lang($article->get("title")); ?>
+			<?php echo lang($article->get("title")); ?>
 		</div>
 		<div style="overflow: hidden;padding-top:10px;padding-left: 20px;">
 			<a href="<?php echo createLink("/article/show/".$article->get("id")); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;"><?php echo ucfirst(text("description")); ?></a>
@@ -18,7 +18,7 @@
 			<?php echo ucfirst(text("title")); ?>
 		</div>
 		<div style="overflow: hidden;padding: 10px;">
-			<input name="title" type="text" value="<?php lang($article->get("title")); ?>"/>
+			<input name="title" type="text" value="<?php echo lang($article->get("title")); ?>"/>
 		</div>
 		<div style="clear: left;">
 		</div>
@@ -27,7 +27,7 @@
 			<?php echo ucfirst(text("text")); ?>
 		</div>
 		<div style="overflow: hidden;padding: 10px;">
-			<textarea name="text"><?php lang($article->get("text")); ?></textarea>
+			<textarea name="text"><?php echo lang($article->get("text")); ?></textarea>
 		</div>
 		<div style="clear: left;">
 		</div>

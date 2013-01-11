@@ -1,34 +1,38 @@
 <?php
 
 class NodeController extends Controller {
-	public function IndexAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		public function IndexAction($params) {
+		return $this->redirect("node/list");
 	}
 
 	public function ShowAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$node = App::getClass("node", $params[3]);
+		return $this->render(array('node' => $node));
 	}
 
 	public function AddAction($params) {
-		//$return = App::getClass("user", 2);
 		return $this->render(array('user' => null));
 	}
 
 	public function DeleteAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$node = App::getClass("node", $params[3]);
+		return $this->render(array('node' => $node));
 	}
 
 	public function UpdateAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$method = $this->getRequest();
+		if($method->isMethod("post")) {
+			return $this->redirect("/node/show/".$params[3]);
+		}
+		else {
+			$node = App::getClass("node", $params[3]);
+			return $this->render(array('node' => $node));
+		}
 	}
 
 	public function ListAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$nodes = App::getClassArray("node");
+		return $this->render(array('nodes' => $nodes));
 	}
 }
 

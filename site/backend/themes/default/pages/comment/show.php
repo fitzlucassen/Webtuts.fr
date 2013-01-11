@@ -17,7 +17,7 @@
 		<?php echo ucfirst(text("pseudo")); ?>
 	</div>
 	<div style="overflow: hidden;padding: 15px;">
-		<?php echo $comment->get("autor")->get("pseudo"); ?>
+		<?php echo $comment->get("author")->get("pseudo"); ?>
 	</div>
 	<div style="clear: left;">
 	</div>

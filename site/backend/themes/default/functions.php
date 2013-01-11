@@ -8,7 +8,7 @@
 				return $value->$text;
 			}
 		}
-		return "This text does'nt has its traduction !";
+		return "This text doesn't has its traduction !";
 	}
 
 	function createLink($link) {
@@ -29,25 +29,25 @@
 		if($lang != "")
 			return $lang;
 		else
-			return "This text does'nt has its traduction !";
+			return "This text doesn't has its traduction !";
 	}
 	
 	function printDate($date){
 		$dateExpl = explode(' ', $date);
 		$day = explode('-', $dateExpl[0]);
 		
-		$month = array(	"01"=>lang(text("january")),
-						"02"=>lang(text("february")),
-						"03"=>lang(text("march")),
-						"04"=>lang(text("april")),
-						"05"=>lang(text("may")),
-						"06"=>lang(text("june")),
-						"07"=>lang(text("july")),
-						"08"=>lang(text("august")),
-						"09"=>lang(text("september")),
-						"10"=>lang(text("october")),
-						"11"=>lang(text("november")),
-						"12"=>lang(text("december"))					
+		$month = array(	"01"=>text("january"),
+						"02"=>text("february"),
+						"03"=>text("march"),
+						"04"=>text("april"),
+						"05"=>text("may"),
+						"06"=>text("june"),
+						"07"=>text("july"),
+						"08"=>text("august"),
+						"09"=>text("september"),
+						"10"=>text("october"),
+						"11"=>text("november"),
+						"12"=>text("december")					
 					);
 		
 		return $day[2]." ".$month[$day[1]]." ".$day[0]." ".$dateExpl[1];
