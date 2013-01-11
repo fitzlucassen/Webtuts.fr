@@ -2,10 +2,10 @@
 -- version 3.5.1
 -- http://www.phpmyadmin.net
 --
--- Client: localhost
--- Généré le: Ven 11 Janvier 2013 à 13:58
--- Version du serveur: 5.5.24-log
--- Version de PHP: 5.3.13
+-- Host: localhost
+-- Generation Time: Jan 11, 2013 at 03:06 PM
+-- Server version: 5.5.24-log
+-- PHP Version: 5.3.13
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `webtuts`
+-- Database: `Webtuts`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `access`
+-- Table structure for table `access`
 --
 
 CREATE TABLE IF NOT EXISTS `access` (
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `access` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `article`
+-- Table structure for table `article`
 --
 
 CREATE TABLE IF NOT EXISTS `article` (
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `article` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Contenu de la table `article`
+-- Dumping data for table `article`
 --
 
 INSERT INTO `article` (`id`, `deleted`, `category`, `node`, `tags`, `author`, `date`, `image`, `title`, `text`, `views`, `comments`) VALUES
@@ -66,7 +66,7 @@ INSERT INTO `article` (`id`, `deleted`, `category`, `node`, `tags`, `author`, `d
 -- --------------------------------------------------------
 
 --
--- Structure de la table `article_category`
+-- Table structure for table `article_category`
 --
 
 CREATE TABLE IF NOT EXISTS `article_category` (
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `article_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `article_category`
+-- Dumping data for table `article_category`
 --
 
 INSERT INTO `article_category` (`id_category`, `id_article`) VALUES
@@ -84,7 +84,7 @@ INSERT INTO `article_category` (`id_category`, `id_article`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `article_comment`
+-- Table structure for table `article_comment`
 --
 
 CREATE TABLE IF NOT EXISTS `article_comment` (
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `article_comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `article_comment`
+-- Dumping data for table `article_comment`
 --
 
 INSERT INTO `article_comment` (`id_article`, `id_comment`) VALUES
@@ -102,7 +102,7 @@ INSERT INTO `article_comment` (`id_article`, `id_comment`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `article_tag`
+-- Table structure for table `article_tag`
 --
 
 CREATE TABLE IF NOT EXISTS `article_tag` (
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `article_tag` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `article_tag`
+-- Dumping data for table `article_tag`
 --
 
 INSERT INTO `article_tag` (`id_article`, `id_tag`) VALUES
@@ -121,7 +121,7 @@ INSERT INTO `article_tag` (`id_article`, `id_tag`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE IF NOT EXISTS `category` (
@@ -134,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `category` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Contenu de la table `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id`, `name`, `description`, `articles`, `image`) VALUES
@@ -148,7 +148,7 @@ INSERT INTO `category` (`id`, `name`, `description`, `articles`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `comment`
+-- Table structure for table `comment`
 --
 
 CREATE TABLE IF NOT EXISTS `comment` (
@@ -162,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Contenu de la table `comment`
+-- Dumping data for table `comment`
 --
 
 INSERT INTO `comment` (`id`, `article`, `author`, `text`, `date`, `deleted`) VALUES
@@ -171,7 +171,7 @@ INSERT INTO `comment` (`id`, `article`, `author`, `text`, `date`, `deleted`) VAL
 -- --------------------------------------------------------
 
 --
--- Structure de la table `image`
+-- Table structure for table `image`
 --
 
 CREATE TABLE IF NOT EXISTS `image` (
@@ -186,7 +186,7 @@ CREATE TABLE IF NOT EXISTS `image` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Contenu de la table `image`
+-- Dumping data for table `image`
 --
 
 INSERT INTO `image` (`id`, `name`, `type`, `width`, `height`, `deleted`, `size`) VALUES
@@ -200,7 +200,7 @@ INSERT INTO `image` (`id`, `name`, `type`, `width`, `height`, `deleted`, `size`)
 -- --------------------------------------------------------
 
 --
--- Structure de la table `lang`
+-- Table structure for table `lang`
 --
 
 CREATE TABLE IF NOT EXISTS `lang` (
@@ -209,10 +209,10 @@ CREATE TABLE IF NOT EXISTS `lang` (
   `lang` text NOT NULL,
   `text` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
 
 --
--- Contenu de la table `lang`
+-- Dumping data for table `lang`
 --
 
 INSERT INTO `lang` (`id`, `id_lang`, `lang`, `text`) VALUES
@@ -243,16 +243,18 @@ INSERT INTO `lang` (`id`, `id_lang`, `lang`, `text`) VALUES
 (25, 25, 'fr', 'JQuery'),
 (26, 26, 'fr', 'Tous les tutoriels utilisant la bibliothèque JQuery, basé sur javascript'),
 (27, 27, 'fr', 'tutoriel'),
-(28, 28, 'fr', 'Les types de contenu étant des tutoriels'),
-(29, 29, 'fr', 'actualité'),
-(30, 30, 'fr', 'Les types de contenu étant des actualités'),
+(28, 28, 'fr', 'Les types de contenu &eacute;tant des tutoriels'),
+(29, 29, 'fr', 'actualit&eacute;'),
+(30, 30, 'fr', 'Les types de contenu &eacute;tant des actualit&eacute;s'),
 (31, 31, 'fr', 'Webtuts se lance sur le web !'),
-(32, 32, 'fr', 'Cras elit ante, consequat sit amet tempor aliquet, condimentum vitae augue. Vivamus venenatis lectus et nunc auctor pulvinar a et elit. Integer vitae ipsum mauris, id posuere urna. Morbi ac dui eros, vel feugiat mi. Nam tortor sem, dictum et cursus sed, molestie non sapien. Suspendisse et ligula dolor. Vivamus commodo, nulla vel commodo convallis, nulla diam mattis magna, sed sollicitudin metus nisl sit amet arcu. Morbi et elementum dolor.');
+(32, 32, 'fr', 'Cras elit ante, consequat sit amet tempor aliquet, condimentum vitae augue. Vivamus venenatis lectus et nunc auctor pulvinar a et elit. Integer vitae ipsum mauris, id posuere urna. Morbi ac dui eros, vel feugiat mi. Nam tortor sem, dictum et cursus sed, molestie non sapien. Suspendisse et ligula dolor. Vivamus commodo, nulla vel commodo convallis, nulla diam mattis magna, sed sollicitudin metus nisl sit amet arcu. Morbi et elementum dolor.'),
+(33, 33, 'fr', 'Page test'),
+(34, 34, 'fr', '<?php echo "test"; ?>\r\n');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `newsletter`
+-- Table structure for table `newsletter`
 --
 
 CREATE TABLE IF NOT EXISTS `newsletter` (
@@ -262,7 +264,7 @@ CREATE TABLE IF NOT EXISTS `newsletter` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
 
 --
--- Contenu de la table `newsletter`
+-- Dumping data for table `newsletter`
 --
 
 INSERT INTO `newsletter` (`id`, `mail`) VALUES
@@ -279,7 +281,7 @@ INSERT INTO `newsletter` (`id`, `mail`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `node`
+-- Table structure for table `node`
 --
 
 CREATE TABLE IF NOT EXISTS `node` (
@@ -290,7 +292,7 @@ CREATE TABLE IF NOT EXISTS `node` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Contenu de la table `node`
+-- Dumping data for table `node`
 --
 
 INSERT INTO `node` (`id`, `name`, `description`) VALUES
@@ -300,7 +302,7 @@ INSERT INTO `node` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `orm_columns_types`
+-- Table structure for table `orm_columns_types`
 --
 
 CREATE TABLE IF NOT EXISTS `orm_columns_types` (
@@ -310,7 +312,7 @@ CREATE TABLE IF NOT EXISTS `orm_columns_types` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `orm_columns_types`
+-- Dumping data for table `orm_columns_types`
 --
 
 INSERT INTO `orm_columns_types` (`name_table`, `name_column`, `type`) VALUES
@@ -358,12 +360,38 @@ INSERT INTO `orm_columns_types` (`name_table`, `name_column`, `type`) VALUES
 ('category', 'articles', 'collection article'),
 ('article', 'tags', 'collection tag'),
 ('category', 'image', 'class image'),
-('article', 'comments', 'collection comment');
+('article', 'comments', 'collection comment'),
+('page', 'title', 'type lang'),
+('page', 'content', 'type lang'),
+('page', 'author', 'class user'),
+('page', 'date', 'type datetime');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `rewritingurl`
+-- Table structure for table `page`
+--
+
+CREATE TABLE IF NOT EXISTS `page` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` int(11) NOT NULL,
+  `content` int(11) NOT NULL,
+  `date` datetime NOT NULL,
+  `author` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `page`
+--
+
+INSERT INTO `page` (`id`, `title`, `content`, `date`, `author`) VALUES
+(1, 33, 34, '2013-01-11 00:00:00', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rewritingurl`
 --
 
 CREATE TABLE IF NOT EXISTS `rewritingurl` (
@@ -375,7 +403,7 @@ CREATE TABLE IF NOT EXISTS `rewritingurl` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Contenu de la table `rewritingurl`
+-- Dumping data for table `rewritingurl`
 --
 
 INSERT INTO `rewritingurl` (`id`, `app`, `replaceurl`, `matchurl`) VALUES
@@ -384,20 +412,7 @@ INSERT INTO `rewritingurl` (`id`, `app`, `replaceurl`, `matchurl`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `routeurl`
---
-
-CREATE TABLE IF NOT EXISTS `routeurl` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `appname` text NOT NULL,
-  `controllername` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `tag`
+-- Table structure for table `tag`
 --
 
 CREATE TABLE IF NOT EXISTS `tag` (
@@ -408,7 +423,7 @@ CREATE TABLE IF NOT EXISTS `tag` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Contenu de la table `tag`
+-- Dumping data for table `tag`
 --
 
 INSERT INTO `tag` (`id`, `name`, `description`) VALUES
@@ -421,7 +436,7 @@ INSERT INTO `tag` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
@@ -440,7 +455,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Contenu de la table `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `deleted`, `banned`, `pseudo`, `name`, `surname`, `mail`, `image`, `datesignin`, `civility`, `password`) VALUES
@@ -451,7 +466,7 @@ INSERT INTO `user` (`id`, `deleted`, `banned`, `pseudo`, `name`, `surname`, `mai
 -- --------------------------------------------------------
 
 --
--- Structure de la table `user_access`
+-- Table structure for table `user_access`
 --
 
 CREATE TABLE IF NOT EXISTS `user_access` (
