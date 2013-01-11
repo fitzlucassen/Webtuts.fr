@@ -68,4 +68,37 @@
     define("SUBSCRIPTION_TEXT", "Afin de bénéficier de nombreux avantages sur notre site et participer à notre vie communautaire, inscrivez-vous ! C'est gratuit !");
     define("MANDATORY_INFORMATIONS", "Mandatory Informations");
     define("OPTIONAL_INFORMATIONS", "Optional Informations");
+    
+    define("LBL_NAME", "Name");
+    define("LBL_FIRSTNAME", "firstname");
+    define("LBL_PSEUDO", "Login");
+    define("LBL_EMAIL", "E-mail");
+    define("LBL_PAYS", "Country");
+    define("LBL_VILLE", "City");
+    define("LBL_REGION", "Region");
+    define("LBL_CIVILITE", "Civilité");   
+    define("LBL_MAN", "Mr");
+    define("LBL_WOMAN", "Ms");
+    define("LBL_LANGAGE", "Known Languages");
+    
+    // Placeholders
+    define("PL_NAME", "Your name");
+    define("PL_FIRSTNAME", "Your firstname");
+    define("PL_PSEUDO", "Your login");
+    define("PL_EMAIL", "Your e-mail");
+    define("PL_VILLE", "Your city");
+
+    /**********
+     *  BLOG  *
+     **********/
+    
+    // Label text
+    define("CATEGORIES_TITLE", "Les différentes catégories d'articles");
+    define("CATEGORIES_TEXT", "Vous trouverez ici la liste de toutes les catégories de tutoriels du blog.
+				Cliquez sur l'une d'elle afin de voir l'intégralité des tutoriels de celle-ci.");
+    
+    define("SEE_TUTO", "Voir les tutoriels de cette catégorie");
+    define("TUTOS", "tutoriels");
+    define("CATEGORY_IMAGE", "The image of the category");
+
 ?>

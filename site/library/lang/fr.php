@@ -96,4 +96,8 @@
     define("CATEGORIES_TEXT", "Vous trouverez ici la liste de toutes les catégories de tutoriels du blog.
 				Cliquez sur l'une d'elle afin de voir l'intégralité des tutoriels de celle-ci.");
     
+    define("SEE_TUTO", "Voir les tutoriels de cette catégorie");
+    define("TUTOS", "tutoriels");
+    define("CATEGORY_IMAGE", "image de la catégorie");
+    
 ?>
