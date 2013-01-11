@@ -2,33 +2,37 @@
 
 class PageController extends Controller {
 	public function IndexAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		return $this->redirect("page/list");
 	}
 
 	public function ShowAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$page = App::getClass("page", $params[3]);
+		return $this->render(array('page' => $page));
 	}
 
 	public function AddAction($params) {
-		//$return = App::getClass("user", 2);
 		return $this->render(array('user' => null));
 	}
 
 	public function DeleteAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$page = App::getClass("page", $params[3]);
+		return $this->render(array('page' => $page));
 	}
 
 	public function UpdateAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$method = $this->getRequest();
+		if($method->isMethod("post")) {
+			return $this->redirect("/page/show/".$params[3]);
+		}
+		else {
+			$page = App::getClass("page", $params[3]);
+			return $this->render(array('page' => $page));
+		}
 	}
 
 	public function ListAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$pages = App::getClassArray("page");
+		return $this->render(array('pages' => $pages));
 	}
 }
 

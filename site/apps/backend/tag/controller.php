@@ -2,33 +2,37 @@
 
 class TagController extends Controller {
 	public function IndexAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		return $this->redirect("tag/list");
 	}
 
 	public function ShowAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$tag = App::getClass("tag", $params[3]);
+		return $this->render(array('tag' => $tag));
 	}
 
 	public function AddAction($params) {
-		//$return = App::getClass("user", 2);
 		return $this->render(array('user' => null));
 	}
 
 	public function DeleteAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$tag = App::getClass("tag", $params[3]);
+		return $this->render(array('tag' => $tag));
 	}
 
 	public function UpdateAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$method = $this->getRequest();
+		if($method->isMethod("post")) {
+			return $this->redirect("/tag/show/".$params[3]);
+		}
+		else {
+			$tag = App::getClass("tag", $params[3]);
+			return $this->render(array('tag' => $tag));
+		}
 	}
 
 	public function ListAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$tags = App::getClassArray("tag");
+		return $this->render(array('tags' => $tags));
 	}
 }
 

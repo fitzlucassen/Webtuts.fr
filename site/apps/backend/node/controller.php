@@ -1,7 +1,7 @@
 <?php
 
 class NodeController extends Controller {
-		public function IndexAction($params) {
+	public function IndexAction($params) {
 		return $this->redirect("node/list");
 	}
 

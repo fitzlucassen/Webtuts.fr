@@ -53,7 +53,7 @@
 		return $day[2]." ".$month[$day[1]]." ".$day[0]." ".$dateExpl[1];
 	}
 	
-	function minifyTitle($title, $size_max = 25){	
+	function minifyText($title, $size_max = 25){	
 		if(strlen($title) > $size_max){
 			return substr($title, 0, $size_max)."...";
 		}
