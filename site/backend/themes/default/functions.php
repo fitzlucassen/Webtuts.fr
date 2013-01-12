@@ -1,4 +1,14 @@
 <?php
+	
+	$cache = new Cache(_theme_path_."cache/", 1);
+	/*
+	if(!$cache->start("test")) {
+
+		echo "prout";
+		sleep(2);
+	}
+	$cache->end();
+*/
 
 	function text($text) {
 		$lang = file_get_contents(_theme_path_."lang/".__lang__.".json");

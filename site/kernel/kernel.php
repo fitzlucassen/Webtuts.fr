@@ -1,4 +1,7 @@
-<?php
+<?php 
+
+	
+	define("time_start", microtime(TRUE));
 
 	/* Fichier config */
 	require('config.php');

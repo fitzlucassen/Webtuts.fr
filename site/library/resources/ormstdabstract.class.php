@@ -89,7 +89,7 @@ abstract class OrmStdAbstract {
 	}
 
 	/* Getter */
-	public function get($attribut) {
+	public function get($attribut, $params = null) {
 		if($attribut == "id")
 			return $this->id;
 		$typeAttribut = "__".$attribut;
@@ -112,7 +112,7 @@ abstract class OrmStdAbstract {
 					Gestion des type particulier.
 				*/
 				if($tmp[1]=="lang") {
-					$this->$attribut = new Lang($this->$attribut);
+					$this->$attribut = new Lang($this->$attribut, $params);
 				}			
 
 				return $this->$attribut;
@@ -121,8 +121,21 @@ abstract class OrmStdAbstract {
 				return $this->$attribut;
 			}
 		}
-		else
+		else {
+			if(!empty($typeAttribut)) { // get() spéciaux avec params
+				$tmp = explode(" ", $typeAttribut);
+				if($tmp[0]=="type") {
+					if($tmp[1] == "lang") {
+						if($params!=null)
+							$this->$attribut->setLang($params);
+						else {
+							$this->$attribut->setLang(Kernel::get("lang"));
+						}
+					}
+				}
+			}
 			return $this->$attribut;
+		}			
 	}
 
 	/*functions */

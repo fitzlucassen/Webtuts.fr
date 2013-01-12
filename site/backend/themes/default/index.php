@@ -70,7 +70,10 @@
 				</div>
 			</div>
 			<div style="overflow: hidden;">
-			    	<?php include(_theme_path_."pages/".Kernel::get("controller").'/'.Kernel::get("action").".php"); ?>
+		    	<?php include(_theme_path_."pages/".Kernel::get("controller").'/'.Kernel::get("action").".php"); ?>
+		    	<div style="margin-top: 20px;border-top: 1px solid #E5E5E5;padding: 20px;font-size: 0.8em;">
+					Temps de chargement de la page : <span style="font-weight: bold;"><?php echo round(microtime(TRUE)-time_start, 3); ?></span> sec
+				</div>
 			</div>
 		</div>
 	</body>

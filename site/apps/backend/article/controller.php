@@ -7,7 +7,11 @@ class ArticleController extends Controller {
 
 	public function ShowAction($params) {
 		$article = App::getClass("article", $params[3]);
-		return $this->render(array('article' => $article));
+		if(!empty($params[4]))
+			$lang = $params[4];
+		else
+			$lang = $params[0];
+		return $this->render(array('article' => $article, "lang" => $lang));
 	}
 
 	public function AddAction($params) {

@@ -7,7 +7,11 @@ class CategoryController extends Controller {
 
 	public function ShowAction($params) {
 		$category = App::getClass("category", $params[3]);
-		return $this->render(array('category' => $category));
+		if(!empty($params[3]))
+			$lang = $params[3];
+		else
+			$lang = $params[0];
+		return $this->render(array('category' => $category, "lang" => $lang));
 	}
 
 	public function AddAction($params) {

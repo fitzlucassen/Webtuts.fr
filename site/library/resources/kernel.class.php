@@ -63,8 +63,15 @@ class Kernel {
 	}
 
 	public function setKernel($url, $path_type) {
-		
-		
+		spl_autoload_register(function ($class) {
+		    if (strstr($class, "Controller")) {
+			    if(file_exists(__apps_dir__.__app__.'/'.str_replace("controller", "",mb_strtolower($class)).'/index.php')) // Debug for class_exists()
+					require_once(__apps_dir__.__app__.'/'.str_replace("controller", "",mb_strtolower($class)).'/index.php');
+				else
+					header("Location:/404");
+			}
+		});
+
 		/*
 		///categorie-nom/article-nom/
 
@@ -103,6 +110,7 @@ class Kernel {
 		else
 			$tmp = array($this->_LANG_DEFAULT_);
 
+
 		$cpt = 0;
 		foreach ($path_type as $key => $value) {
 			if(!empty($tmp[$cpt]))
@@ -110,7 +118,13 @@ class Kernel {
 			$cpt++;
 		}
 
-		
+		// Ajout du reste des params
+		for($cpt=$cpt-1;$cpt<count($tmp);$cpt++) {
+			if(!empty($tmp[$cpt]))
+				$route[$cpt] = $tmp[$cpt];
+		}
+
+
 
 		if(!empty($route[Kernel::$CODE_LANG])) {
 			// Test la présence d'une langue
@@ -123,7 +137,6 @@ class Kernel {
 			Kernel::$LANG = $this->_LANG_DEFAULT_;
 
 		define("__lang__", Kernel::$LANG);
-
 
 		// Appel de l'app et du controller
 		if(!empty($route[Kernel::$CODE_CONTROLLER]) && in_array($route[Kernel::$CODE_CONTROLLER], Kernel::$CONTROLLER_WITHOUT_NEEDS)) {
