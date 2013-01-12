@@ -1,5 +1,7 @@
 <?php
 	
+	
+
 	$cache = new Cache(_theme_path_."cache/", 1);
 	/*
 	if(!$cache->start("test")) {

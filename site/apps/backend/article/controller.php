@@ -36,7 +36,7 @@ class ArticleController extends Controller {
 
 	public function ListAction($params) {
 		/*
-		$this->setCache("backend/", 1);
+		$this->setCache("backend/");
 		if(!$articles = $this->cache->read("ArticleListeAction")){
 			$articles = App::getClassArray("article");
 			$this->cache->read("ArticleListeAction", print_r(App::getClassArray("article")));

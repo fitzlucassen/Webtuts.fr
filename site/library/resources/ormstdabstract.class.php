@@ -54,9 +54,16 @@ abstract class OrmStdAbstract {
 	}
 
 	public function setTypage($typages) {
-		foreach ($typages as $value) {
-			$nomAttribut = "__".$value["name_column"];
-			$this->$nomAttribut = $value["type"];
+		if(empty($this->_types)) {
+			foreach ($typages as $value) {
+				$nomAttribut = "__".$value["name_column"];
+				$this->$nomAttribut = $value["type"];
+			}
+			foreach ($typages as $value) {
+				$nomAttribut = $value["name_column"];
+				if(empty($this->$nomAttribut))
+					$this->$nomAttribut = NULL;
+			}
 		}
 	}
 
@@ -67,7 +74,7 @@ abstract class OrmStdAbstract {
 			return $tmp;
 		}
 		else {
-			$tmp = new Std();
+			$tmp = new Std($class);
 			$tmp->setNameClass($class);
 			return $tmp;
 		}
@@ -157,22 +164,44 @@ abstract class OrmStdAbstract {
 		return $this;
 	}
 
-	public function hydrate($id, $types) {
+	public function hydrate($id, $types = null) {
+		if($types==null)
+			$types = Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->_class))->fetchArray();
+		$this->setTypage($types);
 		if(is_numeric($id)) {
 			$clone = Sql2::create()->from(strtolower($this->_class))->where("id", Sql2::$OPE_EQUAL, $id)->fetchClass();
 			foreach ($clone as $attribut => $valeur)
 				$this->$attribut = $valeur;
-			$this->setTypage($types);
 			return $this;
 		}
 		else if(is_array($id)) {
 			foreach ($id as $attribut => $valeur)
 				$this->$attribut = $valeur;
-			$this->setTypage($types);
 			return $this;
 		}
 		else
 			return new Error(1);
+	}
+
+	public function checkData() {
+		return true;
+	}
+
+	public function save() {
+		if($this->checkData()) {
+			if(Sql2::create()->insert($this->_class)->columnsValues($this->_attributes)->execute())
+				return true;
+			else
+				return false;
+		}
+		else
+			return false;
+	}
+
+	public function getTypages() {
+		if(empty($this->_types))
+			$this->setTypage($types = Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->_class))->fetchArray());
+		return $this->_types;
 	}
 
 	/*

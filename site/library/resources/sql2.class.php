@@ -130,7 +130,7 @@ class Sql2 {
 					}
 				}
 				else
-					return new Errr(5);
+					return new Error(5);
 			}
 
 			$this->columns = array_merge($this->columns, $columns);
@@ -261,6 +261,7 @@ class Sql2 {
 		$cpt = 0;
 		foreach ($this->values as $key => $value) {
 			if(is_string($value)) $cote='\''; else $cote='';
+			if(empty($value)) { $value = 'NULL'; $cote=''; }
 			if($cpt!=0) $requete .= ", ";
 			$requete .= $cote.$value.$cote;
 			$cpt++;
@@ -333,19 +334,19 @@ class Sql2 {
 	}
 
 	public function execute() {
-		if($this->type == Sql2::$_INSERT || $this->type == Sql2::$_UPDATE){
+		if($this->type == Sql2::$TYPE_INSERT || $this->type == Sql2::$TYPE_UPDATE){
 			$requete = $this->getRequete();
 			if(mysql_query($requete)) {
-				if($this->type == Sql2::$_INSERT)
+				if($this->type == Sql2::$TYPE_INSERT)
 					return Sql2::create()->from(mb_strtolower($this->class))->where("id", Sql2::$OPE_EQUAL, mysql_insert_id())->fetchClass();
 				else
 					return true;
 			}
 			else
-				return new Error(45);
+				return false;
 		}
 		else
-			return new Error(3);
+			return false;
 	}
 
 	public function fetch($rang=0) {

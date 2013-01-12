@@ -1,6 +1,11 @@
 <pre><?php 
 
-	//print_r(Sql2::create()->from("article")->where("id", Sql2::$OPE_NOT_IN, "(".Sql2::create()->select("id_article")->from("article_category")->showRequete().")", false)->fetchClassArray());
-	print_r(App::getClassArray("article", array("where" => array("nothave" => "category"))));
-	echo Kernel::getUrl("comment/show");
+	echo "<pre>";
+	if(App::getClass("category")->hydrate(array("name" => 35, "description" => 36, "image" => 7))->save())
+		echo "did !";
+	else
+		echo "fail";
+	echo "</pre>";
+
+
 ?></pre>

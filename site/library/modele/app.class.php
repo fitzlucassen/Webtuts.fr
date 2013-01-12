@@ -21,10 +21,16 @@ class App {
 				return Error(1);
 		}
 		else {
-			if(class_exists($class))
-				return new $class();
-			else
-				return new Std($class);
+			if(class_exists($class)) {
+				$return = new $class();
+				$return->setNameClass($class);
+				return $return;
+			}
+			else {
+				$return = new Std();
+				$return->setNameClass($class);
+				return $return;
+			}
 		}	
 	}
 
