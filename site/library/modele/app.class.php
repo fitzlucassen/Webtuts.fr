@@ -79,6 +79,20 @@ class App {
 
 	private static function requete($class, $param) {
 		/*
+		
+
+		App::getClassArray("category", array(
+			"limit" => 5,
+			"where" => array(
+				"where" => array(
+					"nothave" => "category"
+				),
+				"andwhere" => array(
+					"where" => "date >= 10/02/21",
+					"andwhere" => "date <= 13/03/21"
+				)
+			)
+		))
 
 		"where" => array("nothave" = "category")
 		SELECT id
@@ -97,17 +111,32 @@ class App {
 			if(!is_array($param["where"]))
 				return new Error(1);
 			$where = $param["where"];
-			//$return->where("id_article", Sql2::$OPE_NOT_IN, "(".Sql2::create()->select("id")->from("article_category")->showRequete().")", false);
-			$cpt=0;
-			foreach ($where as $key => $value) {
-				if($key=="nothave")
-					$link = Sql2::$OPE_NOT_IN;
-				elseif($key=="have")
-					$link = Sql2::$OPE_IN;
-				if($key=="nothave" || $key=="have")
-					$return->where("id", $link, "(".Sql2::create()->select("id_".$class)->from($class."_".$value)->showRequete().")", false)->fetchClassArray();
-				$cpt++;
-			}
+			if(count($where)==1) { // si une seule condition
+				//$value = explode(" ", $where[1]);
+				if(array_key_exists("where", $where)) {
+					$value = explode(" ", $where["where"]);
+					$this->where($value[0], $value[1], $value[2]);
+				}
+				elseif(array_key_exists("nothave", $where)) {
+					$value = $where["nothave"];
+					$return->where("id", Sql2::$OPE_NOT_IN, "(".Sql2::create()->select("id_".$class)->from($class."_".$value)->showRequete().")", false);
+				}
+				elseif(array_key_exists("have", $where)) {
+					$value = $where["nothave"];
+					$return->where("id", Sql2::$OPE_IN, "(".Sql2::create()->select("id_".$class)->from($class."_".$value)->showRequete().")", false);
+				}
+			}/*
+			else {
+				$cpt=0;
+				foreach ($where as $key => $value) {
+					if(is_assoc($value)) {
+
+					}
+					$value = explode($value, " ");
+					$return->$key($value[0], $value[1], $value[2]);
+				}
+			}*/
+			//$return->where("id", $link, "(".Sql2::create()->select("id_".$class)->from($class."_".$value)->showRequete().")", false)->fetchClassArray();
 		}
 		if(array_key_exists("orderBy", $param)) {
 			if(is_array($param["orderBy"]))	{
