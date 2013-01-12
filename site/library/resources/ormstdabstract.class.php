@@ -61,8 +61,8 @@ abstract class OrmStdAbstract {
 			}
 			foreach ($typages as $value) {
 				$nomAttribut = $value["name_column"];
-				if(empty($this->$nomAttribut))
-					$this->$nomAttribut = NULL;
+				if($this->$nomAttribut=="")
+					$this->$nomAttribut = null;
 			}
 		}
 	}
