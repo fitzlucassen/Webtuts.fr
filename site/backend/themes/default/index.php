@@ -9,6 +9,8 @@
 
 		<div id="global">
 			<div style="float: left;width: 240px;height: 100%;background: #ECEFF6;border-right: 1px solid #E5E5E5;">
+			</div>
+			<div style="position: fixed;top: 0px;left: 0px;width: 240px;height: 100%;background: #ECEFF6;border-right: 1px solid #E5E5E5;">
 				<div style="padding: 20px;">
 					<img src="<?php img("logo.png"); ?>" style="float: left;width: 50px;" alt="logo"/>
 					<span style="float: left;font-size: 1.5em;padding: 6px;">Webtuts</span>

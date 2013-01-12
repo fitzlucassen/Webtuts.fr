@@ -16,7 +16,7 @@
 		),
 		"image" => 7,
 		"deleted" => 0
-	))->save());
+	)));
 
 	print_r(App::getClassArray("article", array(
 		"limit" => 5,
