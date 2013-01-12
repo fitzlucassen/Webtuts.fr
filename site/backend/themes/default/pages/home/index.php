@@ -6,13 +6,24 @@
 	else
 		echo "fail";*/
 
+	print_r(App::getClass("category")->hydrate(array(
+		"name" => array(
+			"fr" => "TitleFr",
+			"en" => "TitleEn"
+		), 
+		"description" => array(
+			"fr" => "DescriptionFr"
+		),
+		"image" => 7,
+		"deleted" => 0
+	))->save());
 
-		print_r(App::getClassArray("article", array(
-			"limit" => 5,
-			"where" => array(
-					"nothave" => "category"
-			)
-		)));
+	print_r(App::getClassArray("article", array(
+		"limit" => 5,
+		"where" => array(
+				"nothave" => "category"
+		)
+	)));
 	echo "</pre>";
 
 	/*print_r(App::getClassArray("category", array(

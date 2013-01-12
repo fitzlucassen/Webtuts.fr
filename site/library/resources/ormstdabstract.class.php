@@ -184,13 +184,35 @@ abstract class OrmStdAbstract {
 	}
 
 	public function checkData() {
-		return true;
+		if(empty($this->id)) {
+
+
+			return true;
+		}
+		else
+			return false;
 	}
 
 	public function save() {
-		if($this->checkData()) {
-			if(Sql2::create()->insert($this->_class)->columnsValues($this->_attributes)->execute())
-				return true;
+		if(empty($this->id)) {
+			if($this->checkData()) {
+				// enregistrement des langues
+				foreach ($this->_types as $key => $value) {
+					if($value == "type lang") {
+						$id_lang = Sql2::create()->select("COUNT(DISTINCT id_lang)")->from("lang")->fetch();
+						$id_lang++;
+						foreach ($this->$key as $key2 => $value2) { // différentes langues
+							Sql2::create()->insert("lang")->columnsValues(array("id_lang" => $id_lang, "lang" => $key2, "text" => $value2))->execute();
+						}
+						$this->$key = $id_lang;
+					}
+				}
+
+				if(Sql2::create()->insert($this->_class)->columnsValues($this->_attributes)->execute())
+					return true;//Sql2::create()->from($this->_class)->where("id", Sql2::$OPE_EQUAL, mysql_insert_id()->fetchClass());
+				else
+					return false;
+			}
 			else
 				return false;
 		}

@@ -261,7 +261,7 @@ class Sql2 {
 		$cpt = 0;
 		foreach ($this->values as $key => $value) {
 			if(is_string($value)) $cote='\''; else $cote='';
-			if(empty($value)) { $value = 'NULL'; $cote=''; }
+			if(empty($value) && $value != "0") { $value = 'NULL'; $cote=''; }
 			if($cpt!=0) $requete .= ", ";
 			$requete .= $cote.$value.$cote;
 			$cpt++;
@@ -337,10 +337,7 @@ class Sql2 {
 		if($this->type == Sql2::$TYPE_INSERT || $this->type == Sql2::$TYPE_UPDATE){
 			$requete = $this->getRequete();
 			if(mysql_query($requete)) {
-				if($this->type == Sql2::$TYPE_INSERT)
-					return Sql2::create()->from(mb_strtolower($this->class))->where("id", Sql2::$OPE_EQUAL, mysql_insert_id())->fetchClass();
-				else
-					return true;
+				return true;
 			}
 			else
 				return false;

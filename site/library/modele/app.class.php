@@ -119,11 +119,19 @@ class App {
 				}
 				elseif(array_key_exists("nothave", $where)) {
 					$value = $where["nothave"];
-					$return->where("id", Sql2::$OPE_NOT_IN, "(".Sql2::create()->select("id_".$class)->from($class."_".$value)->showRequete().")", false);
+					if(Sql2::table_exist($class."_".$value))
+						$table = $class."_".$value;
+					else
+						$table = $value."_".$class;
+					$return->where("id", Sql2::$OPE_NOT_IN, "(".Sql2::create()->select("id_".$class)->from($table)->showRequete().")", false);
 				}
 				elseif(array_key_exists("have", $where)) {
 					$value = $where["nothave"];
-					$return->where("id", Sql2::$OPE_IN, "(".Sql2::create()->select("id_".$class)->from($class."_".$value)->showRequete().")", false);
+					if(Sql2::table_exist($class."_".$value))
+						$table = $class."_".$value;
+					else
+						$table = $value."_".$class;
+					$return->where("id", Sql2::$OPE_IN, "(".Sql2::create()->select("id_".$class)->from($table)->showRequete().")", false);
 				}
 			}/*
 			else {
