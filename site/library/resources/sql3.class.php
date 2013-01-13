@@ -241,8 +241,7 @@ class Sql2 {
 
 		// ORDER BY
 		if(!empty($this->orderby)) {
-			if(is_string($this->orderby[0])) $cote='\''; else $cote='';
-			$requete .= " ORDER BY ".$cote.$this->orderby[0].$cote." ".$this->orderby[1];
+			$requete .= " ORDER BY ".$this->orderby[0]." ".$this->orderby[1];
 		}
 		// LIMIT
 		if(!empty($this->limit)) {
