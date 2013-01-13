@@ -12,9 +12,20 @@
 	<div style="height: 20px;">
 	</div>
 
-	<div style="float: right;width: 220px;">
-		<div style="border-bottom: 1px solid #E5E5E5;font-size: 0.8em;font-weight: bold;padding-bottom: 3px;margin-left: 20px;">
+	<div style="float: right;width: 200px;margin-left: 20px;">
+		<div style="border-bottom: 1px solid #E5E5E5;font-size: 0.8em;font-weight: bold;padding-bottom: 3px;">
 			Quick links
+		</div>
+		<div style="padding-top: 5px;padding-bottom: 5px;font-size: 0.8em;padding-left: 3px;">
+			&#149; <a href="http://www.grafikart.fr/">GrafikArt</a><br />
+		</div>
+		<br />
+		<div style="border-bottom: 1px solid #E5E5E5;font-size: 0.8em;font-weight: bold;padding-bottom: 3px;">
+			Documents
+		</div>
+		<div style="padding-top: 5px;padding-bottom: 5px;font-size: 0.8em;padding-left: 3px;">
+			&#149; <a href="/documents/webtuts.sql">BDD</a><br />
+			&#149; <a href="/documents/CDCF projet annuel.docx">CDC</a><br />
 		</div>
 	</div>
 	<div style="overflow: hidden;">
