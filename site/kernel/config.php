@@ -4,12 +4,6 @@
 		Contient toutes les informations necessaires à fournir par l'administrateur et à écrire en dur.
 	*/
 
-
-	/* 
-		Définition du theme par défaut
-	*/
-	define("__theme__", "default");
-
 	/* 
 		Définition de l'application
 	*/
