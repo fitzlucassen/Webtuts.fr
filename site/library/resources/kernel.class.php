@@ -59,7 +59,7 @@ class Kernel {
 		}
 
 		// Paramêtres du site
-		Kernel::$PARAMS = Sql2::create()->from("cms_site_params")->fetch();
+		Kernel::$PARAMS = Sql2::create()->from("cms_site_params")->fetchArray();
 	}
 
 
