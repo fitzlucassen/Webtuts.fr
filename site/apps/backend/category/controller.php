@@ -39,7 +39,7 @@ class CategoryController extends Controller {
 			$lang = $params[3];
 		else
 			$lang = $params[0];
-		$categories = App::getClassArray("category");
+		$categories = App::getClassArray("category");//, array("where" => "deleted = 0"));
 		return $this->render(array('categories' => $categories, 'lang' => $lang));
 	}
 }
