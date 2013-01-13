@@ -447,6 +447,8 @@ class SqlTerms {
 		$object = new SqlTerms();
 		if(is_object($attribut))
 			$object->where[] = $attribut;
+		elseif($condition == null)
+			$this->where[] = $attribut;
 		else
 			$object->where[] = array("where", $attribut, $condition, $param, $typeVar);
 		return $object;
@@ -455,12 +457,16 @@ class SqlTerms {
 	public function andWhere($attribut, $condition=null, $param=null, $typeVar=true) {
 		if(is_object($attribut))
 			$this->where[] = $attribut;
+		elseif($condition == null)
+			$this->where[] = $attribut;
 		else
 			$this->where[] = array("andwhere", $attribut, $condition, $param, $typeVar);
 		return $this;
 	}
 	public function orWhere($attribut, $condition=null, $param=null, $typeVar=true) {
 		if(is_object($attribut))
+			$this->where[] = $attribut;
+		elseif($condition == null)
 			$this->where[] = $attribut;
 		else
 			$this->where[] = array("orwhere", $attribut, $condition, $param, $typeVar);

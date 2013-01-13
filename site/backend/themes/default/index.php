@@ -1,4 +1,5 @@
 <?php define("_theme_path_", __themes_dir__ . "default/"); include("functions.php"); ?>
+<!DOCTYPE html>
 <html>
 	<head>
 		<?php include("partials/meta.php");//Kernel::get("cache")->inc(_theme_path_."partials/meta.php"); ?>
@@ -9,12 +10,15 @@
 
 		<div id="global">
 			<div style="float: left;width: 240px;height: 100%;background: #ECEFF6;border-right: 1px solid #E5E5E5;">
+				Ceci est un text bien caché :D
 			</div>
 			<div style="position: fixed;top: 0px;left: 0px;width: 240px;height: 100%;background: #ECEFF6;border-right: 1px solid #E5E5E5;">
 				<div style="overflow: auto;height: 100%;">
 					<div style="padding: 20px;">
-						<img src="<?php img("logo.png"); ?>" style="float: left;width: 50px;" alt="logo"/>
-						<span style="float: left;font-size: 1.5em;padding: 6px;">Webtuts</span>
+						<a href="<?php echo createLink("/"); ?>">	
+							<img src="<?php img("logo.png"); ?>" style="float: left;width: 50px;" alt="logo"/>
+							<span style="float: left;font-size: 1.5em;padding: 6px;">Webtuts</span>
+						</a>
 						<div style="clear: left;margin-bottom: 20px;">
 						</div>
 						<a style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;"><?php echo strtoupper(text("menu_blog")); ?></a>

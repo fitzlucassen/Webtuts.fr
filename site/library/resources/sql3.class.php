@@ -162,6 +162,8 @@ class Sql2 {
 	public function where($attribut, $condition=null, $param=null, $typeVar=true) {
 		if(is_object($attribut))
 			$this->where[] = $attribut;
+		elseif($condition == null)
+			$this->where[] = $attribut;
 		else
 			$this->where[] = array("where", $attribut, $condition, $param, $typeVar);
 		return $this;
@@ -170,12 +172,16 @@ class Sql2 {
 	public function andWhere($attribut, $condition=null, $param=null, $typeVar=true) {
 		if(is_object($attribut))
 			$this->where[] = $attribut;
+		elseif($condition == null)
+			$this->where[] = $attribut;
 		else
 			$this->where[] = array("andwhere", $attribut, $condition, $param, $typeVar);
 		return $this;
 	}
 	public function orWhere($attribut, $condition=null, $param=null, $typeVar=true) {
 		if(is_object($attribut))
+			$this->where[] = $attribut;
+		elseif($condition == null)
 			$this->where[] = $attribut;
 		else
 			$this->where[] = array("orwhere", $attribut, $condition, $param, $typeVar);
@@ -362,9 +368,12 @@ class Sql2 {
 		if(!empty($this->where)) {
 			$requete .= " WHERE ";
 			foreach ($this->where as $key => $value) {
-				if(!is_object($value)) {
+				if(is_array($value)) {
 					if(is_string($value[3]) && $value[4]) $cote2='\''; else $cote2='';
 					$requete .= " ".$this->OPE_LOGIC_TAB[$value[0]]." ".$value[1]." ".$value[2]." ".$cote2.$value[3].$cote2." ";
+				}
+				elseif(is_string($value)) {
+					$requete .= $value;
 				}
 				else {
 					$requete .= $this->getWhereStringRecursive($value);
@@ -377,9 +386,12 @@ class Sql2 {
 	private function getWhereStringRecursive($object) {
 		$requete = "(";
 		foreach ($object->where as $key2 => $value2) {
-			if(!is_object($value2)) {
+			if(is_array($value)) {
 				if(is_string($value2[3]) && $value2[4]) $cote2='\''; else $cote2='';
 				$requete .= " ".$this->OPE_LOGIC_TAB[$value2[0]]." ".$value2[1]." ".$value2[2]." ".$cote2.$value2[3].$cote2." ";
+			}
+			elseif(is_string($value2)) {
+					$requete .= $value2;
 			}
 			else
 				$requete .= $this->getWhereStringRecursive($value2);

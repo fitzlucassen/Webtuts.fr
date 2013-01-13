@@ -21,7 +21,7 @@
 		<div style="float: left;width: 200px;">
 			<span <?php if($categorie->get("deleted")) { ?>style="color: red;"<?php } ?>><?php echo lang($categorie->get("name", $lang)); ?></span> 
 		</div>
-		<div style="overflow: hidden;padding-top: 1px;padding-left: 10px;">
+		<div style="overflow: hidden;padding-left: 10px;">
 			<span style="text-decoration: none;font-size: 0.8em;color: grey;"><?php echo lang($categorie->get("description", $lang)); ?></span>
 		</div>
 		<div style="clear: both;">

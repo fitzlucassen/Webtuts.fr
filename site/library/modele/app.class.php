@@ -93,8 +93,13 @@ class App {
 				)
 			)
 		))
+		App::getClassArray("category", array(
+			"where" => "deleted = 0"
+		))
+		App::getClassArray("category", array(
+			"where" => "title = bonjour"
+		))
 
-		"where" => array("nothave" = "category")
 		SELECT id
 		FROM article
 		WHERE id NOT 
@@ -108,12 +113,32 @@ class App {
 		
 		$return = Sql2::create()->from($class);
 		if(array_key_exists("where", $param)) {
-			if(!is_array($param["where"])) {
-				$value = explode(" ", $param["where"]);
-				$return->where($value[0], $value[1], $value[2]);
+			$where = $param["where"];
+			if(!is_array($where)) {
+				$valueString = $where;
+				$value = explode(" ", $where);
+				// Cas particulier
+				if($value[0]=="nothave") {
+					$object = $value[1]; 
+					if(Sql2::table_exist($class."_".$object))
+						$table = $class."_".$object;
+					else
+						$table = $object."_".$class;
+					$return->where("id", Sql2::$OPE_NOT_IN, "(".Sql2::create()->select("id_".$class)->from($table)->showRequete().")", false);
+				}
+				elseif($value[0]=="have") {
+					$object = $value[1];
+					if(Sql2::table_exist($class."_".$object))
+						$table = $class."_".$object;
+					else
+						$table = $object."_".$class;
+					$return->where("id", Sql2::$OPE_IN, "(".Sql2::create()->select("id_".$class)->from($table)->showRequete().")", false);
+				}
+				else
+					$return->where($valueString);
 			} 
 			else {
-				$where = $param["where"];
+				
 				if(count($where)==1) { // si une seule condition
 					//$value = explode(" ", $where[1]);
 					if(array_key_exists("where", $where)) {
