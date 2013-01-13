@@ -18,6 +18,7 @@ class Kernel {
 	public static $RESPONSE;
 	public static $URL;
 	public static $CACHE;
+	public static $PARAMS;
 
 
 	static public function get($attr) {
@@ -33,6 +34,8 @@ class Kernel {
 			return Kernel::$LANG;
 		elseif($attr=="langdefault")
 			return Kernel::$LANG_DEFAULT;
+		elseif($attr=="params")
+			return Kernel::$PARAMS;
 		elseif($attr=="cache")
 			return Kernel::$CACHE;
 		else
@@ -54,6 +57,9 @@ class Kernel {
 		} catch(PDOException $e) {
 		    echo 'ERREUR: ' . $e->getMessage(); 
 		}
+
+		// Paramêtres du site
+		Kernel::$PARAMS = Sql2::create()->from("cms_site_params")->fetch();
 	}
 
 
