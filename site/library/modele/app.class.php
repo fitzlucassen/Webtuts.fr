@@ -126,7 +126,7 @@ class App {
 					$return->where("id", Sql2::$OPE_NOT_IN, "(".Sql2::create()->select("id_".$class)->from($table)->showRequete().")", false);
 				}
 				elseif(array_key_exists("have", $where)) {
-					$value = $where["nothave"];
+					$value = $where["have"];
 					if(Sql2::table_exist($class."_".$value))
 						$table = $class."_".$value;
 					else

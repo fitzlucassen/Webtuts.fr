@@ -141,23 +141,6 @@ abstract class OrmStdAbstract {
 	}
 
 	/*functions */
-	public function create($columns, $values=null) {
-		$cpt = 0;
-		$result = mysql_query("SHOW COLUMNS FROM ".$this->_class);
-		while ($row = mysql_fetch_assoc($result)) {
-			//if()
-
-
-   		}
-
-		$clone = Sql2::create()->insert(strtolower($this->_class))->columnsValues($columns, $values)->executeClass();
-		// copie des attributs
-
-		// 
-		foreach ($clone as $attribut => $valeur)
-			$this->$attribut = $valeur;
-		return $this;
-	}
 
 	public function hydrate($id, $types = null) {
 		if($types==null)
@@ -300,8 +283,7 @@ abstract class OrmStdAbstract {
 		$this->$attribut = new Collection();
 		// Recupération de tous les attributs de la classe à retourner 
 		$cpt = 0;
-		$result = mysql_query("SHOW COLUMNS FROM ".$class);
-		while ($row = mysql_fetch_assoc($result)) {
+		foreach (Kernel::$PDO->query("SHOW COLUMNS FROM ".$class) as $row) {
 			$select[$cpt] = "A.".$row["Field"];
 			$cpt++;
    		}	

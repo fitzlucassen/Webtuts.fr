@@ -37,11 +37,11 @@
 		SQL parameters
 	*/
 	/* Host name */
-	$_CONFIG_sql_hostname = "localhost";
+	define("__SQL_hostname__", "localhost");
 	/* User */
-	$_CONFIG_sql_user = "root";
+	define("__SQL_user__", "root");
 	/* Password */
-	$_CONFIG_sql_password = "root";
+	define("__SQL_password__", "root");
 	/* Prefix tables */
 	define("__SQL_prefix__", "");
 	/* Database */

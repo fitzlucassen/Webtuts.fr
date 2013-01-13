@@ -8,6 +8,7 @@ class Kernel {
 
 	public static $CONTROLLER_WITHOUT_NEEDS = array("404");
 
+	public static $PDO;
 	public static $APP;
 	public static $CONTROLLER;
 	public static $ACTION;
@@ -45,6 +46,14 @@ class Kernel {
 		$this->_LANG_DEFAULT_ = $_LANG_DEFAULT_;
 		Kernel::$LANG = $_LANG_DEFAULT_;
 		Kernel::$LANG_DEFAULT = $_LANG_DEFAULT_;
+
+		try { 
+		    $conn = new PDO('mysql:host='.__SQL_hostname__.';dbname='.__SQL_db__, __SQL_user__,  __SQL_password__, array(PDO::ATTR_PERSISTENT => true, PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+		    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+		    Kernel::$PDO = $conn;
+		} catch(PDOException $e) {
+		    echo 'ERREUR: ' . $e->getMessage(); 
+		}
 	}
 
 

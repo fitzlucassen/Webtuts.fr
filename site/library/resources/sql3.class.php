@@ -10,7 +10,7 @@ $GLOBALS["SQL_existing_table"] = array();
 */
 
 
-class Sql3 {
+class Sql2 {
 
 	public static $TYPE_SELECT = "_SELECT";
 	public static $TYPE_INSERT = "_INSERT";
@@ -297,7 +297,7 @@ class Sql3 {
 			if(!class_exists($this->class))
 				$class = "Std";
 			else $class = $this->class;
-			$return = mysql_fetch_object(mysql_query($requete), $class);
+			$return = Kernel::$PDO->query($requete)->fetchObject($class);
 			if(method_exists($return,'setNameClass')) {
 				$return->setNameClass($this->class);
 				$return->setTypage(Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->class))->fetchArray());
@@ -311,8 +311,7 @@ class Sql3 {
 	public function fetchArray() {
 		$requete = $this->getRequete();
 		$return = array();
-		$resultat = mysql_query($requete);
-		while($ligne = mysql_fetch_array($resultat)) 
+		foreach(Kernel::$PDO->query($requete) as $ligne) 
 			$return[] = $ligne;
 		return $return;
 	}
@@ -320,12 +319,15 @@ class Sql3 {
 	public function fetchClassArray() {
 		if($this->type==Sql2::$TYPE_SELECT)	{
 			$requete = $this->getRequete();
-			$class = $this->class;
+			if(!class_exists($this->class))
+				$class = "Std";
+			else $class = $this->class;
 			$collection = new Collection();
-			$sql = mysql_query($requete);
-			while($result = mysql_fetch_assoc($sql)) {
-				$types = Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->class))->fetchArray();
-				$collection->hydrate(OrmStdAbstract::n($class)->hydrate($result, $types));
+			$types = Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->class))->fetchArray();
+			foreach(Kernel::$PDO->query($requete) as $value) {
+				$object = OrmStdAbstract::n($class)->hydrate($value);
+				$object->setTypage($types);
+				$collection->hydrate($object);
 			}
 			return $collection;
 		}
@@ -336,7 +338,7 @@ class Sql3 {
 	public function execute() {
 		if($this->type == Sql2::$TYPE_INSERT || $this->type == Sql2::$TYPE_UPDATE){
 			$requete = $this->getRequete();
-			if(mysql_query($requete)) {
+			if(Kernel::$PDO->exec($requete)) {
 				return true;
 			}
 			else
@@ -349,14 +351,7 @@ class Sql3 {
 	public function fetch($rang=0) {
 		if($this->type == Sql::$_SELECT) {
 			$requete = $this->getRequete();
-			if ($resultat = @mysql_query($requete)) {
-				if(@mysql_num_rows($resultat)>0)
-					return mysql_result($resultat, $rang);
-				else
-					return false;
-			}
-			else
-				return false;
+			return Kernel::$PDO->query($requete)->fetchColumn($rang);
 		}
 		else
 			return new Error(3);
@@ -439,48 +434,6 @@ class Sql3 {
 
 	
 
-}
-
-class SqlTerms {
-
-	static public function where($attribut, $condition=null, $param=null, $typeVar=true) {
-		$object = new SqlTerms();
-		if(is_object($attribut))
-			$object->where[] = $attribut;
-		else
-			$object->where[] = array("where", $attribut, $condition, $param, $typeVar);
-		return $object;
-	}
-
-	public function andWhere($attribut, $condition=null, $param=null, $typeVar=true) {
-		if(is_object($attribut))
-			$this->where[] = $attribut;
-		else
-			$this->where[] = array("andwhere", $attribut, $condition, $param, $typeVar);
-		return $this;
-	}
-	public function orWhere($attribut, $condition=null, $param=null, $typeVar=true) {
-		if(is_object($attribut))
-			$this->where[] = $attribut;
-		else
-			$this->where[] = array("orwhere", $attribut, $condition, $param, $typeVar);
-		return $this;
-	}
-}
-
-function SQL2_table_exist($table) {
-	if(count($GLOBALS["SQL_existing_table"])<=0) {
-		$db = __SQL_db__;
-	    //On crée un nouveau tableau avec toutes les tables
-	    foreach(Kernel::$PDO->query("SHOW TABLES FROM $db") as $row){
-	        $GLOBALS["SQL_existing_table"][] = $row[0];
-	    }
-	}
-    //On vérifie si $table est dans le tableau tables
-    if(in_array($table, $GLOBALS["SQL_existing_table"]))
-        return TRUE;
-    else
-    	return false;
 }
 
 

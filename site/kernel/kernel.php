@@ -37,9 +37,9 @@
 	require(__library_dir__.'resources/std.class.php');
 
 	/* Connexion a la bd */
-	require('db_co.php');
 	require(__library_dir__.'resources/sql.class.php');
 	require(__library_dir__.'resources/sql2.class.php');
+	require(__library_dir__.'resources/sql3.class.php');
 	
 	/* Données de session */
 	require(__library_dir__.'resources/session.class.php');
