@@ -1,6 +1,6 @@
 <?php
 echo "<pre>";
-print_r(Kernel::get("params"));
+
 /*
 foreach(Kernel::$PDO->query("SELECT * FROM category WHERE id=1") as $key => $cats) {
 	print_r($cats);

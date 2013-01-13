@@ -35,8 +35,12 @@ class CategoryController extends Controller {
 	}
 
 	public function ListAction($params) {
+		if(!empty($params[3]))
+			$lang = $params[3];
+		else
+			$lang = $params[0];
 		$categories = App::getClassArray("category");
-		return $this->render(array('categories' => $categories));
+		return $this->render(array('categories' => $categories, 'lang' => $lang));
 	}
 }
 

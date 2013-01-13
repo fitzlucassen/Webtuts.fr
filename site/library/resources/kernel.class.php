@@ -13,6 +13,7 @@ class Kernel {
 	public static $CONTROLLER;
 	public static $ACTION;
 	public static $LANG;
+	public static $LANGS;
 	public static $LANG_DEFAULT;
 	public static $SESSION;
 	public static $RESPONSE;
@@ -32,6 +33,8 @@ class Kernel {
 			return Kernel::$SESSION;
 		elseif($attr=="lang")
 			return Kernel::$LANG;
+		elseif($attr=="langs")
+			return Kernel::$LANGS;
 		elseif($attr=="langdefault")
 			return Kernel::$LANG_DEFAULT;
 		elseif($attr=="params")
@@ -49,6 +52,7 @@ class Kernel {
 		$this->_LANG_DEFAULT_ = $_LANG_DEFAULT_;
 		Kernel::$LANG = $_LANG_DEFAULT_;
 		Kernel::$LANG_DEFAULT = $_LANG_DEFAULT_;
+		Kernel::$LANGS = $this->_LANG_ACCEPTED_;
 
 		try { 
 		    $conn = new PDO('mysql:host='.__SQL_hostname__.';dbname='.__SQL_db__, __SQL_user__,  __SQL_password__, array(PDO::ATTR_PERSISTENT => true, PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
@@ -59,7 +63,7 @@ class Kernel {
 		}
 
 		// Paramêtres du site
-		Kernel::$PARAMS = Sql2::create()->from("cms_site_params")->fetchArray();
+		Kernel::$PARAMS = Sql2::create()->from("cms_site_params")->fetchArray()[0];
 	}
 
 
