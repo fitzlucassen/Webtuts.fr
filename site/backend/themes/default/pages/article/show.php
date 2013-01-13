@@ -26,7 +26,7 @@
 		<?php echo ucfirst(text("text")); ?>
 	</div>
 	<div style="overflow: hidden;padding: 15px;">
-		<?php echo lang($article->get("text", $lang)); ?>
+		<?php echo nl2br(lang($article->get("text", $lang))); ?>
 	</div>
 	<div style="clear: left;">
 	</div>

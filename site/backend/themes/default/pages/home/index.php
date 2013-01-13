@@ -43,7 +43,7 @@
 			</div>
 			<?php echo lang($notification->get("title")); ?> <span style="color: grey;">by</span> <a href="<?php echo createLink("user/".$notification->get("author")->get("id")); ?>"><?php echo $notification->get("author")->get("pseudo"); ?></a>
 			<div style="border-left: 2px solid #E5E5E5;padding: 10px;font-size: 0.8em;margin-top: 5px;">
-				<?php echo lang($notification->get("text")); ?>
+				<?php echo nl2br(lang($notification->get("text"))); ?>
 			</div>
 		</div>
 		<?php } ?>

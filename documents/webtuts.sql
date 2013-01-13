@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Dim 13 Janvier 2013 à 11:29
+-- Généré le: Dim 13 Janvier 2013 à 19:10
 -- Version du serveur: 5.5.25
 -- Version de PHP: 5.4.4
 
@@ -47,7 +47,7 @@ CREATE TABLE `article` (
   `views` int(11) NOT NULL,
   `comments` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `article`
@@ -55,7 +55,9 @@ CREATE TABLE `article` (
 
 INSERT INTO `article` (`id`, `deleted`, `category`, `node`, `tags`, `author`, `date`, `image`, `title`, `text`, `views`, `comments`) VALUES
 (1, 0, 1, 0, 1, 1, '2012-12-15 00:00:00', 0, 4, 5, 32, 0),
-(2, 0, 0, 1, 0, 1, '2013-01-11 00:00:00', 0, 31, 32, 0, 0);
+(2, 0, 0, 1, 0, 1, '2013-01-11 00:00:00', 0, 31, 32, 0, 0),
+(3, 0, 0, 2, 0, 1, '2013-01-02 00:00:00', 0, 78, 79, 0, 0),
+(4, 0, 0, 2, 0, 1, '2013-01-13 18:24:36', 0, 80, 81, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -152,15 +154,16 @@ INSERT INTO `category` (`id`, `deleted`, `name`, `description`, `articles`, `ima
 --
 
 CREATE TABLE `cms_site_params` (
-  `title` text NOT NULL
+  `title` text NOT NULL,
+  `time` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `cms_site_params`
 --
 
-INSERT INTO `cms_site_params` (`title`) VALUES
-('webtuts');
+INSERT INTO `cms_site_params` (`title`, `time`) VALUES
+('webtuts', 'test');
 
 -- --------------------------------------------------------
 
@@ -198,7 +201,7 @@ CREATE TABLE `image` (
   `width` int(11) NOT NULL,
   `height` int(11) NOT NULL,
   `deleted` tinyint(1) NOT NULL,
-  `size` int(11) NOT NULL,
+  `size` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
@@ -226,7 +229,7 @@ CREATE TABLE `lang` (
   `lang` text NOT NULL,
   `text` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=97 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=103 ;
 
 --
 -- Contenu de la table `lang`
@@ -328,7 +331,13 @@ INSERT INTO `lang` (`id`, `id_lang`, `lang`, `text`) VALUES
 (93, 73, 'en', 'TitleEn'),
 (94, 74, 'fr', 'DescriptionFr'),
 (95, 75, 'fr', 'webtuts'),
-(96, 75, 'en', 'webtuts');
+(96, 75, 'en', 'webtuts'),
+(97, 76, 'fr', 'Notification backoffice'),
+(98, 77, 'fr', 'Les notifications pour la page d''accueil du Backoffice'),
+(99, 78, 'fr', 'Liste des fonctionalités de la class App'),
+(100, 79, 'fr', 'App::getClass("article", $id); // retourne l''objet d''id $id\r\nApp::getClass("article"); // retourne l''objet vierge\r\nApp::getClass("article")->getTypages(); // retourne un tableau de tous les coulons et leurs typages\r\nApp::getClass("article")->hydrate($array); // hydrate un article avec $array le tableau de toutes les colonnes. Pour les langues il faut : \r\n…., "title" => array("fr" => "le titre", "en" => "the title"), ….\r\nPour les liens vers un objet, on met l''id, pour les liens OneToMany, on ne met rien.\r\nApp::getClass("article")->hydrate($array)->save(); //enregistre en BDD\r\nApp::getClass("article")->hydrate($array)->checkData(); regarde si l''hydrate est bon (renvoie tirs true pour le moment)\r\n\r\nApp::getClassArray("article", array( // sans second paramètre, ils sont tous retourné\r\n  "where" => $condition, // "nothave category" pour n''ayant aucune categories\r\n  "orderBy" => array($attribut, $way), // "orderBy" => $attribut // ASC par defaut\r\n  "limit" => array($start, $nb) // "limit" => $nb\r\n));\r\nJe travail actuellement pour mettre des "where", "and" et "or" de façon simple, pour ''instant vous êtes bloqué à une condition "where" :D'),
+(101, 80, 'fr', 'Liste des fonctionalités de la class Kernel'),
+(102, 81, 'fr', 'Kernel::get("app") // Nom de l''app\r\nKernel::get("controller") // Nom du controller\r\nKernel::get("action") // Nom de l''action\r\nKernel::get("session") // Retourne l''objet Session\r\n  Kernel::get("session")->connect($id, md5($mdp));\r\n  Kernel::get("session")->disconnect();\r\nKernel::get("lang") // Nom de la lang\r\nKernel::get("lange") // Tableau de toutes les langues dispo\r\nKernel::get("langdefault") // lang par default\r\nKernel::get("params") // Tableau des paramètres du site\r\nKernel::get("cache") // Retourne l''objet Cache du kernel\r\nKernel::get("user") // retourne l''utilisateur connecté. Pareil que Kernel::get("session")->getUser();');
 
 -- --------------------------------------------------------
 
@@ -368,7 +377,7 @@ CREATE TABLE `node` (
   `name` int(11) NOT NULL,
   `description` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Contenu de la table `node`
@@ -376,7 +385,8 @@ CREATE TABLE `node` (
 
 INSERT INTO `node` (`id`, `name`, `description`) VALUES
 (1, 27, 28),
-(2, 29, 30);
+(2, 29, 30),
+(3, 76, 77);
 
 -- --------------------------------------------------------
 
@@ -539,7 +549,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `deleted`, `banned`, `pseudo`, `name`, `surname`, `mail`, `image`, `datesignin`, `civility`, `password`) VALUES
-(1, 0, 0, 'fozeek', 'quentin', 'deneuve', '', 0, '0000-00-00 00:00:00', '', ''),
+(1, 0, 0, 'fozeek', 'quentin', 'deneuve', '', 0, '0000-00-00 00:00:00', '', 'cc414bfc9c00475b59c87595299ff31d'),
 (2, 0, 0, 'lolilol', 'lollll', 'dd', 'ddd', 0, '0000-00-00 00:00:00', '', ''),
 (3, 0, 0, 'testCreateSql2', '', '', '', 0, '0000-00-00 00:00:00', '', '');
 
