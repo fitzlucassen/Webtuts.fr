@@ -41,6 +41,8 @@ class Kernel {
 			return Kernel::$PARAMS;
 		elseif($attr=="cache")
 			return Kernel::$CACHE;
+		elseif($attr=="user")
+			return Kernel::$SESSION->getUser();
 		else
 			return new Error(1);
 		

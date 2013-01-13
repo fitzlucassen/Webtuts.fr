@@ -18,6 +18,10 @@
 		</div>
 		<div style="padding-top: 5px;padding-bottom: 5px;font-size: 0.8em;padding-left: 3px;">
 			&#149; <a href="http://www.grafikart.fr/">GrafikArt</a><br />
+			<pre>
+			<?php //print_r(Kernel::get("session")); ?>
+			<?php Kernel::get("session")->disconnect();//connect(1, "cc414bfc9c00475b59c87595299ff31d"); ?>
+			</pre>
 		</div>
 		<br />
 		<div style="border-bottom: 1px solid #E5E5E5;font-size: 0.8em;font-weight: bold;padding-bottom: 3px;">
