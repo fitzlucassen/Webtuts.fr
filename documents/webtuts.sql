@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Sam 12 Janvier 2013 à 15:16
+-- Généré le: Dim 13 Janvier 2013 à 11:29
 -- Version du serveur: 5.5.25
 -- Version de PHP: 5.4.4
 
@@ -126,7 +126,7 @@ CREATE TABLE `category` (
   `articles` int(11) DEFAULT NULL,
   `image` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Contenu de la table `category`
@@ -141,7 +141,26 @@ INSERT INTO `category` (`id`, `deleted`, `name`, `description`, `articles`, `ima
 (6, 0, 17, 18, 0, 5),
 (7, 1, 35, 36, NULL, 7),
 (8, 1, 35, 36, NULL, 7),
-(9, 1, 35, 36, NULL, 7);
+(9, 1, 35, 36, NULL, 7),
+(10, 0, 71, 72, NULL, 7),
+(11, 0, 73, 74, NULL, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `cms_site_params`
+--
+
+CREATE TABLE `cms_site_params` (
+  `title` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `cms_site_params`
+--
+
+INSERT INTO `cms_site_params` (`title`) VALUES
+('webtuts');
 
 -- --------------------------------------------------------
 
@@ -207,7 +226,7 @@ CREATE TABLE `lang` (
   `lang` text NOT NULL,
   `text` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=97 ;
 
 --
 -- Contenu de la table `lang`
@@ -247,7 +266,69 @@ INSERT INTO `lang` (`id`, `id_lang`, `lang`, `text`) VALUES
 (31, 31, 'fr', 'Webtuts se lance sur le web !'),
 (32, 32, 'fr', 'Cras elit ante, consequat sit amet tempor aliquet, condimentum vitae augue. Vivamus venenatis lectus et nunc auctor pulvinar a et elit. Integer vitae ipsum mauris, id posuere urna. Morbi ac dui eros, vel feugiat mi. Nam tortor sem, dictum et cursus sed, molestie non sapien. Suspendisse et ligula dolor. Vivamus commodo, nulla vel commodo convallis, nulla diam mattis magna, sed sollicitudin metus nisl sit amet arcu. Morbi et elementum dolor.'),
 (33, 33, 'fr', 'Page test'),
-(34, 34, 'fr', '<?php echo "test"; ?>\r\n');
+(34, 34, 'fr', '<?php echo "test"; ?>\r\n'),
+(35, 35, 'fr', 'TitleFr'),
+(36, 35, 'en', 'TitleEn'),
+(37, 36, 'fr', 'TitleFr'),
+(38, 37, 'fr', 'TitleFr'),
+(39, 37, 'en', 'TitleEn'),
+(40, 38, 'fr', 'DescriptionFr'),
+(41, 39, 'fr', 'TitleFr'),
+(42, 39, 'en', 'TitleEn'),
+(43, 40, 'fr', 'DescriptionFr'),
+(44, 41, 'fr', 'TitleFr'),
+(45, 41, 'en', 'TitleEn'),
+(46, 42, 'fr', 'DescriptionFr'),
+(47, 43, 'fr', 'TitleFr'),
+(48, 43, 'en', 'TitleEn'),
+(49, 44, 'fr', 'DescriptionFr'),
+(50, 45, 'fr', 'TitleFr'),
+(51, 45, 'en', 'TitleEn'),
+(52, 46, 'fr', 'DescriptionFr'),
+(53, 47, 'fr', 'TitleFr'),
+(54, 47, 'en', 'TitleEn'),
+(55, 48, 'fr', 'DescriptionFr'),
+(56, 49, 'fr', 'TitleFr'),
+(57, 49, 'en', 'TitleEn'),
+(58, 50, 'fr', 'DescriptionFr'),
+(59, 51, 'fr', 'TitleFr'),
+(60, 51, 'en', 'TitleEn'),
+(61, 52, 'fr', 'DescriptionFr'),
+(62, 53, 'fr', 'TitleFr'),
+(63, 53, 'en', 'TitleEn'),
+(64, 54, 'fr', 'DescriptionFr'),
+(65, 55, 'fr', 'TitleFr'),
+(66, 55, 'en', 'TitleEn'),
+(67, 56, 'fr', 'DescriptionFr'),
+(68, 57, 'fr', 'TitleFr'),
+(69, 57, 'en', 'TitleEn'),
+(70, 58, 'fr', 'DescriptionFr'),
+(71, 59, 'fr', 'TitleFr'),
+(72, 59, 'en', 'TitleEn'),
+(73, 60, 'fr', 'DescriptionFr'),
+(74, 61, 'fr', 'TitleFr'),
+(75, 61, 'en', 'TitleEn'),
+(76, 62, 'fr', 'DescriptionFr'),
+(77, 63, 'fr', 'TitleFr'),
+(78, 63, 'en', 'TitleEn'),
+(79, 64, 'fr', 'DescriptionFr'),
+(80, 65, 'fr', 'TitleFr'),
+(81, 65, 'en', 'TitleEn'),
+(82, 66, 'fr', 'DescriptionFr'),
+(83, 67, 'fr', 'TitleFr'),
+(84, 67, 'en', 'TitleEn'),
+(85, 68, 'fr', 'DescriptionFr'),
+(86, 69, 'fr', 'TitleFr'),
+(87, 69, 'en', 'TitleEn'),
+(88, 70, 'fr', 'DescriptionFr'),
+(89, 71, 'fr', 'TitleFr'),
+(90, 71, 'en', 'TitleEn'),
+(91, 72, 'fr', 'DescriptionFr'),
+(92, 73, 'fr', 'TitleFr'),
+(93, 73, 'en', 'TitleEn'),
+(94, 74, 'fr', 'DescriptionFr'),
+(95, 75, 'fr', 'webtuts'),
+(96, 75, 'en', 'webtuts');
 
 -- --------------------------------------------------------
 
