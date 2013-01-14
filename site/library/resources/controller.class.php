@@ -4,30 +4,46 @@ abstract class Controller {
 
 	private $cache;
 
-	public function generateUrl($url) {
-		return new Response($url, Response::$STATUS_REDIRECT);
-	}
-
+	/*
+		Cache
+		Description : Permet de créer le systeme de cache pour le controller dans le dossier approprié.
+	*/
 	public function setCache($dirname, $duration = 60) { // Cache de 60 minutes par défault
 		$this->cache = new Cache("/site/cache/controllers/".$dirname, $duration);
 	}
 
+	/*
+		Pour renvoyer vers la vue avec les informations necessaires.
+	*/
 	public function render($vars, $route=null) {
 		return new Response($vars, $route);
 	}
 
+	/*
+		Pour renvoyer un fichier json de $array
+	*/
 	public function renderJson($array) {
 		return new Response($vars, $route);
 	}
 
+	/*
+		Pour renvoyer un fichier XML avec les parametres de params (ex : RSS)
+	*/
 	public function renderXML($array, $params) {
+		//http://sebsauvage.net/comprendre/rss/creer.html
 		return new Response($vars, $route);
 	}
 
+	/*
+		Pour faire une redirection
+	*/
 	public function redirect($url) {
-		header("Location:".$url);
+		return new Response($url, Response::$STATUS_REDIRECT);
 	}
 
+	/*
+		Permet de retourner l'objet Request pour les formulaires
+	*/
 	public function getRequest() {
 		return new Request();
 	}

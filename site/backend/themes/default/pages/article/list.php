@@ -11,16 +11,18 @@
 	</div>
 
 	<?php for ($cpt=0;$cpt<$articles->count();$cpt++) : ?>
-	<div style="border-bottom: 1px solid #E5E5E5;padding: 15px;">	
-		<div style="float: left;width: 200px;">
-			<a href="<?php echo createLink("/article/show/".$articles->get($cpt)->get("id")); ?>"><?php echo lang($articles->get($cpt)->get("title")); ?></a> 
+	<a class="itemlist" href="<?php echo createLink("/article/show/".$articles->get($cpt)->get("id")); ?>">
+		<div class="titleitem" style="float: left;width: 200px;">
+			<?php echo lang($articles->get($cpt)->get("title")); ?>
 		</div>
-		<div style="overflow: hidden;padding-top: 1px;padding-left: 10px;">
+		<div class="descriptionitem" style="position: relative;overflow: hidden;padding-top: 1px;padding-left: 10px;">
 			<span style="font-size: 0.8em;color: grey;"><?php echo lang($articles->get($cpt)->get("text")); ?></span>
+			<div class="borderitem" style="display: none;position: absolute;bottom: 0px;left: 0px;width: 100%;height: 2px;background: #E5E5E5;opacity: 0.7;">
+			</div>
 		</div>
 		<div style="clear: both;">
 		</div>
-	</div>
+	</a>
 	<?php endfor; ?>
 
 </div>
