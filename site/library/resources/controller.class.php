@@ -16,6 +16,14 @@ abstract class Controller {
 		return new Response($vars, $route);
 	}
 
+	public function renderJson($array) {
+		return new Response($vars, $route);
+	}
+
+	public function renderXML($array, $params) {
+		return new Response($vars, $route);
+	}
+
 	public function redirect($url) {
 		header("Location:".$url);
 	}
