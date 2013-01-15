@@ -56,6 +56,9 @@
 	/* Fonctions diverses */
 	require(__library_dir__.'resources/functions.php');
 
+	/* App */
+	require(__library_dir__.'resources/app.class.php');
+
 	/* Fonctions du kernel  */
 	require("kernel.app.php");
 

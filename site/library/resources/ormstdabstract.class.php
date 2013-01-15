@@ -217,6 +217,7 @@ abstract class OrmStdAbstract {
 		}
 	}*/
 
+
 	/*
 		Peut prendre 3 types de syntaxe en parametres
 
@@ -296,10 +297,23 @@ abstract class OrmStdAbstract {
 		$this->$attribut = new Collection();
 		// Recupération de tous les attributs de la classe à retourner 
 		$cpt = 0;
-		foreach (Kernel::$PDO->query("SHOW COLUMNS FROM ".$class) as $row) {
-			$select[$cpt] = "A.".$row["Field"];
-			$cpt++;
-   		}	
+
+		// Récupération et/ou mise en cache
+		$Cache = $this->getCache();
+		if(!$attributs = $Cache->read("ORM_table_".$class)) {
+			$attributs = Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($class))->fetchArray();
+			$Cache->write("ORM_table_".$class, serialize($attributs));
+		} 
+		else
+			$attributs = unserialize($attributs);
+
+		$select = array();
+		foreach ($attributs as $row => $value)
+			$select[] = "A.".$value["name_column"];
+		
+		// Ajout de l'id
+		array_unshift($select, "A.id");
+
    		$table = $class."_".strtolower($this->_class);
    		if(!Sql2::table_exist($table))
    			$table = strtolower($this->_class)."_".$class;
