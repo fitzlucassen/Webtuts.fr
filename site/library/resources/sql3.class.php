@@ -16,6 +16,9 @@ class Sql2 {
 	public static $TYPE_INSERT = "_INSERT";
 	public static $TYPE_UPDATE = "_UPDATE";
 
+	public static $COUNT = 0;
+	public static $HISTO = array();
+
 	public static $TYPE_NO_QUOTE = false;
 
 	public static $OPE_DEFAULT = "=";
@@ -302,6 +305,8 @@ class Sql2 {
 			if(!class_exists($this->class))
 				$class = "Std";
 			else $class = $this->class;
+			Sql2::$COUNT += 1;
+			Sql2::$HISTO[] = $requete;
 			$return = Kernel::$PDO->query($requete)->fetchObject($class);
 			if(method_exists($return,'setNameClass')) {
 				$return->setNameClass($this->class);
@@ -315,6 +320,8 @@ class Sql2 {
 	public function fetchArray() {
 		$requete = $this->getRequete();
 		$return = array();
+		Sql2::$COUNT += 1;
+		Sql2::$HISTO[] = $requete;
 		foreach(Kernel::$PDO->query($requete) as $ligne) 
 			$return[] = $ligne;
 		return $return;
@@ -327,6 +334,8 @@ class Sql2 {
 				$class = "Std";
 			else $class = $this->class;
 			$collection = new Collection();
+			Sql2::$COUNT += 1;
+			Sql2::$HISTO[] = $requete;
 			foreach(Kernel::$PDO->query($requete) as $value) {
 				$object = OrmStdAbstract::n($class)->hydrate($value);
 				$collection->hydrate($object);
@@ -340,6 +349,8 @@ class Sql2 {
 	public function execute() {
 		if($this->type == Sql2::$TYPE_INSERT || $this->type == Sql2::$TYPE_UPDATE){
 			$requete = $this->getRequete();
+			Sql2::$COUNT += 1;
+			Sql2::$HISTO[] = $requete;
 			if(Kernel::$PDO->exec($requete)) {
 				return true;
 			}
@@ -353,6 +364,8 @@ class Sql2 {
 	public function fetch($rang=0) {
 		if($this->type == Sql::$_SELECT) {
 			$requete = $this->getRequete();
+			Sql2::$COUNT += 1;
+			Sql2::$HISTO[] = $requete;
 			return Kernel::$PDO->query($requete)->fetchColumn($rang);
 		}
 		else
