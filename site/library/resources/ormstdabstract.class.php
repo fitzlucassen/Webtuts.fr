@@ -205,9 +205,14 @@ abstract class OrmStdAbstract {
 			return false;
 	}
 
-	public function getTypages() {
+	public function getTypes($attribut = null) {
 		$this->setTypes();
-		return $this->_types;
+		if($attribut == null)
+			return $this->_types;
+		else {
+			$attribut = "__".$attribut;
+			return $this->$attribut;
+		}
 	}
 
 	/*
