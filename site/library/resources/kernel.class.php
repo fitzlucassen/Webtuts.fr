@@ -84,15 +84,7 @@ class Kernel {
 	}
 
 	public function setKernel($url, $path_type) {
-		spl_autoload_register(function ($class) {
-		    if (strstr($class, "Controler")) {
-			    if(file_exists(__apps_dir__.__app__.'/'.str_replace("controler", "",mb_strtolower($class)).'/index.php')) // Debug for class_exists()
-					require_once(__apps_dir__.__app__.'/'.str_replace("controler", "",mb_strtolower($class)).'/index.php');
-				else
-					header("Location:/404");
-			}
-		});
-
+		
 		/*
 		///categorie-nom/article-nom/
 

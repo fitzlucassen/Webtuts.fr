@@ -53,9 +53,6 @@
 	/* Kernel */
 	require(__library_dir__.'resources/kernel.class.php');
 
-	/* Model */
-	require(__library_dir__.'modele/index.php');
-
 	/* Fonctions diverses */
 	require(__library_dir__.'resources/functions.php');
 
