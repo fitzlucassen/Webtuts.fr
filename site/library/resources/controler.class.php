@@ -9,7 +9,7 @@ abstract class Controler {
 		Description : Permet de créer le systeme de cache pour le controller dans le dossier approprié.
 	*/
 	public function setCache($dirname, $duration = 60) { // Cache de 60 minutes par défault
-		$this->cache = new Cache("/site/cache/controllers/".$dirname, $duration);
+		$this->cache = new Cache(Cache::getDir().__app__."/".$dirname, $duration);
 	}
 
 	/*

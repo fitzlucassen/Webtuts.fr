@@ -28,10 +28,10 @@ class Session {
 		return $this->user;
 	}
 
-	public function connect($id, $pwd) {
-		$_SESSION["id"] = $id;
-		$_SESSION["pwd"] = $pwd;
-		$this->user = App::getClass("user", $id);
+	public function connect($user) {
+		$_SESSION["id"] = $user->get("id");
+		$_SESSION["pwd"] = $user->get("password");
+		$this->user = $user;
 		return true;
 	}
 

@@ -124,7 +124,6 @@ abstract class OrmStdAbstract {
 				elseif($typeLink=="collection") { // Collection of object
 					$this->setCollection($attribut, $tmp[1]);
 				}
-				return $this->$attribut;
 			} 
 			elseif(!is_object($this->$attribut) && ($tmp[0]=="type")) {
 				/*
@@ -132,12 +131,7 @@ abstract class OrmStdAbstract {
 				*/
 				if($tmp[1]=="lang") {
 					$this->$attribut = new Lang($this->$attribut, $params);
-				}			
-
-				return $this->$attribut;
-			} 
-			else{
-				return $this->$attribut;
+				}
 			}
 		}
 		else {
@@ -153,8 +147,8 @@ abstract class OrmStdAbstract {
 					}
 				}
 			}
-			return $this->$attribut;
-		}			
+		}	
+		return $this->$attribut;		
 	}
 
 	/*functions */
