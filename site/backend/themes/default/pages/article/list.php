@@ -12,7 +12,7 @@
 
 	<?php for ($cpt=0;$cpt<$articles->count();$cpt++) : ?>
 	<a class="itemlist" href="<?php echo createLink("/article/show/".$articles->get($cpt)->get("id")); ?>">
-		<div class="titleitem" style="float: left;width: 200px;">
+		<div class="titleitem" style="float: left;width: 400px;">
 			<?php echo lang($articles->get($cpt)->get("title")); ?>
 		</div>
 		<div class="descriptionitem" style="position: relative;overflow: hidden;padding-top: 1px;padding-left: 10px;">

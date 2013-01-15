@@ -305,7 +305,6 @@ class Sql2 {
 			$return = Kernel::$PDO->query($requete)->fetchObject($class);
 			if(method_exists($return,'setNameClass')) {
 				$return->setNameClass($this->class);
-				$return->setTypage(Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->class))->fetchArray());
 			}
 			return $return;
 		}
@@ -328,10 +327,8 @@ class Sql2 {
 				$class = "Std";
 			else $class = $this->class;
 			$collection = new Collection();
-			$types = Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->class))->fetchArray();
 			foreach(Kernel::$PDO->query($requete) as $value) {
 				$object = OrmStdAbstract::n($class)->hydrate($value);
-				$object->setTypage($types);
 				$collection->hydrate($object);
 			}
 			return $collection;

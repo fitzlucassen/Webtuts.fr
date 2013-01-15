@@ -19,12 +19,31 @@ abstract class OrmStdAbstract {
 	}
 
 	public function __get($name) {
-		if($name[0]=="_" && $name[1]=="_")
+		if($name[0]=="_" && $name[1]=="_") {
+			$this->setTypes(); // Si le typages n'est pas encore mis
 			return $this->_types[strtok($name, "__")];
+		}
 		elseif($name[0]=="_")
 			return $this->$name;
 		else
 			return $this->_attributes[$name];
+	}
+
+	private function setTypes() {
+		if(empty($this->_types)) {
+			$Cache = new Cache(Cache::getDir()."orm", 60);
+			if(!$types = $Cache->read("ORM_table_".$this->_class)) {
+				$types = Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->_class))->fetchArray();
+				$Cache->write("ORM_table_".$this->_class, serialize($types));
+				echo "CALCULATE";
+			} 
+			else
+				$types = unserialize($types);
+			foreach ($types as $value) {
+				$nomAttribut = "__".$value["name_column"];
+				$this->$nomAttribut = $value["type"];
+			}
+		}
 	}
 
 	public function __set($name, $value) {
@@ -51,15 +70,6 @@ abstract class OrmStdAbstract {
 		else
 			$this->hydrate($params);
 		return $this;
-	}
-
-	public function setTypage($typages) {
-		if(empty($this->_types)) {
-			foreach ($typages as $value) {
-				$nomAttribut = "__".$value["name_column"];
-				$this->$nomAttribut = $value["type"];
-			}
-		}
 	}
 
 	static public function n($class) {
@@ -142,10 +152,7 @@ abstract class OrmStdAbstract {
 
 	/*functions */
 
-	public function hydrate($id, $types = null) {
-		if($types==null)
-			$types = Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->_class))->fetchArray();
-		$this->setTypage($types);
+	public function hydrate($id) {
 		if(is_numeric($id)) {
 			$clone = Sql2::create()->from(strtolower($this->_class))->where("id", Sql2::$OPE_EQUAL, $id)->fetchClass();
 			foreach ($clone as $attribut => $valeur)
@@ -199,8 +206,7 @@ abstract class OrmStdAbstract {
 	}
 
 	public function getTypages() {
-		if(empty($this->_types))
-			$this->setTypage($types = Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->_class))->fetchArray());
+		$this->setTypes();
 		return $this->_types;
 	}
 

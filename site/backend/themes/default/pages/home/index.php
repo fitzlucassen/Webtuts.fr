@@ -12,6 +12,10 @@
 	<div style="height: 20px;">
 	</div>
 
+	<pre>
+<?php $test = App::getClass("article", 1); $test->get("author"); print_r($test); ?>
+	</pre>
+
 	<div style="float: right;width: 200px;margin-left: 20px;">
 		<div style="border-bottom: 1px solid #E5E5E5;font-size: 0.8em;font-weight: bold;padding-bottom: 3px;">
 			Quick links

@@ -7,6 +7,10 @@ class Cache {
 	public $duration; // Durée de vie du cache en minutes
 	public $buffer;
 
+	public static function getDir() {
+		return __cache_dir__;
+	}
+
 	public function __construct($dirname, $duration) {
 		$this->dirname = $dirname;
 		$this->duration = $duration;

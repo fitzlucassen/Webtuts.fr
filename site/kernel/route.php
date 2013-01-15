@@ -7,6 +7,9 @@
 	/* Apps */
 	define("__apps_dir__", _host_."apps/");
 
+	/* Cache */
+	define("__cache_dir__", _host_."cache/");
+
 	/* library */
 	define("__library_dir__", _host_."library/");
 
