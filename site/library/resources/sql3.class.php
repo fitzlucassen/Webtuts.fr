@@ -330,14 +330,11 @@ class Sql2 {
 	public function fetchClassArray() {
 		if($this->type==Sql2::$TYPE_SELECT)	{
 			$requete = $this->getRequete();
-			if(!class_exists($this->class))
-				$class = "Std";
-			else $class = $this->class;
 			$collection = new Collection();
 			Sql2::$COUNT += 1;
 			Sql2::$HISTO[] = $requete;
 			foreach(Kernel::$PDO->query($requete) as $value) {
-				$object = OrmStdAbstract::n($class)->hydrate($value);
+				$object = OrmStdAbstract::n($this->class)->hydrate($value);
 				$collection->hydrate($object);
 			}
 			return $collection;

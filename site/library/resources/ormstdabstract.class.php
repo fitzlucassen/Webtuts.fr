@@ -35,7 +35,6 @@ abstract class OrmStdAbstract {
 			if(!$types = $Cache->read("ORM_table_".$this->_class)) {
 				$types = Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->_class))->fetchArray();
 				$Cache->write("ORM_table_".$this->_class, serialize($types));
-				echo "CALCULATE";
 			} 
 			else
 				$types = unserialize($types);
@@ -205,6 +204,7 @@ abstract class OrmStdAbstract {
 			return false;
 	}
 
+/*
 	public function getTypes($attribut = null) {
 		$this->setTypes();
 		if($attribut == null)
@@ -213,7 +213,7 @@ abstract class OrmStdAbstract {
 			$attribut = "__".$attribut;
 			return $this->$attribut;
 		}
-	}
+	}*/
 
 	/*
 		Peut prendre 3 types de syntaxe en parametres
