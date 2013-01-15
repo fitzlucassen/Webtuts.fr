@@ -1,6 +1,6 @@
 <?php
 
-class ErrorController extends Controller {
+class ErrorControler extends Controler {
 	public function IndexAction($params) {
 		return $this->render(array('code' => $params[2]), array("error", "1"));
 	}

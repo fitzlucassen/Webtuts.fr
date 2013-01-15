@@ -16,7 +16,7 @@
 	require(__library_dir__.'resources/request.class.php');
 
 	/* Connexion a la bd */
-	require(__library_dir__.'resources/controller.class.php');
+	require(__library_dir__.'resources/controler.class.php');
 
 	/* Error class */
 	require(__library_dir__.'resources/error.class.php');

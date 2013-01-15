@@ -1,6 +1,6 @@
 <?php
 
-class PageController extends Controller {
+class PageControler extends Controler {
 	public function IndexAction($params) {
 		return $this->redirect("page/list");
 	}

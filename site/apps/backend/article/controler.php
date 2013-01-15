@@ -1,6 +1,6 @@
 <?php
 
-class ArticleController extends Controller {
+class ArticleControler extends Controler {
 	public function IndexAction($params) {
 		return $this->redirect("article/list");
 	}

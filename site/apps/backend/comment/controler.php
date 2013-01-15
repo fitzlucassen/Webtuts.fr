@@ -1,6 +1,6 @@
 <?php
 
-class CommentController extends Controller {
+class CommentControler extends Controler {
 		public function IndexAction($params) {
 		return $this->redirect("comment/list");
 	}

@@ -1,6 +1,6 @@
 <?php
 
-class HomeController extends Controller {
+class HomeControler extends Controler {
 	public function IndexAction($params) {
 	    $cats = App::getClassArray("category");
 	    $articles_all = App::getClassArray("article");

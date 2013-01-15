@@ -1,6 +1,6 @@
 <?php
 
-class CategoryController extends Controller {
+class CategoryControler extends Controler {
 	public function IndexAction($params) {
 		return $this->redirect("category/list");
 	}

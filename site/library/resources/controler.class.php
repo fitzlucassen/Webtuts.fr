@@ -1,6 +1,6 @@
 <?php
 
-abstract class Controller {
+abstract class Controler {
 
 	private $cache;
 

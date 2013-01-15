@@ -9,9 +9,17 @@
 
 abstract class OrmStdAbstract {
 
+	private static $CACHE = null;
+
 	private $_class;
 	private $_attributes = array();
 	private $_types = array();
+
+	public function getCache() {
+		if(OrmStdAbstract::$CACHE==null)
+			OrmStdAbstract::$CACHE = new Cache(Cache::getDir()."orm", 60);
+		return OrmStdAbstract::$CACHE;
+	}
 
 
 	public function setNameClass($class) {
@@ -31,7 +39,7 @@ abstract class OrmStdAbstract {
 
 	private function setTypes() {
 		if(empty($this->_types)) {
-			$Cache = new Cache(Cache::getDir()."orm", 60);
+			$Cache = $this->getCache();
 			if(!$types = $Cache->read("ORM_table_".$this->_class)) {
 				$types = Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->_class))->fetchArray();
 				$Cache->write("ORM_table_".$this->_class, serialize($types));

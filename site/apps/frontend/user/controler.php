@@ -1,6 +1,6 @@
 <?php
 
-class UserController extends Controller {
+class UserControler extends Controler {
 	public function IndexAction($params) {
 		/*
 			if($user = Kernel->get("session")) {
