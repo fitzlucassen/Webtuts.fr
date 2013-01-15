@@ -7,4 +7,4 @@ Created by :
   Jonathan B.
   Richard E.
   Thibault D.
-  Quentin.
+  Quentin D.
