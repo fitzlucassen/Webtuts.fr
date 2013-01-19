@@ -171,9 +171,46 @@ abstract class OrmStdAbstract {
 
 	public function checkData() {
 		if(empty($this->id)) {
-
-
-			return true;
+			$types = $this->getTypes();
+			$valid = true;
+			foreach ($this->getTypes() as $key => $value) {
+				$type = explode(" ", $value);
+				if($type[0] == "type") {
+					if($value == "type lang") {
+						if(!is_array($this->$key))
+							$valid = false;
+						foreach ($this->$key as $key => $value) {
+							if(empty($value))
+								$valid = false;
+						}
+					}
+					elseif($value == "type bool") {
+						if(is_bool($this->$key)) {
+							if($this->$key)
+								$this->$key = 1;
+							else
+								$this->$key = 0;
+						}
+						if($this->$key!=0 && $this->$key!=1)
+							$valid = false;
+					}
+					elseif(empty($this->$key))
+						$valid = false;
+				}
+				if($type[0] == "class") {
+					if(!is_numeric($this->$key)) {
+						$valid = false;
+					}
+				}
+				if($type[0] == "collection") {
+					if(!empty($this->$key)) {
+						$valid = false;
+					}
+				}
+				/*if(!$valid)
+					echo $key."[".$value."]";*/
+			}
+			return $valid;
 		}
 		else
 			return false;

@@ -3,6 +3,11 @@
 		<div style="font-size: 1.6em;float: left;">
 			<?php echo ucfirst(text("add_a_category")); ?>
 		</div>
+		<?php if(!empty($error)) { ?>
+		<div style="padding-top: 10px;padding-left: 20px;color: red;float: left;">
+			<?php echo $error; ?>
+		</div>
+		<?php } ?>
 		<div style="clear: both;">
 		</div>
 	</div>
@@ -45,7 +50,7 @@
 		</div>
 
 		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
-			<?php echo ucfirst(text("image")); ?> (en)
+			Code <?php echo ucfirst(text("image")); ?>
 		</div>
 		<div style="overflow: hidden;padding: 10px;">
 			<input name="image" type="text"/>

@@ -23,8 +23,11 @@ class CategoryControler extends Controler {
 			$attr["name"] = $name;
 			$attr["description"] = $desc;
 			$attr["image"] = $data["image"];
-			$categorie = App::getClass("category")->hydrate($attr)->save();
-			return $this->redirect("category/show/".$categorie->get("id"));
+			$attr["deleted"] = 0;
+			if($categorie = App::getClass("category")->hydrate($attr)->save())
+				return $this->redirect("category/show/".$categorie->get("id"));
+			else
+				return $this->render(array("error" => "Vous n'avez pas bien rempli le formulaire"));
 		}
 		else {
 			return $this->render(null);
