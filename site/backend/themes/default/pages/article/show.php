@@ -52,6 +52,7 @@
 	<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
 		<?php echo ucfirst(text("tags")); ?>
 	</div>
+	<?php if(count($article->get("tags"))>0) : ?>
 	<div style="overflow: hidden;padding: 11px 15px;">
 		<?php foreach($article->get("tags") as $tag) : ?>
 		<a href="<?php echo createLink("/tag/show/".$tag->get("id")); ?>" style="display: inline-block;padding: 4px 10px;font-size: 0.8em;background-color: rgb(227,223,223);margin-right: 5px;border-radius: 2px;-webkit-border-radius: 2px;-moz-border-radius: 2px;-o-border-radius: 2px;-ms-border-radius: 2px;">	
@@ -59,6 +60,11 @@
 		</a>
 		<?php endforeach; ?>
 	</div>
+	<?php else: ?>
+	<div style="overflow: hidden;padding: 15px;">
+		<?php echo ucfirst(text("no_tags")); ?>
+	</div>
+	<?php endif; ?>
 	<div style="clear: left;">
 	</div>
 </div>
