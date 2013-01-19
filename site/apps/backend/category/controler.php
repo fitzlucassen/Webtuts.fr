@@ -15,7 +15,20 @@ class CategoryControler extends Controler {
 	}
 
 	public function AddAction($params) {
-		return $this->render(array('user' => null));
+		$form = $this->getRequest();
+		if($form->isMethod("post")) {
+			$data = $form->getData();
+			$name = array("fr" => $data["name-fr"], "en" => $data["name-en"]);
+			$desc = array("fr" => $data["description-fr"], "en" => $data["description-en"]);
+			$attr["name"] = $name;
+			$attr["description"] = $desc;
+			$attr["image"] = $data["image"];
+			$categorie = App::getClass("category")->hydrate($attr)->save();
+			return $this->redirect("category/show/".$categorie->get("id"));
+		}
+		else {
+			return $this->render(null);
+		}
 	}
 
 	public function DeleteAction($params) {

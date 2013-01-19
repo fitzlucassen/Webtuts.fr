@@ -58,11 +58,19 @@ input[type=submit]:active {
 textarea {
 	margin: 0px;
 	padding: 4px;
-	border-radius: 2px;
 	border: 1px solid #B9B9B9;
 	outline: none;
 	font-size: 1em;
 	width: 100%;
 	max-width: 100%;
 	min-height: 130px;
+}
+
+textarea.top {
+	border-radius: 2px 2px 0px 0px;
+	border-bottom: none;
+}
+
+textarea.bottom {
+	border-radius: 0px 0px 2px 2px;
 }

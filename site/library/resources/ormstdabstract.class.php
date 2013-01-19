@@ -183,7 +183,7 @@ abstract class OrmStdAbstract {
 		if(empty($this->id)) {
 			if($this->checkData()) {
 				// enregistrement des langues
-				foreach ($this->_types as $key => $value) {
+				foreach ($this->getTypes() as $key => $value) {
 					if($value == "type lang") {
 						$id_lang = Sql2::create()->select("COUNT(DISTINCT id_lang)")->from("lang")->fetch();
 						$id_lang++;
@@ -194,8 +194,8 @@ abstract class OrmStdAbstract {
 					}
 				}
 
-				if(Sql2::create()->insert($this->_class)->columnsValues($this->_attributes)->execute())
-					return true;//Sql2::create()->from($this->_class)->where("id", Sql2::$OPE_EQUAL, mysql_insert_id()->fetchClass());
+				if($id = Sql2::create()->insert($this->_class)->columnsValues($this->_attributes)->execute())
+					return Sql2::create()->from($this->_class)->where("id", Sql2::$OPE_EQUAL, $id)->fetchClass();
 				else
 					return false;
 			}
@@ -206,7 +206,7 @@ abstract class OrmStdAbstract {
 			return false;
 	}
 
-/*
+
 	public function getTypes($attribut = null) {
 		$this->setTypes();
 		if($attribut == null)
@@ -215,7 +215,7 @@ abstract class OrmStdAbstract {
 			$attribut = "__".$attribut;
 			return $this->$attribut;
 		}
-	}*/
+	}
 
 
 	/*

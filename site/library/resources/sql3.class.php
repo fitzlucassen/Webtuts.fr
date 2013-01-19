@@ -349,7 +349,10 @@ class Sql2 {
 			Sql2::$COUNT += 1;
 			Sql2::$HISTO[] = $requete;
 			if(Kernel::$PDO->exec($requete)) {
-				return true;
+				if($this->type == Sql2::$TYPE_INSERT)
+					return Kernel::$PDO->lastInsertId();
+				else
+					return true;
 			}
 			else
 				return false;

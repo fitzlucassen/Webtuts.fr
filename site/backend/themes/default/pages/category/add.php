@@ -9,21 +9,48 @@
 
 	<form action="" method="post">
 		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
-			<?php echo ucfirst(text("name")); ?>
+			<?php echo ucfirst(text("name")); ?> (fr)
 		</div>
 		<div style="overflow: hidden;padding: 10px;">
-			<input name="name" type="text"/>
-		</div>
-		<div style="clear: left;">
+			<input name="name-fr" type="text"/>
 		</div>
 		<div style="clear: left;">
 		</div>
 
 		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
-			<?php echo ucfirst(text("description")); ?>
+			<?php echo ucfirst(text("name")); ?> (en)
 		</div>
 		<div style="overflow: hidden;padding: 10px;">
-			<textarea name="description"></textarea>
+			<input name="name-en" type="text"/>
+		</div>
+		<div style="clear: left;">
+		</div>
+
+		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
+			<?php echo ucfirst(text("description")); ?> (fr)
+		</div>
+		<div style="overflow: hidden;padding: 10px;">
+			<textarea name="description-fr"></textarea>
+		</div>
+		<div style="clear: left;">
+		</div>
+
+		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
+			<?php echo ucfirst(text("description")); ?> (en)
+		</div>
+		<div style="overflow: hidden;padding: 10px;">
+			<textarea name="description-en"></textarea>
+		</div>
+		<div style="clear: left;">
+		</div>
+
+		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
+			<?php echo ucfirst(text("image")); ?> (en)
+		</div>
+		<div style="overflow: hidden;padding: 10px;">
+			<input name="image" type="text"/>
+		</div>
+		<div style="clear: left;">
 		</div>
 
 		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
