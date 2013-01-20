@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Dim 13 Janvier 2013 à 19:10
+-- Généré le: Dim 20 Janvier 2013 à 22:45
 -- Version du serveur: 5.5.25
 -- Version de PHP: 5.4.4
 
@@ -128,7 +128,7 @@ CREATE TABLE `category` (
   `articles` int(11) DEFAULT NULL,
   `image` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
 
 --
 -- Contenu de la table `category`
@@ -145,7 +145,17 @@ INSERT INTO `category` (`id`, `deleted`, `name`, `description`, `articles`, `ima
 (8, 1, 35, 36, NULL, 7),
 (9, 1, 35, 36, NULL, 7),
 (10, 0, 71, 72, NULL, 7),
-(11, 0, 73, 74, NULL, 7);
+(11, 0, 73, 74, NULL, 7),
+(12, 0, 82, 83, NULL, 1),
+(13, 0, 84, 85, NULL, 1),
+(14, 0, 88, 89, NULL, 1),
+(15, 0, 92, 93, NULL, 1),
+(16, 0, 94, 95, NULL, 1),
+(17, 0, 96, 97, NULL, 1),
+(18, 0, 108, 109, NULL, 1),
+(19, 0, 110, 111, NULL, 1),
+(20, 0, 144, 145, NULL, 1),
+(21, 0, 146, 147, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -155,15 +165,16 @@ INSERT INTO `category` (`id`, `deleted`, `name`, `description`, `articles`, `ima
 
 CREATE TABLE `cms_site_params` (
   `title` text NOT NULL,
-  `time` text NOT NULL
+  `time` text NOT NULL,
+  `theme` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `cms_site_params`
 --
 
-INSERT INTO `cms_site_params` (`title`, `time`) VALUES
-('webtuts', 'test');
+INSERT INTO `cms_site_params` (`title`, `time`, `theme`) VALUES
+('webtuts', 'test', 'default');
 
 -- --------------------------------------------------------
 
@@ -229,7 +240,7 @@ CREATE TABLE `lang` (
   `lang` text NOT NULL,
   `text` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=103 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=229 ;
 
 --
 -- Contenu de la table `lang`
@@ -248,7 +259,7 @@ INSERT INTO `lang` (`id`, `id_lang`, `lang`, `text`) VALUES
 (10, 10, 'fr', 'Ici vous apprendrez &agrave; vous servir de certain logiciels tr&egrave;s utiles pour faciliter vos d&eacute;veloppements.'),
 (11, 11, 'fr', 'PHP'),
 (12, 12, 'fr', 'Tous les tutoriels utilisant le langage PHP'),
-(13, 13, 'fr', 'D&eacute;veloppement<br/>Fonctionnel'),
+(13, 13, 'fr', 'D&eacute;veloppement Fonctionnel'),
 (14, 14, 'fr', 'Ici vous apprendrez &agrave; g&eacute;rez la partit fonctionnel de votre site, c''est &agrave; dire la partie "Intelligente" de celui-ci.'),
 (15, 15, 'fr', 'R&eacute;f&eacute;rencement'),
 (16, 16, 'fr', 'Pour que votre site soit visible, il est essentiel d''accorder une grande importance au r&eacute;f&eacute;rencement de celui-ci afin de devenir "SEO friendly" ! C''est par ici !'),
@@ -336,8 +347,134 @@ INSERT INTO `lang` (`id`, `id_lang`, `lang`, `text`) VALUES
 (98, 77, 'fr', 'Les notifications pour la page d''accueil du Backoffice'),
 (99, 78, 'fr', 'Liste des fonctionalités de la class App'),
 (100, 79, 'fr', 'App::getClass("article", $id); // retourne l''objet d''id $id\r\nApp::getClass("article"); // retourne l''objet vierge\r\nApp::getClass("article")->getTypages(); // retourne un tableau de tous les coulons et leurs typages\r\nApp::getClass("article")->hydrate($array); // hydrate un article avec $array le tableau de toutes les colonnes. Pour les langues il faut : \r\n…., "title" => array("fr" => "le titre", "en" => "the title"), ….\r\nPour les liens vers un objet, on met l''id, pour les liens OneToMany, on ne met rien.\r\nApp::getClass("article")->hydrate($array)->save(); //enregistre en BDD\r\nApp::getClass("article")->hydrate($array)->checkData(); regarde si l''hydrate est bon (renvoie tirs true pour le moment)\r\n\r\nApp::getClassArray("article", array( // sans second paramètre, ils sont tous retourné\r\n  "where" => $condition, // "nothave category" pour n''ayant aucune categories\r\n  "orderBy" => array($attribut, $way), // "orderBy" => $attribut // ASC par defaut\r\n  "limit" => array($start, $nb) // "limit" => $nb\r\n));\r\nJe travail actuellement pour mettre des "where", "and" et "or" de façon simple, pour ''instant vous êtes bloqué à une condition "where" :D'),
+(119, 90, 'fr', 'Essai'),
+(120, 91, 'fr', 'Test'),
+(121, 92, 'fr', 'Test'),
 (101, 80, 'fr', 'Liste des fonctionalités de la class Kernel'),
-(102, 81, 'fr', 'Kernel::get("app") // Nom de l''app\r\nKernel::get("controller") // Nom du controller\r\nKernel::get("action") // Nom de l''action\r\nKernel::get("session") // Retourne l''objet Session\r\n  Kernel::get("session")->connect($id, md5($mdp));\r\n  Kernel::get("session")->disconnect();\r\nKernel::get("lang") // Nom de la lang\r\nKernel::get("lange") // Tableau de toutes les langues dispo\r\nKernel::get("langdefault") // lang par default\r\nKernel::get("params") // Tableau des paramètres du site\r\nKernel::get("cache") // Retourne l''objet Cache du kernel\r\nKernel::get("user") // retourne l''utilisateur connecté. Pareil que Kernel::get("session")->getUser();');
+(102, 81, 'fr', 'Kernel::get("app") // Nom de l''app\r\nKernel::get("controller") // Nom du controller\r\nKernel::get("action") // Nom de l''action\r\nKernel::get("session") // Retourne l''objet Session\r\n  Kernel::get("session")->connect($id, md5($mdp));\r\n  Kernel::get("session")->disconnect();\r\nKernel::get("lang") // Nom de la lang\r\nKernel::get("langs") // Tableau de toutes les langues dispo\r\nKernel::get("langdefault") // lang par default\r\nKernel::get("params") // Tableau des paramètres du site\r\nKernel::get("cache") // Retourne l''objet Cache du kernel\r\nKernel::get("user") // retourne l''utilisateur connecté. Pareil que Kernel::get("session")->getUser();'),
+(103, 82, 'fr', 'new'),
+(104, 82, 'en', 'new'),
+(105, 83, 'fr', 'new'),
+(106, 83, 'en', 'new'),
+(107, 84, 'fr', 'Nouvelle cat'),
+(108, 84, 'en', 'New cat'),
+(109, 85, 'fr', 'Nouvelle'),
+(110, 85, 'en', 'New'),
+(111, 86, 'fr', 'Nouvelle cat'),
+(112, 86, 'en', 'New cat'),
+(113, 87, 'fr', 'Nouvelle'),
+(114, 87, 'en', 'New'),
+(115, 88, 'fr', 'Nouvelle cat'),
+(116, 88, 'en', 'New cat'),
+(117, 89, 'fr', 'Nouvelle'),
+(118, 89, 'en', 'New'),
+(122, 92, 'en', 'Tes'),
+(123, 93, 'fr', 'Test'),
+(124, 93, 'en', 'Test'),
+(125, 94, 'fr', 'Test'),
+(126, 94, 'en', 'Tes'),
+(127, 95, 'fr', 'Test'),
+(128, 95, 'en', 'Test'),
+(129, 96, 'fr', 'Test'),
+(130, 96, 'en', 'Tes'),
+(131, 97, 'fr', 'Test'),
+(132, 97, 'en', 'Test'),
+(133, 98, 'fr', 'test'),
+(134, 99, 'fr', 'tes'),
+(135, 100, 'fr', 'tes'),
+(136, 101, 'fr', 'tes'),
+(137, 102, 'fr', 'Tes'),
+(138, 102, 'en', 'Tes'),
+(139, 103, 'fr', 'Tes'),
+(140, 103, 'en', 'Tes'),
+(141, 104, 'fr', 'Test'),
+(142, 104, 'en', 'Test'),
+(143, 105, 'fr', 'Test'),
+(144, 105, 'en', 'Test'),
+(145, 106, 'fr', 'Tes'),
+(146, 106, 'en', 'Tes'),
+(147, 107, 'fr', 'Tes'),
+(148, 107, 'en', 'tes'),
+(149, 108, 'fr', 'Tes'),
+(150, 108, 'en', 'Tes'),
+(151, 109, 'fr', 'Tes'),
+(152, 109, 'en', 'tes'),
+(153, 110, 'fr', 'Tes'),
+(154, 110, 'en', 'Tes'),
+(155, 111, 'fr', 'Tes'),
+(156, 111, 'en', 'Tes'),
+(157, 112, 'fr', 'Test Type'),
+(158, 112, 'en', 'Test Type'),
+(159, 113, 'fr', 'Test Type'),
+(160, 113, 'en', 'Test Type'),
+(161, 114, 'fr', 'Test Type'),
+(162, 114, 'en', 'Test Type'),
+(163, 115, 'fr', 'Test Type'),
+(164, 115, 'en', 'Test Type'),
+(165, 116, 'fr', 'Test Type'),
+(166, 116, 'en', 'Test Type'),
+(167, 117, 'fr', 'Test Type'),
+(168, 117, 'en', 'Test Type'),
+(169, 118, 'fr', 'Test Type'),
+(170, 118, 'en', 'Test Type'),
+(171, 119, 'fr', 'Test Type'),
+(172, 119, 'en', 'Test Type'),
+(173, 120, 'fr', 'Test Type'),
+(174, 120, 'en', 'Test Type'),
+(175, 121, 'fr', 'Test Type'),
+(176, 121, 'en', 'Test Type'),
+(177, 122, 'fr', 'Test Type'),
+(178, 122, 'en', 'Test Type'),
+(179, 123, 'fr', 'Test Type'),
+(180, 123, 'en', 'Test Type'),
+(181, 124, 'fr', 'Test Type'),
+(182, 124, 'en', 'Test Type'),
+(183, 125, 'fr', 'Test Type'),
+(184, 125, 'en', 'Test Type'),
+(185, 126, 'fr', 'Test Type'),
+(186, 126, 'en', 'Test Type'),
+(187, 127, 'fr', 'Test Type'),
+(188, 127, 'en', 'Test Type'),
+(189, 128, 'fr', 'Test Type'),
+(190, 128, 'en', 'Test Type'),
+(191, 129, 'fr', 'Test Type'),
+(192, 129, 'en', 'Test Type'),
+(193, 130, 'fr', 'Test Type'),
+(194, 130, 'en', 'Test Type'),
+(195, 131, 'fr', 'Test Type'),
+(196, 131, 'en', 'Test Type'),
+(197, 132, 'fr', 'Test Type'),
+(198, 132, 'en', 'Test Type'),
+(199, 133, 'fr', 'Test Type'),
+(200, 133, 'en', 'Test Type'),
+(201, 134, 'fr', 'Test Type'),
+(202, 134, 'en', 'Test Type'),
+(203, 135, 'fr', 'Test Type'),
+(204, 135, 'en', 'Test Type'),
+(205, 136, 'fr', 'Test Type'),
+(206, 136, 'en', 'Test Type'),
+(207, 137, 'fr', 'Test Type'),
+(208, 137, 'en', 'Test Type'),
+(209, 138, 'fr', 'Test Type'),
+(210, 138, 'en', 'Test Type'),
+(211, 139, 'fr', 'Test Type'),
+(212, 139, 'en', 'Test Type'),
+(213, 140, 'fr', 'Test Type'),
+(214, 140, 'en', 'Test Type'),
+(215, 141, 'fr', 'Test Type'),
+(216, 141, 'en', 'Test Type'),
+(217, 142, 'fr', 'Test Type'),
+(218, 142, 'en', 'Test Type'),
+(219, 143, 'fr', 'Test Type'),
+(220, 143, 'en', 'Test Type'),
+(221, 144, 'fr', 'Test Type'),
+(222, 144, 'en', 'Test Type'),
+(223, 145, 'fr', 'Test Type'),
+(224, 145, 'en', 'Test Type'),
+(225, 146, 'fr', 'Testouille'),
+(226, 146, 'en', 'Testouille'),
+(227, 147, 'fr', 'Testouille'),
+(228, 147, 'en', 'Testouille');
 
 -- --------------------------------------------------------
 
@@ -398,7 +535,7 @@ CREATE TABLE `orm_columns_types` (
   `name_table` text NOT NULL,
   `name_column` text NOT NULL,
   `type` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 DATA DIRECTORY='./webtuts/' INDEX DIRECTORY='./webtuts/';
 
 --
 -- Contenu de la table `orm_columns_types`
@@ -415,7 +552,7 @@ INSERT INTO `orm_columns_types` (`name_table`, `name_column`, `type`) VALUES
 ('article', 'image', 'class image'),
 ('article', 'title', 'type lang'),
 ('article', 'text', 'type lang'),
-('article', 'views', 'type int'),
+('article', 'views', 'type integer'),
 ('category', 'name', 'type lang'),
 ('category', 'description', 'type lang'),
 ('comment', 'article', 'class article'),
@@ -423,29 +560,29 @@ INSERT INTO `orm_columns_types` (`name_table`, `name_column`, `type`) VALUES
 ('comment', 'text', 'type text'),
 ('comment', 'date', 'type datetime'),
 ('comment', 'deleted', 'type bool'),
-('image', 'name', 'type string'),
-('image', 'type', 'type string'),
-('image', 'width', 'type int'),
-('image', 'height', 'type int'),
+('image', 'name', 'type text'),
+('image', 'type', 'type text'),
+('image', 'width', 'type integer'),
+('image', 'height', 'type integer'),
 ('image', 'deleted', 'type bool'),
-('image', 'size', 'type int'),
-('newsletter', 'mail', 'type string'),
+('image', 'size', 'type integer'),
+('newsletter', 'mail', 'type text'),
 ('user', 'deleted', 'type bool'),
 ('node', 'name', 'type lang'),
 ('node', 'description', 'type lang'),
 ('tag', 'name', 'type lang'),
 ('tag', 'description', 'type lang'),
-('lang', 'lang', 'type string'),
-('lang', 'text', 'type string'),
+('lang', 'lang', 'type text'),
+('lang', 'text', 'type text'),
 ('user', 'banned', 'type bool'),
-('user', 'mail', 'type string'),
-('user', 'surname', 'type string'),
-('user', 'pseudo', 'type string'),
-('user', 'name', 'type string'),
+('user', 'mail', 'type text'),
+('user', 'surname', 'type text'),
+('user', 'pseudo', 'type text'),
+('user', 'name', 'type text'),
 ('user', 'datesignin', 'type datetime'),
 ('user', 'image', 'class image'),
-('user', 'civility', 'type string'),
-('user', 'password', 'type string'),
+('user', 'civility', 'type text'),
+('user', 'password', 'type text'),
 ('category', 'articles', 'collection article'),
 ('article', 'tags', 'collection tag'),
 ('category', 'image', 'class image'),
@@ -454,7 +591,8 @@ INSERT INTO `orm_columns_types` (`name_table`, `name_column`, `type`) VALUES
 ('page', 'content', 'type lang'),
 ('page', 'author', 'class user'),
 ('page', 'date', 'type datetime'),
-('category', 'deleted', 'type bool');
+('category', 'deleted', 'type bool'),
+('user', 'access', 'class access');
 
 -- --------------------------------------------------------
 
@@ -541,6 +679,7 @@ CREATE TABLE `user` (
   `datesignin` datetime NOT NULL,
   `civility` text NOT NULL,
   `password` text NOT NULL,
+  `access` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
@@ -548,10 +687,10 @@ CREATE TABLE `user` (
 -- Contenu de la table `user`
 --
 
-INSERT INTO `user` (`id`, `deleted`, `banned`, `pseudo`, `name`, `surname`, `mail`, `image`, `datesignin`, `civility`, `password`) VALUES
-(1, 0, 0, 'fozeek', 'quentin', 'deneuve', '', 0, '0000-00-00 00:00:00', '', 'cc414bfc9c00475b59c87595299ff31d'),
-(2, 0, 0, 'lolilol', 'lollll', 'dd', 'ddd', 0, '0000-00-00 00:00:00', '', ''),
-(3, 0, 0, 'testCreateSql2', '', '', '', 0, '0000-00-00 00:00:00', '', '');
+INSERT INTO `user` (`id`, `deleted`, `banned`, `pseudo`, `name`, `surname`, `mail`, `image`, `datesignin`, `civility`, `password`, `access`) VALUES
+(1, 0, 0, 'fozeek', 'quentin', 'deneuve', '', 0, '0000-00-00 00:00:00', '', 'cc414bfc9c00475b59c87595299ff31d', 0),
+(2, 0, 0, 'lolilol', 'lollll', 'dd', 'ddd', 0, '0000-00-00 00:00:00', '', '', 0),
+(3, 0, 0, 'testCreateSql2', '', '', '', 0, '0000-00-00 00:00:00', '', '', 0);
 
 -- --------------------------------------------------------
 
