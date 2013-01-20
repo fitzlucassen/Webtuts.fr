@@ -129,22 +129,16 @@ abstract class OrmStdAbstract {
 				/*
 					Gestion des type particulier.
 				*/
-				if($tmp[1]=="lang") {
-					$this->$attribut = new Lang($this->$attribut, $params);
-				}
+				$type = $tmp[1]."Type";
+				$this->$attribut = new $type($this->$attribut, $params);
 			}
 		}
 		else {
 			if(!empty($typeAttribut)) { // get() spéciaux avec params
 				$tmp = explode(" ", $typeAttribut);
 				if($tmp[0]=="type") {
-					if($tmp[1] == "lang") {
-						if($params!=null)
-							$this->$attribut->setLang($params);
-						else {
-							$this->$attribut->setLang(Kernel::get("lang"));
-						}
-					}
+					$type = $tmp[1]."Type";
+					$this->$attribut = $this->$attribut->get($params);
 				}
 			}
 		}	
@@ -176,25 +170,8 @@ abstract class OrmStdAbstract {
 			foreach ($this->getTypes() as $key => $value) {
 				$type = explode(" ", $value);
 				if($type[0] == "type") {
-					if($value == "type lang") {
-						if(!is_array($this->$key))
-							$valid = false;
-						foreach ($this->$key as $key => $value) {
-							if(empty($value))
-								$valid = false;
-						}
-					}
-					elseif($value == "type bool") {
-						if(is_bool($this->$key)) {
-							if($this->$key)
-								$this->$key = 1;
-							else
-								$this->$key = 0;
-						}
-						if($this->$key!=0 && $this->$key!=1)
-							$valid = false;
-					}
-					elseif(empty($this->$key))
+					$typeName = $type[1]."Type";
+					if(!$typeName::check($this->$key))
 						$valid = false;
 				}
 				if($type[0] == "class") {
@@ -221,13 +198,10 @@ abstract class OrmStdAbstract {
 			if($this->checkData()) {
 				// enregistrement des langues
 				foreach ($this->getTypes() as $key => $value) {
-					if($value == "type lang") {
-						$id_lang = Sql2::create()->select("COUNT(DISTINCT id_lang)")->from("lang")->fetch();
-						$id_lang++;
-						foreach ($this->$key as $key2 => $value2) { // différentes langues
-							Sql2::create()->insert("lang")->columnsValues(array("id_lang" => $id_lang, "lang" => $key2, "text" => $value2))->execute();
-						}
-						$this->$key = $id_lang;
+					$types = explode(" ", $value);
+					if($types[0]=="type") {
+						$type = $types[1]."Type";
+						$this->$key = $type::save($this->$key);
 					}
 				}
 
