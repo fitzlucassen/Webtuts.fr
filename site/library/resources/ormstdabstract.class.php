@@ -9,9 +9,17 @@
 
 abstract class OrmStdAbstract {
 
+	private static $CACHE = null;
+
 	private $_class;
 	private $_attributes = array();
 	private $_types = array();
+
+	public function getCache() {
+		if(OrmStdAbstract::$CACHE==null)
+			OrmStdAbstract::$CACHE = new Cache(Cache::getDir()."orm", 60);
+		return OrmStdAbstract::$CACHE;
+	}
 
 
 	public function setNameClass($class) {
@@ -19,12 +27,30 @@ abstract class OrmStdAbstract {
 	}
 
 	public function __get($name) {
-		if($name[0]=="_" && $name[1]=="_")
+		if($name[0]=="_" && $name[1]=="_") {
+			$this->setTypes(); // Si le typages n'est pas encore mis
 			return $this->_types[strtok($name, "__")];
+		}
 		elseif($name[0]=="_")
 			return $this->$name;
 		else
 			return $this->_attributes[$name];
+	}
+
+	private function setTypes() {
+		if(empty($this->_types)) {
+			$Cache = $this->getCache();
+			if(!$types = $Cache->read("ORM_table_".$this->_class)) {
+				$types = Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->_class))->fetchArray();
+				$Cache->write("ORM_table_".$this->_class, serialize($types));
+			} 
+			else
+				$types = unserialize($types);
+			foreach ($types as $value) {
+				$nomAttribut = "__".$value["name_column"];
+				$this->$nomAttribut = $value["type"];
+			}
+		}
 	}
 
 	public function __set($name, $value) {
@@ -51,15 +77,6 @@ abstract class OrmStdAbstract {
 		else
 			$this->hydrate($params);
 		return $this;
-	}
-
-	public function setTypage($typages) {
-		if(empty($this->_types)) {
-			foreach ($typages as $value) {
-				$nomAttribut = "__".$value["name_column"];
-				$this->$nomAttribut = $value["type"];
-			}
-		}
 	}
 
 	static public function n($class) {
@@ -107,45 +124,30 @@ abstract class OrmStdAbstract {
 				elseif($typeLink=="collection") { // Collection of object
 					$this->setCollection($attribut, $tmp[1]);
 				}
-				return $this->$attribut;
 			} 
 			elseif(!is_object($this->$attribut) && ($tmp[0]=="type")) {
 				/*
 					Gestion des type particulier.
 				*/
-				if($tmp[1]=="lang") {
-					$this->$attribut = new Lang($this->$attribut, $params);
-				}			
-
-				return $this->$attribut;
-			} 
-			else{
-				return $this->$attribut;
+				$type = $tmp[1]."Type";
+				$this->$attribut = new $type($this->$attribut, $params);
 			}
 		}
 		else {
 			if(!empty($typeAttribut)) { // get() spéciaux avec params
 				$tmp = explode(" ", $typeAttribut);
 				if($tmp[0]=="type") {
-					if($tmp[1] == "lang") {
-						if($params!=null)
-							$this->$attribut->setLang($params);
-						else {
-							$this->$attribut->setLang(Kernel::get("lang"));
-						}
-					}
+					$type = $tmp[1]."Type";
+					$this->$attribut = $this->$attribut->get($params);
 				}
 			}
-			return $this->$attribut;
-		}			
+		}	
+		return $this->$attribut;		
 	}
 
 	/*functions */
 
-	public function hydrate($id, $types = null) {
-		if($types==null)
-			$types = Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->_class))->fetchArray();
-		$this->setTypage($types);
+	public function hydrate($id) {
 		if(is_numeric($id)) {
 			$clone = Sql2::create()->from(strtolower($this->_class))->where("id", Sql2::$OPE_EQUAL, $id)->fetchClass();
 			foreach ($clone as $attribut => $valeur)
@@ -163,9 +165,29 @@ abstract class OrmStdAbstract {
 
 	public function checkData() {
 		if(empty($this->id)) {
-
-
-			return true;
+			$types = $this->getTypes();
+			$valid = true;
+			foreach ($this->getTypes() as $key => $value) {
+				$type = explode(" ", $value);
+				if($type[0] == "type") {
+					$typeName = $type[1]."Type";
+					if(!$typeName::check($this->$key))
+						$valid = false;
+				}
+				if($type[0] == "class") {
+					if(!is_numeric($this->$key)) {
+						$valid = false;
+					}
+				}
+				if($type[0] == "collection") {
+					if(!empty($this->$key)) {
+						$valid = false;
+					}
+				}
+				/*if(!$valid)
+					echo $key."[".$value."]";*/
+			}
+			return $valid;
 		}
 		else
 			return false;
@@ -175,19 +197,16 @@ abstract class OrmStdAbstract {
 		if(empty($this->id)) {
 			if($this->checkData()) {
 				// enregistrement des langues
-				foreach ($this->_types as $key => $value) {
-					if($value == "type lang") {
-						$id_lang = Sql2::create()->select("COUNT(DISTINCT id_lang)")->from("lang")->fetch();
-						$id_lang++;
-						foreach ($this->$key as $key2 => $value2) { // différentes langues
-							Sql2::create()->insert("lang")->columnsValues(array("id_lang" => $id_lang, "lang" => $key2, "text" => $value2))->execute();
-						}
-						$this->$key = $id_lang;
+				foreach ($this->getTypes() as $key => $value) {
+					$types = explode(" ", $value);
+					if($types[0]=="type") {
+						$type = $types[1]."Type";
+						$this->$key = $type::save($this->$key);
 					}
 				}
 
-				if(Sql2::create()->insert($this->_class)->columnsValues($this->_attributes)->execute())
-					return true;//Sql2::create()->from($this->_class)->where("id", Sql2::$OPE_EQUAL, mysql_insert_id()->fetchClass());
+				if($id = Sql2::create()->insert($this->_class)->columnsValues($this->_attributes)->execute())
+					return Sql2::create()->from($this->_class)->where("id", Sql2::$OPE_EQUAL, $id)->fetchClass();
 				else
 					return false;
 			}
@@ -198,11 +217,17 @@ abstract class OrmStdAbstract {
 			return false;
 	}
 
-	public function getTypages() {
-		if(empty($this->_types))
-			$this->setTypage($types = Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->_class))->fetchArray());
-		return $this->_types;
+
+	public function getTypes($attribut = null) {
+		$this->setTypes();
+		if($attribut == null)
+			return $this->_types;
+		else {
+			$attribut = "__".$attribut;
+			return $this->$attribut;
+		}
 	}
+
 
 	/*
 		Peut prendre 3 types de syntaxe en parametres
@@ -283,10 +308,23 @@ abstract class OrmStdAbstract {
 		$this->$attribut = new Collection();
 		// Recupération de tous les attributs de la classe à retourner 
 		$cpt = 0;
-		foreach (Kernel::$PDO->query("SHOW COLUMNS FROM ".$class) as $row) {
-			$select[$cpt] = "A.".$row["Field"];
-			$cpt++;
-   		}	
+
+		// Récupération et/ou mise en cache
+		$Cache = $this->getCache();
+		if(!$attributs = $Cache->read("ORM_table_".$class)) {
+			$attributs = Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($class))->fetchArray();
+			$Cache->write("ORM_table_".$class, serialize($attributs));
+		} 
+		else
+			$attributs = unserialize($attributs);
+
+		$select = array();
+		foreach ($attributs as $row => $value)
+			$select[] = "A.".$value["name_column"];
+		
+		// Ajout de l'id
+		array_unshift($select, "A.id");
+
    		$table = $class."_".strtolower($this->_class);
    		if(!Sql2::table_exist($table))
    			$table = strtolower($this->_class)."_".$class;

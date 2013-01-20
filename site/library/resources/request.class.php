@@ -14,7 +14,10 @@ Class Request {
 	}
 
 	public function getData() {
-		return $_REQUEST;
+		$data = $_REQUEST;
+		unset($data["url"]);
+		unset($data["PHPSESSID"]);
+		return $data;
 	}
 
 }

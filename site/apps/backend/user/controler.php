@@ -1,6 +1,6 @@
 <?php
 
-class UserController extends Controller {
+class UserControler extends Controler {
 	public function IndexAction($params) {
 		//$return = App::getClass("user", 2);
 		return $this->render(array('user' => null));

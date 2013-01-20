@@ -93,8 +93,13 @@ class App {
 				)
 			)
 		))
+		App::getClassArray("category", array(
+			"where" => "deleted = 0"
+		))
+		App::getClassArray("category", array(
+			"where" => "title = bonjour"
+		))
 
-		"where" => array("nothave" = "category")
 		SELECT id
 		FROM article
 		WHERE id NOT 
@@ -108,30 +113,54 @@ class App {
 		
 		$return = Sql2::create()->from($class);
 		if(array_key_exists("where", $param)) {
-			if(!is_array($param["where"]))
-				return new Error(1);
 			$where = $param["where"];
-			if(count($where)==1) { // si une seule condition
-				//$value = explode(" ", $where[1]);
-				if(array_key_exists("where", $where)) {
-					$value = explode(" ", $where["where"]);
-					$this->where($value[0], $value[1], $value[2]);
-				}
-				elseif(array_key_exists("nothave", $where)) {
-					$value = $where["nothave"];
-					if(Sql2::table_exist($class."_".$value))
-						$table = $class."_".$value;
+			if(!is_array($where)) {
+				$valueString = $where;
+				$value = explode(" ", $where);
+				// Cas particulier
+				if($value[0]=="nothave") {
+					$object = $value[1]; 
+					if(Sql2::table_exist($class."_".$object))
+						$table = $class."_".$object;
 					else
-						$table = $value."_".$class;
+						$table = $object."_".$class;
 					$return->where("id", Sql2::$OPE_NOT_IN, "(".Sql2::create()->select("id_".$class)->from($table)->showRequete().")", false);
 				}
-				elseif(array_key_exists("have", $where)) {
-					$value = $where["have"];
-					if(Sql2::table_exist($class."_".$value))
-						$table = $class."_".$value;
+				elseif($value[0]=="have") {
+					$object = $value[1];
+					if(Sql2::table_exist($class."_".$object))
+						$table = $class."_".$object;
 					else
-						$table = $value."_".$class;
+						$table = $object."_".$class;
 					$return->where("id", Sql2::$OPE_IN, "(".Sql2::create()->select("id_".$class)->from($table)->showRequete().")", false);
+				}
+				else
+					$return->where($valueString);
+			} 
+			else {
+				
+				if(count($where)==1) { // si une seule condition
+					//$value = explode(" ", $where[1]);
+					if(array_key_exists("where", $where)) {
+						$value = explode(" ", $where["where"]);
+						$return->where($value[0], $value[1], $value[2]);
+					}
+					elseif(array_key_exists("nothave", $where)) {
+						$value = $where["nothave"];
+						if(Sql2::table_exist($class."_".$value))
+							$table = $class."_".$value;
+						else
+							$table = $value."_".$class;
+						$return->where("id", Sql2::$OPE_NOT_IN, "(".Sql2::create()->select("id_".$class)->from($table)->showRequete().")", false);
+					}
+					elseif(array_key_exists("have", $where)) {
+						$value = $where["have"];
+						if(Sql2::table_exist($class."_".$value))
+							$table = $class."_".$value;
+						else
+							$table = $value."_".$class;
+						$return->where("id", Sql2::$OPE_IN, "(".Sql2::create()->select("id_".$class)->from($table)->showRequete().")", false);
+					}
 				}
 			}/*
 			else {

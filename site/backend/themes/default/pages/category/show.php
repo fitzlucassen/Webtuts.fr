@@ -36,7 +36,7 @@
 	</div>
 	<div style="overflow: hidden;padding: 15px;">
 		<?php if($category->get("image")) { ?>
-			<?php echo $category->get("image")->get("name").".".$category->get("image")->get("type"); ?>
+			<a href="<?php echo createLink("/image/show/".$category->get("image")->get("id")); ?>"><?php echo $category->get("image")->get("name").".".$category->get("image")->get("type"); ?></a>
 		<?php } else { ?>
 			pas d'image
 		<?php } ?>

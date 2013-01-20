@@ -1,6 +1,6 @@
 <?php
 
-class BlogController extends Controller {
+class BlogControler extends Controler {
 	public function IndexAction($params) {
 		$return = App::getClass("article", 1);
 		return $this->render(array('article' => $return));

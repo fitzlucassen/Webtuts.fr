@@ -16,7 +16,7 @@
 	require(__library_dir__.'resources/request.class.php');
 
 	/* Connexion a la bd */
-	require(__library_dir__.'resources/controller.class.php');
+	require(__library_dir__.'resources/controler.class.php');
 
 	/* Error class */
 	require(__library_dir__.'resources/error.class.php');
@@ -44,8 +44,15 @@
 	/* Données de session */
 	require(__library_dir__.'resources/session.class.php');
 	
-	/* Langage */
+	/* Type interface */
+	require(__library_dir__.'resources/type.interface.php');
+
+	/* Types */
 	require(__library_dir__.'resources/lang.class.php');
+	require(__library_dir__.'resources/bool.class.php');
+	require(__library_dir__.'resources/integer.class.php');
+	require(__library_dir__.'resources/text.class.php');
+	require(__library_dir__.'resources/datetime.class.php');
 
 	/* Response */
 	require(__library_dir__.'resources/response.class.php');
@@ -53,11 +60,11 @@
 	/* Kernel */
 	require(__library_dir__.'resources/kernel.class.php');
 
-	/* Model */
-	require(__library_dir__.'modele/index.php');
-
 	/* Fonctions diverses */
 	require(__library_dir__.'resources/functions.php');
+
+	/* App */
+	require(__library_dir__.'resources/app.class.php');
 
 	/* Fonctions du kernel  */
 	require("kernel.app.php");

@@ -4,6 +4,12 @@
 			<?php echo ucfirst(text("categories")); ?>
 		</div>
 		<div style="overflow: hidden;padding-top:10px;padding-left: 20px;">
+			<?php foreach(Kernel::get("langs") as $key => $langKernel) { ?>
+				<a <?php if($lang!=$langKernel) { ?>href="<?php echo createLink("/category/list/".$langKernel); ?>"<?php } ?> style="float: right;"><?php echo text($langKernel); ?></a> 
+				<?php if($key!=count(Kernel::get("langs"))-1) { ?>
+				<span style="float: right;">&nbsp;&nbsp;</span> 
+				<?php } ?>
+			<?php } ?>
 			<a href="<?php echo createLink("/category/add"); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;"><?php echo ucfirst(text("add_a_category")); ?></a>
 		</div>
 		<div style="clear: both;">
@@ -11,16 +17,16 @@
 	</div>
 
 	<?php foreach ($categories as $categorie) : ?>
-	<div style="border-bottom: 1px solid #E5E5E5;padding: 15px;">	
-		<div style="float: left;width: 200px;">
-			<a style="<?php if($categorie->get("deleted")) { ?>color: red;<?php } ?>" href="<?php echo createLink("/category/show/".$categorie->get("id")); ?>"><?php echo lang($categorie->get("name")); ?></a> 
+	<a class="itemlist" href="<?php echo createLink("/category/show/".$categorie->get("id")); ?>">
+		<div style="float: left;width: 400px;">
+			<span <?php if($categorie->get("deleted")=="1") { ?>style="color: red;"<?php } ?>><?php echo lang($categorie->get("name", $lang)); ?></span> 
 		</div>
-		<div style="overflow: hidden;padding-top: 1px;padding-left: 10px;">
-			<span style="font-size: 0.8em;color: grey;"><?php echo lang($categorie->get("description")); ?></span>
+		<div style="overflow: hidden;padding-left: 10px;">
+			<span style="text-decoration: none;font-size: 0.8em;color: grey;"><?php echo lang($categorie->get("description", $lang)); ?></span>
 		</div>
 		<div style="clear: both;">
 		</div>
-	</div>
+	</a>
 	<?php endforeach; ?>
 
 </div>

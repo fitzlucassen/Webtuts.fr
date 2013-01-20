@@ -62,7 +62,7 @@
 			
 			<!-- Content -->
 			<div id="content">
-			    <?php include(_theme_path_."pages/".Kernel::get("controller").'/'.Kernel::get("action").".php"); ?>
+			    <?php include(_theme_path_."pages/".Kernel::get("controler").'/'.Kernel::get("action").".php"); ?>
 			</div>
 			
 			<!-- Footer -->

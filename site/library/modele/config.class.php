@@ -1,1 +1,0 @@
-/* Pour les infos du site : nom, metas etc... */

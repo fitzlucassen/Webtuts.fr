@@ -1,6 +1,6 @@
 <?php
 
-class TagController extends Controller {
+class TagControler extends Controler {
 	public function IndexAction($params) {
 		return $this->redirect("tag/list");
 	}

@@ -16,6 +16,9 @@ class Sql2 {
 	public static $TYPE_INSERT = "_INSERT";
 	public static $TYPE_UPDATE = "_UPDATE";
 
+	public static $COUNT = 0;
+	public static $HISTO = array();
+
 	public static $TYPE_NO_QUOTE = false;
 
 	public static $OPE_DEFAULT = "=";
@@ -162,6 +165,8 @@ class Sql2 {
 	public function where($attribut, $condition=null, $param=null, $typeVar=true) {
 		if(is_object($attribut))
 			$this->where[] = $attribut;
+		elseif($condition == null)
+			$this->where[] = $attribut;
 		else
 			$this->where[] = array("where", $attribut, $condition, $param, $typeVar);
 		return $this;
@@ -170,12 +175,16 @@ class Sql2 {
 	public function andWhere($attribut, $condition=null, $param=null, $typeVar=true) {
 		if(is_object($attribut))
 			$this->where[] = $attribut;
+		elseif($condition == null)
+			$this->where[] = $attribut;
 		else
 			$this->where[] = array("andwhere", $attribut, $condition, $param, $typeVar);
 		return $this;
 	}
 	public function orWhere($attribut, $condition=null, $param=null, $typeVar=true) {
 		if(is_object($attribut))
+			$this->where[] = $attribut;
+		elseif($condition == null)
 			$this->where[] = $attribut;
 		else
 			$this->where[] = array("orwhere", $attribut, $condition, $param, $typeVar);
@@ -235,8 +244,7 @@ class Sql2 {
 
 		// ORDER BY
 		if(!empty($this->orderby)) {
-			if(is_string($this->orderby[0])) $cote='\''; else $cote='';
-			$requete .= " ORDER BY ".$cote.$this->orderby[0].$cote." ".$this->orderby[1];
+			$requete .= " ORDER BY ".$this->orderby[0]." ".$this->orderby[1];
 		}
 		// LIMIT
 		if(!empty($this->limit)) {
@@ -297,10 +305,11 @@ class Sql2 {
 			if(!class_exists($this->class))
 				$class = "Std";
 			else $class = $this->class;
+			Sql2::$COUNT += 1;
+			Sql2::$HISTO[] = $requete;
 			$return = Kernel::$PDO->query($requete)->fetchObject($class);
 			if(method_exists($return,'setNameClass')) {
 				$return->setNameClass($this->class);
-				$return->setTypage(Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->class))->fetchArray());
 			}
 			return $return;
 		}
@@ -311,6 +320,8 @@ class Sql2 {
 	public function fetchArray() {
 		$requete = $this->getRequete();
 		$return = array();
+		Sql2::$COUNT += 1;
+		Sql2::$HISTO[] = $requete;
 		foreach(Kernel::$PDO->query($requete) as $ligne) 
 			$return[] = $ligne;
 		return $return;
@@ -319,14 +330,11 @@ class Sql2 {
 	public function fetchClassArray() {
 		if($this->type==Sql2::$TYPE_SELECT)	{
 			$requete = $this->getRequete();
-			if(!class_exists($this->class))
-				$class = "Std";
-			else $class = $this->class;
 			$collection = new Collection();
-			$types = Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->class))->fetchArray();
+			Sql2::$COUNT += 1;
+			Sql2::$HISTO[] = $requete;
 			foreach(Kernel::$PDO->query($requete) as $value) {
-				$object = OrmStdAbstract::n($class)->hydrate($value);
-				$object->setTypage($types);
+				$object = OrmStdAbstract::n($this->class)->hydrate($value);
 				$collection->hydrate($object);
 			}
 			return $collection;
@@ -338,8 +346,13 @@ class Sql2 {
 	public function execute() {
 		if($this->type == Sql2::$TYPE_INSERT || $this->type == Sql2::$TYPE_UPDATE){
 			$requete = $this->getRequete();
+			Sql2::$COUNT += 1;
+			Sql2::$HISTO[] = $requete;
 			if(Kernel::$PDO->exec($requete)) {
-				return true;
+				if($this->type == Sql2::$TYPE_INSERT)
+					return Kernel::$PDO->lastInsertId();
+				else
+					return true;
 			}
 			else
 				return false;
@@ -351,6 +364,8 @@ class Sql2 {
 	public function fetch($rang=0) {
 		if($this->type == Sql::$_SELECT) {
 			$requete = $this->getRequete();
+			Sql2::$COUNT += 1;
+			Sql2::$HISTO[] = $requete;
 			return Kernel::$PDO->query($requete)->fetchColumn($rang);
 		}
 		else
@@ -362,9 +377,12 @@ class Sql2 {
 		if(!empty($this->where)) {
 			$requete .= " WHERE ";
 			foreach ($this->where as $key => $value) {
-				if(!is_object($value)) {
+				if(is_array($value)) {
 					if(is_string($value[3]) && $value[4]) $cote2='\''; else $cote2='';
 					$requete .= " ".$this->OPE_LOGIC_TAB[$value[0]]." ".$value[1]." ".$value[2]." ".$cote2.$value[3].$cote2." ";
+				}
+				elseif(is_string($value)) {
+					$requete .= $value;
 				}
 				else {
 					$requete .= $this->getWhereStringRecursive($value);
@@ -377,9 +395,12 @@ class Sql2 {
 	private function getWhereStringRecursive($object) {
 		$requete = "(";
 		foreach ($object->where as $key2 => $value2) {
-			if(!is_object($value2)) {
+			if(is_array($value)) {
 				if(is_string($value2[3]) && $value2[4]) $cote2='\''; else $cote2='';
 				$requete .= " ".$this->OPE_LOGIC_TAB[$value2[0]]." ".$value2[1]." ".$value2[2]." ".$cote2.$value2[3].$cote2." ";
+			}
+			elseif(is_string($value2)) {
+					$requete .= $value2;
 			}
 			else
 				$requete .= $this->getWhereStringRecursive($value2);

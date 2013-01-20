@@ -1,6 +1,6 @@
 <?php
 	
-	
+
 
 	$cache = new Cache(_theme_path_."cache/", 1);
 	/*
@@ -47,6 +47,7 @@
 	function printDate($date){
 		$dateExpl = explode(' ', $date);
 		$day = explode('-', $dateExpl[0]);
+		$time = explode(':', $dateExpl[1]);
 		
 		$month = array(	"01"=>text("january"),
 						"02"=>text("february"),
@@ -62,7 +63,7 @@
 						"12"=>text("december")					
 					);
 		
-		return $day[2]." ".$month[$day[1]]." ".$day[0]." ".$dateExpl[1];
+		return $day[2]." ".$month[$day[1]]." ".$day[0]." à ".$time[0]."H".$time[1];
 	}
 	
 	function minifyText($title, $size_max = 25){	

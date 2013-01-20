@@ -4,16 +4,10 @@
 		Contient toutes les informations necessaires à fournir par l'administrateur et à écrire en dur.
 	*/
 
-
-	/* 
-		Définition du theme par défaut
-	*/
-	define("__theme__", "default");
-
 	/* 
 		Définition de l'application
 	*/
-	define("__app__", "backend");
+	define("__app__", "frontend");
 	//define("__app__", "backend");
 
 
@@ -41,7 +35,7 @@
 	/* User */
 	define("__SQL_user__", "root");
 	/* Password */
-	define("__SQL_password__", "root");
+	define("__SQL_password__", "");
 	/* Prefix tables */
 	define("__SQL_prefix__", "");
 	/* Database */
