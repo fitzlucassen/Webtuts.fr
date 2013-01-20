@@ -3,19 +3,10 @@
 class HomeController extends Controller {
 	public function IndexAction($params) {
 	    $cats = App::getClassArray("category");
-	    $articles_all = App::getClassArray("article");
 	    
-	    $articles = array();
-	    $news = array();
-
-
-	    foreach($articles_all as $art){
-		if($art->get("category")){
-		    $articles[] = $art;
-		} else {
-		    $news[] = $art;
-		}
-	    }
+	    $news = App::getClassArray("article", array("where" => array("nothave" => "category"), "limit" => 5));
+	    $articles = App::getClassArray("article", array("where" => array("have" => "category"), "limit" => 5));
+	    
 	    return $this->render(array('cats' => $cats, 'articles' => $articles, 'news' => $news));
 	}
 }

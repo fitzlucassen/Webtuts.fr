@@ -43,8 +43,8 @@
 	<nav>
 		<ul id="left-nav">
 			<li><a href="/"><?php echo HOME; ?></a></li>
-			<li><a href="/blog/categories"><?php echo CATEGORY; ?></a></li>
-			<li><a href="/blog/articles"><?php echo ARTICLE; ?></a></li>			
+			<li><a href="<?php Kernel::getUrl("blog/categories"); ?>"><?php echo CATEGORY; ?></a></li>
+			<li><a href="<?php Kernel::getUrl("blog/articles"); ?>"><?php echo ARTICLE; ?></a></li>			
 		</ul>
 		
 		<div id="logo">
