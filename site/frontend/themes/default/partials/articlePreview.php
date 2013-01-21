@@ -45,4 +45,14 @@
     </div>
     <div class="cl"></div>
 
+    <div class="hover-article">
+	<a href="#">
+	    <div class="left-hover">
+		Voir l'
+	    </div>
+	    <div class="right-hover">
+		article
+	    </div>
+	</a>
+    </div>
 </div>
