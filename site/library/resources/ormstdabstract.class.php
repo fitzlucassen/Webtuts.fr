@@ -133,15 +133,15 @@ abstract class OrmStdAbstract {
 				$this->$attribut = new $type($this->$attribut, $params);
 			}
 		}
-		else {
-			if(!empty($typeAttribut)) { // get() spéciaux avec params
-				$tmp = explode(" ", $typeAttribut);
-				if($tmp[0]=="type") {
-					$type = $tmp[1]."Type";
-					$this->$attribut = $this->$attribut->get($params);
-				}
+
+		if(!empty($typeAttribut)) { // get() spéciaux avec params
+			$tmp = explode(" ", $typeAttribut);
+			if($tmp[0]=="type") {
+				$type = $tmp[1]."Type";
+				return $this->$attribut->get($params);
 			}
-		}	
+		}
+			
 		return $this->$attribut;		
 	}
 
