@@ -39,9 +39,9 @@
 	/* Host name */
 	$_CONFIG_sql_hostname = "localhost";
 	/* User */
-	$_CONFIG_sql_user = "root";
+	$_CONFIG_sql_user = "";
 	/* Password */
-	$_CONFIG_sql_password = "root";
+	$_CONFIG_sql_password = "";
 	/* Prefix tables */
 	define("__SQL_prefix__", "");
 	/* Database */

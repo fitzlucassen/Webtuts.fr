@@ -2,33 +2,37 @@
 
 class UserController extends Controller {
 	public function IndexAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		return $this->redirect("user/list");
 	}
 
 	public function ShowAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$user = App::getClass("user", $params[3]);
+		return $this->render(array('user' => $user));
 	}
 
 	public function AddAction($params) {
-		//$return = App::getClass("user", 2);
 		return $this->render(array('user' => null));
 	}
 
 	public function DeleteAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$user = App::getClass("user", $params[3]);
+		return $this->render(array('user' => $user));
 	}
 
 	public function UpdateAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$method = $this->getRequest();
+		if($method->isMethod("post")) {
+			return $this->redirect("/user/show/".$params[3]);
+		}
+		else {
+			$user = App::getClass("user", $params[3]);
+			return $this->render(array('user' => $user));
+		}
 	}
 
 	public function ListAction($params) {
-		//$return = App::getClass("user", 2);
-		return $this->render(array('user' => null));
+		$users = App::getClassArray("user");
+		return $this->render(array('users' => $users));
 	}
 }
 
