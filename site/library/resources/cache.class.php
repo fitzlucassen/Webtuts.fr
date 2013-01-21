@@ -5,6 +5,11 @@
 class Cache {
 	public $dirname;
 	public $duration; // Durée de vie du cache en minutes
+	public $buffer;
+
+	public static function getDir() {
+		return __cache_dir__;
+	}
 
 	public function __construct($dirname, $duration) {
 		$this->dirname = $dirname;
@@ -72,6 +77,7 @@ class Cache {
 			return false;
 		}
 		$content = ob_get_clean();
+		echo $content;
 		$this->write($this->buffer, $content);
 	}
 }

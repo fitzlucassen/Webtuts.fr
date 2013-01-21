@@ -2,38 +2,47 @@
 
 class Kernel {
 	public static $CODE_LANG = 0;
-	public static $CODE_CONTROLLER = 1;
+	public static $CODE_CONTROLER = 1;
 	public static $CODE_ACTION = 2;
 	public static $CODE_PARAM = 3;
 
-	public static $CONTROLLER_WITHOUT_NEEDS = array("404");
+	public static $CONTROLER_WITHOUT_NEEDS = array("404");
 
+	public static $PDO;
 	public static $APP;
-	public static $CONTROLLER;
+	public static $CONTROLER;
 	public static $ACTION;
 	public static $LANG;
+	public static $LANGS;
 	public static $LANG_DEFAULT;
 	public static $SESSION;
 	public static $RESPONSE;
 	public static $URL;
 	public static $CACHE;
+	public static $PARAMS;
 
 
 	static public function get($attr) {
 		if($attr=="app")
 			return __app__;
-		elseif($attr=="controller")
-			return Kernel::$CONTROLLER;
+		elseif($attr=="controler")
+			return Kernel::$CONTROLER;
 		elseif($attr=="action")
 			return Kernel::$ACTION;
 		elseif($attr=="session")
 			return Kernel::$SESSION;
 		elseif($attr=="lang")
 			return Kernel::$LANG;
+		elseif($attr=="langs")
+			return Kernel::$LANGS;
 		elseif($attr=="langdefault")
 			return Kernel::$LANG_DEFAULT;
+		elseif($attr=="params")
+			return Kernel::$PARAMS;
 		elseif($attr=="cache")
 			return Kernel::$CACHE;
+		elseif($attr=="user")
+			return Kernel::$SESSION->getUser();
 		else
 			return new Error(1);
 		
@@ -45,6 +54,19 @@ class Kernel {
 		$this->_LANG_DEFAULT_ = $_LANG_DEFAULT_;
 		Kernel::$LANG = $_LANG_DEFAULT_;
 		Kernel::$LANG_DEFAULT = $_LANG_DEFAULT_;
+		Kernel::$LANGS = $this->_LANG_ACCEPTED_;
+
+		try { 
+		    $conn = new PDO('mysql:host='.__SQL_hostname__.';dbname='.__SQL_db__, __SQL_user__,  __SQL_password__, array(PDO::ATTR_PERSISTENT => true, PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+		    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+		    Kernel::$PDO = $conn;
+		} catch(PDOException $e) {
+		    echo 'ERREUR: ' . $e->getMessage(); 
+		}
+
+		// Paramêtres du site
+		$params = Sql2::create()->from("cms_site_params")->fetchArray();
+		Kernel::$PARAMS = $params[0];
 	}
 
 
@@ -63,7 +85,6 @@ class Kernel {
 	}
 
 	public function setKernel($url, $path_type) {
-		
 		
 		/*
 		///categorie-nom/article-nom/
@@ -103,6 +124,7 @@ class Kernel {
 		else
 			$tmp = array($this->_LANG_DEFAULT_);
 
+
 		$cpt = 0;
 		foreach ($path_type as $key => $value) {
 			if(!empty($tmp[$cpt]))
@@ -110,7 +132,13 @@ class Kernel {
 			$cpt++;
 		}
 
-		
+		// Ajout du reste des params
+		for($cpt=$cpt-1;$cpt<count($tmp);$cpt++) {
+			if(!empty($tmp[$cpt]))
+				$route[$cpt] = $tmp[$cpt];
+		}
+
+
 
 		if(!empty($route[Kernel::$CODE_LANG])) {
 			// Test la présence d'une langue
@@ -124,17 +152,16 @@ class Kernel {
 
 		define("__lang__", Kernel::$LANG);
 
-
-		// Appel de l'app et du controller
-		if(!empty($route[Kernel::$CODE_CONTROLLER]) && in_array($route[Kernel::$CODE_CONTROLLER], Kernel::$CONTROLLER_WITHOUT_NEEDS)) {
+		// Appel de l'app et du controler
+		if(!empty($route[Kernel::$CODE_CONTROLER]) && in_array($route[Kernel::$CODE_CONTROLER], Kernel::$CONTROLER_WITHOUT_NEEDS)) {
 			$return = new Response();
 			Kernel::$RESPONSE = $return;
-			$appRoute = array($route[Kernel::$CODE_CONTROLLER], "index");
+			$appRoute = array($route[Kernel::$CODE_CONTROLER], "index");
 		}
 		else {
-			if(empty($route[Kernel::$CODE_CONTROLLER]))
-				$route[Kernel::$CODE_CONTROLLER] = "home";
-			$bundleName = ucfirst($route[Kernel::$CODE_CONTROLLER])."Controller";
+			if(empty($route[Kernel::$CODE_CONTROLER]))
+				$route[Kernel::$CODE_CONTROLER] = "home";
+			$bundleName = ucfirst($route[Kernel::$CODE_CONTROLER])."Controler";
 			$bundle = new $bundleName();
 			if(empty($route[Kernel::$CODE_ACTION]) || is_numeric($route[Kernel::$CODE_ACTION])) 
 				$route[Kernel::$CODE_ACTION] = "index";
@@ -142,26 +169,26 @@ class Kernel {
 				if($this->_KERNEL_DEBUG_)
 					return new Error(343);
 				else
-					header("Location:"._host_.$this->get("lang")."/".$route[Kernel::$CODE_CONTROLLER]);
+					header("Location:"._host_.$this->get("lang")."/".$route[Kernel::$CODE_CONTROLER]);
 			}
-			$controllerName = $route[Kernel::$CODE_ACTION]."Action";
+			$controlerName = $route[Kernel::$CODE_ACTION]."Action";
 			$params = array();
 			foreach ($route as $key => $value) {
 				$params[] = $value;
 			}
-			$controllerName = ucfirst($controllerName);
-			$return = $bundle->$controllerName($route);
+			$controlerName = ucfirst($controlerName);
+			$return = $bundle->$controlerName($route);
 			Kernel::$RESPONSE = $return;
 			if($return->hasRoute())
 				$appRoute = $return->getRoute();
 			else
-				$appRoute = array($route[Kernel::$CODE_CONTROLLER], $route[Kernel::$CODE_ACTION]);
+				$appRoute = array($route[Kernel::$CODE_CONTROLER], $route[Kernel::$CODE_ACTION]);
 		}
 
 		if(!empty($appRoute[0]))
-			Kernel::$CONTROLLER = $appRoute[0];
+			Kernel::$CONTROLER = $appRoute[0];
 		else
-			Kernel::$CONTROLLER =  "home";
+			Kernel::$CONTROLER =  "home";
 		if(!empty($appRoute[1]))
 			Kernel::$ACTION = $appRoute[1];
 		else

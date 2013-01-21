@@ -1,7 +1,7 @@
 <?php
 
 
-class Urlrewriting {
+class UrlRewriting {
 
 	public function __construct($url) {
 		

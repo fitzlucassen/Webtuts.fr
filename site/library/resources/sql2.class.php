@@ -10,7 +10,7 @@ $GLOBALS["SQL_existing_table"] = array();
 */
 
 
-class Sql2 {
+class Sql3 {
 
 	public static $TYPE_SELECT = "_SELECT";
 	public static $TYPE_INSERT = "_INSERT";
@@ -130,7 +130,7 @@ class Sql2 {
 					}
 				}
 				else
-					return new Errr(5);
+					return new Error(5);
 			}
 
 			$this->columns = array_merge($this->columns, $columns);
@@ -261,6 +261,7 @@ class Sql2 {
 		$cpt = 0;
 		foreach ($this->values as $key => $value) {
 			if(is_string($value)) $cote='\''; else $cote='';
+			if(empty($value) && $value != "0") { $value = 'NULL'; $cote=''; }
 			if($cpt!=0) $requete .= ", ";
 			$requete .= $cote.$value.$cote;
 			$cpt++;
@@ -333,19 +334,16 @@ class Sql2 {
 	}
 
 	public function execute() {
-		if($this->type == Sql2::$_INSERT || $this->type == Sql2::$_UPDATE){
+		if($this->type == Sql2::$TYPE_INSERT || $this->type == Sql2::$TYPE_UPDATE){
 			$requete = $this->getRequete();
 			if(mysql_query($requete)) {
-				if($this->type == Sql2::$_INSERT)
-					return Sql2::create()->from(mb_strtolower($this->class))->where("id", Sql2::$OPE_EQUAL, mysql_insert_id())->fetchClass();
-				else
-					return true;
+				return true;
 			}
 			else
-				return new Error(45);
+				return false;
 		}
 		else
-			return new Error(3);
+			return false;
 	}
 
 	public function fetch($rang=0) {
@@ -449,6 +447,8 @@ class SqlTerms {
 		$object = new SqlTerms();
 		if(is_object($attribut))
 			$object->where[] = $attribut;
+		elseif($condition == null)
+			$this->where[] = $attribut;
 		else
 			$object->where[] = array("where", $attribut, $condition, $param, $typeVar);
 		return $object;
@@ -457,12 +457,16 @@ class SqlTerms {
 	public function andWhere($attribut, $condition=null, $param=null, $typeVar=true) {
 		if(is_object($attribut))
 			$this->where[] = $attribut;
+		elseif($condition == null)
+			$this->where[] = $attribut;
 		else
 			$this->where[] = array("andwhere", $attribut, $condition, $param, $typeVar);
 		return $this;
 	}
 	public function orWhere($attribut, $condition=null, $param=null, $typeVar=true) {
 		if(is_object($attribut))
+			$this->where[] = $attribut;
+		elseif($condition == null)
 			$this->where[] = $attribut;
 		else
 			$this->where[] = array("orwhere", $attribut, $condition, $param, $typeVar);
@@ -473,10 +477,8 @@ class SqlTerms {
 function SQL2_table_exist($table) {
 	if(count($GLOBALS["SQL_existing_table"])<=0) {
 		$db = __SQL_db__;
-	    $query = "SHOW TABLES FROM $db";
-	    $runQuery = mysql_query($query);
 	    //On crée un nouveau tableau avec toutes les tables
-	    while($row = mysql_fetch_row($runQuery)){
+	    foreach(Kernel::$PDO->query("SHOW TABLES FROM $db") as $row){
 	        $GLOBALS["SQL_existing_table"][] = $row[0];
 	    }
 	}

@@ -4,16 +4,10 @@
 		Contient toutes les informations necessaires à fournir par l'administrateur et à écrire en dur.
 	*/
 
-
-	/* 
-		Définition du theme par défaut
-	*/
-	define("__theme__", "default");
-
 	/* 
 		Définition de l'application
 	*/
-	define("__app__", "backend");
+	define("__app__", "frontend");
 	//define("__app__", "backend");
 
 
@@ -37,11 +31,11 @@
 		SQL parameters
 	*/
 	/* Host name */
-	$_CONFIG_sql_hostname = "localhost";
+	define("__SQL_hostname__", "localhost");
 	/* User */
-	$_CONFIG_sql_user = "";
+	define("__SQL_user__", "root");
 	/* Password */
-	$_CONFIG_sql_password = "";
+	define("__SQL_password__", "");
 	/* Prefix tables */
 	define("__SQL_prefix__", "");
 	/* Database */

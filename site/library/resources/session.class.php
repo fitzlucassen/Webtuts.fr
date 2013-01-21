@@ -4,38 +4,47 @@
 
 class Session {
 
-	var $tmp_user_register;
+	private $tmp_user_register;
+	private $user;
+	private $session;
 
 	public function __construct() {
-		if(!empty($_SESSION["tmp_user_register"]))
-			$this->tmp_user_register = $_SESSION["tmp_user_register"];
+		$this->session = $_SESSION;
+		if(!empty($this->session)) {
+			if($user = App::getClass("user", $this->session["id"])) {
+				if($user->get("password") == $this->session["pwd"])
+					$this->user=$user;
+				else
+					$this->user=false;
+			}
+			else
+				$this->user=false;
+		}
 		else
-			$this->tmp_user_register = null;
+			$this->user=false;
 	}
 
-	public function get($index) {
-		return $_SESSION[$index];
+	public function getUser() {
+		return $this->user;
 	}
 
-	public function verif($hash) {
-		$hash = md5($hash);
-		if($hash==$this->tmp_user_register)
-			return true;
-		else
-			return false;
-	}
-
-	public function connect() {
-		$r = '';
-    	for($i=0; $i<25; $i++)
-       		$r .= chr(rand(0, 25) + ord('a'));
-		$hash = md5($r);
-		$this->tmp_user_register = $hash;
-		return $r;
+	public function connect($user) {
+		$_SESSION["id"] = $user->get("id");
+		$_SESSION["pwd"] = $user->get("password");
+		$this->user = $user;
+		return true;
 	}
 
 	public function disconnect() {
-		$this->tmp_user_register = null;
+		if(!empty($this->user)) {	
+			unset($_SESSION["id"]);
+			unset($_SESSION["pwd"]);
+			$this->user = false;
+			$this->session = "";
+			return true;
+		}
+		else
+			return false;
 	}
 }
 

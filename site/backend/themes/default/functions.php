@@ -1,4 +1,16 @@
 <?php
+	
+
+
+	$cache = new Cache(_theme_path_."cache/", 1);
+	/*
+	if(!$cache->start("test")) {
+
+		echo "prout";
+		sleep(2);
+	}
+	$cache->end();
+*/
 
 	function text($text) {
 		$lang = file_get_contents(_theme_path_."lang/".__lang__.".json");
@@ -35,6 +47,7 @@
 	function printDate($date){
 		$dateExpl = explode(' ', $date);
 		$day = explode('-', $dateExpl[0]);
+		$time = explode(':', $dateExpl[1]);
 		
 		$month = array(	"01"=>text("january"),
 						"02"=>text("february"),
@@ -50,7 +63,7 @@
 						"12"=>text("december")					
 					);
 		
-		return $day[2]." ".$month[$day[1]]." ".$day[0]." ".$dateExpl[1];
+		return $day[2]." ".$month[$day[1]]." ".$day[0]." à ".$time[0]."H".$time[1];
 	}
 	
 	function minifyText($title, $size_max = 25){	
