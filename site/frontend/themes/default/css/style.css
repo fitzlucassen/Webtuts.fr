@@ -24,7 +24,16 @@
     font-family: "GearedSlab";
     src: url("GearedSlab.ttf");
 }
-
+@font-face
+{
+    font-family: "EngelLight";
+    src: url("EngelLight_ltd.ttf");
+}
+@font-face
+{
+    font-family: "Oregon";
+    src: url("Oregon LDO Light.ttf");
+}
 /* Reset */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -204,7 +213,7 @@ p.show-more{
 }
 .date{
 	font-style: italic;
-	font-size: 12px;
+	font-size: 14px;
 }
 .marginAuto{
     margin: auto;
@@ -354,7 +363,7 @@ nav ul > li:hover a{
 }
 nav ul > li > a{
 	color: rgb(236,235,232) !important;
-	font-family: "GearedSlab";
+	font-family: "GearedSlab", helvetica;
 	font-size: 22px;
 	
 	transition-property: all;
@@ -533,6 +542,18 @@ footer #bottom-footer{
 	float: right;
 	position: relative;
 	
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+	-ms-border-radius: 3px;
+	
+	box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+	-webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+	-moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+	-o-box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+	-ms-box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+
 }
 .one-article .article-content{
 	width: 252px;
@@ -613,7 +634,7 @@ footer #bottom-footer{
     height: 268px;
     overflow: hidden;
     font-size: 40px;
-    font-family: 'Segoe UI';
+    font-family: 'Segoe UI', tahoma, verdana, arial;;
     
 }
 .one-article .hover-article .left-hover{
@@ -673,6 +694,12 @@ aside .aside-box{
 	background-color: #fff;
 	margin-bottom: 10px;
 	position: relative;
+	
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+	-ms-border-radius: 3px;
 }
 aside #social-box {
 	padding: 10px 0;
@@ -763,4 +790,37 @@ aside #social-box #newsletter-social:hover{
 #categories-page aside, #articles-page aside{
     padding: 10px 0 !important;
     float: right;
+}
+
+.article-content{
+    line-height: 20px;
+    font-family: 'Ubuntu-C';
+    font-size: 14px;
+}
+.article-content .article-information{
+    margin-top: 30px;
+    
+    float: right;
+}
+.article-content h4{
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+.article-content .author, .article-content .author a{
+    font-size: 16px;
+    color: rgb(51,86,129);
+    font-weight: bold;
+}
+#article-page .border-title{
+    height: auto;
+    background: transparent url(../images/border.png) left 18px repeat-x;
+}
+#article-page .left-title{
+    font-size: 34px;
+    height: auto;
+    padding-top: 0;
+    color: rgb(51,86,129);
+}
+#article-page .date{
+    font-size: 16px;
 }
