@@ -5,29 +5,15 @@ class CommentControler extends Controler {
 		return $this->redirect("comment/list");
 	}
 
-	public function ShowAction($params) {
-		$comment = App::getClass("comment", $params[3]);
-		return $this->render(array('comment' => $comment));
-	}
-
-	public function AddAction($params) {
-		return $this->render(array('user' => null));
-	}
-
 	public function DeleteAction($params) {
-		$comment = App::getClass("comment", $params[3]);
-		return $this->render(array('comment' => $comment));
-	}
-
-	public function UpdateAction($params) {
-		$method = $this->getRequest();
-		if($method->isMethod("post")) {
-			return $this->redirect("/comment/show/".$params[3]);
+		$form = $this->getRequest();
+		if($form->isMethod("post")){
+			$data = $form->getData();
+			$id = $data["id"];
+			
+			$comment = App::getClass("comment", $id)->set("deleted", "1");
 		}
-		else {
-			$comment = App::getClass("comment", $params[3]);
-			return $this->render(array('comment' => $comment));
-		}
+		return $this->redirect("comment/list");
 	}
 
 	public function ListAction($params) {

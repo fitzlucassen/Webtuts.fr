@@ -32,10 +32,38 @@
     }
     
     function format_date($date){
+	
+	$months = array("fr" => array(	"January" => "janvier",
+					"February" => "fevrier",
+					"March" => "mars",
+					"April" => "avril",
+					"May" => "mai",
+					"June" => "juin",
+					"July" => "juillet",
+					"August" => "aout",
+					"September" => "septembre",
+					"October" => "octobre",
+					"November" => "novembre",
+					"December" => "décembre"),
+			"en" => array(	"January" => "january",
+					"February" => "february",
+					"March" => "march",
+					"April" => "april",
+					"May" => "may",
+					"June" => "june",
+					"July" => "july",
+					"August" => "august",
+					"September" => "september",
+					"October" => "october",
+					"November" => "november",
+					"December" => "december"));
+    
 	$date_without_time = current(explode(' ',$date));
 	$date_array = explode('-', $date_without_time);
-	$date = $date_array[2] . '-' . $date_array[1] . '-' .$date_array[0];
+	$date = date("j F Y", mktime(0, 0, 0, $date_array[1], $date_array[2], $date_array[0]));
 	
+	$date_array = explode(' ', $date);
+	$date = implode(' ',  array($date_array[0], $months[Kernel::get("lang")][$date_array[1]], $date_array[2]));
 	return $date;
     }
     
@@ -44,5 +72,12 @@
 	    $description = substr($description, 0, $size) . "...";
 	}
 	return $description;
+    }
+    
+    function replace_lang_in_url($url){
+	$url_replaced = str_replace("en/", "", $url);
+	$url_replaced = str_replace("fr/", "", $url_replaced);
+	
+	return $url_replaced;
     }
 ?>

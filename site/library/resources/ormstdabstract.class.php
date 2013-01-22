@@ -133,15 +133,15 @@ abstract class OrmStdAbstract {
 				$this->$attribut = new $type($this->$attribut, $params);
 			}
 		}
-		else {
-			if(!empty($typeAttribut)) { // get() spéciaux avec params
-				$tmp = explode(" ", $typeAttribut);
-				if($tmp[0]=="type") {
-					$type = $tmp[1]."Type";
-					$this->$attribut = $this->$attribut->get($params);
-				}
+
+		if(!empty($typeAttribut)) { // get() spéciaux avec params
+			$tmp = explode(" ", $typeAttribut);
+			if($tmp[0]=="type") {
+				$type = $tmp[1]."Type";
+				return $this->$attribut->get($params);
 			}
-		}	
+		}
+			
 		return $this->$attribut;		
 	}
 
@@ -238,10 +238,10 @@ abstract class OrmStdAbstract {
 
 	*/
 	public function set($columns, $values=null) {
-		if(!empty($this->id) && !empty($columns)) {
+		if($this->id!="") {
 
 			if(!Sql2::create()->update(strtolower($this->_class))->columnsValues($columns, $values)->where("id", Sql2::$OPE_EQUAL, $this->id)->execute())
-				return new Error(10); 
+				return false; 
 			
 			$novalues = false;	// Variable pour forcer le faite de ne pas prendre en compte $values
 			if(!is_array($columns))

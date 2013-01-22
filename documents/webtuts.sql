@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Lun 21 Janvier 2013 à 11:55
+-- Généré le: Mar 22 Janvier 2013 à 21:46
 -- Version du serveur: 5.5.25
 -- Version de PHP: 5.4.4
 
@@ -128,7 +128,7 @@ CREATE TABLE `category` (
   `articles` int(11) DEFAULT NULL,
   `image` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
 
 --
 -- Contenu de la table `category`
@@ -155,7 +155,8 @@ INSERT INTO `category` (`id`, `deleted`, `name`, `description`, `articles`, `ima
 (18, 0, 108, 109, NULL, 1),
 (19, 0, 110, 111, NULL, 1),
 (20, 0, 144, 145, NULL, 1),
-(21, 0, 146, 147, NULL, 1);
+(21, 0, 146, 147, NULL, 1),
+(22, 0, 148, 149, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -197,7 +198,7 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`id`, `article`, `author`, `text`, `date`, `deleted`) VALUES
-(1, 1, 1, 'Coooool !', '2013-02-11 00:00:00', 0);
+(1, 1, 1, 'Coooool !', '2013-02-11 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -240,7 +241,7 @@ CREATE TABLE `lang` (
   `lang` text NOT NULL,
   `text` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=229 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=233 ;
 
 --
 -- Contenu de la table `lang`
@@ -474,7 +475,11 @@ INSERT INTO `lang` (`id`, `id_lang`, `lang`, `text`) VALUES
 (225, 146, 'fr', 'Testouille'),
 (226, 146, 'en', 'Testouille'),
 (227, 147, 'fr', 'Testouille'),
-(228, 147, 'en', 'Testouille');
+(228, 147, 'en', 'Testouille'),
+(229, 148, 'fr', 'test'),
+(230, 148, 'en', 'test'),
+(231, 149, 'fr', 'test'),
+(232, 149, 'en', 'test');
 
 -- --------------------------------------------------------
 
@@ -619,27 +624,6 @@ INSERT INTO `page` (`id`, `title`, `content`, `date`, `author`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `rewritingurl`
---
-
-CREATE TABLE `rewritingurl` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `app` text NOT NULL,
-  `replaceurl` text NOT NULL,
-  `matchurl` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
-
---
--- Contenu de la table `rewritingurl`
---
-
-INSERT INTO `rewritingurl` (`id`, `app`, `replaceurl`, `matchurl`) VALUES
-(1, 'backend', 'comment/show', 'let-me-show-a-comment');
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `tag`
 --
 
@@ -660,6 +644,28 @@ INSERT INTO `tag` (`id`, `name`, `description`) VALUES
 (3, 21, 22),
 (4, 23, 24),
 (5, 25, 26);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `urlrewriting`
+--
+
+CREATE TABLE `urlrewriting` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `app` text NOT NULL,
+  `controler` text NOT NULL,
+  `action` text NOT NULL,
+  `match` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `urlrewriting`
+--
+
+INSERT INTO `urlrewriting` (`id`, `app`, `controler`, `action`, `match`) VALUES
+(1, 'frontend', 'blog', 'categories', 'categories');
 
 -- --------------------------------------------------------
 

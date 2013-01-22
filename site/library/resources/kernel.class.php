@@ -33,6 +33,8 @@ class Kernel {
 			return Kernel::$SESSION;
 		elseif($attr=="lang")
 			return Kernel::$LANG;
+		elseif($attr=="url")
+			return Kernel::$URL;
 		elseif($attr=="langs")
 			return Kernel::$LANGS;
 		elseif($attr=="langdefault")
@@ -110,9 +112,7 @@ class Kernel {
 		 	echo $expression."<br />";
 		} */
 
-		if($newUrl = Sql2::create()->select("replaceurl")->from("rewritingurl")->where("app", Sql2::$OPE_EQUAL, __app__)->andWhere("matchurl", Sql2::$OPE_EQUAL, $url)->fetch()) {
-			$url = $newUrl;
-		}
+		$url = $this->setUrl($url);
 
 		Kernel::$URL = $url;
 
@@ -197,11 +197,65 @@ class Kernel {
 	}
 
 	public static function getUrl($url) {
-		if($newUrl = Sql2::create()->select("matchurl")->from("rewritingurl")->where("app", Sql2::$OPE_EQUAL, __app__)->andWhere("replaceurl", Sql2::$OPE_EQUAL, $url)->fetch()) {
-			return $newUrl;
+		return $url;
+	}
+
+	public function setUrl($url) {
+		$data = Sql2::create()->from("urlrewriting")->fetchArray();
+		foreach ($data as $key => $value) {
+			foreach ($value as $key2 => $value2) {
+				if(is_integer($key2) || $key2 == "id")
+					unset($data[$key][$key2]);
+			}
+			$pattern = $value["match"];
+			$bool = true;
+			$cpt = 1;
+			do {
+				$search = "{".$cpt."}";
+				if(strpos($pattern, $search)) {
+					$pattern = str_replace($search, "(.*)", $pattern);
+				}
+				else
+					$bool = false;
+				$cpt++;
+			} while($bool);
+			$data[$key]["regex"] = "/".addcslashes($pattern, "/")."/i";
+			$data[$key]["nbparams"] = $cpt-2; 
 		}
-		else
+
+		$found = null;
+		foreach ($data as $key => $value) {
+			if(preg_match($data[$key]["regex"], $url))
+				$found = $data[$key];
+		}
+		if($found == null) {
 			return $url;
+		}
+		$paramsName = array();
+		$tmp = explode("{", $found["match"]);
+		foreach ($tmp as $key => $value) {
+			if($key != 0) {
+				$rang = strpos($value, "}");
+				$search = strtok($value, "}");
+				$paramsName[] = $search;
+				$search .= "}";
+				$tmp[$key] = str_replace($search, "", $value);
+			}
+		}
+		foreach ($tmp as $key => $value) {
+			$url = str_replace($value, "/", $url);
+		}
+		$params = explode("/", $url);
+		foreach ($params as $key => $value) {
+			if($value == "")
+				unset($params[$key]);
+		}
+		$params = array_values($params);
+		$newUrl = $found["controler"]."/".$found["action"];
+		foreach ($paramsName as $value) {
+			$newUrl .= "/".$params[$value-1];
+		}
+		return $newUrl;
 	}
 }
 

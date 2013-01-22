@@ -104,5 +104,7 @@
     define("TUTOS", "tutoriels");
     define("CATEGORY_IMAGE", "The image of the category");
     define("ARTICLE_IMAGE", "The image of the article");
+    define("PUBLISHED", "published the");
+    define("PUBLISH", "comment");
 
 ?>

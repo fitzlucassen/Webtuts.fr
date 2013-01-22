@@ -7,7 +7,9 @@ class BlogControler extends Controler {
 	}
 
 	public function ArticleAction($params) {
-		return $this->generateUrl("blog/");
+		$article = App::getClass("article", $params[3]);
+		
+		return $this->render(array('article' => $article));
 	}
 
 	public function CategoryAction($params) {

@@ -104,44 +104,44 @@ class Sql2 {
 
 	*/
 	public function columnsValues($columns, $values=null) {
-		if(!empty($columns)) {
-			$novalues = false;	// Variable pour forcer le faite de ne pas prendre en compte $values
-			if(!is_array($columns))
-				$columns = array($columns);
+		$novalues = false;	// Variable pour forcer le faite de ne pas prendre en compte $values
+		if(!is_array($columns))
+			$columns = array($columns);
+		else {
+			if(is_assoc($columns)) {
+				$novalues = true;
+				$tmpTab = $columns;
+				$columns = array();
+				foreach ($tmpTab as $key => $value) {
+					$columns[] = $key;
+					$values[] = $value;
+				}
+			}
 			else {
-				if(is_assoc($columns)) {
-					$novalues = true;
-					$tmpTab = $columns;
-					$columns = array();
-					foreach ($tmpTab as $key => $value) {
-						$columns[] = $key;
-						$values[] = $value;
-					}
-				}
-				else {
-					if($values == null && sizeof($columns) == sizeof($values) && sizeof($values)>0)
-						return new Error(7);
+				if($values == null && sizeof($columns) == sizeof($values) && sizeof($values)>0) {
+					return new Error(7);
 				}
 			}
-			if(!$novalues) {
-				if($values!=null) {
-					if(!is_array($values))
-						$values = array($values);
-					else {
-						if(is_assoc($values))
-							return new Error(8);
-					}
-				}
-				else
-					return new Error(5);
-			}
-
-			$this->columns = array_merge($this->columns, $columns);
-			$this->values = array_merge($this->values, $values);
-			return $this;
 		}
-		else
-			return new Error(12);
+		if(!$novalues) {
+			if($values!=null) {
+				if(!is_array($values))
+					$values = array($values);
+				else {
+					if(is_assoc($values)) {
+						return new Error(8);
+					}
+				}
+			}
+			else {
+				echo "prout !!";
+				return new Error(5);
+			}
+		}
+
+		$this->columns = array_merge($this->columns, $columns);
+		$this->values = array_merge($this->values, $values);
+		return $this;
 	}
 
 	public function from($from) {
@@ -290,7 +290,6 @@ class Sql2 {
 				$cpt++;
 			}
 			if(!empty($this->where)) {
-				$requete .= " WHERE ";
 				$requete .= $this->getWhereString();
 			}
 			return $requete; 

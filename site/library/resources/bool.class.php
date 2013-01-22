@@ -24,7 +24,10 @@ class BoolType implements Type {
 	}
 
 	public function get($params = null) {
-		return $this;
+		if($this->_attribut)
+			return true;
+		else
+			return false;
 	}
 
 	public static function save($data) {
