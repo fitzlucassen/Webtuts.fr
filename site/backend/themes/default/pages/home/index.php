@@ -102,6 +102,7 @@ echo "</pre>";
 				)
 			)
 		)));*/
-	print_r(App::getTable("user")->getByPseudo("fozeek"));
+	
+	
 
 ?></pre>
