@@ -73,4 +73,11 @@
 	}
 	return $description;
     }
+    
+    function replace_lang_in_url($url){
+	$url_replaced = str_replace("en/", "", $url);
+	$url_replaced = str_replace("fr/", "", $url_replaced);
+	
+	return $url_replaced;
+    }
 ?>

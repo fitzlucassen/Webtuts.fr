@@ -104,5 +104,6 @@
     define("CATEGORY_IMAGE", "image de la catégorie");
     define("ARTICLE_IMAGE", "image de l'article");
     define("PUBLISHED", "Publié le");
+    define("PUBLISH", "a commenté");
     
 ?>

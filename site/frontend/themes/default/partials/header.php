@@ -20,11 +20,11 @@
 		
 		<div class="right search-flag-container">
 			<div id="flag-box">
-				<a href="<?php echo _host_absolute_; ?>fr/<?php echo Kernel::get("controler").'/'.Kernel::get("action");?>">
+				<a href="<?php echo _host_absolute_; ?>fr/<?php echo replace_lang_in_url(Kernel::get("url"));?>">
 					<img src="<?php echo '/'._theme_path_ . 'images/'; ?>flag_fr.png" alt="<?php echo ALT_TRANSLATE_FR; ?>" />
 					<span class="flag-caption">FR</span>
 				</a>
-				<a href="<?php echo _host_absolute_; ?>en/<?php echo Kernel::get("controler").'/'.Kernel::get("action");?>">
+				<a href="<?php echo _host_absolute_; ?>en/<?php echo replace_lang_in_url(Kernel::get("url"));?>">
 					<img src="<?php echo '/'._theme_path_ . 'images/'; ?>/flag_en.png" alt="<?php echo ALT_TRANSLATE_EN; ?>" />
 					<span class="flag-caption">EN</span>
 				</a>
