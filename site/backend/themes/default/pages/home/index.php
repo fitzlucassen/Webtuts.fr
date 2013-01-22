@@ -53,9 +53,9 @@
 </div>
 
 <?php
-/*
-echo "<pre>";
 
+echo "<pre>";
+/*
 
 foreach(Kernel::$PDO->query("SELECT * FROM category WHERE id=1") as $key => $cats) {
 	print_r($cats);
@@ -102,6 +102,6 @@ echo "</pre>";
 				)
 			)
 		)));*/
-
+	print_r(App::getTable("user")->getByPseudo("fozeek"));
 
 ?></pre>
