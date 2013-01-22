@@ -11,9 +11,9 @@ class CommentControler extends Controler {
 			$data = $form->getData();
 			$id = $data["id"];
 			
-			App::getClass("comment", $id)->set("deleted", 1);
+			$comment = App::getClass("comment", $id)->set("deleted", "1");
 		}
-		return $this->redirect(_host_."comment/list");
+		return $this->redirect("comment/list");
 	}
 
 	public function ListAction($params) {

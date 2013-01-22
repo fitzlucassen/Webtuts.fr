@@ -238,10 +238,10 @@ abstract class OrmStdAbstract {
 
 	*/
 	public function set($columns, $values=null) {
-		if(!empty($this->id) && !empty($columns)) {
+		if($this->id!="") {
 
 			if(!Sql2::create()->update(strtolower($this->_class))->columnsValues($columns, $values)->where("id", Sql2::$OPE_EQUAL, $this->id)->execute())
-				return new Error(10); 
+				return false; 
 			
 			$novalues = false;	// Variable pour forcer le faite de ne pas prendre en compte $values
 			if(!is_array($columns))

@@ -16,7 +16,7 @@
 		<div class="descriptionitem" style="overflow: hidden;padding-top: 1px;padding-left: 10px;position: relative;">
 			<span><?php echo lang($comment->get("article")->get("title")); ?></span>
 			<span class="textcomment" style="margin-top: 10px;font-size: 0.8em;color: grey;display :none;"><?php echo $comment->get("text"); ?></span>		
-			<form method="post" action=<?php echo createLink("/comment/delete"); ?>>
+			<form method="post" action="delete">
 				<input type="hidden" name="id" value="<?php echo $comment->get("id"); ?>"/>
 				<input type="submit" value="Supprimer" style="display: none; margin-top: 10px;" />
 			</form>
