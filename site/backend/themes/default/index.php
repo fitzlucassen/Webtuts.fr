@@ -84,7 +84,7 @@
 			</div>
 			<div style="overflow: hidden;">
 		    	<?php include(_theme_path_."pages/".Kernel::get("controler").'/'.Kernel::get("action").".php"); ?>
-		    	<div style="margin-top: 20px;border-top: 1px solid #E5E5E5;padding: 20px;font-size: 0.8em;">
+		    	<div style="margin-top: 20px;border-top: 1px solid #E5E5E5;padding: 20px;font-size: 0.8em;display :none;">
 					Temps de chargement de la page : <span style="font-weight: bold;"><?php echo round(microtime(TRUE)-time_start, 3); ?></span> sec<br />
 					Nombre de requêtes : <span style="font-weight: bold;"><?php echo Sql2::$COUNT; ?></span> effectuée(s) : <br />
 					<div style="border-left: 2px solid #E5E5E5;padding: 10px;margin-top: 5px;padding-top: 5px;padding-bottom: 5px;">

@@ -33,6 +33,8 @@ class Kernel {
 			return Kernel::$SESSION;
 		elseif($attr=="lang")
 			return Kernel::$LANG;
+		elseif($attr=="url")
+			return Kernel::$URL;
 		elseif($attr=="langs")
 			return Kernel::$LANGS;
 		elseif($attr=="langdefault")
