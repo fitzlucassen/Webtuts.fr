@@ -19,7 +19,7 @@
 	<?php foreach ($categories as $categorie) : ?>
 	<a class="itemlist" href="<?php echo createLink("/category/show/".$categorie->get("id")); ?>">
 		<div style="float: left;width: 400px;">
-			<span <?php if($categorie->get("deleted")=="1") { ?>style="color: red;"<?php } ?>><?php echo lang($categorie->get("name", $lang)); ?></span> 
+			<span <?php if($categorie->get("deleted")) { ?>style="color: red;"<?php } ?>><?php echo lang($categorie->get("name", $lang)); ?></span> 
 		</div>
 		<div style="overflow: hidden;padding-left: 10px;">
 			<span style="text-decoration: none;font-size: 0.8em;color: grey;"><?php echo lang($categorie->get("description", $lang)); ?></span>
