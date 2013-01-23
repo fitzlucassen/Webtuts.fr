@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mar 22 Janvier 2013 à 21:46
+-- Généré le: Mer 23 Janvier 2013 à 11:43
 -- Version du serveur: 5.5.25
 -- Version de PHP: 5.4.4
 
@@ -653,19 +653,20 @@ INSERT INTO `tag` (`id`, `name`, `description`) VALUES
 
 CREATE TABLE `urlrewriting` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `app` text NOT NULL,
-  `controler` text NOT NULL,
-  `action` text NOT NULL,
-  `match` text NOT NULL,
+  `app` text CHARACTER SET utf8 NOT NULL,
+  `controler` text CHARACTER SET utf8 NOT NULL,
+  `action` text CHARACTER SET utf8 NOT NULL,
+  `matchurl` text CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `urlrewriting`
 --
 
-INSERT INTO `urlrewriting` (`id`, `app`, `controler`, `action`, `match`) VALUES
-(1, 'frontend', 'blog', 'categories', 'categories');
+INSERT INTO `urlrewriting` (`id`, `app`, `controler`, `action`, `matchurl`) VALUES
+(1, 'frontend', 'blog', 'categories', 'categories'),
+(2, 'frontend', 'blog', 'article', 'article-{1}');
 
 -- --------------------------------------------------------
 

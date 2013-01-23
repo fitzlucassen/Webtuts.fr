@@ -197,17 +197,30 @@ class Kernel {
 	}
 
 	public static function getUrl($url) {
+		$urlExplode = explode("/", $url);
+		$controler = $urlExplode[0];
+		$action = $urlExplode[1];
+		if($data = Sql2::create()->select("matchurl")->from("urlrewriting")->where("app = '".__app__."'")->andWhere("controler", "=", $controler)->andWhere("action", "=", $action)->fetch()) {
+			$url = $data;
+			$params = $urlExplode;
+			unset($params[0]);
+			unset($params[1]);
+			$params = array_values($params);
+			foreach ($params as $key => $value) {
+				$url = str_replace("{".($key+1)."}", $value, $url);
+			}
+		}
 		return $url;
 	}
 
 	public function setUrl($url) {
-		$data = Sql2::create()->from("urlrewriting")->fetchArray();
+		$data = Sql2::create()->from("urlrewriting")->where("app = '".__app__."'")->fetchArray();
 		foreach ($data as $key => $value) {
 			foreach ($value as $key2 => $value2) {
 				if(is_integer($key2) || $key2 == "id")
 					unset($data[$key][$key2]);
 			}
-			$pattern = $value["match"];
+			$pattern = $value["matchurl"];
 			$bool = true;
 			$cpt = 1;
 			do {
@@ -232,7 +245,7 @@ class Kernel {
 			return $url;
 		}
 		$paramsName = array();
-		$tmp = explode("{", $found["match"]);
+		$tmp = explode("{", $found["matchurl"]);
 		foreach ($tmp as $key => $value) {
 			if($key != 0) {
 				$rang = strpos($value, "}");
