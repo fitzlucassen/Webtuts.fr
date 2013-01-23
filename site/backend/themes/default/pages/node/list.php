@@ -11,7 +11,7 @@
 	</div>
 
 	<?php foreach ($nodes as $node) : ?>
-	<div style="border-bottom: 1px solid #E5E5E5;padding: 15px;">	
+	<div class="itemlist">	
 		<div style="float: left;width: 200px;">
 			<a href="<?php echo createLink("/node/show/".$node->get("id")); ?>"><?php echo lang($node->get("name")); ?></a>
 		</div>

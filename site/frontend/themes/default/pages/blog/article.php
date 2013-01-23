@@ -16,12 +16,25 @@
 		<span class="date"><?php echo BY; ?></span>
 		<span class="author"><a href="#"><?php echo $article->get("author")->get("pseudo"); ?></a></span>
 	    </h4>
+	    <div class="article-tags right">
+		<?php 
+		    foreach($article->get("tags") as $tag) {
+		?>
+			<a href="#" class="article-tag">
+			    <?php echo $tag->get("name"); ?>
+			</a>
+		<?php
+		    }
+		?>
+	    </div>
+	    <div class="cl"></div>
 	    <p>
 		<?php echo nl2br($article->get("text")); ?>
 	    </p>
 	</div>
 	
 	<div class="article-comments">
+	    <h2><?php echo COMMENTS_LIST; ?></h2>
 	    <?php
 		foreach($article->get("comments") as $comment){
 		    $url_image = get_url_image($comment->get("author"));
@@ -29,7 +42,7 @@
 	    ?>
 	    <div class="one-comment">
 		<div class="comment-user-image">
-		    <img src="<?php echo $url_image; ?>" alt="<?php echo $alt_image;?>" />
+		    <img src="<?php echo $url_image; ?>" alt="<?php echo $alt_image;?>" width="100px" />
 		</div>
 		<div class="comment-body">
 		    <div class="comment-header">

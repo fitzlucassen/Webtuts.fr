@@ -100,10 +100,16 @@
 				Cliquez sur l'un d'eux afin de voir l'intégralité de celui-ci.");
     
     define("SEE_TUTO", "Voir les tutoriels");
-    define("TUTOS", "tutoriels");
+    define("TUTOS", "tutoriel(s)");
     define("CATEGORY_IMAGE", "image de la catégorie");
     define("ARTICLE_IMAGE", "image de l'article");
     define("PUBLISHED", "Publié le");
     define("PUBLISH", "a commenté");
-    
+    define("COMMENTS_LIST", "Commentaires");
+    define("LEFT_PRINT_ARTICLE", "Voir l'");
+    define("RIGHT_PRINT_ARTICLE", "article");
+    define("LEFT_PRINT_CATEGORY", "Voir la c");
+    define("RIGHT_PRINT_CATEGORY", "ategorie");
+    define("SEE_TUTOS_FROM_CATEGORY", "Voir les tutos");
+    define("TUTOS_BY_CATEGORY", "Cette catégorie contient");
 ?>

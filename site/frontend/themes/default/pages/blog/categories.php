@@ -40,12 +40,24 @@
 
 			<div class="article-category left">
 			    <img src="<?php echo '/'._theme_path_ . 'images/'; ?>angle.png" alt="<?php echo ALT_HEADBAND; ?>" />
-			    <a href="#">
+			    <a class="aBlock" href="#">
 				<?php echo $cat->get("articles")->count(); ?> <?php echo TUTOS; ?>
 			    </a>
 			</div>
 			<div class="cl"></div>
 			
+			<div class="hover-article">
+			    <a style="display:block; width: 100%;height: 100%;" href="<?php echo '/'. Kernel::getUrl("blog/category/" . format_for_url($cat->get("id"))); ?>">
+			    </a>
+			    <a href="<?php echo '/'. Kernel::getUrl("blog/category/" . format_for_url($cat->get("id"))); ?>">
+				<div class="left-hover">
+				    <p><?php echo LEFT_PRINT_CATEGORY; ?></p>
+				</div>
+				<div class="right-hover">
+				    <p><?php echo RIGHT_PRINT_CATEGORY; ?></p>
+				</div>
+			    </a>
+			</div>
 		    </div>
 	    <?php
 		}

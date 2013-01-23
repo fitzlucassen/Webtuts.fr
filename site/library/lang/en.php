@@ -101,10 +101,17 @@
 				Click on one of them to see it.");
     
     define("SEE_TUTO", "See all tuts from this categorie");
-    define("TUTOS", "tutoriels");
+    define("TUTOS", "tutoriel(s)");
     define("CATEGORY_IMAGE", "The image of the category");
     define("ARTICLE_IMAGE", "The image of the article");
     define("PUBLISHED", "published the");
     define("PUBLISH", "comment");
+    define("COMMENTS_LIST", "Comments list");
+    define("LEFT_PRINT_ARTICLE", "See the");
+    define("RIGHT_PRINT_ARTICLE", "article");
+    define("LEFT_PRINT_CATEGORY", "See this");
+    define("RIGHT_PRINT_CATEGORY", "category");
+    define("SEE_TUTOS_FROM_CATEGORY", "See tuts");
+    define("TUTOS_BY_CATEGORY", "This category contains");
 
 ?>

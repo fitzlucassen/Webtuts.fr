@@ -197,17 +197,80 @@ class Kernel {
 	}
 
 	public static function getUrl($url) {
+		$urlExplode = explode("/", $url);
+		$controler = $urlExplode[0];
+		$action = $urlExplode[1];
+		$data = Sql2::create()->select("matchurl")
+				      ->from("urlrewriting")
+				      ->where("app = '".__app__."'")
+				      ->andWhere("controler", "=", $controler)
+				      ->andWhere("route_order", "=", 0)
+				      ->andWhere("action", "=", $action)->fetch();
+		
+		$route_order_max = Sql2::create()->select("MAX(route_order)")
+						 ->from("urlrewriting")->fetch();
+		
+		$i = 1;
+		while(!$data && $i <= $route_order_max){
+		    $data = Sql2::create()->select("matchurl")
+					->from("urlrewriting")
+					->where("app = '".__app__."'")
+					->andWhere("controler", "=", $controler)
+					->andWhere("route_order", "=", $i)
+					->andWhere("action", "=", $action)->fetch();
+		    $i++;
+		}
+		
+		if($data) {
+			$url = $data;
+			$params = $urlExplode;
+			unset($params[0]);
+			unset($params[1]);
+			$params = array_values($params);
+			foreach ($params as $key => $value) {
+				$url = str_replace("{".($key+1)."}", Kernel::sanitize($value), $url);
+			}
+		}
 		return $url;
 	}
 
+	public static function sanitize($string) {
+		$string = strtolower($string);
+		$string = str_replace(" ", "-", $string);
+		$string = str_replace("'", "-", $string);
+		$string = str_replace(",", "-", $string);
+		$string = str_replace("?", "-", $string);
+		$string = str_replace("!", "-", $string);
+		$string = str_replace(":", "-", $string);
+		$string = str_replace(";", "-", $string);
+		$string = str_replace("é", "e", $string);
+		$string = str_replace("è", "e", $string);
+		$string = str_replace("ê", "e", $string);
+		$string = str_replace("à", "a", $string);
+		$string = str_replace("â", "a", $string);
+		$string = str_replace("ù", "u", $string);
+		$string = str_replace("û", "u", $string);
+		$string = str_replace("ï", "i", $string);
+		$string = str_replace("î", "i", $string);
+		$string = str_replace("ì", "i", $string);
+		$string = str_replace("ô", "o", $string);
+		$string = str_replace("ö", "o", $string);
+		$string = str_replace("--", "-", $string);
+		return $string;
+	}
+
 	public function setUrl($url) {
-		$data = Sql2::create()->from("urlrewriting")->fetchArray();
+		$data = Sql2::create()->from("urlrewriting")
+				      ->where("app = '".__app__."'")
+				      ->orderBy("route_order", "ASC")
+				      ->fetchArray();
+		
 		foreach ($data as $key => $value) {
 			foreach ($value as $key2 => $value2) {
 				if(is_integer($key2) || $key2 == "id")
 					unset($data[$key][$key2]);
 			}
-			$pattern = $value["match"];
+			$pattern = $value["matchurl"];
 			$bool = true;
 			$cpt = 1;
 			do {
@@ -223,16 +286,20 @@ class Kernel {
 			$data[$key]["nbparams"] = $cpt-2; 
 		}
 
+		$found_array = array();
 		$found = null;
 		foreach ($data as $key => $value) {
 			if(preg_match($data[$key]["regex"], $url))
-				$found = $data[$key];
+				$found_array[] = $data[$key];
 		}
-		if($found == null) {
+		if(count($found_array) == 0) {
 			return $url;
 		}
+		reset($found_array);
+		$found = current($found_array);
+		
 		$paramsName = array();
-		$tmp = explode("{", $found["match"]);
+		$tmp = explode("{", $found["matchurl"]);
 		foreach ($tmp as $key => $value) {
 			if($key != 0) {
 				$rang = strpos($value, "}");
