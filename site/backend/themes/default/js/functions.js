@@ -27,6 +27,7 @@ $("document").ready(function() {
 		$(this).css("cursor", "auto");
 		$(this).removeClass();
 		$(this).addClass("open");
+		$(this).addClass("itemlist");
 		$(this).children(".descriptionitem").children(".textcomment").css("display", "block");
 		$(this).children(".titleitem").children("span").css("display", "block");
 		$(this).children(".descriptionitem").find("input").css("display", "block");
