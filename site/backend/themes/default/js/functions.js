@@ -17,7 +17,7 @@ $("document").ready(function() {
 		}
 	});
 	
-	$(".itemlist").live("click", function(){
+	$(".itemlist.showmore").live("click", function(){
 		var previous = $(this).parent().children(".open");
 		
 		closeComment(previous);
