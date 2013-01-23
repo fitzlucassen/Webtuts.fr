@@ -1,0 +1,30 @@
+#category-page .border-title{
+    height: auto;
+    background: transparent url(../images/border.png) left 18px repeat-x;
+}
+#category-page .left-title{
+    font-size: 34px;
+    height: auto;
+    padding-top: 0;
+    color: rgb(51,86,129);
+}
+
+#category-page .category-image{
+    float: left;
+    width: 339px;
+    height: 216px;
+    text-align: center;
+    
+    margin-top: 20px;
+}
+#category-page .category-content{
+    margin-top: 20px;
+    position: relative;
+    float:left;
+}
+#category-page .category-content p{
+    margin-bottom: 20px;
+}
+#category-page .button{
+    position: static;
+}

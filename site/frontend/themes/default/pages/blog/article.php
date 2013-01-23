@@ -16,6 +16,18 @@
 		<span class="date"><?php echo BY; ?></span>
 		<span class="author"><a href="#"><?php echo $article->get("author")->get("pseudo"); ?></a></span>
 	    </h4>
+	    <div class="article-tags right">
+		<?php 
+		    foreach($article->get("tags") as $tag) {
+		?>
+			<a href="#" class="article-tag">
+			    <?php echo $tag->get("name"); ?>
+			</a>
+		<?php
+		    }
+		?>
+	    </div>
+	    <div class="cl"></div>
 	    <p>
 		<?php echo nl2br($article->get("text")); ?>
 	    </p>

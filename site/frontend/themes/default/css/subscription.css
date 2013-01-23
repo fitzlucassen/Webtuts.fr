@@ -1,0 +1,8 @@
+#subscription-page .left-column{
+    float: left;
+    width: 470px;
+}
+#subscription-page .right-column{
+    float: right;
+    width: 470px;
+}

@@ -5,7 +5,7 @@
 
     
     <div class="left article-content">
-	<h2><?php echo $article->get("title"); ?></h2>
+	<h2><a href="<?php echo Kernel::getUrl("blog/article/" . $article->get("id")); ?>"><?php echo $article->get("title"); ?></a></h2>
 
 	<p class="article-caption">
 	    <span class="date"><?php echo THE . " " . format_date($article->get("date")) . " " . BY; ?></span>
@@ -31,7 +31,9 @@
     
     <div class="article-category left">
 	<img src="<?php echo '/'._theme_path_ . 'images/'; ?>angle.png" alt="<?php echo ALT_HEADBAND; ?>" />
-	<?php echo $article->get("category")->get("name"); ?>
+	<a class="aBlock" href="<?php echo '/' . Kernel::getUrl("blog/category/" . format_for_url($article->get("category")->get("id"))); ?>">
+	    <?php echo $article->get("category")->get("name"); ?>
+	</a>
     </div>
 
     
@@ -49,12 +51,14 @@
     <div class="cl"></div>
 
     <div class="hover-article">
+	<a class="aBlock" href="<?php echo '/'. Kernel::getUrl("blog/article/" . $article->get("id") . "/" . format_for_url($article->get("category")->get("id"))); ?>">
+	</a>
 	<a href="<?php echo '/'. Kernel::getUrl("blog/article/" . $article->get("id") . "/" . format_for_url($article->get("category")->get("id"))); ?>">
 	    <div class="left-hover">
-		Voir l'
+		<p><?php echo LEFT_PRINT_ARTICLE; ?></p>
 	    </div>
 	    <div class="right-hover">
-		article
+		<p><?php echo RIGHT_PRINT_ARTICLE; ?></p>
 	    </div>
 	</a>
     </div>
