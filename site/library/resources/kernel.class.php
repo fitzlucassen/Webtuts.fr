@@ -200,7 +200,28 @@ class Kernel {
 		$urlExplode = explode("/", $url);
 		$controler = $urlExplode[0];
 		$action = $urlExplode[1];
-		if($data = Sql2::create()->select("matchurl")->from("urlrewriting")->where("app = '".__app__."'")->andWhere("controler", "=", $controler)->andWhere("action", "=", $action)->fetch()) {
+		$data = Sql2::create()->select("matchurl")
+				      ->from("urlrewriting")
+				      ->where("app = '".__app__."'")
+				      ->andWhere("controler", "=", $controler)
+				      ->andWhere("route_order", "=", 0)
+				      ->andWhere("action", "=", $action)->fetch();
+		
+		$route_order_max = Sql2::create()->select("MAX(route_order)")
+						 ->from("urlrewriting")->fetch();
+		
+		$i = 1;
+		while(!$data && $i <= $route_order_max){
+		    $data = Sql2::create()->select("matchurl")
+					->from("urlrewriting")
+					->where("app = '".__app__."'")
+					->andWhere("controler", "=", $controler)
+					->andWhere("route_order", "=", $i)
+					->andWhere("action", "=", $action)->fetch();
+		    $i++;
+		}
+		
+		if($data) {
 			$url = $data;
 			$params = $urlExplode;
 			unset($params[0]);
@@ -214,7 +235,11 @@ class Kernel {
 	}
 
 	public function setUrl($url) {
-		$data = Sql2::create()->from("urlrewriting")->where("app = '".__app__."'")->fetchArray();
+		$data = Sql2::create()->from("urlrewriting")
+				      ->where("app = '".__app__."'")
+				      ->orderBy("route_order", "ASC")
+				      ->fetchArray();
+		
 		foreach ($data as $key => $value) {
 			foreach ($value as $key2 => $value2) {
 				if(is_integer($key2) || $key2 == "id")
@@ -236,14 +261,18 @@ class Kernel {
 			$data[$key]["nbparams"] = $cpt-2; 
 		}
 
+		$found_array = array();
 		$found = null;
 		foreach ($data as $key => $value) {
 			if(preg_match($data[$key]["regex"], $url))
-				$found = $data[$key];
+				$found_array[] = $data[$key];
 		}
-		if($found == null) {
+		if(count($found_array) == 0) {
 			return $url;
 		}
+		reset($found_array);
+		$found = current($found_array);
+		
 		$paramsName = array();
 		$tmp = explode("{", $found["matchurl"]);
 		foreach ($tmp as $key => $value) {

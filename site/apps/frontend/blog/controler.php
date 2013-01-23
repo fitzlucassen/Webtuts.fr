@@ -13,7 +13,8 @@ class BlogControler extends Controler {
 	}
 
 	public function CategoryAction($params) {
-		return $this->render(array('cat' => $params[3]));
+		$category = App::getClass("category", $params[3]);
+		return $this->render(array('cat' => $category));
 	}
 	public function ArticlesAction($params) {
 		$news = App::getClassArray("article", array("where" => "node = 2"));

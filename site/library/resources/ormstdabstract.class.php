@@ -336,6 +336,7 @@ abstract class OrmStdAbstract {
 								->from($class, $table)
 								->where("A.id", Sql2::$OPE_EQUAL ,"B.id_".$class, Sql2::$TYPE_NO_QUOTE)
 								->andWhere("B.id_".strtolower($this->_class), Sql2::$OPE_EQUAL, $this->id)
+								->andWhere("A.deleted", "=", 0)
 								->fetchClassArray();		
 			$this->$attribut->setObject($this);
 			$this->$attribut->setTarget($class);
@@ -344,6 +345,7 @@ abstract class OrmStdAbstract {
 			$this->$attribut = Sql2::create()
 								->from($class)
 								->where(strtolower($this->_class), Sql2::$OPE_EQUAL ,$this->get("id"), Sql2::$TYPE_NO_QUOTE)
+								->andWhere("deleted", "=", 0)
 								->fetchClassArray();		
 			$this->$attribut->setObject($this);
 			$this->$attribut->setTarget($class);

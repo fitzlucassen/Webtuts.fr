@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mer 23 Janvier 2013 à 12:38
+-- Généré le: Mer 23 Janvier 2013 à 15:04
 -- Version du serveur: 5.5.25
 -- Version de PHP: 5.4.4
 
@@ -126,19 +126,19 @@ INSERT INTO `category` (`id`, `deleted`, `name`, `description`, `articles`, `ima
 (7, 1, 35, 36, NULL, 7),
 (8, 1, 35, 36, NULL, 7),
 (9, 1, 35, 36, NULL, 7),
-(10, 0, 71, 72, NULL, 7),
-(11, 0, 73, 74, NULL, 7),
-(12, 0, 82, 83, NULL, 1),
-(13, 0, 84, 85, NULL, 1),
-(14, 0, 88, 89, NULL, 1),
-(15, 0, 92, 93, NULL, 1),
-(16, 0, 94, 95, NULL, 1),
-(17, 0, 96, 97, NULL, 1),
-(18, 0, 108, 109, NULL, 1),
-(19, 0, 110, 111, NULL, 1),
-(20, 0, 144, 145, NULL, 1),
-(21, 0, 146, 147, NULL, 1),
-(22, 0, 148, 149, NULL, 1);
+(10, 1, 71, 72, NULL, 7),
+(11, 1, 73, 74, NULL, 7),
+(12, 1, 82, 83, NULL, 1),
+(13, 1, 84, 85, NULL, 1),
+(14, 1, 88, 89, NULL, 1),
+(15, 1, 92, 93, NULL, 1),
+(16, 1, 94, 95, NULL, 1),
+(17, 1, 96, 97, NULL, 1),
+(18, 1, 108, 109, NULL, 1),
+(19, 1, 110, 111, NULL, 1),
+(20, 1, 144, 145, NULL, 1),
+(21, 1, 146, 147, NULL, 1),
+(22, 1, 148, 149, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -580,7 +580,8 @@ INSERT INTO `orm_columns_types` (`name_table`, `name_column`, `type`) VALUES
 ('page', 'author', 'class user'),
 ('page', 'date', 'type datetime'),
 ('category', 'deleted', 'type bool'),
-('user', 'access', 'class access');
+('user', 'access', 'class access'),
+('tag', 'deleted', 'type bool');
 
 -- --------------------------------------------------------
 
@@ -612,6 +613,7 @@ INSERT INTO `page` (`id`, `title`, `content`, `date`, `author`) VALUES
 
 CREATE TABLE `tag` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `deleted` tinyint(4) NOT NULL,
   `name` int(11) NOT NULL,
   `description` int(11) NOT NULL,
   PRIMARY KEY (`id`)
@@ -621,12 +623,12 @@ CREATE TABLE `tag` (
 -- Contenu de la table `tag`
 --
 
-INSERT INTO `tag` (`id`, `name`, `description`) VALUES
-(1, 11, 12),
-(2, 19, 20),
-(3, 21, 22),
-(4, 23, 24),
-(5, 25, 26);
+INSERT INTO `tag` (`id`, `deleted`, `name`, `description`) VALUES
+(1, 0, 11, 12),
+(2, 0, 19, 20),
+(3, 0, 21, 22),
+(4, 0, 23, 24),
+(5, 0, 25, 26);
 
 -- --------------------------------------------------------
 
@@ -640,16 +642,19 @@ CREATE TABLE `urlrewriting` (
   `controler` text CHARACTER SET utf8 NOT NULL,
   `action` text CHARACTER SET utf8 NOT NULL,
   `matchurl` text CHARACTER SET utf8 NOT NULL,
+  `route_order` int(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `urlrewriting`
 --
 
-INSERT INTO `urlrewriting` (`id`, `app`, `controler`, `action`, `matchurl`) VALUES
-(1, 'frontend', 'blog', 'categories', 'categories'),
-(2, 'frontend', 'blog', 'article', 'article-{1}');
+INSERT INTO `urlrewriting` (`id`, `app`, `controler`, `action`, `matchurl`, `route_order`) VALUES
+(1, 'frontend', 'blog', 'categories', 'les-categories.html', 0),
+(2, 'frontend', 'blog', 'article', 'categorie-{2}/article-{1}.html', 0),
+(3, 'frontend', 'blog', 'category', 'categorie-{1}.html', 1),
+(4, 'frontend', 'blog', 'articles', 'les-articles.html', 0);
 
 -- --------------------------------------------------------
 
