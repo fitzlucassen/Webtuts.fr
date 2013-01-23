@@ -324,18 +324,30 @@ abstract class OrmStdAbstract {
 		
 		// Ajout de l'id
 		array_unshift($select, "A.id");
-
+		$haveTable = true; 
    		$table = $class."_".strtolower($this->_class);
    		if(!Sql2::table_exist($table))
    			$table = strtolower($this->_class)."_".$class;
-		$this->$attribut = Sql2::create()
-							->select($select)
-							->from($class, $table)
-							->where("A.id", Sql2::$OPE_EQUAL ,"B.id_".$class, Sql2::$TYPE_NO_QUOTE)
-							->andWhere("B.id_".strtolower($this->_class), Sql2::$OPE_EQUAL, $this->id)
-							->fetchClassArray();		
-		$this->$attribut->setObject($this);
-		$this->$attribut->setTarget($class);
+   		if(!Sql2::table_exist($table))
+   			$haveTable = false;
+   		if($haveTable) {
+			$this->$attribut = Sql2::create()
+								->select($select)
+								->from($class, $table)
+								->where("A.id", Sql2::$OPE_EQUAL ,"B.id_".$class, Sql2::$TYPE_NO_QUOTE)
+								->andWhere("B.id_".strtolower($this->_class), Sql2::$OPE_EQUAL, $this->id)
+								->fetchClassArray();		
+			$this->$attribut->setObject($this);
+			$this->$attribut->setTarget($class);
+		}
+		else {
+			$this->$attribut = Sql2::create()
+								->from($class)
+								->where(strtolower($this->_class), Sql2::$OPE_EQUAL ,$this->get("id"), Sql2::$TYPE_NO_QUOTE)
+								->fetchClassArray();		
+			$this->$attribut->setObject($this);
+			$this->$attribut->setTarget($class);
+		}
 	}
 
 	// public function __toString() {

@@ -8,7 +8,7 @@
 		Définition de l'application
 	*/
 	//define("__app__", "frontend");
-	define("__app__", "backend");
+	define("__app__", "frontend");
 
 
 	/* 
@@ -35,7 +35,7 @@
 	/* User */
 	define("__SQL_user__", "root");
 	/* Password */
-	define("__SQL_password__", "");
+	define("__SQL_password__", "root");
 	/* Prefix tables */
 	define("__SQL_prefix__", "");
 	/* Database */
