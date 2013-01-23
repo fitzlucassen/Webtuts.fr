@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mer 23 Janvier 2013 à 11:43
+-- Généré le: Mer 23 Janvier 2013 à 12:38
 -- Version du serveur: 5.5.25
 -- Version de PHP: 5.4.4
 
@@ -75,24 +75,6 @@ CREATE TABLE `article_category` (
 --
 
 INSERT INTO `article_category` (`id_category`, `id_article`) VALUES
-(1, 1);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `article_comment`
---
-
-CREATE TABLE `article_comment` (
-  `id_article` int(11) NOT NULL,
-  `id_comment` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Contenu de la table `article_comment`
---
-
-INSERT INTO `article_comment` (`id_article`, `id_comment`) VALUES
 (1, 1);
 
 -- --------------------------------------------------------
@@ -191,14 +173,15 @@ CREATE TABLE `comment` (
   `date` datetime NOT NULL,
   `deleted` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `comment`
 --
 
 INSERT INTO `comment` (`id`, `article`, `author`, `text`, `date`, `deleted`) VALUES
-(1, 1, 1, 'Coooool !', '2013-02-11 00:00:00', 1);
+(1, 1, 1, 'Coooool !', '2013-02-11 00:00:00', 1),
+(2, 1, 1, 'essais', '2013-01-03 03:11:55', 0);
 
 -- --------------------------------------------------------
 
