@@ -828,6 +828,12 @@ aside #social-box #newsletter-social:hover{
     margin-top: 20px;
     min-height: 200px;
 }
+.article-comments h2{
+    font-size: 23px;
+    font-family: 'Segoe UI';
+    color: #335681;
+    margin-bottom: 20px;
+}
 .article-comments .one-comment{
     background-color: #fff;
     padding: 10px;

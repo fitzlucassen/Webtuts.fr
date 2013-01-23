@@ -22,6 +22,7 @@
 	</div>
 	
 	<div class="article-comments">
+	    <h2><?php echo COMMENTS_LIST; ?></h2>
 	    <?php
 		foreach($article->get("comments") as $comment){
 		    $url_image = get_url_image($comment->get("author"));
@@ -29,7 +30,7 @@
 	    ?>
 	    <div class="one-comment">
 		<div class="comment-user-image">
-		    <img src="<?php echo $url_image; ?>" alt="<?php echo $alt_image;?>" />
+		    <img src="<?php echo $url_image; ?>" alt="<?php echo $alt_image;?>" width="100px" />
 		</div>
 		<div class="comment-body">
 		    <div class="comment-header">

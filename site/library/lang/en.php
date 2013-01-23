@@ -106,5 +106,6 @@
     define("ARTICLE_IMAGE", "The image of the article");
     define("PUBLISHED", "published the");
     define("PUBLISH", "comment");
+    define("COMMENTS_LIST", "Comments list");
 
 ?>
