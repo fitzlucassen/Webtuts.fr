@@ -4,6 +4,7 @@ $("document").ready(function() {
 		field.children(".close").css("display", "none");
 		field.removeClass();
 		field.addClass("itemlist");
+		field.addClass("showmore");
 		field.children(".descriptionitem").children(".textcomment").css("display", "none");
 		field.children(".titleitem").children("span").css("display", "none");
 		field.children(".descriptionitem").find("input").css("display", "none");
@@ -17,7 +18,7 @@ $("document").ready(function() {
 		}
 	});
 	
-	$(".itemlist").live("click", function(){
+	$(".itemlist.showmore").live("click", function(){
 		var previous = $(this).parent().children(".open");
 		
 		closeComment(previous);
@@ -26,6 +27,7 @@ $("document").ready(function() {
 		$(this).css("cursor", "auto");
 		$(this).removeClass();
 		$(this).addClass("open");
+		$(this).addClass("itemlist");
 		$(this).children(".descriptionitem").children(".textcomment").css("display", "block");
 		$(this).children(".titleitem").children("span").css("display", "block");
 		$(this).children(".descriptionitem").find("input").css("display", "block");

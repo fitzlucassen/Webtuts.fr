@@ -15,6 +15,7 @@ a:hover {
 }
 
 .itemlist:hover {
+	text-decoration: none;
 	background: #F9F9F9;
 	border-top: 1px solid #E5E5E5;
 	margin-top: -1px;

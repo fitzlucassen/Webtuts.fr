@@ -8,7 +8,7 @@
 	</div>
 
 	<?php foreach ($comments as $comment) : ?>
-	<div class="itemlist" style="cursor: pointer;">	
+	<div class="itemlist showmore" style="cursor: pointer;">	
 		<input class="close" type="button" style="display: none;float: right;" value="-" />
 		<div class="titleitem" style="float: left;width: 200px;">
 			<a href="<?php echo createLink("/user/show/".$comment->get("author")->get("id")); ?>"><?php echo $comment->get("author")->get("pseudo"); ?></a>
