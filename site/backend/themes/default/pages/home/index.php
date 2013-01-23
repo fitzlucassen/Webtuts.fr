@@ -102,7 +102,7 @@ echo "</pre>";
 				)
 			)
 		)));*/
-	
+	print_r(App::getTable("user")->getTypes());
 	
 
 ?></pre>
