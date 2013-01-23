@@ -17,7 +17,7 @@ class CommentControler extends Controler {
 	}
 
 	public function ListAction($params) {
-		$comments = App::getClassArray("comment");
+		$comments = App::getClassArray("comment", array("where"=>"deleted=0"));
 		return $this->render(array('comments' => $comments));
 	}
 }

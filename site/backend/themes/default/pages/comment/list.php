@@ -8,7 +8,8 @@
 	</div>
 
 	<?php foreach ($comments as $comment) : ?>
-	<div class="comment" style="border-bottom: 1px solid #E5E5E5;padding: 15px;cursor: pointer;">	
+	<div class="itemlist" style="cursor: pointer;">	
+		<input class="close" type="button" style="display: none;float: right;" value="-" />
 		<div class="titleitem" style="float: left;width: 200px;">
 			<a href="<?php echo createLink("/user/show/".$comment->get("author")->get("id")); ?>"><?php echo $comment->get("author")->get("pseudo"); ?></a>
 			<span style="display: none;font-size: 0.8em;"><?php echo "Le ".printdate($comment->get("date")); ?></span>
