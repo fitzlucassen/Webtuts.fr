@@ -4,6 +4,7 @@ $("document").ready(function() {
 		field.children(".close").css("display", "none");
 		field.removeClass();
 		field.addClass("itemlist");
+		field.addClass("showmore");
 		field.children(".descriptionitem").children(".textcomment").css("display", "none");
 		field.children(".titleitem").children("span").css("display", "none");
 		field.children(".descriptionitem").find("input").css("display", "none");
