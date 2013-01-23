@@ -49,7 +49,7 @@
     <div class="cl"></div>
 
     <div class="hover-article">
-	<a href="<?php echo '/'. Kernel::getUrl("blog/article/" . $article->get("id")); ?>">
+	<a href="<?php echo '/'. Kernel::getUrl("blog/article/" . $article->get("id") . "/" . format_for_url($article->get("category")->get("id"))); ?>">
 	    <div class="left-hover">
 		Voir l'
 	    </div>
