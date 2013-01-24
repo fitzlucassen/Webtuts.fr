@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Jeu 24 Janvier 2013 à 10:26
+-- Généré le: Jeu 24 Janvier 2013 à 12:05
 -- Version du serveur: 5.5.25
 -- Version de PHP: 5.4.4
 
@@ -165,7 +165,7 @@ CREATE TABLE `comment` (
 
 INSERT INTO `comment` (`id`, `article`, `author`, `text`, `date`, `deleted`) VALUES
 (1, 1, 1, 'Coooool !', '2013-02-11 00:00:00', 1),
-(2, 1, 1, 'essais', '2013-01-03 03:11:55', 0);
+(2, 1, 1, 'essais', '2013-01-03 03:11:55', 1);
 
 -- --------------------------------------------------------
 
@@ -483,6 +483,7 @@ INSERT INTO `newsletter` (`id`, `mail`) VALUES
 
 CREATE TABLE `node` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `deleted` tinyint(4) NOT NULL,
   `name` int(11) NOT NULL,
   `description` int(11) NOT NULL,
   PRIMARY KEY (`id`)
@@ -492,10 +493,10 @@ CREATE TABLE `node` (
 -- Contenu de la table `node`
 --
 
-INSERT INTO `node` (`id`, `name`, `description`) VALUES
-(1, 27, 28),
-(2, 29, 30),
-(3, 76, 77);
+INSERT INTO `node` (`id`, `deleted`, `name`, `description`) VALUES
+(1, 0, 27, 28),
+(2, 0, 29, 30),
+(3, 0, 76, 77);
 
 -- --------------------------------------------------------
 
