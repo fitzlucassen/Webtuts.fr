@@ -1,5 +1,5 @@
 <?php
-    $urlArticle = '/'. Kernel::getUrl("blog/article/" . Kernel::sanitize($article->get("title")) . "/" . Kernel::sanitize($article->get("category")->get("name")));
+    $urlArticle = Kernel::getUrl("blog/article/" . Kernel::sanitize($article->get("title")) . "/" . Kernel::sanitize($article->get("category")->get("name")));
 ?>
 
 <div class="one-news">

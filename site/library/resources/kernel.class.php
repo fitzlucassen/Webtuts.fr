@@ -201,6 +201,9 @@ class Kernel {
 	}
 
 	public static function getUrl($url) {
+		if($url=="") {
+			return "/".Kernel::get("lang")."/";
+		}
 		$urlTmp = explode("/", $url);
 		if(in_array($urlTmp[0], Kernel::get("langs"))) {
 			$lang = $urlTmp[0];
@@ -212,7 +215,7 @@ class Kernel {
 			$lang = Kernel::get("lang");
 		}
 		if($url=="") {
-			return $lang;
+			return "/".$lang."/";
 		}
 		$urlExplode = explode("/", $url);
 		$controler = $urlExplode[0];
@@ -248,7 +251,7 @@ class Kernel {
 				$url = str_replace("{".($key+1)."}", Kernel::sanitize($value), $url);
 			}
 		}
-		return $lang."/".$url;
+		return "/".$lang."/".$url;
 	}
 
 	public static function sanitize($string) {
