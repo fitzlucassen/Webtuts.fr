@@ -23,8 +23,9 @@ class LangType implements Type {
 		return $this;
 	}
 
-	public static function getCompare($data, $params = true) {
-		if($params)
+	public static function getCompare($object, $attribut, $params = null) {
+		$data = $object->get($attribut);
+		if($params[0] == "Sanitize")
 			return Kernel::sanitize($data);
 		else
 			return $data;
@@ -50,6 +51,13 @@ class LangType implements Type {
 		$id_lang++;
 		foreach ($data as $key2 => $value2) { // différentes langues
 			Sql2::create()->insert("lang")->columnsValues(array("id_lang" => $id_lang, "lang" => $key2, "text" => $value2))->execute();
+		}
+		return $id_lang;
+	}
+	
+	public static function update($data) {
+		foreach ($data as $key => $value) { // différentes langues
+			Sql2::create()->update("lang")->columnsValues(array("id_lang" => $id_lang, "lang" => $key, "text" => $value))->where("id_lang", "=", $idlang)->execute();
 		}
 		return $id_lang;
 	}

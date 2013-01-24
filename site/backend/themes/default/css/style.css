@@ -3,10 +3,6 @@ a {
 	text-decoration: none;
 }
 
-a:hover {
-	text-decoration: underline;
-}
-
 .itemlist {
 	display: block;
 	text-decoration: none;

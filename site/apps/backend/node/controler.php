@@ -11,7 +11,21 @@ class NodeControler extends Controler {
 	}
 
 	public function AddAction($params) {
-		return $this->render(array('user' => null));
+		$form = $this->getRequest();
+		if($form->isMethod("post")) {
+			$data = $form->getData();
+			$name = array("fr" => $data["namefr"], "en" => $data["nameen"]);
+			$desc = array("fr" => $data["descriptionfr"], "en" => $data["descriptionen"]);
+			$attr["name"] = $name;
+			$attr["description"] = $desc;
+			if($node = App::getClass("node")->hydrate($attr)->save())
+				return $this->redirect("node/show/".$node->get("id"));
+			else
+				return $this->render(array("error" => "Vous n'avez pas bien rempli le formulaire"));
+		}
+		else {
+			return $this->render(null);
+		}
 	}
 
 	public function DeleteAction($params) {

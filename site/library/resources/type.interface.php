@@ -7,7 +7,7 @@ interface Type {
 	public function __construct($data, $params);
 	public static function save($data);
 	public function __toString();
-	public static function getCompare($data, $params);
+	public static function getCompare($object, $attribut, $params);
 	// public function set(...);
 }
 
