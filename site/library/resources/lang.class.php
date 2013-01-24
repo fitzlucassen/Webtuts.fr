@@ -23,6 +23,13 @@ class LangType implements Type {
 		return $this;
 	}
 
+	public static function getCompare($data, $params = true) {
+		if($params)
+			return Kernel::sanitize($data);
+		else
+			return $data;
+	}
+
 	public function setLang($langForced) {
 		$this->langForced = $langForced;
 	}

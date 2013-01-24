@@ -21,6 +21,10 @@ class IntegerType implements Type {
 		return $this;
 	}
 
+	public static function getCompare($data, $params = null) {
+		return $data;
+	}
+
 	public static function save($data) {
 		return $data;
 	}

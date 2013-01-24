@@ -102,7 +102,7 @@ echo "</pre>";
 				)
 			)
 		)));*/
-	print_r(App::getTable("user")->getTypes());
+	print_r(App::getTable("article")->getBySanitizeTitle("liste-des-fonctionalites-de-la-class-kernel"));
 	
 
 ?></pre>

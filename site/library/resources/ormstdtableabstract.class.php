@@ -53,16 +53,34 @@ abstract class OrmStdTableAbstract {
 		if(strstr($name, "getBy")) {
 			$return = new Collection();
 			$attribut = strtolower(substr($name, 5));
-			if(!strstr($name, "Sanitize")) {
-				foreach ($this->getCollection() as $object) {
-					if($object->get($attribut)==$params[0])
+			if(!strstr($attribut, "Sanitize"))
+				$sanitize = true;
+			else
+				$sanitize = false;
+			$attribut = strtolower(substr($attribut, 8));
+			foreach ($this->get() as $object) {
+				$type = $this->getTypes()[$attribut];
+				$type = explode(" ", $type);
+				if($type[0]=="type") {
+					$typeClass = ucfirst(strtolower($type[1]))."Type";
+					if(empty($params[1]))
+						$params[1] = null;
+					if($typeClass::getCompare($object->get($attribut, $params[1]), $sanitize)==$params[0]) {
 						$return->hydrate($object);
+					}
+				}
+				else {
+					return false;
 				}
 			}
-			else {
-				
+			if($return->count()==0) {
+				return false;
 			}
-			return $return;
+			elseif($return->count()==1) {
+				return $return->get(0);
+			}
+			else
+				return $return;
 		}
 		else
 			return false;
