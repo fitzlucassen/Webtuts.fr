@@ -19,8 +19,8 @@ class TextType implements Type {
 		return $this;
 	}
 
-	public static function getCompare($data, $params) {
-		return $data;
+	public static function getCompare($object, $attribut, $params = null) {
+		return $object->$attribut;
 	}
 
 	public function get($params = null) {

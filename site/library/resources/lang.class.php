@@ -23,8 +23,9 @@ class LangType implements Type {
 		return $this;
 	}
 
-	public static function getCompare($data, $params = true) {
-		if($params)
+	public static function getCompare($object, $attribut, $params = null) {
+		$data = $object->get($attribut);
+		if($params == "Sanitize")
 			return Kernel::sanitize($data);
 		else
 			return $data;

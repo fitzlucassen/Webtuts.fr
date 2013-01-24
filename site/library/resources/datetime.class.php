@@ -21,8 +21,8 @@ class DatetimeType implements Type {
 		return $this;
 	}
 
-	public static function getCompare($data, $params = null) {
-		return $data;
+	public static function getCompare($object, $attribut, $params = null) {
+		return $object->$attribut;
 	}
 
 	public static function save($data) {

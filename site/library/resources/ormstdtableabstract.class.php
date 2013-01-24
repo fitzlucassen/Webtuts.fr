@@ -50,25 +50,34 @@ abstract class OrmStdTableAbstract {
 	}
 
 	public function __call($name, $params) {
-		if(strstr($name, "getBy")) {
+		$nameArray = str_split($name);
+		$function = array();
+		$cpt=0;
+		$function[$cpt] = "";
+		foreach ($nameArray as $key => $value) {
+			if(ord($value)>=65 && ord($value)<=90) {
+				$cpt++;
+				$function[$cpt] = "";
+			}
+			$function[$cpt] .= $value;
+		}
+		if($function[0] == "get" && $function[1] == "By") {
+			$attribut = strtolower($function[count($function)-1]);
+			$type = $this->getTypes();
+			$type = $type[$attribut];
+			$type = explode(" ", $type);
+			$params = $function;
+			unset($params[0]);
+			unset($params[1]);
+			unset($params[count($function)-1]);
+			$params = array_values($params);
+
 			$return = new Collection();
-			$attribut = strtolower(substr($name, 5));
-			if(!strstr($attribut, "Sanitize"))
-				$sanitize = true;
-			else
-				$sanitize = false;
-			$attribut = strtolower(substr($attribut, 8));
 			foreach ($this->get() as $object) {
-				$type = $this->getTypes();
-				$type = $type[$attribut];
-				$type = explode(" ", $type);
 				if($type[0]=="type") {
 					$typeClass = ucfirst(strtolower($type[1]))."Type";
-					if(empty($params[1]))
-						$params[1] = null;
-					if($typeClass::getCompare($object->get($attribut, $params[1]), $sanitize)==$params[0]) {
+					if($typeClass::getCompare($object, $attribut, $params)==$params[0])
 						$return->hydrate($object);
-					}
 				}
 				else {
 					return false;
