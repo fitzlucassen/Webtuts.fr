@@ -122,6 +122,14 @@ class Kernel {
 		}
 		define("__lang__", Kernel::$LANG);
 
+		// On enleve la langue
+		$urlTmp = explode("/", $url);
+		if(in_array($urlTmp[0], $this->_LANG_ACCEPTED_)) {
+			$urlTmp[0] = "";
+			$url = implode("/", $urlTmp);
+			$url = ltrim($url, "/");
+		}
+		
 		$url = $this->setUrl($url);
 		$url = $lang."/".$url;
 		Kernel::$URL = $url;
@@ -300,13 +308,6 @@ class Kernel {
 				$found_array[] = $data[$key];
 		}
 		if(count($found_array) == 0) {
-			// On enleve la langue
-			$urlTmp = explode("/", $url);
-			if(in_array($urlTmp[0], $this->_LANG_ACCEPTED_)) {
-				$urlTmp[0] = "";
-				$url = implode("/", $urlTmp);
-				$url = ltrim($url, "/");
-			}
 			return $url;
 		}
 		reset($found_array);

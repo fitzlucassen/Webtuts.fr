@@ -8,7 +8,7 @@ class BlogControler extends Controler {
 	}
 	public function ArticleAction($params) {
 	    $article = App::getTable("article")->getBySanitizeTitle($params[3]);
-
+	    
 	    return $this->render(array('article' => $article));
 	}
 	public function CategoryAction($params) {
