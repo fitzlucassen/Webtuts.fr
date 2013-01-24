@@ -121,6 +121,9 @@ a:hover { text-decoration: none; }
 .right{
 	float: right;
 }
+.alignCenter{
+    vertical-align: middle;
+}
 .middle-title{
 	text-align: center;
 	height: 24px;
@@ -148,6 +151,10 @@ h4.left-title{
     background: #fff;
     color: rgb(51,86,129);
     margin-bottom: 20px;
+}
+h4.left-title a{
+    background: #fff;
+    color: rgb(51,86,129);
 }
 h4.left-title span{
     color: #000 !important;
@@ -686,17 +693,22 @@ aside #social-box #newsletter-social:hover{
     background: transparent url(../images/newsletter_on.png) center top no-repeat;
 }
 #news-box{
-	padding: 10px 5px 15px 5px;
+    padding: 10px 5px 15px 5px;
 }
 .news-footer{
     margin-top: 20px;
 }
 .one-news{
-	margin-bottom: 10px;
-	font-size: 14px;
-	line-height: 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 16px;
 }
-
+.one-big-news{
+    background-color: #dedfde;
+}
+.one-big-news .article-content .more-container{
+    background-color: #dedfde;
+}
 
 
 /** MEMBERSHIP **/

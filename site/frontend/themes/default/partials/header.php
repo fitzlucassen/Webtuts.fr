@@ -54,7 +54,7 @@
 		</div>
 		
 		<ul id="right-nav">
-			<li><a href="#"><?php echo NEWS; ?></a></li>
+			<li><a href="/<?php echo Kernel::getUrl("blog/actualites"); ?>"><?php echo NEWS; ?></a></li>
 			<li><a href="#"><?php echo SEARCH; ?></a></li>
 			<li><a href="#"><?php echo CONTACT; ?></a></li>			
 		</ul>

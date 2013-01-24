@@ -1,7 +1,11 @@
+<?php
+    $urlNews = Kernel::getUrl("blog/actualite/" . Kernel::sanitize($new->get("title")));
+?>
+
 <div class="one-news">
     <div class="border-title">
 	<h4 class="left-title">
-	    <?php echo $new->get("title"); ?> - 
+	    <a href="<?php echo $urlNews; ?>"><?php echo $new->get("title"); ?></a> - 
 	    <span class="date"><?php echo THE . " " . format_date($new->get("date")); ?></span>
 	</h4>
     </div>
@@ -11,10 +15,14 @@
     </p>
     <div class="news-footer">
 	<p class="show-more">
-	    [...] <a href="#"><?php echo SEE_MORE; ?></a>
+	    [...] <a href="<?php echo $urlNews; ?>"><?php echo SEE_MORE; ?></a>
 	</p>
 	<p class="comment">
-	    <a href="#"><?php echo $new->get("comments")->count() . " " . COMMENTS; ?></a>
+	    <?php 
+		$nb_comment = $new->get("comments")->count();
+		$text_comment = ($nb_comment > 1 ? COMMENTS : COMMENT);
+	    ?>
+	    <a href="#"><?php echo $nb_comment . " " . $text_comment; ?></a>
 	</p>
 	<div class="cl"></div>
 

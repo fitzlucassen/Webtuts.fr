@@ -23,7 +23,7 @@
 		    $url_image = get_url_image($cat);
 	    ?>
 		    <li>
-			<a href="#">
+			<a href="<?php echo Kernel::getUrl("blog/category/" . Kernel::sanitize($cat->get("name")));?>">
 			    <span><?php echo $cat->get("name"); ?></span>
 			    <img src="<?php echo $url_image; ?>" alt="<?php echo CATEGORY_IMAGE . " " . $cat->get("name"); ?>" width="<?php echo $cat->get("image")->get("width"); ?>" />
 			</a>
@@ -45,7 +45,7 @@
 	    foreach($articles as $article) { 
 		$url_image = get_url_image($article);
 		
-		include(_theme_path_ . "partials/articlePreview.php");
+		include(_theme_path_ . "partials/bigArticlePreview.php");
 	    }
 	?>
     </div>
@@ -67,7 +67,7 @@
 	    <div class="marginAuto">
 		<div class="button big-button">
 		    <span>
-			<a href="#"><?php echo SEE_NEWS; ?></a>
+			<a href="<?php echo Kernel::getUrl("blog/actualites");?>"><?php echo SEE_NEWS; ?></a>
 		    </span>
 		</div>
 	    </div>

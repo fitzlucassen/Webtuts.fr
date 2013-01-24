@@ -36,8 +36,11 @@
     define("BY", "par");
     define("SEE_MORE", "Voir la suite");
     define("COMMENTS", "commentaires");
+    define("COMMENT", "commentaire");
+    define("ARTICLES_WORD", "Articles");
     define("NEWS_WORD", "Actualités");
     define("SEE_NEWS", "Voir toute l'actualité");
+    define("SEE_ARTICLES", "Voir tous les articles");
     define("FOLLOW_WEBTUTS", "Suivez Webtuts !");
     define("HAPPENS_ON_TWITTER", "Ca se passe sur Twitter");
     
@@ -92,24 +95,34 @@
      **********/
     
     // Label text
-    define("CATEGORIES_TITLE", "Les différentes catégories d'articles");
+    define("CATEGORIES_TITLE", "Toutes les catégories de tutoriel");
     define("CATEGORIES_TEXT", "Vous trouverez ici la liste de toutes les catégories de tutoriels du blog.
 				Cliquez sur l'une d'elle afin de voir l'intégralité des tutoriels de celle-ci.");
     define("ARTICLES_TITLE", "Tous les tutoriels de Webtuts");
     define("ARTICLES_TEXT", "Vous trouverez ici la liste de tous les tutoriels du blog.
 				Cliquez sur l'un d'eux afin de voir l'intégralité de celui-ci.");
+    define("NEWS_TITLE", "Toutes les actualités de Webtuts");
+    define("NEWS_TEXT", "Vous trouverez ici la liste de toutes les actualités du blog.
+			Cliquez sur l'une d'elle afin de la voir en intégralité.");
     
     define("SEE_TUTO", "Voir les tutoriels");
-    define("TUTOS", "tutoriel(s)");
+    define("TUTOS", "tutoriels");
+    define("TUTO", "tutoriel");
     define("CATEGORY_IMAGE", "image de la catégorie");
     define("ARTICLE_IMAGE", "image de l'article");
+    define("NEWS_IMAGE", "image de l'actualité");
     define("PUBLISHED", "Publié le");
     define("PUBLISH", "a commenté");
     define("COMMENTS_LIST", "Commentaires");
+    define("NO_COMMENT", "Il n'y a aucun commentaire ici...");
     define("LEFT_PRINT_ARTICLE", "Voir l'");
     define("RIGHT_PRINT_ARTICLE", "article");
+    define("LEFT_PRINT_NEWS", "Voir l'a");
+    define("RIGHT_PRINT_NEWS", "ctualité");
     define("LEFT_PRINT_CATEGORY", "Voir la c");
     define("RIGHT_PRINT_CATEGORY", "ategorie");
     define("SEE_TUTOS_FROM_CATEGORY", "Voir les tutos");
     define("TUTOS_BY_CATEGORY", "Cette catégorie contient");
+    define("CATEGORY_TUTOS", "Les tutoriels de la catégorie");
+    define("NO_ARTICLE_CATEGORY", "Il n'y a pas encore de tutoriel dans cette catégorie...");
 ?>
