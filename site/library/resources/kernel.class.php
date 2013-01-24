@@ -256,6 +256,8 @@ class Kernel {
 		$string = str_replace("ô", "o", $string);
 		$string = str_replace("ö", "o", $string);
 		$string = str_replace("--", "-", $string);
+		$string = rtrim($string, "-");
+		$string = ltrim($string, "-");
 		return $string;
 	}
 
