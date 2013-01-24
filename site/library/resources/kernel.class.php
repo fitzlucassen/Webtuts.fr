@@ -211,6 +211,9 @@ class Kernel {
 		else {
 			$lang = Kernel::get("lang");
 		}
+		if($url=="") {
+			return $lang;
+		}
 		$urlExplode = explode("/", $url);
 		$controler = $urlExplode[0];
 		$action = $urlExplode[1];
