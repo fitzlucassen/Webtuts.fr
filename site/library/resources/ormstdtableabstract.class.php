@@ -59,7 +59,8 @@ abstract class OrmStdTableAbstract {
 				$sanitize = false;
 			$attribut = strtolower(substr($attribut, 8));
 			foreach ($this->get() as $object) {
-				$type = $this->getTypes()[$attribut];
+				$type = $this->getTypes();
+				$type = $type[$attribut];
 				$type = explode(" ", $type);
 				if($type[0]=="type") {
 					$typeClass = ucfirst(strtolower($type[1]))."Type";
