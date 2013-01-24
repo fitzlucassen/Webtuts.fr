@@ -129,7 +129,7 @@ class Kernel {
 			$url = implode("/", $urlTmp);
 			$url = ltrim($url, "/");
 		}
-		
+
 		$url = $this->setUrl($url);
 		$url = $lang."/".$url;
 		Kernel::$URL = $url;
@@ -199,7 +199,7 @@ class Kernel {
 		return $return;
 	}
 
-	public static function getUrl($url) {
+	public static function getUrl($url="") {
 		$urlTmp = explode("/", $url);
 		if(in_array($urlTmp[0], Kernel::get("langs"))) {
 			$lang = $urlTmp[0];
