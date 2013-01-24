@@ -30,6 +30,10 @@ class BoolType implements Type {
 			return false;
 	}
 
+	public static function getCompare($data, $params = null) {
+		return $data;
+	}
+
 	public static function save($data) {
 		// Mise en forme pour la BDD
 		if(is_bool($data)) {
