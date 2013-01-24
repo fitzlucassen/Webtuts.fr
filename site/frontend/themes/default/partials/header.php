@@ -17,7 +17,7 @@
 			<span>&nbsp;/&nbsp;</span>
 			<a href="#"><?php echo INSCRIPTION; ?></a>
 		</div>
-		
+		<?php var_dump(Kernel::get("url")); ?>
 		<div class="right search-flag-container">
 			<div id="flag-box">
 			    <a href="<?php echo _host_absolute_; ?>fr/<?php echo replace_lang_in_url(Kernel::getUrl(Kernel::get("url")));?>">
