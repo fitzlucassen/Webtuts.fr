@@ -14,19 +14,37 @@
 	</div>
 
 	<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
-		<?php echo ucfirst(text("name")); ?>
+		<?php echo ucfirst(text("name")); ?> (fr)
 	</div>
 	<div style="overflow: hidden;padding: 15px;">
-		<?php echo lang($node->get("name")); ?>
+		<?php echo lang($node->get("name", "fr")); ?>
+	</div>
+	<div style="clear: left;">
+	</div>
+	
+	<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
+		<?php echo ucfirst(text("name")); ?> (en)
+	</div>
+	<div style="overflow: hidden;padding: 15px;">
+		<?php echo lang($node->get("name", "en")); ?>
 	</div>
 	<div style="clear: left;">
 	</div>
 
 	<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
-		<?php echo ucfirst(text("description")); ?>
+		<?php echo ucfirst(text("description")); ?> (fr)
 	</div>
 	<div style="overflow: hidden;padding: 15px;">
-		<?php echo lang($node->get("description")); ?>
+		<?php echo lang($node->get("description", "fr")); ?>
+	</div>
+	<div style="clear: left;">
+	</div>
+	
+	<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
+		<?php echo ucfirst(text("description")); ?> (en)
+	</div>
+	<div style="overflow: hidden;padding: 15px;">
+		<?php echo lang($node->get("description", "en")); ?>
 	</div>
 	<div style="clear: left;">
 	</div>

@@ -53,6 +53,13 @@ class LangType implements Type {
 		}
 		return $id_lang;
 	}
+	
+	public static function update($data) {
+		foreach ($data as $key => $value) { // différentes langues
+			Sql2::create()->update("lang")->columnsValues(array("id_lang" => $id_lang, "lang" => $key, "text" => $value))->where("id_lang", "=", $idlang)->execute();
+		}
+		return $id_lang;
+	}
 
 	public function __toString() {
 		if($this->langForced !=null)
