@@ -35,7 +35,7 @@
 	
 	<div class="article-comments">
 	    <?php
-		$text_comment = (count($news->get("comments")) > 0 ? COMMENTS_LIST : NO_COMMENT);
+		$text_comment = (count($article->get("comments")) > 0 ? COMMENTS_LIST : NO_COMMENT);
 	    ?>
 	    <h2><?php echo $text_comment; ?></h2>
 	    <?php
