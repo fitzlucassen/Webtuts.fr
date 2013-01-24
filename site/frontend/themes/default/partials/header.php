@@ -1,10 +1,15 @@
 <header>
 	<div id="top-header">
+		<?php
+		    if(Kernel::get("action") != "badRoute"){
+		?>
 		<div id="oiseau-anime">
 			<img src="<?php echo '/'._theme_path_ . 'images/'; ?>oeuil-oiseau.png" alt="<?php echo ALT_BIRD_EYE; ?>" class="bird-eye" id="left-eye"/>
 			<img src="<?php echo '/'._theme_path_ . 'images/'; ?>oeuil-oiseau.png" alt="<?php echo ALT_BIRD_EYE; ?>" class="bird-eye" id="right-eye"/>
 		</div>
-		
+		<?php
+		    }
+		?>
 		<div id="login-box">
 			<a href="/user/subscription">
 				<img src="<?php echo '/'._theme_path_ . 'images/'; ?>membership.png" alt="<?php echo ALT_MY_PROFILE; ?>" />
@@ -17,7 +22,6 @@
 			<span>&nbsp;/&nbsp;</span>
 			<a href="#"><?php echo INSCRIPTION; ?></a>
 		</div>
-		<?php var_dump(Kernel::get("url")); ?>
 		<div class="right search-flag-container">
 			<div id="flag-box">
 			    <a href="<?php echo _host_absolute_.Kernel::getUrl("fr/".Kernel::get("url"));?>">
