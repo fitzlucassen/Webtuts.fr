@@ -16,7 +16,7 @@
 	<?php
 	    foreach($cats as $cat){
 		$url_image = get_url_image($cat);
-		$urlCategory = '/'. Kernel::getUrl("blog/category/" . Kernel::sanitize($cat->get("name")));
+		$urlCategory = Kernel::getUrl("blog/category/" . Kernel::sanitize($cat->get("name")));
 		$tutos_category = $cat->get("articles")->count();
 	?>
 		<div class="one-article no-float maxSize">

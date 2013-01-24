@@ -1,5 +1,5 @@
 <?php
-    $urlArticle = '/'. Kernel::getUrl("blog/article/" . Kernel::sanitize($article->get("title")) . "/" . Kernel::sanitize($article->get("category")->get("name")));
+    $urlArticle = Kernel::getUrl("blog/article/" . Kernel::sanitize($article->get("title")) . "/" . Kernel::sanitize($article->get("category")->get("name")));
 ?>
 
 <div class="one-article">
@@ -39,7 +39,7 @@
     
     <div class="article-category left">
 	<img src="<?php echo '/'._theme_path_ . 'images/'; ?>angle.png" alt="<?php echo ALT_HEADBAND; ?>" />
-	<a class="aBlock" href="<?php echo '/' . Kernel::getUrl("blog/category/" . Kernel::sanitize($article->get("category")->get("name"))); ?>">
+	<a class="aBlock" href="<?php echo Kernel::getUrl("blog/category/" . Kernel::sanitize($article->get("category")->get("name"))); ?>">
 	    <?php echo $article->get("category")->get("name"); ?>
 	</a>
     </div>
