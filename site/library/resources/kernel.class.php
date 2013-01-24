@@ -131,8 +131,9 @@ class Kernel {
 		}
 
 		$url = $this->setUrl($url);
-		$url = $lang."/".$url;
 		Kernel::$URL = $url;
+		$url = $lang."/".$url;
+		
 
 
 		if(!empty($url))
@@ -199,7 +200,7 @@ class Kernel {
 		return $return;
 	}
 
-	public static function getUrl($url="") {
+	public static function getUrl($url) {
 		$urlTmp = explode("/", $url);
 		if(in_array($urlTmp[0], Kernel::get("langs"))) {
 			$lang = $urlTmp[0];
