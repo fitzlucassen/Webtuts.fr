@@ -7,7 +7,10 @@
 		<div style="overflow: hidden;padding-top:10px;padding-left: 20px;">
 			<a href="<?php echo createLink("/node/show/".$node->get("id")); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;"><?php echo ucfirst(text("description")); ?></a>
 			<a href="<?php echo createLink("/node/update/".$node->get("id")); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;"><?php echo ucfirst(text("update")); ?></a>
-			<a href="<?php echo createLink("/node/delete/".$node->get("id")); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;"><?php echo ucfirst(text("delete")); ?></a>
+			<form method="post" action="/node/delete" style="display: inline-block; float: right;padding-right: 5px;padding-left: 5px;">
+				<input type="hidden" name="id" value="<?php echo $node->get("id"); ?>"/>
+				<input type="submit" value=<?php echo ucfirst(text("delete")); ?> style="margin-top: -10px;" />
+			</form>
 		</div>
 		<div style="clear: both;">
 		</div>

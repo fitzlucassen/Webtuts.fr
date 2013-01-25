@@ -29,8 +29,13 @@ class NodeControler extends Controler {
 	}
 
 	public function DeleteAction($params) {
-		$node = App::getClass("node", $params[3]);
-		return $this->render(array('node' => $node));
+		$form = $this->getRequest();
+		if($form->isMethod("post")){
+			$data = $form->getData();
+			$id = $data["id"];
+			$node = App::getClass("node", $id)->set("deleted", 1);
+		}
+		return $this->redirect("node/list");
 	}
 
 	public function UpdateAction($params) {
@@ -45,7 +50,8 @@ class NodeControler extends Controler {
 	}
 
 	public function ListAction($params) {
-		$nodes = App::getClassArray("node");
+		$nodes = App::getClassArray("node", array("where"=>"deleted=0"));
+		
 		return $this->render(array('nodes' => $nodes));
 	}
 }
