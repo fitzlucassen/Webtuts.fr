@@ -1,6 +1,5 @@
 <!-- Home page -->
 
-
 <div id="home-page">
     <!-- Introduction -->
     <div id="explanation-text">
@@ -25,7 +24,7 @@
 		    <li>
 			<a href="<?php echo Kernel::getUrl("blog/category/" . Kernel::sanitize($cat->get("name")));?>">
 			    <span><?php echo $cat->get("name"); ?></span>
-			    <img src="<?php echo $url_image; ?>" alt="<?php echo CATEGORY_IMAGE . " " . $cat->get("name"); ?>" width="<?php echo $cat->get("image")->get("width"); ?>" />
+			    <img src="<?php echo $url_image; ?>" alt="<?php echo ALT_CATEGORY_IMAGE . " " . $cat->get("name"); ?>" width="<?php echo $cat->get("image")->get("width"); ?>" />
 			</a>
 		    </li>
 	    <?php

@@ -165,7 +165,6 @@ h4.left-title span{
 	width: auto;
 	font-size: 14px;
 	padding-right: 10px;
-	padding-top: 3px;
 	color: black;
 	
 	background: transparent url(../images/bg.png) left top;
@@ -693,7 +692,7 @@ aside #social-box #newsletter-social:hover{
     background: transparent url(../images/newsletter_on.png) center top no-repeat;
 }
 #news-box{
-    padding: 10px 5px 15px 5px;
+    padding: 5px;
 }
 .news-footer{
     margin-top: 20px;

@@ -4,7 +4,7 @@
 
 <div class="one-article">
     <div class="left" style="width: 339px; height: 216px;text-align: center;">
-	    <img src="<?php echo $url_image; ?>" alt="<?php echo ARTICLE_IMAGE . " " . $article->get("title"); ?>" />
+	    <img src="<?php echo $url_image; ?>" alt="<?php echo ALT_ARTICLE_IMAGE . " " . $article->get("title"); ?>" />
     </div>
 
     
@@ -57,17 +57,4 @@
 	?>
     </div>
     <div class="cl"></div>
-
-    <div class="hover-article">
-	<a style="width: 100%;height: 100%; display: block" href="<?php echo $urlArticle; ?>">
-	</a>
-	<a href="<?php echo $urlArticle; ?>">
-	    <div class="left-hover">
-		<p><?php echo LEFT_PRINT_ARTICLE; ?></p>
-	    </div>
-	    <div class="right-hover">
-		<p><?php echo RIGHT_PRINT_ARTICLE; ?></p>
-	    </div>
-	</a>
-    </div>
 </div>

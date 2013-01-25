@@ -14,14 +14,15 @@
 	</div>
 	
 	<?php
+	    $cpt_cat = 0;
 	    foreach($cats as $cat){
 		$url_image = get_url_image($cat);
 		$urlCategory = Kernel::getUrl("blog/category/" . Kernel::sanitize($cat->get("name")));
 		$tutos_category = $cat->get("articles")->count();
 	?>
-		<div class="one-article no-float maxSize">
-		    <div class="left" style="width: 339px; height: 216px;text-align: center;">
-			<img src="<?php echo $url_image; ?>" alt="<?php echo CATEGORY_IMAGE . " " . $cat->get("name"); ?>" />
+		<div class="one-article minSize <?php echo ($cpt_cat % 2 == 0 ? "no-margin" : ""); ?>">
+		    <div class="left" style="width: 90px; height: 80px; margin: 10px 0 0 10px;text-align: center;">
+			<img src="<?php echo $url_image; ?>" alt="<?php echo ALT_CATEGORY_IMAGE . " " . $cat->get("name"); ?>" />
 		    </div>
 
 		    <div class="left article-content">
@@ -60,6 +61,7 @@
 		    </div>
 		</div>
 	<?php
+		$cpt_cat++;
 	    }
 	?>
 	<div class="cl"></div>

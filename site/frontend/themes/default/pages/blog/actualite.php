@@ -20,7 +20,7 @@
 		<?php 
 		    foreach($news->get("tags") as $tag) {
 		?>
-			<a href="#" class="article-tag">
+			<a href="<?php echo Kernel::getUrl("blog/tag/" . $tag->get("name")); ?>" class="article-tag">
 			    <?php echo $tag->get("name"); ?>
 			</a>
 		<?php

@@ -46,7 +46,7 @@
 		    $url_image = get_url_image($cat);
 		?>
 		<div class="image-container">
-		    <img src="<?php echo $url_image;?>" alt="<?php echo CATEGORY_IMAGE . " " . $cat->get("name");?>" />
+		    <img src="<?php echo $url_image;?>" alt="<?php echo ALT_CATEGORY_IMAGE . " " . $cat->get("name");?>" />
 		</div>
 		<h4>
 		    <?php
