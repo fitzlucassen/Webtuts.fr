@@ -6,7 +6,7 @@ class Kernel {
 	public static $CODE_ACTION = 2;
 	public static $CODE_PARAM = 3;
 
-	public static $CONTROLER_WITHOUT_NEEDS = array("404");
+	public static $CONTROLER_WITHOUT_NEEDS = array("error");
 
 	public static $PDO;
 	public static $APP;
@@ -160,7 +160,7 @@ class Kernel {
 		if(!empty($route[Kernel::$CODE_CONTROLER]) && in_array($route[Kernel::$CODE_CONTROLER], Kernel::$CONTROLER_WITHOUT_NEEDS)) {
 			$return = new Response();
 			Kernel::$RESPONSE = $return;
-			$appRoute = array($route[Kernel::$CODE_CONTROLER], "index");
+			$appRoute = array($route[Kernel::$CODE_CONTROLER], $route[Kernel::$CODE_ACTION]);
 		}
 		else {
 			if(empty($route[Kernel::$CODE_CONTROLER]))
