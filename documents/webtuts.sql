@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Jeu 24 Janvier 2013 à 12:05
+-- Généré le: Ven 25 Janvier 2013 à 12:25
 -- Version du serveur: 5.5.25
 -- Version de PHP: 5.4.4
 
@@ -208,7 +208,7 @@ CREATE TABLE `lang` (
   `lang` text NOT NULL,
   `text` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=233 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=235 ;
 
 --
 -- Contenu de la table `lang`
@@ -446,7 +446,9 @@ INSERT INTO `lang` (`id`, `id_lang`, `lang`, `text`) VALUES
 (229, 148, 'fr', 'test'),
 (230, 148, 'en', 'test'),
 (231, 149, 'fr', 'test'),
-(232, 149, 'en', 'test');
+(232, 149, 'en', 'test'),
+(233, 4, 'en', 'HTML5, Awesome !'),
+(234, 1, 'en', 'Integration');
 
 -- --------------------------------------------------------
 
@@ -598,7 +600,7 @@ INSERT INTO `page` (`id`, `title`, `content`, `date`, `author`) VALUES
 
 CREATE TABLE `tag` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `deleted` tinyint(4) NOT NULL,
+  `deleted` tinyint(4) DEFAULT '0',
   `name` int(11) NOT NULL,
   `description` int(11) NOT NULL,
   PRIMARY KEY (`id`)
@@ -629,7 +631,7 @@ CREATE TABLE `urlrewriting` (
   `matchurl` text CHARACTER SET utf8 NOT NULL,
   `route_order` int(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Contenu de la table `urlrewriting`
@@ -639,7 +641,10 @@ INSERT INTO `urlrewriting` (`id`, `app`, `controler`, `action`, `matchurl`, `rou
 (1, 'frontend', 'blog', 'categories', 'les-categories.html', 0),
 (2, 'frontend', 'blog', 'article', 'categorie-{2}/article-{1}.html', 0),
 (3, 'frontend', 'blog', 'category', 'categorie-{1}.html', 1),
-(4, 'frontend', 'blog', 'articles', 'les-articles.html', 0);
+(4, 'frontend', 'blog', 'articles', 'les-articles.html', 0),
+(5, 'frontend', 'blog', 'actualites', 'les-actualites.html', 0),
+(6, 'frontend', 'blog', 'actualite', 'actualite-{1}.html', 1),
+(7, 'frontend', 'error', '404', '404.html', 0);
 
 -- --------------------------------------------------------
 
