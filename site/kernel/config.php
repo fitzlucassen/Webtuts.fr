@@ -7,7 +7,7 @@
 	/* 
 		Définition de l'application
 	*/
-	define("__app__", "backend");
+	define("__app__", "frontend");
 	//define("__app__", "backend");
 
 
@@ -40,5 +40,12 @@
 	define("__SQL_prefix__", "");
 	/* Database */
 	define("__SQL_db__", "webtuts");
+	
+	/*
+	 * NODE CONSTANT
+	 */
+	define("__NODE_ARTICLE__", "1");
+	define("__NODE_NEWS__", "2");
+	define("__NODE_NOTIF_BO__", "3");
 
 ?>

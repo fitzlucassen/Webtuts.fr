@@ -49,7 +49,7 @@ abstract class OrmStdTableAbstract {
 		return $this->_types;
 	}
 
-	public function __call($name, $params) {
+	public function __call($name, $paramsFunction) {
 		$nameArray = str_split($name);
 		$function = array();
 		$cpt=0;
@@ -76,7 +76,7 @@ abstract class OrmStdTableAbstract {
 			foreach ($this->get() as $object) {
 				if($type[0]=="type") {
 					$typeClass = ucfirst(strtolower($type[1]))."Type";
-					if($typeClass::getCompare($object, $attribut, $params)==$params[0])
+					if($typeClass::getCompare($object, $attribut, $params)==$paramsFunction[0])
 						$return->hydrate($object);
 				}
 				else {

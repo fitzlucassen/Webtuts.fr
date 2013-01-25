@@ -1,7 +1,3 @@
-#category-page .border-title{
-    height: auto;
-    background: transparent url(../images/border.png) left 18px repeat-x;
-}
 #category-page .left-title{
     font-size: 34px;
     height: auto;
@@ -25,6 +21,29 @@
 #category-page .category-content p{
     margin-bottom: 20px;
 }
-#category-page .button{
-    position: static;
+#category-page aside{
+    float: right;
+    padding: 13px 0;
+}
+#category-page .border-title{
+    background: transparent url(../images/border.png) left 11px repeat-x;
+}
+#category-page .aside-box{
+    padding: 5px;
+}
+#category-page .aside-box h4{
+    text-align: center;
+    margin: 20px 0;
+    font-family: Ubuntu-c;
+    color: #335681;
+}
+.image-container{
+    width: 288px;
+    text-align: center;
+}
+.content-container h2{
+    font-size: 24px;
+    height: auto;
+    padding-top: 0;
+    color: rgb(51,86,129);
 }

@@ -1,6 +1,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
-<meta name="Description" content="Webtuts, un blog de tutoriels visant à enseigner la réalisation de son propre site web grâces à diverses astuces et techniques expliquées de façon détaillés. Le développement de ce même blog sera, le plus souvent possible, prit comme exemple à ces tutoriaux." >
+<meta name="Description" content="Webtuts, un blog de tutoriels visant à enseigner la réalisation de son propre site web grâce à diverses astuces et techniques expliquées de façon détaillées. Le développement de ce même blog sera, le plus souvent possible, prit comme exemple à ces tutoriaux." >
 <meta name="Author" content="Webtuts, fitz_lucassen, Fozeek, Musha, Deak, Thibault, Quentin, Jonathan, Richard">
 <meta name="Identifier-URL" content="http://webtuts.fr">
 <meta name="Date-Creation-yyyymmdd" content="20130101">

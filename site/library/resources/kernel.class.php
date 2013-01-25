@@ -111,46 +111,50 @@ class Kernel {
 		 	}
 		 	echo $expression."<br />";
 		} */
+		$firstUrl = $url;
+		$lang = explode("/", $firstUrl);
+		$lang = $lang[0];
+		Kernel::$LANG = $lang;
+		if(!in_array($lang, $this->_LANG_ACCEPTED_)) {
+			$lang = Kernel::$LANG_DEFAULT;
+			Kernel::$LANG = $lang;
+			header("Location:/".$lang."/".$url);
+		}
+		define("__lang__", Kernel::$LANG);
+
+		// On enleve la langue
+		$urlTmp = explode("/", $url);
+		if(in_array($urlTmp[0], $this->_LANG_ACCEPTED_)) {
+			$urlTmp[0] = "";
+			$url = implode("/", $urlTmp);
+			$url = ltrim($url, "/");
+		}
 
 		$url = $this->setUrl($url);
-
 		Kernel::$URL = $url;
-
-
+		$url = $lang."/".$url;
+		
 
 
 		if(!empty($url))
 			$tmp = explode("/", $url);
 		else
-			$tmp = array($this->_LANG_DEFAULT_);
+			$tmp = array();
 
-
+		// Création du tableau de l'URL
 		$cpt = 0;
 		foreach ($path_type as $key => $value) {
 			if(!empty($tmp[$cpt]))
 				$route[$value] = $tmp[$cpt];
 			$cpt++;
 		}
-
 		// Ajout du reste des params
 		for($cpt=$cpt-1;$cpt<count($tmp);$cpt++) {
 			if(!empty($tmp[$cpt]))
 				$route[$cpt] = $tmp[$cpt];
 		}
 
-
-
-		if(!empty($route[Kernel::$CODE_LANG])) {
-			// Test la présence d'une langue
-			if(!in_array($route[Kernel::$CODE_LANG], $this->_LANG_ACCEPTED_))
-				array_unshift($route, $this->_LANG_DEFAULT_);
-			else
-				Kernel::$LANG = $route[Kernel::$CODE_LANG];
-		}
-		else
-			Kernel::$LANG = $this->_LANG_DEFAULT_;
-
-		define("__lang__", Kernel::$LANG);
+		
 
 		// Appel de l'app et du controler
 		if(!empty($route[Kernel::$CODE_CONTROLER]) && in_array($route[Kernel::$CODE_CONTROLER], Kernel::$CONTROLER_WITHOUT_NEEDS)) {
@@ -197,6 +201,22 @@ class Kernel {
 	}
 
 	public static function getUrl($url) {
+		if($url=="") {
+			return "/".Kernel::get("lang")."/";
+		}
+		$urlTmp = explode("/", $url);
+		if(in_array($urlTmp[0], Kernel::get("langs"))) {
+			$lang = $urlTmp[0];
+			$urlTmp[0] = "";
+			$url = implode("/", $urlTmp);
+			$url = ltrim($url, "/");
+		}
+		else {
+			$lang = Kernel::get("lang");
+		}
+		if($url=="") {
+			return "/".$lang."/";
+		}
 		$urlExplode = explode("/", $url);
 		$controler = $urlExplode[0];
 		$action = $urlExplode[1];
@@ -231,7 +251,7 @@ class Kernel {
 				$url = str_replace("{".($key+1)."}", Kernel::sanitize($value), $url);
 			}
 		}
-		return $url;
+		return "/".$lang."/".$url;
 	}
 
 	public static function sanitize($string) {
