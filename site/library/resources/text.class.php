@@ -31,6 +31,10 @@ class TextType implements Type {
 		return $data;
 	}
 
+	public static function update($object, $attribut, $params = null) {
+		return $object->get($attribut);
+	}
+
 	public function __toString() {
 		return $this->_attribut;
 	}

@@ -4,8 +4,10 @@
 class LangType implements Type {
 
 	private $langForced;
+	private $idLang;
 
 	public function __construct($idLang, $langForced = null) {
+		$this->idLang = $idLang;
 		$lang = Sql2::create()->from("lang")->where("id_lang", Sql2::$OPE_EQUAL, $idLang)->fetchArray();
 		foreach ($lang as $value) {
 			$lang = $value["lang"];
@@ -17,6 +19,8 @@ class LangType implements Type {
 	public function get($params = __lang__) {
 		if($params!=null)
 			$this->setLang($params);
+		elseif($params=="idlang")
+			return $this->idLang;
 		else {
 			$this->setLang(Kernel::get("lang"));
 		}
@@ -55,9 +59,10 @@ class LangType implements Type {
 		return $id_lang;
 	}
 	
-	public static function update($data) {
+	public static function update($object, $attribut, $data) {
+		$id_lang = $object->get($attribut, "idlang");
 		foreach ($data as $key => $value) { // différentes langues
-			Sql2::create()->update("lang")->columnsValues(array("id_lang" => $id_lang, "lang" => $key, "text" => $value))->where("id_lang", "=", $idlang)->execute();
+			Sql2::create()->update("lang")->columnsValues(array("text" => $value))->where("id_lang", "=", $idlang)->andWhere("lang", "=", $key)->execute();
 		}
 		return $id_lang;
 	}

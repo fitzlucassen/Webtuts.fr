@@ -102,7 +102,10 @@ echo "</pre>";
 				)
 			)
 		)));*/
-	print_r(App::getTable("article")->getBySanitizeTitle("liste-des-fonctionalites-de-la-class-kernel"));
+	//print_r(App::getTable("article")->getBySanitizeTitle("liste-des-fonctionalites-de-la-class-kernel"));
+	$cat = App::getClass("category", 1)->set(array("name"=>"newName"));
+	echo "<br />";
+	print_r($cat);
 	
 
 ?></pre>

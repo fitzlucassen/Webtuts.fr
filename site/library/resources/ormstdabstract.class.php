@@ -240,8 +240,6 @@ abstract class OrmStdAbstract {
 	public function set($columns, $values=null) {
 		if($this->id!="") {
 
-			if(!Sql2::create()->update(strtolower($this->_class))->columnsValues($columns, $values)->where("id", Sql2::$OPE_EQUAL, $this->id)->execute())
-				return false; 
 			
 			$novalues = false;	// Variable pour forcer le faite de ne pas prendre en compte $values
 			if(!is_array($columns))
@@ -273,7 +271,38 @@ abstract class OrmStdAbstract {
 				else
 					return new Eror(5);
 			}
+			
 
+			$cpt = 0;
+			foreach ($columns as $column) {
+				$columnsValues[$column] = $values[$cpt];
+				$cpt++;
+			}
+			print_r($columnsValues);
+			exit(0);
+			echo "<br />";
+
+			// set de tous les types
+			$types = $this->getTypes();
+			foreach ($types as $key => $value) {
+				if(!empty($columnsValues[$key])) {
+					$data = $columnsValues[$key];
+					$type = explode(" ", $value);
+					if($type[0]=="type") {
+						$typeClass = ucfirst($type[1])."Type";
+						$columnsValues[$key] = $typeClass::update($this, $key, $data);
+					}
+				}
+			}
+
+			print_r($columnsValues);
+			exit(0);
+			
+
+
+			if(!Sql2::create()->update(strtolower($this->_class))->columnsValues($columns, $values)->where("id", Sql2::$OPE_EQUAL, $this->id)->execute())
+				return false; 
+			
 			// On met a jour les attributs
 			$cpt = 0;
 			foreach ($columns as $column) {
