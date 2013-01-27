@@ -39,9 +39,18 @@ class NodeControler extends Controler {
 	}
 
 	public function UpdateAction($params) {
-		$method = $this->getRequest();
-		if($method->isMethod("post")) {
-			return $this->redirect("/node/show/".$params[3]);
+		$form = $this->getRequest();
+		if($form->isMethod("post")) {
+			$data = $form->getData();
+			$id = $data["id"];
+			$name = array("fr" => $data["namefr"], "en" => $data["nameen"]);
+			$desc = array("fr" => $data["descriptionfr"], "en" => $data["descriptionen"]);
+			$attr["name"] = $name;
+			$attr["description"] = $desc;
+			if($node = App::getClass("node", $id)->set($attr))
+				return $this->redirect("node/show/".$node->get("id"));
+			else
+				return $this->render(array("error" => "Vous n'avez pas bien rempli le formulaire"));
 		}
 		else {
 			$node = App::getClass("node", $params[3]);

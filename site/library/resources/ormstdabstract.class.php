@@ -301,8 +301,10 @@ abstract class OrmStdAbstract {
 				}
 			}
 
-			if(!Sql2::create()->update(strtolower($this->_class))->columnsValues($columnsValues)->where("id", Sql2::$OPE_EQUAL, $this->id)->execute())
-				return false; 
+			if(!empty($columnsValues)) {
+				if(!Sql2::create()->update(strtolower($this->_class))->columnsValues($columnsValues)->where("id", Sql2::$OPE_EQUAL, $this->id)->execute())
+					return false; 
+			}
 			
 			// On met a jour les attributs
 			$cpt = 0;

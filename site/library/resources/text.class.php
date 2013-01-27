@@ -28,11 +28,11 @@ class TextType implements Type {
 	}
 
 	public static function save($data) {
-		return $data;
+		return htmlspecialchars($data);
 	}
 
-	public static function update($object, $attribut, $params = null) {
-		return $object->get($attribut);
+	public static function update($object, $attribut, $data = null) {
+		return htmlspecialchars($data);
 	}
 
 	public function __toString() {
