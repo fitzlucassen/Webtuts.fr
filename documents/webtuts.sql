@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mer 23 Janvier 2013 à 19:44
+-- Généré le: Ven 25 Janvier 2013 à 13:47
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.3.13
 
@@ -171,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
 
 INSERT INTO `comment` (`id`, `article`, `author`, `text`, `date`, `deleted`) VALUES
 (1, 1, 1, 'Coooool !', '2013-02-11 00:00:00', 1),
-(2, 1, 1, 'essais', '2013-01-03 03:11:55', 0);
+(2, 1, 1, 'essais', '2013-01-03 03:11:55', 1);
 
 -- --------------------------------------------------------
 
@@ -214,31 +214,31 @@ CREATE TABLE IF NOT EXISTS `lang` (
   `lang` text NOT NULL,
   `text` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=233 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=235 ;
 
 --
 -- Contenu de la table `lang`
 --
 
 INSERT INTO `lang` (`id`, `id_lang`, `lang`, `text`) VALUES
-(1, 1, 'fr', 'Int&eacute;gration'),
+(1, 1, 'fr', 'Intégration'),
 (2, 2, 'fr', 'Ici vous apprendrez les secrets du "Savoir faire un beau site"'),
 (3, 4, 'fr', 'Le HTML5, super !'),
 (4, 5, 'fr', 'Lorem ipsum dolor sit amet, consecterus us adipiscing elit. Lorem ipsum dolor sit amet, consecterus us adipiscing elit. Lorem ipsum dolor sit amet, consecterus us adipiscing elit. Lorem ipsum dolor sit amet, consecterus us adipiscing elit.'),
 (5, 3, 'fr', 'Article'),
 (6, 7, 'fr', 'Actualité'),
 (7, 6, 'fr', 'Animation'),
-(8, 8, 'fr', 'Ici vous apprendrez &agrave; dynamiser vos site web gr&acirc;ce &agrave; des animations innovante ou utiles pour vos sites web'),
+(8, 8, 'fr', 'Ici vous apprendrez à dynamiser vos site web grace à des animations innovante ou utiles pour vos sites web'),
 (9, 9, 'fr', 'Logiciels'),
-(10, 10, 'fr', 'Ici vous apprendrez &agrave; vous servir de certain logiciels tr&egrave;s utiles pour faciliter vos d&eacute;veloppements.'),
+(10, 10, 'fr', 'Ici vous apprendrez à vous servir de certain logiciels très utiles pour faciliter vos développements.'),
 (11, 11, 'fr', 'PHP'),
 (12, 12, 'fr', 'Tous les tutoriels utilisant le langage PHP'),
-(13, 13, 'fr', 'D&eacute;veloppement Fonctionnel'),
-(14, 14, 'fr', 'Ici vous apprendrez &agrave; g&eacute;rez la partit fonctionnel de votre site, c''est &agrave; dire la partie "Intelligente" de celui-ci.'),
-(15, 15, 'fr', 'R&eacute;f&eacute;rencement'),
-(16, 16, 'fr', 'Pour que votre site soit visible, il est essentiel d''accorder une grande importance au r&eacute;f&eacute;rencement de celui-ci afin de devenir "SEO friendly" ! C''est par ici !'),
+(13, 13, 'fr', 'Développement Fonctionnel'),
+(14, 14, 'fr', 'Ici vous apprendrez à gérez la partit fonctionnel de votre site, c''est à dire la partie "Intelligente" de celui-ci.'),
+(15, 15, 'fr', 'Référencement'),
+(16, 16, 'fr', 'Pour que votre site soit visible, il est essentiel d''accorder une grande importance au référencement de celui-ci afin de devenir "SEO friendly" ! C''est par ici !'),
 (17, 17, 'fr', 'Autres'),
-(18, 18, 'fr', 'Tous les tutoriels inclassable dans les autres cat&eacute;gories seront dans celle-ci. Vous pourrez des articles divers sur le travail d''un web-developer par exemple.'),
+(18, 18, 'fr', 'Tous les tutoriels inclassable dans les autres catégories seront dans celle-ci. Vous pourrez des articles divers sur le travail d''un web-developer par exemple.'),
 (19, 19, 'fr', 'HTML'),
 (20, 20, 'fr', 'Tous les tutoriels utilisant le langage HTML'),
 (21, 21, 'fr', 'CSS'),
@@ -248,9 +248,9 @@ INSERT INTO `lang` (`id`, `id_lang`, `lang`, `text`) VALUES
 (25, 25, 'fr', 'JQuery'),
 (26, 26, 'fr', 'Tous les tutoriels utilisant la bibliothèque JQuery, basé sur javascript'),
 (27, 27, 'fr', 'tutoriel'),
-(28, 28, 'fr', 'Les types de contenu &eacute;tant des tutoriels'),
-(29, 29, 'fr', 'actualit&eacute;'),
-(30, 30, 'fr', 'Les types de contenu &eacute;tant des actualit&eacute;s'),
+(28, 28, 'fr', 'Les types de contenu étant des tutoriels'),
+(29, 29, 'fr', 'actualité'),
+(30, 30, 'fr', 'Les types de contenu étant des actualités'),
 (31, 31, 'fr', 'Webtuts se lance sur le web !'),
 (32, 32, 'fr', 'Cras elit ante, consequat sit amet tempor aliquet, condimentum vitae augue. Vivamus venenatis lectus et nunc auctor pulvinar a et elit. Integer vitae ipsum mauris, id posuere urna. Morbi ac dui eros, vel feugiat mi. Nam tortor sem, dictum et cursus sed, molestie non sapien. Suspendisse et ligula dolor. Vivamus commodo, nulla vel commodo convallis, nulla diam mattis magna, sed sollicitudin metus nisl sit amet arcu. Morbi et elementum dolor.'),
 (33, 33, 'fr', 'Page test'),
@@ -452,7 +452,9 @@ INSERT INTO `lang` (`id`, `id_lang`, `lang`, `text`) VALUES
 (229, 148, 'fr', 'test'),
 (230, 148, 'en', 'test'),
 (231, 149, 'fr', 'test'),
-(232, 149, 'en', 'test');
+(232, 149, 'en', 'test'),
+(233, 4, 'en', 'HTML5, Awesome !'),
+(234, 1, 'en', 'Integration');
 
 -- --------------------------------------------------------
 
@@ -489,6 +491,7 @@ INSERT INTO `newsletter` (`id`, `mail`) VALUES
 
 CREATE TABLE IF NOT EXISTS `node` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `deleted` tinyint(4) NOT NULL,
   `name` int(11) NOT NULL,
   `description` int(11) NOT NULL,
   PRIMARY KEY (`id`)
@@ -498,10 +501,10 @@ CREATE TABLE IF NOT EXISTS `node` (
 -- Contenu de la table `node`
 --
 
-INSERT INTO `node` (`id`, `name`, `description`) VALUES
-(1, 27, 28),
-(2, 29, 30),
-(3, 76, 77);
+INSERT INTO `node` (`id`, `deleted`, `name`, `description`) VALUES
+(1, 0, 27, 28),
+(2, 0, 29, 30),
+(3, 0, 76, 77);
 
 -- --------------------------------------------------------
 
@@ -603,7 +606,7 @@ INSERT INTO `page` (`id`, `title`, `content`, `date`, `author`) VALUES
 
 CREATE TABLE IF NOT EXISTS `tag` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `deleted` tinyint(4) NOT NULL,
+  `deleted` tinyint(4) DEFAULT '0',
   `name` int(11) NOT NULL,
   `description` int(11) NOT NULL,
   PRIMARY KEY (`id`)
@@ -634,7 +637,7 @@ CREATE TABLE IF NOT EXISTS `urlrewriting` (
   `matchurl` text CHARACTER SET utf8 NOT NULL,
   `route_order` int(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Contenu de la table `urlrewriting`
@@ -644,7 +647,12 @@ INSERT INTO `urlrewriting` (`id`, `app`, `controler`, `action`, `matchurl`, `rou
 (1, 'frontend', 'blog', 'categories', 'les-categories.html', 0),
 (2, 'frontend', 'blog', 'article', 'categorie-{2}/article-{1}.html', 0),
 (3, 'frontend', 'blog', 'category', 'categorie-{1}.html', 1),
-(4, 'frontend', 'blog', 'articles', 'les-articles.html', 0);
+(4, 'frontend', 'blog', 'articles', 'les-articles.html', 0),
+(5, 'frontend', 'blog', 'actualites', 'les-actualites.html', 0),
+(6, 'frontend', 'blog', 'actualite', 'actualite-{1}.html', 1),
+(7, 'frontend', 'error', '404', '404.html', 0),
+(8, 'frontend', 'blog', 'tags', 'les-tags.html', 0),
+(9, 'frontend', 'blog', 'tag', 'tag-{1}.html', 1);
 
 -- --------------------------------------------------------
 

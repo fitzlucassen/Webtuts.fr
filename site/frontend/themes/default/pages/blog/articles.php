@@ -19,7 +19,7 @@
 		foreach($articles as $article){
 		    $url_image = get_url_image($article);
 		    
-		    include(_theme_path_ . "partials/articlePreview.php");
+		    include(_theme_path_ . "partials/bigArticlePreview.php");
 		}
 	    ?>
 	    <div class="cl"></div>
@@ -41,7 +41,7 @@
 		<div class="marginAuto">
 		    <div class="button big-button">
 			<span>
-			    <a href="#"><?php echo SEE_NEWS; ?></a>
+			    <a href="<?php echo Kernel::getUrl("blog/actualites");?>"><?php echo SEE_NEWS; ?></a>
 			</span>
 		    </div>
 		</div>

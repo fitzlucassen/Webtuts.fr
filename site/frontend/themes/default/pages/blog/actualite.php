@@ -1,24 +1,24 @@
-<!-- Article page -->
+<!-- News page -->
 
 
-<div id="article-page">
+<div id="actualite-page">
     <div class="middle-column">
 	<div class="border-title">
 	    <h1 class="left-title">
-		<?php echo $article->get("title"); ?>
+		<?php echo $news->get("title"); ?>
 	    </h1>
 	    <div class="cl"></div>
 	</div>
 	
 	<div class="article-content">
 	    <h4>
-		<span class="date"><?php echo PUBLISHED . " " . format_date($article->get("date")); ?></span>
+		<span class="date"><?php echo PUBLISHED . " " . format_date($news->get("date")); ?></span>
 		<span class="date"><?php echo BY; ?></span>
-		<span class="author"><a href="#"><?php echo $article->get("author")->get("pseudo"); ?></a></span>
+		<span class="author"><a href="#"><?php echo $news->get("author")->get("pseudo"); ?></a></span>
 	    </h4>
 	    <div class="article-tags right">
 		<?php 
-		    foreach($article->get("tags") as $tag) {
+		    foreach($news->get("tags") as $tag) {
 		?>
 			<a href="<?php echo Kernel::getUrl("blog/tag/" . $tag->get("name")); ?>" class="article-tag">
 			    <?php echo $tag->get("name"); ?>
@@ -29,17 +29,17 @@
 	    </div>
 	    <div class="cl"></div>
 	    <p>
-		<?php echo nl2br($article->get("text")); ?>
+		<?php echo nl2br($news->get("text")); ?>
 	    </p>
 	</div>
 	
 	<div class="article-comments">
 	    <?php
-		$text_comment = (count($article->get("comments")) > 0 ? COMMENTS_LIST : NO_COMMENT);
+		$text_comment = (count($news->get("comments")) > 0 ? COMMENTS_LIST : NO_COMMENT);
 	    ?>
 	    <h2><?php echo $text_comment; ?></h2>
 	    <?php
-		foreach($article->get("comments") as $comment){
+		foreach($news->get("comments") as $comment){
 		    $url_image = get_url_image($comment->get("author"));
 		    $alt_image = "avatar de " . $comment->get("author")->get("pseudo");
 	    ?>

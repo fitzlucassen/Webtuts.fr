@@ -11,9 +11,10 @@
 	</div>
 
 	<?php foreach ($nodes as $node) : ?>
+	<a href="<?php echo createLink("/node/show/".$node->get("id")); ?>">
 	<div class="itemlist">	
 		<div style="float: left;width: 200px;">
-			<a href="<?php echo createLink("/node/show/".$node->get("id")); ?>"><?php echo lang($node->get("name")); ?></a>
+			<?php echo lang($node->get("name")); ?>
 		</div>
 		<div style="overflow: hidden;padding-top: 1px;padding-left: 10px;">
 			<span style="font-size: 0.8em;color: grey;"><?php echo lang($node->get("description")); ?></span>
@@ -21,6 +22,7 @@
 		<div style="clear: both;">
 		</div>
 	</div>
+	</a>
 	<?php endforeach; ?>
 
 </div>

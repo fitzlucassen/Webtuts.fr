@@ -4,6 +4,7 @@
      *********/
 
     // Label text
+	// Header
     define("MY_PROFILE", "My Profile");
     define("CONNECTION", "Connection");
     define("INSCRIPTION", "Inscription");
@@ -15,6 +16,7 @@
     define("NEWS", "News");
     define("CONTACT", "Contact");
     
+	// Footer
     define("PARTNER_LINKS", "Our partner links");
     define("USEFUL_LINKS", "Useful links");
     define("FOLLOW_NEWS", "Follow our news");
@@ -26,6 +28,7 @@
     define("NEWSLETTERS", "Newsletter");
     define("COPYRIGHTS", "Credits and Copyright");
     
+	// Content
     define("WEBTUTS_TITLE", "Webtuts - The dark web languages by category");
     define("WEBTUTS_INTRODUCTION_TEXT", "Webtuts experts decrypt for you all web languages!
 					 Learn and create your own website step by step thanks to our advice.<br/>
@@ -36,8 +39,11 @@
     define("BY", "by");
     define("SEE_MORE", "See more");
     define("COMMENTS", "Comments");
+    define("COMMENT", "Comment");
     define("NEWS_WORD", "News");
+    define("ARTICLES_WORD", "Articles");
     define("SEE_NEWS", "All news");
+    define("SEE_ARTICLES", "All articles");
     define("FOLLOW_WEBTUTS", "Follow Webtuts !");
     define("HAPPENS_ON_TWITTER", "It happens on Twitter");
     
@@ -99,19 +105,37 @@
     define("ARTICLES_TITLE", "All the Webtuts tutoriels");
     define("ARTICLES_TEXT", "You will find here the list of all webtuts-article.
 				Click on one of them to see it.");
+    define("NEWS_TITLE", "All the Webtuts news");
+    define("NEWS_TEXT", "You will find here the list of all webtuts-news.
+			 Click on one of them to see it");
+    define("TAGS_TITLE", "All the Webtuts tags");
+    define("TAGS_TEXT", "Vous trouverez ici la liste de tous les tags du blog.
+			Cliquez sur l'un d'eux pour voir les articles qui y sont rattachés.");
+    
+    define("LEFT_PRINT_ARTICLE", "See the");
+    define("RIGHT_PRINT_ARTICLE", "article");
+    define("LEFT_PRINT_NEWS", "See thi");
+    define("RIGHT_PRINT_NEWS", "s news");
+    define("LEFT_PRINT_CATEGORY", "See this");
+    define("RIGHT_PRINT_CATEGORY", "category");
     
     define("SEE_TUTO", "See all tuts from this categorie");
-    define("TUTOS", "tutoriel(s)");
-    define("CATEGORY_IMAGE", "The image of the category");
-    define("ARTICLE_IMAGE", "The image of the article");
+    define("TUTOS", "tutoriels");
+    define("TUTO", "tutoriel");
+    
     define("PUBLISHED", "published the");
     define("PUBLISH", "comment");
     define("COMMENTS_LIST", "Comments list");
-    define("LEFT_PRINT_ARTICLE", "See the");
-    define("RIGHT_PRINT_ARTICLE", "article");
-    define("LEFT_PRINT_CATEGORY", "See this");
-    define("RIGHT_PRINT_CATEGORY", "category");
+    define("NO_COMMENT", "No comment here...");
+    
     define("SEE_TUTOS_FROM_CATEGORY", "See tuts");
     define("TUTOS_BY_CATEGORY", "This category contains");
+    define("CATEGORY_TUTOS", "Tuts from");
+    define("NO_ARTICLE_CATEGORY", "There isn't any tuts yet in this category...");
+    
+    // Alternative text images
+    define("ALT_CATEGORY_IMAGE", "The image of the category");
+    define("ALT_ARTICLE_IMAGE", "The image of the article");
+    define("ALT_NEWS_IMAGE", "The image of the news");
 
 ?>

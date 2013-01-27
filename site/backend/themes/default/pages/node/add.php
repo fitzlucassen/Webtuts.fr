@@ -9,23 +9,41 @@
 
 	<form action="" method="post">
 		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
-			<?php echo ucfirst(text("name")); ?>
+			<?php echo ucfirst(text("name")); ?> (fr)
 		</div>
 		<div style="overflow: hidden;padding: 10px;">
-			<input name="name" type="text"/>
+			<input name="namefr" type="text"/>
 		</div>
 		<div style="clear: left;">
+		</div>
+		
+		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
+			<?php echo ucfirst(text("name")); ?> (en)
+		</div>
+		<div style="overflow: hidden;padding: 10px;">
+			<input name="nameen" type="text"/>
 		</div>
 		<div style="clear: left;">
 		</div>
 
 		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
-			<?php echo ucfirst(text("description")); ?>
+			<?php echo ucfirst(text("description")); ?> (fr)
 		</div>
 		<div style="overflow: hidden;padding: 10px;">
-			<textarea name="description"></textarea>
+			<textarea name="descriptionfr"></textarea>
+		</div>
+		<div style="clear: left;">
 		</div>
 
+		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
+			<?php echo ucfirst(text("description")); ?> (en)
+		</div>
+		<div style="overflow: hidden;padding: 10px;">
+			<textarea name="descriptionen"></textarea>
+		</div>
+		<div style="clear: left;">
+		</div>
+		
 		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
 		</div>
 		<div style="overflow: hidden;padding: 10px;">

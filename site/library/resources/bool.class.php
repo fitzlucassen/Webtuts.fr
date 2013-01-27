@@ -30,6 +30,10 @@ class BoolType implements Type {
 			return false;
 	}
 
+	public static function getCompare($object, $attribut, $params = null) {
+		return $object->$attribut;
+	}
+
 	public static function save($data) {
 		// Mise en forme pour la BDD
 		if(is_bool($data)) {
@@ -40,6 +44,15 @@ class BoolType implements Type {
 		}
 		else
 			return $data;
+	}
+
+	public static function update($object, $attribut, $data) {
+		if($data=="true") {
+			return '1';
+		}
+		elseif($data=="false") {
+			return '0';
+		}
 	}
 
 	public function __toString() {

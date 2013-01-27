@@ -11,9 +11,10 @@
 	</div>
 
 	<?php foreach ($tags as $tag) : ?>
-	<div style="border-bottom: 1px solid #E5E5E5;padding: 15px;">	
+	<a href="<?php echo createLink("/tag/show/".$tag->get("id")); ?>">
+	<div class="itemlist" style="border-bottom: 1px solid #E5E5E5;">	
 		<div style="float: left;width: 200px;">
-			<a href="<?php echo createLink("/tag/show/".$tag->get("id")); ?>"><?php echo lang($tag->get("name")); ?></a>
+			<?php echo lang($tag->get("name")); ?>
 		</div>
 		<div style="overflow: hidden;padding-top: 1px;padding-left: 10px;">
 			<span style="font-size: 0.8em;color: grey;"><?php echo lang($tag->get("description")); ?></span>
@@ -21,6 +22,7 @@
 		<div style="clear: both;">
 		</div>
 	</div>
+	</a>
 	<?php endforeach; ?>
 
 </div>

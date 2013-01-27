@@ -49,20 +49,48 @@ abstract class OrmStdTableAbstract {
 		return $this->_types;
 	}
 
-	public function __call($name, $params) {
-		if(strstr($name, "getBy")) {
+	public function __call($name, $paramsFunction) {
+		$nameArray = str_split($name);
+		$function = array();
+		$cpt=0;
+		$function[$cpt] = "";
+		foreach ($nameArray as $key => $value) {
+			if(ord($value)>=65 && ord($value)<=90) {
+				$cpt++;
+				$function[$cpt] = "";
+			}
+			$function[$cpt] .= $value;
+		}
+		if($function[0] == "get" && $function[1] == "By") {
+			$attribut = strtolower($function[count($function)-1]);
+			$type = $this->getTypes();
+			$type = $type[$attribut];
+			$type = explode(" ", $type);
+			$params = $function;
+			unset($params[0]);
+			unset($params[1]);
+			unset($params[count($function)-1]);
+			$params = array_values($params);
+
 			$return = new Collection();
-			$attribut = strtolower(substr($name, 5));
-			if(!strstr($name, "Sanitize")) {
-				foreach ($this->getCollection() as $object) {
-					if($object->get($attribut)==$params[0])
+			foreach ($this->get() as $object) {
+				if($type[0]=="type") {
+					$typeClass = ucfirst(strtolower($type[1]))."Type";
+					if($typeClass::getCompare($object, $attribut, $params)==$paramsFunction[0])
 						$return->hydrate($object);
 				}
+				else {
+					return false;
+				}
 			}
-			else {
-				
+			if($return->count()==0) {
+				return false;
 			}
-			return $return;
+			elseif($return->count()==1) {
+				return $return->get(0);
+			}
+			else
+				return $return;
 		}
 		else
 			return false;

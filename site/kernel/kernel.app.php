@@ -5,8 +5,10 @@
 	    if (strstr($class, "Controler")) { // Autoloader des controller
 		    if(file_exists(__apps_dir__.__app__.'/'.str_replace("controler", "",mb_strtolower($class)).'/index.php')) // Debug for class_exists()
 				require_once(__apps_dir__.__app__.'/'.str_replace("controler", "",mb_strtolower($class)).'/index.php');
-			else
-				header("Location:/404");
+			else {
+				header("Location:".Kernel::getUrl("error/404"));
+				die();
+			}
 		} 
 		else { // Autoloader du modele
 			 if(file_exists(__library_dir__.'modele/'.mb_strtolower($class).'.class.php')) // Debug for class_exists()

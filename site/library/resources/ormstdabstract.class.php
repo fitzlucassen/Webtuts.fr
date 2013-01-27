@@ -240,8 +240,6 @@ abstract class OrmStdAbstract {
 	public function set($columns, $values=null) {
 		if($this->id!="") {
 
-			if(!Sql2::create()->update(strtolower($this->_class))->columnsValues($columns, $values)->where("id", Sql2::$OPE_EQUAL, $this->id)->execute())
-				return false; 
 			
 			$novalues = false;	// Variable pour forcer le faite de ne pas prendre en compte $values
 			if(!is_array($columns))
@@ -273,7 +271,41 @@ abstract class OrmStdAbstract {
 				else
 					return new Eror(5);
 			}
+			
 
+			$cpt = 0;
+			foreach ($columns as $column) {
+				$columnsValues[$column] = $values[$cpt];
+				$cpt++;
+			}
+
+
+			// set de tous les types
+			$types = $this->getTypes();
+			foreach ($types as $key => $value) {
+				if(!empty($columnsValues[$key])) {
+					$data = $columnsValues[$key];
+					$type = explode(" ", $value);
+					if($type[0]=="type") {
+						$typeClass = ucfirst($type[1])."Type";
+						$result = $typeClass::update($this, $key, $data);
+						if(is_array($result)) {
+							$columnsValues[$key] = $result[0]; // Valeur de retour pour la requete
+							$this->$key = $result[1]; // valeur de retour pour l'attribut ( Réinitialisation par ex. ) 
+						}
+						else
+							$columnsValues[$key] = $result;
+						if($columnsValues[$key]==-1)
+							unset($columnsValues[$key]);
+					}
+				}
+			}
+
+			if(!empty($columnsValues)) {
+				if(!Sql2::create()->update(strtolower($this->_class))->columnsValues($columnsValues)->where("id", Sql2::$OPE_EQUAL, $this->id)->execute())
+					return false; 
+			}
+			
 			// On met a jour les attributs
 			$cpt = 0;
 			foreach ($columns as $column) {

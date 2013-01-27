@@ -19,12 +19,20 @@ class TextType implements Type {
 		return $this;
 	}
 
+	public static function getCompare($object, $attribut, $params = null) {
+		return $object->$attribut;
+	}
+
 	public function get($params = null) {
 		return $this;
 	}
 
 	public static function save($data) {
-		return $data;
+		return htmlspecialchars($data);
+	}
+
+	public static function update($object, $attribut, $data = null) {
+		return htmlspecialchars($data);
 	}
 
 	public function __toString() {
