@@ -46,8 +46,13 @@ class BoolType implements Type {
 			return $data;
 	}
 
-	public static function update($object, $attribut, $params = null) {
-		return $object->get($attribut);
+	public static function update($object, $attribut, $data) {
+		if($data=="true") {
+			return '1';
+		}
+		elseif($data=="false") {
+			return '0';
+		}
 	}
 
 	public function __toString() {

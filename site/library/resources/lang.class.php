@@ -17,10 +17,10 @@ class LangType implements Type {
 	}
 
 	public function get($params = __lang__) {
-		if($params!=null)
-			$this->setLang($params);
-		elseif($params=="idlang")
+		if($params=="id")
 			return $this->idLang;
+		elseif($params!=null)
+			$this->setLang($params);
 		else {
 			$this->setLang(Kernel::get("lang"));
 		}
@@ -60,11 +60,11 @@ class LangType implements Type {
 	}
 	
 	public static function update($object, $attribut, $data) {
-		$id_lang = $object->get($attribut, "idlang");
+		$id_lang = $object->get($attribut, "id");
 		foreach ($data as $key => $value) { // différentes langues
-			Sql2::create()->update("lang")->columnsValues(array("text" => $value))->where("id_lang", "=", $idlang)->andWhere("lang", "=", $key)->execute();
+			Sql2::create()->update("lang")->columnsValues(array("text" => $value))->where("id_lang", "=", $id_lang)->andWhere("lang", "=", $key)->execute();
 		}
-		return $id_lang;
+		return array("-1", $id_lang);
 	}
 
 	public function __toString() {

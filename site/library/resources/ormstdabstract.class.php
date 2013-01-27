@@ -278,9 +278,7 @@ abstract class OrmStdAbstract {
 				$columnsValues[$column] = $values[$cpt];
 				$cpt++;
 			}
-			print_r($columnsValues);
-			exit(0);
-			echo "<br />";
+
 
 			// set de tous les types
 			$types = $this->getTypes();
@@ -290,17 +288,20 @@ abstract class OrmStdAbstract {
 					$type = explode(" ", $value);
 					if($type[0]=="type") {
 						$typeClass = ucfirst($type[1])."Type";
-						$columnsValues[$key] = $typeClass::update($this, $key, $data);
+						$result = $typeClass::update($this, $key, $data);
+						if(is_array($result)) {
+							$columnsValues[$key] = $result[0]; // Valeur de retour pour la requete
+							$this->$key = $result[1]; // valeur de retour pour l'attribut ( Réinitialisation par ex. ) 
+						}
+						else
+							$columnsValues[$key] = $result;
+						if($columnsValues[$key]==-1)
+							unset($columnsValues[$key]);
 					}
 				}
 			}
 
-			print_r($columnsValues);
-			exit(0);
-			
-
-
-			if(!Sql2::create()->update(strtolower($this->_class))->columnsValues($columns, $values)->where("id", Sql2::$OPE_EQUAL, $this->id)->execute())
+			if(!Sql2::create()->update(strtolower($this->_class))->columnsValues($columnsValues)->where("id", Sql2::$OPE_EQUAL, $this->id)->execute())
 				return false; 
 			
 			// On met a jour les attributs

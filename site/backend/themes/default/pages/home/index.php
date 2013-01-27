@@ -103,9 +103,11 @@ echo "</pre>";
 			)
 		)));*/
 	//print_r(App::getTable("article")->getBySanitizeTitle("liste-des-fonctionalites-de-la-class-kernel"));
-	$cat = App::getClass("category", 1)->set(array("name"=>"newName"));
+	$cat = App::getClass("category", 1);
+	$cat->get("name");
+	$cat->set(array("image" => 1, "deleted" => "false", "name" => array("fr" => "Intégration", "en" => "Integration")));
 	echo "<br />";
-	print_r($cat);
+	print_r($cat->get("name"));
 	
 
 ?></pre>
