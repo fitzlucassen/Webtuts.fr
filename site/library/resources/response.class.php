@@ -16,7 +16,7 @@ class Response {
 			$this->route = $route;
 		}
 		else 
-			header("Location:"._host_absolute_.$vars);
+			header("Location:".$vars);
 	}
 
 	public function getVars() {
