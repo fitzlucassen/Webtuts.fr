@@ -11,7 +11,7 @@
 		    }
 		?>
 		<div id="login-box">
-			<a href="<?php echo Kernel::getUrl("user/profil/fozeek"); ?>">
+		    <a href="<?php echo Kernel::getUrl("user/profil/" . Kernel::get("user")->get("pseudo")); ?>">
 				<img src="<?php echo '/'._theme_path_ . 'images/'; ?>membership.png" alt="<?php echo ALT_MY_PROFILE; ?>" />
 				<?php echo MY_PROFILE; ?>
 			</a>

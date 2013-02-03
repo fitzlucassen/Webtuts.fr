@@ -36,6 +36,7 @@ class Session {
 		$_SESSION["user"]["pseudo"] = $user->get("pseudo");
 
 		$this->user = $user;
+		
 		return true;
 	}
 
