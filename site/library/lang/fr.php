@@ -73,9 +73,13 @@
     // Label text
     define("SUBSCRIPTION_TITLE", "Inscrivez-vous sur Webtuts !");
     define("SUBSCRIPTION_TEXT", "Afin de bénéficier de nombreux avantages sur notre site et participer à notre vie communautaire, inscrivez-vous ! C'est gratuit !");
+    define("CONNECTION_TITLE", "Connectez-vous à Webtuts !");
+    define("CONNECTION_TEXT", "Entrez votre login et votre mot de passe afin d'accéder à votre compte Webtuts");
+    
     define("MANDATORY_INFORMATIONS", "Informations obligatoires");
     define("OPTIONAL_INFORMATIONS", "Informations facultatives");
     define("SUBSCRIBE", "S'inscrire");
+    define("LOGIN", "Connexion");
     
     define("LBL_NAME", "Nom");
     define("LBL_FIRSTNAME", "Prénom");
@@ -108,7 +112,7 @@
     define("WRONG_CONFIRM_PWD", "Les mots de passe ne correspondent pas");
     define("WRONG_PATTERN_EMAIL", "Un email doit être de la forme xxx@yyy.zzz");
     define("WRONG_PATTERN_URL", "Un URL doit être de la forme http(s)://xxx.zzz");
-
+    define("BAD_LOGIN", "Cette combinaison login/mot de passe n'existe pas");
 
     /**********
      *  BLOG  *

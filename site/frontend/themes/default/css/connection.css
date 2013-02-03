@@ -1,0 +1,108 @@
+#connection-page > .middle-column > .border-title{
+    height: auto;
+    background: transparent url(../images/border.png) left 18px repeat-x;
+    width: 100%;
+}
+#connection-page > .middle-column > .border-title > .left-title{
+    font-size: 34px;
+    height: auto;
+    padding-top: 0;
+    color: rgb(51,86,129);
+}
+#connection-page #explanation-text-page{
+
+    margin: 20px 0 30px 0;
+}
+#connection-page #login-form{
+    margin: auto;
+    width: 350px;
+    
+}
+#connection-page label.label{
+    display: block;
+    float: left;
+    width: 150px;
+    height: 30px;
+    
+    padding-top: 10px;	
+}
+#connection-page label{
+    font-family: Oregon;
+    font-size: 14px;
+    color: #444;
+    vertical-align: middle;
+}
+#connection-page input[type="text"], #connection-page input[type="password"], #connection-page select{
+    display: block;
+    float: left;
+    width: 200px;
+    height: 30px;
+    vertical-align: middle;
+    padding: 5px;
+    font-family: Oregon;
+    font-size: 12px;
+    color: #111;
+    
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    -ms-border-radius: 4px;
+    
+}
+#connection-page input[type="text"]:focus, #connection-page input[type="password"]:focus{
+    box-shadow: 0 0 4px rgba(51,86,229, 0.6);
+}
+#connection-page .marginAuto{
+    margin-top: 40px;
+}
+#connection-page .button span input[type="submit"]{
+    padding-top: 0px;
+    height: 32px;
+    cursor: pointer;
+    font-family: Ubuntu-c;
+    font-size: 16px;
+}
+
+/** tooltip **/
+.correct 
+{
+	border-color: rgba(68, 191, 68, 0.75);
+}
+
+.correct:focus 
+{
+	border-color: rgba(68, 191, 68, 0.75);
+	-moz-box-shadow: 0 0 10px rgba(68, 191, 68, 0.5);
+	-webkit-box-shadow: 0 0 10px rgba(68, 191, 68, 0.5);
+	box-shadow: 0 0 10px rgba(68, 191, 68, 0.5);
+}
+
+.incorrect 
+{
+	border-color: rgba(191, 68, 68, 0.75);
+}
+
+.incorrect:focus 
+{
+	border-color: rgba(191, 68, 68, 0.75);
+	-moz-box-shadow: 0 0 10px rgba(191, 68, 68, 0.5);
+	-webkit-box-shadow: 0 0 10px rgba(191, 68, 68, 0.5);
+	box-shadow: 0 0 10px rgba(191, 68, 68, 0.5);
+}
+
+.tooltip, .main-tooltip
+{
+	display: none;
+	padding: 10px;
+	background-color: #F7E7E7;
+	color: #AE3638;
+	margin: 0 0 8px 150px;
+	
+	border: 1px solid #ccc;
+	moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}

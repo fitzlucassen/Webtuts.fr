@@ -74,10 +74,14 @@
     // Label text
     define("SUBSCRIPTION_TITLE", "Subscribe on Webtuts !");
     define("SUBSCRIPTION_TEXT", "To benefit from many advantages over our site, join our community, register now! It's free!");
+    define("CONNECTION_TITLE", "Login to Webtuts !");
+    define("CONNECTION_TEXT", "Please enter your login and your password to access to yout Webtuts account");
+    
     define("MANDATORY_INFORMATIONS", "Mandatory Informations");
     define("OPTIONAL_INFORMATIONS", "Optional Informations");
     define("SUBSCRIBE", "Subscribe");
-    
+    define("LOGIN", "Connection");
+
     define("LBL_NAME", "Name");
     define("LBL_FIRSTNAME", "firstname");
     define("LBL_PSEUDO", "Login");
@@ -109,7 +113,7 @@
     define("WRONG_CONFIRM_PWD", "Passwords do not match");
     define("WRONG_PATTERN_EMAIL", "E-maill must be like this xxx@yyy.zzz");
     define("WRONG_PATTERN_URL", "URL must be like this http(s)://xxx.zzz");
-
+    define("BAD_LOGIN", "This login / password combination does not exist");
 
     /**********
      *  BLOG  *
