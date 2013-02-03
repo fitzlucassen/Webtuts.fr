@@ -1,4 +1,6 @@
 <?php
+
+
 	/*
 		Fichier de configuration : 
 		Contient toutes les informations necessaires à fournir par l'administrateur et à écrire en dur.
@@ -35,7 +37,7 @@
 	/* User */
 	define("__SQL_user__", "root");
 	/* Password */
-	define("__SQL_password__", "");
+	define("__SQL_password__", "root");
 	/* Prefix tables */
 	define("__SQL_prefix__", "");
 	/* Database */

@@ -7,7 +7,7 @@
 ?>
 <html>
 	<head>
-	    <?php 
+		<?php
 	    include("partials/meta.php");
 	    //Kernel::get("cache")->inc(_theme_path_."partials/meta.php"); ?>
 	    <title><?php echo get_title_from_url(Kernel::get("controller"),Kernel::get("action")); ?></title>

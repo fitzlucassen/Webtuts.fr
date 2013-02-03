@@ -32,9 +32,7 @@ class Session {
 	public function connect($user) {
 		$_SESSION["user"] = array();
 		$_SESSION["user"]["id"] = $user->get("id");
-		$_SESSION["user"]["pwd"] = $user->get("password");
-		$_SESSION["user"]["pseudo"] = $user->get("pseudo");
-
+		$_SESSION["user"]["pwd"] = "".$user->get("password");
 		$this->user = $user;
 		return true;
 	}
