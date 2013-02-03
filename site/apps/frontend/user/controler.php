@@ -93,7 +93,7 @@ class UserControler extends Controler {
 			$attr["password"] = md5($attr["password"]);
 			
 			if($user = App::getClass("user")->hydrate($attr)->save())
-			    return $this->redirect("user/profil/".$user->get("pseudo"));
+			    return $this->redirect(Kernel::getUrl("user/profil/".$user->get("pseudo")));
 			else
 			    return $this->render(array("error" => "Vous n'avez pas bien rempli le formulaire"));
 		    }
