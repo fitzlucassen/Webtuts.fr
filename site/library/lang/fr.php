@@ -42,7 +42,9 @@
     define("COMMENT", "commentaire");
     define("ARTICLES_WORD", "Articles");
     define("NEWS_WORD", "Actualités");
+    define("TAGS_WORD", "Autres tags");
     define("SEE_NEWS", "Voir toute l'actualité");
+    define("SEE_TAGS", "Voir tous les tags");
     define("SEE_ARTICLES", "Voir tous les articles");
     define("FOLLOW_WEBTUTS", "Suivez Webtuts !");
     define("HAPPENS_ON_TWITTER", "Ca se passe sur Twitter");
@@ -73,10 +75,12 @@
     define("SUBSCRIPTION_TEXT", "Afin de bénéficier de nombreux avantages sur notre site et participer à notre vie communautaire, inscrivez-vous ! C'est gratuit !");
     define("MANDATORY_INFORMATIONS", "Informations obligatoires");
     define("OPTIONAL_INFORMATIONS", "Informations facultatives");
+    define("SUBSCRIBE", "S'inscrire");
     
     define("LBL_NAME", "Nom");
     define("LBL_FIRSTNAME", "Prénom");
     define("LBL_PSEUDO", "Pseudo");
+    define("LBL_PASSWORD", "Mot de passe");
     define("LBL_EMAIL", "E-mail");
     define("LBL_PAYS", "Pays");
     define("LBL_VILLE", "Ville");
@@ -85,13 +89,26 @@
     define("LBL_MAN", "M");
     define("LBL_WOMAN", "Mme");
     define("LBL_LANGAGE", "Langages connus");
+    define("LBL_SITE", "Site web");
+    define("LBL_CONFIRM_PASSWORD", "Confirmation mot de passe");
     
     // Placeholders
     define("PL_NAME", "Votre nom");
     define("PL_FIRSTNAME", "Votre prénom");
     define("PL_PSEUDO", "Votre pseudo");
+    define("PL_PASSWORD", "Votre mot de passe");
     define("PL_EMAIL", "Votre e-mail");
     define("PL_VILLE", "Votre ville");
+    define("PL_SITE", "Votre site internet");
+    define("PL_CONFIRM_PASSWORD", "Confirmez votre mot de passe");
+    
+    // Error messages
+    define("REQUIRED_FIELD", "Ce champ est requis");
+    define("SIX_CHAR_MIN", "Ce champs requiert 6 caractères minimum");
+    define("WRONG_CONFIRM_PWD", "Les mots de passe ne correspondent pas");
+    define("WRONG_PATTERN_EMAIL", "Un email doit être de la forme xxx@yyy.zzz");
+    define("WRONG_PATTERN_URL", "Un URL doit être de la forme http(s)://xxx.zzz");
+
 
     /**********
      *  BLOG  *
@@ -131,6 +148,11 @@
     define("TUTOS_BY_CATEGORY", "Cette catégorie contient");
     define("CATEGORY_TUTOS", "Les tutoriels de la catégorie");
     define("NO_ARTICLE_CATEGORY", "Il n'y a pas encore de tutoriel dans cette catégorie...");
+    define("HERE_ARE", "Voici les");
+    define("HERE_IS", "Voici l'");
+    define("TAG_ARTICLES", "articles ayant le tag");
+    define("TAG_ARTICLE", "article ayant le tag");
+    define("TAG", "Tag");
     
     // Alternative text images
     define("ALT_CATEGORY_IMAGE", "image de la catégorie");

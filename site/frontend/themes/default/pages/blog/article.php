@@ -1,6 +1,5 @@
 <!-- Article page -->
 
-
 <div id="article-page">
     <div class="middle-column">
 	<div class="border-title">

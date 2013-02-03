@@ -1,18 +1,39 @@
 #bad-route-page h1{
-    font-size: 80px;
-    color: rgb(51,86,129);
-    float: left;
+    font-size: 500px;
+    color: rgba(200,200,200, 0.6);
+    position: absolute;
+    width: 983px;
+    text-align: center;
+    margin-top: -100px;
+    z-index: 0;
+}
+header nav, #header #nav {
+    z-index: 2;
 }
 #bad-route-page h2{
     font-size: 34px;
     color: rgb(51,86,129);
     float: left;
     margin-left: 20px;
-    padding-top: 42px;
+    padding-top: 0;
 }
 #wanted-image{
     margin: 40px auto -20px auto;
     width: 301px;
     height: 271px;
     display: block;
+}
+#bad-route-page{
+    overflow: hidden;
+    position: relative;
+
+    min-height: 420px;
+}
+#oiseau-volant{
+    background: transparent url(../images/oiseau-modele.png) center center no-repeat;
+    width: 73px;
+    height: 94px;
+    position: absolute;
+    top: 0;
+    left: 0;
 }

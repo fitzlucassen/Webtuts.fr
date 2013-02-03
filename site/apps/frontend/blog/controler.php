@@ -45,9 +45,10 @@ class BlogControler extends Controler {
 	    return $this->render(array("tags" => $tags));
 	}
 	public function TagAction($params){
-	    $tag = App::getTable("tag")->getBySanitizeName($params[3]);
-
-	    return $this->render(array("tag" => $tag));
+	    $tag_target = App::getTable("tag")->getBySanitizeName($params[3]);
+	    $tags = App::getClassArray("tag");
+	    
+	    return $this->render(array("tag_target" => $tag_target, "tags" => $tags));
 	}
 }
 
