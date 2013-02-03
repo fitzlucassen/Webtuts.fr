@@ -193,7 +193,7 @@ h4.left-title span{
     width: 160px;
     margin-left: 12px;
 }
-.button span a{
+.button span a, .button span input[type="submit"]{
     display: block;
     background: transparent url(../images/btn_repeat.png) 24px top repeat-x;
     height:27px;
@@ -202,6 +202,7 @@ h4.left-title span{
     padding-top: 7px;
     color: #fff;
     text-align: center;
+    border:none;
 }
 
 p.comment{

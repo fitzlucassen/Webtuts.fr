@@ -1,7 +1,7 @@
 <header>
 	<div id="top-header">
 		<?php
-		    if(Kernel::get("action") != "badRoute"){
+		    if(Kernel::get("action") != "404"){
 		?>
 		<div id="oiseau-anime">
 			<img src="<?php echo '/'._theme_path_ . 'images/'; ?>oeuil-oiseau.png" alt="<?php echo ALT_BIRD_EYE; ?>" class="bird-eye" id="left-eye"/>
@@ -11,16 +11,16 @@
 		    }
 		?>
 		<div id="login-box">
-			<a href="/user/subscription">
+			<a href="<?php echo Kernel::getUrl("user/profil/fozeek"); ?>">
 				<img src="<?php echo '/'._theme_path_ . 'images/'; ?>membership.png" alt="<?php echo ALT_MY_PROFILE; ?>" />
 				<?php echo MY_PROFILE; ?>
 			</a>
 			
 			<span>&nbsp;-&nbsp;</span>
 			
-			<a href="#"><?php echo CONNECTION; ?></a>
+			<a href="<?php echo Kernel::getUrl("user/connection"); ?>"><?php echo CONNECTION; ?></a>
 			<span>&nbsp;/&nbsp;</span>
-			<a href="#"><?php echo INSCRIPTION; ?></a>
+			<a href="<?php echo Kernel::getUrl("user/subscription"); ?>"><?php echo INSCRIPTION; ?></a>
 		</div>
 		<div class="right search-flag-container">
 			<div id="flag-box">

@@ -41,8 +41,10 @@
     define("COMMENTS", "Comments");
     define("COMMENT", "Comment");
     define("NEWS_WORD", "News");
+    define("TAGS_WORD", "Other tags");
     define("ARTICLES_WORD", "Articles");
     define("SEE_NEWS", "All news");
+    define("SEE_TAGS", "All tags");
     define("SEE_ARTICLES", "All articles");
     define("FOLLOW_WEBTUTS", "Follow Webtuts !");
     define("HAPPENS_ON_TWITTER", "It happens on Twitter");
@@ -74,10 +76,12 @@
     define("SUBSCRIPTION_TEXT", "To benefit from many advantages over our site, join our community, register now! It's free!");
     define("MANDATORY_INFORMATIONS", "Mandatory Informations");
     define("OPTIONAL_INFORMATIONS", "Optional Informations");
+    define("SUBSCRIBE", "Subscribe");
     
     define("LBL_NAME", "Name");
     define("LBL_FIRSTNAME", "firstname");
     define("LBL_PSEUDO", "Login");
+    define("LBL_PASSWORD", "Password");
     define("LBL_EMAIL", "E-mail");
     define("LBL_PAYS", "Country");
     define("LBL_VILLE", "City");
@@ -86,13 +90,26 @@
     define("LBL_MAN", "Mr");
     define("LBL_WOMAN", "Ms");
     define("LBL_LANGAGE", "Known Languages");
-    
+    define("LBL_SITE", "Website");
+    define("LBL_CONFIRM_PASSWORD", "Password confirmation");
+
     // Placeholders
     define("PL_NAME", "Your name");
     define("PL_FIRSTNAME", "Your firstname");
     define("PL_PSEUDO", "Your login");
+    define("PL_PASSWORD", "Your password");
     define("PL_EMAIL", "Your e-mail");
     define("PL_VILLE", "Your city");
+    define("PL_SITE", "Your website");
+    define("PL_CONFIRM_PASSWORD", "Confirm your password");
+    
+    // Error messages
+    define("REQUIRED_FIELD", "This field is required");
+    define("SIX_CHAR_MIN", "6 characters minimum are required here");
+    define("WRONG_CONFIRM_PWD", "Passwords do not match");
+    define("WRONG_PATTERN_EMAIL", "E-maill must be like this xxx@yyy.zzz");
+    define("WRONG_PATTERN_URL", "URL must be like this http(s)://xxx.zzz");
+
 
     /**********
      *  BLOG  *
@@ -109,8 +126,8 @@
     define("NEWS_TEXT", "You will find here the list of all webtuts-news.
 			 Click on one of them to see it");
     define("TAGS_TITLE", "All the Webtuts tags");
-    define("TAGS_TEXT", "Vous trouverez ici la liste de tous les tags du blog.
-			Cliquez sur l'un d'eux pour voir les articles qui y sont rattachés.");
+    define("TAGS_TEXT", "You will find here the list of all webtuts-tags..
+			Click on one of them to see all articles attached to this tag.");
     
     define("LEFT_PRINT_ARTICLE", "See the");
     define("RIGHT_PRINT_ARTICLE", "article");
@@ -132,6 +149,10 @@
     define("TUTOS_BY_CATEGORY", "This category contains");
     define("CATEGORY_TUTOS", "Tuts from");
     define("NO_ARTICLE_CATEGORY", "There isn't any tuts yet in this category...");
+    define("HERE_ARE", "Here is the");
+    define("HERE_IS", "Here is the");
+    define("TAG_ARTICLES", "articles with the tag");
+    define("TAG", "Tag");
     
     // Alternative text images
     define("ALT_CATEGORY_IMAGE", "The image of the category");

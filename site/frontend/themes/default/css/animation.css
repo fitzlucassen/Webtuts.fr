@@ -8,6 +8,16 @@
 	left: 0;
 	z-index: 999;
 }
+#oiseau-volant{
+	animation: birdFall 4s;
+	animation-iteration-count: 1;
+	-moz-animation: birdFall 4s;
+	-moz-animation-iteration-count: 1;
+	-webkit-animation: birdFall 4s;
+	-webkit-animation-iteration-count: 1;
+	-o-animation: birdFall 4s;
+	-o-animation-iteration-count: 1;
+}
 .bird-eye{
 	position: absolute;
 	top: 30px;
@@ -35,8 +45,57 @@
 	-webkit-animation-iteration-count: infinite;
 	-o-animation: birdEyeLeft 4s;
 	-o-animation-iteration-count: infinite;
+	    
 }
-
+/** FALL **/
+@-webkit-keyframes birdFall
+{
+	0%  {
+		top: 0;left:0;
+		-webkit-transform: rotate(50deg);
+		-webkit-animation-timing-function: linear;
+	    }
+	10% {
+		top: 25px;left:50px;
+		-webkit-transform: rotate(100deg);
+		-webkit-animation-timing-function: linear;
+	    }
+	20% {
+		top: 50px;left:100px;
+		-webkit-transform: rotate(150deg);
+		-webkit-animation-timing-function: linear;
+	    }
+	40% {
+		top: 75px;left:150px;
+		-webkit-transform: rotate(200deg);
+		-webkit-animation-timing-function: linear;
+	    }
+	50% {
+		top: 100px;left:200px;
+		-webkit-transform: rotate(250deg);
+		-webkit-animation-timing-function: linear;
+	    }
+	60% {
+		top: 125px;left:250px;
+		-webkit-transform: rotate(300deg);
+		-webkit-animation-timing-function: linear;
+	    }
+	80% {
+		top: 150px;left:300px;
+		-webkit-transform: rotate(350deg);
+		-webkit-animation-timing-function: linear;
+	    }
+	90% {
+		top: 175px;left:350px;
+		-webkit-transform: rotate(400deg);
+		-webkit-animation-timing-function: linear;
+	    }
+	100%{
+		top: 200px;left:400px;
+		-webkit-transform: rotate(450deg);
+		-webkit-animation-timing-function: linear;
+	    } 
+}
 /** EYE **/
 @keyframes birdEyeLeft
 {

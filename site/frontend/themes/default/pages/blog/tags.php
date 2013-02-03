@@ -1,6 +1,5 @@
 <!-- Tags page -->
 
-
 <div id="tags-page">
     <!-- Tags content -->
     <div class="middle-column">
