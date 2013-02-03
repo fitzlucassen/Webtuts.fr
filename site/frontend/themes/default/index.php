@@ -7,9 +7,10 @@
 ?>
 <html>
 	<head>
-		<?php
-	    include("partials/meta.php");
-	    //Kernel::get("cache")->inc(_theme_path_."partials/meta.php"); ?>
+	    <?php
+		include("partials/meta.php");
+	    //Kernel::get("cache")->inc(_theme_path_."partials/meta.php");
+	    ?>
 	    <title><?php echo get_title_from_url(Kernel::get("controller"),Kernel::get("action")); ?></title>
 	    <link type="text/css" rel="stylesheet" href="<?php echo _host_absolute_ . _theme_path_ ?>css/<?php echo Kernel::get("action"); ?>.css" />
 	</head>

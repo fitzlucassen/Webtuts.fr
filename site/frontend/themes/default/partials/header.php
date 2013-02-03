@@ -1,7 +1,10 @@
 <header>
 	<div id="top-header">
 		<?php
-		    if(Kernel::get("action") != "404"){
+		    if(Kernel::get("action") != "404" && 
+		      (Kernel::get("action") != "profil" || 
+		      (Kernel::get("action") == "profil" && !Kernel::get("session")->containsKey("first_connection")) ||
+		      (Kernel::get("action") == "profil" && Kernel::get("session")->containsKey("first_connection") && !Kernel::get("session")->get("first_connection")))){
 		?>
 		<div id="oiseau-anime">
 			<img src="<?php echo '/'._theme_path_ . 'images/'; ?>oeuil-oiseau.png" alt="<?php echo ALT_BIRD_EYE; ?>" class="bird-eye" id="left-eye"/>
@@ -11,16 +14,27 @@
 		    }
 		?>
 		<div id="login-box">
-		    <a href="<?php echo Kernel::getUrl("user/profil/" . Kernel::get("user")->get("pseudo")); ?>">
-				<img src="<?php echo '/'._theme_path_ . 'images/'; ?>membership.png" alt="<?php echo ALT_MY_PROFILE; ?>" />
-				<?php echo MY_PROFILE; ?>
-			</a>
-			
-			<span>&nbsp;-&nbsp;</span>
-			
+		    <?php
+			if(Kernel::get("user") == false) {
+		    ?>
 			<a href="<?php echo Kernel::getUrl("user/connection"); ?>"><?php echo CONNECTION; ?></a>
 			<span>&nbsp;/&nbsp;</span>
 			<a href="<?php echo Kernel::getUrl("user/subscription"); ?>"><?php echo INSCRIPTION; ?></a>
+		    <?php
+			}
+			else {
+		    ?>
+			<a href="<?php echo Kernel::getUrl("user/profil/" . Kernel::get("user")->get("pseudo")); ?>">
+				<img src="<?php echo '/'._theme_path_ . 'images/'; ?>membership.png" alt="<?php echo ALT_MY_PROFILE; ?>" />
+				<?php echo MY_PROFILE; ?>
+			</a>
+			<span>&nbsp;-&nbsp;</span>
+			<a href="<?php echo Kernel::getUrl("user/disconnect"); ?>">
+				<?php echo DECONNECTION; ?>
+			</a>
+		    <?php
+			}
+		    ?>
 		</div>
 		<div class="right search-flag-container">
 			<div id="flag-box">

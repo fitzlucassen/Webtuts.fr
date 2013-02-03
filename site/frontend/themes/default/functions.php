@@ -8,15 +8,42 @@
 	    }
 	} else if($controller == "blog") {
 	    if($action == "categories"){
-		$title = "Page des catégories de Webtuts";
+		$title = "Les catégories de Webtuts";
 	    }
 	    else if($action == "articles"){
-		$title = "Page des articles de Webtuts";
-	    } else {
+		$title = "Les articles de Webtuts";
+	    }
+	    else if($action == "categorie"){
+		$title = "Page de la catégorie";
+	    }
+	    else if($action == "article"){
+		$title = "Page de l'article";
+	    }
+	    else if($action == "actualites"){
+		$title = "Les actualités de Webtuts";
+	    }
+	    else if($action == "actualite"){
+		$title = "Page de l'actualité";
+	    }
+	    else if($action == "tags"){
+		$title = "Les tags de Webtuts";
+	    }
+	    else if($action == "tag"){
+		$title = "Page du tag";
+	    }
+	    else {
 		$title = "Page de Webtuts";
 	    }
 	} else if($controller == "user") {
-	    $title = "Page utilisateur de Webtuts";
+	    if($action == "connection"){
+		$title = "Connectez vous à votre compte";
+	    }
+	    else if($action == "subscription"){
+		$title = "Inscrivez-vous sur Webtuts";
+	    }
+	    else if($action == "profil"){
+		$title = "Le compte utilisateur de";
+	    }
 	}
 	return $title;
     }

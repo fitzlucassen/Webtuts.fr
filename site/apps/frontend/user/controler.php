@@ -16,7 +16,7 @@ class UserControler extends Controler {
 	}
 	
 	public function ProfilAction($params) {
-	    if(Kernel::get("user") == false){
+	    if(Kernel::get("user") == false || Kernel::get("user")->get("pseudo") != $params[3]){
 		return $this->redirect(Kernel::getUrl("user/connection"));
 	    }
 	    $user = App::getTable("user")->getBySanitizePseudo($params[3]);
@@ -159,6 +159,11 @@ class UserControler extends Controler {
 		else {
 		    return $this->redirect(Kernel::getUrl("user/profil/".Kernel::get("user")->get("pseudo")));
 		}
+	}
+	
+	public function DisconnectAction($params){
+	    Kernel::get("session")->disconnect();
+	    return $this->redirect("/");
 	}
 }
 

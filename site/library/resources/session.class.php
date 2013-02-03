@@ -41,6 +41,7 @@ class Session {
 	public function disconnect() {
 		if(!empty($this->user)) {	
 			unset($_SESSION["user"]);
+			unset($_SESSION["first_connection"]);
 			$this->user = false;
 			$this->session = "";
 			return true;
@@ -52,7 +53,10 @@ class Session {
 	    $_SESSION[$key] = $value;
 	}
 	public function get($key){
-	    return $this->$key;
+	    return $_SESSION[$key];
+	}
+	public function containsKey($key){
+	    return (isset($_SESSION[$key]));
 	}
 }
 

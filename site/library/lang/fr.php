@@ -15,6 +15,7 @@
     define("ARTICLE", "Articles");
     define("NEWS", "Actus");
     define("CONTACT", "Contact");
+    define("DECONNECTION", "Deconnexion");
     
 	// Footer
     define("PARTNER_LINKS", "Les liens partenaires");
@@ -80,6 +81,8 @@
     define("OPTIONAL_INFORMATIONS", "Informations facultatives");
     define("SUBSCRIBE", "S'inscrire");
     define("LOGIN", "Connexion");
+    define("WELCOME", "Bienvenue sur votre compte");
+    define("NOT_SUBSCRIBER", "Pas encore inscrit ? C'est par ici !");
     
     define("LBL_NAME", "Nom");
     define("LBL_FIRSTNAME", "Prénom");
