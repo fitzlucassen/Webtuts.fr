@@ -144,8 +144,14 @@ class UserControler extends Controler {
 			}
 			else {
 			    if($user = App::getTable("user")->getBySanitizePseudo($attr["pseudo"])) {
-				Kernel::get("session")->connect($user);
-				return $this->redirect(Kernel::getUrl("user/profil/".$user->get("pseudo")));
+				if($user->get("password") == md5($attr["password"])){
+				    Kernel::get("session")->connect($user);
+				    return $this->redirect(Kernel::getUrl("user/profil/".$user->get("pseudo")));
+				}
+				else {
+				    $error["bad_login"] = "error";
+				    return $this->render(array("error" => $error, "attr" => $attr));
+				}
 			    }
 			    else{
 				$error["bad_login"] = "error";
