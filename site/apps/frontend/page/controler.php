@@ -12,6 +12,18 @@ class PageControler extends Controler {
 		else
 			return $this->redirect(Kernel::getUrl(""));
 	}
+
+	public function ContactAction($params) {
+		return $this->render(null);
+	}
+
+	public function SitemapAction($params) {
+		return $this->render(null);
+	}
+
+	public function AboutAction($params) {
+		return $this->render(null);
+	}
 }
 
 ?>

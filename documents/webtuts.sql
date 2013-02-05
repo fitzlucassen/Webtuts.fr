@@ -3,18 +3,12 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Dim 03 Février 2013 à 15:59
--- Version du serveur: 5.5.24-log
--- Version de PHP: 5.3.13
+-- Généré le: Mar 05 Février 2013 à 16:07
+-- Version du serveur: 5.5.25
+-- Version de PHP: 5.4.4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Base de données: `webtuts`
@@ -26,7 +20,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `access`
 --
 
-CREATE TABLE IF NOT EXISTS `access` (
+CREATE TABLE `access` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` int(11) NOT NULL,
   `description` int(11) NOT NULL,
@@ -39,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `access` (
 -- Structure de la table `article`
 --
 
-CREATE TABLE IF NOT EXISTS `article` (
+CREATE TABLE `article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` tinyint(1) NOT NULL,
   `category` int(11) NOT NULL,
@@ -53,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `article` (
   `views` int(11) NOT NULL,
   `comments` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Contenu de la table `article`
@@ -63,7 +57,10 @@ INSERT INTO `article` (`id`, `deleted`, `category`, `node`, `tags`, `author`, `d
 (1, 0, 1, 1, 1, 1, '2012-12-15 00:00:00', 0, 4, 5, 32, 0),
 (2, 0, 0, 2, 0, 1, '2013-01-11 00:00:00', 0, 31, 32, 0, 0),
 (3, 0, 0, 3, 0, 1, '2013-01-02 00:00:00', 0, 78, 79, 0, 0),
-(4, 0, 0, 3, 0, 1, '2013-01-13 18:24:36', 0, 80, 81, 0, 0);
+(4, 0, 0, 3, 0, 1, '2013-01-13 18:24:36', 0, 80, 81, 0, 0),
+(5, 0, 0, 4, 0, 1, '2013-02-14 00:00:00', 0, 84, 85, 0, 0),
+(6, 0, 0, 4, 0, 1, '2013-02-08 00:00:00', 0, 86, 87, 0, 0),
+(7, 0, 0, 4, 0, 1, '2013-02-05 00:00:00', 0, 88, 89, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -71,7 +68,7 @@ INSERT INTO `article` (`id`, `deleted`, `category`, `node`, `tags`, `author`, `d
 -- Structure de la table `article_category`
 --
 
-CREATE TABLE IF NOT EXISTS `article_category` (
+CREATE TABLE `article_category` (
   `id_category` int(11) NOT NULL,
   `id_article` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -89,7 +86,7 @@ INSERT INTO `article_category` (`id_category`, `id_article`) VALUES
 -- Structure de la table `article_tag`
 --
 
-CREATE TABLE IF NOT EXISTS `article_tag` (
+CREATE TABLE `article_tag` (
   `id_article` int(11) NOT NULL,
   `id_tag` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -108,7 +105,7 @@ INSERT INTO `article_tag` (`id_article`, `id_tag`) VALUES
 -- Structure de la table `category`
 --
 
-CREATE TABLE IF NOT EXISTS `category` (
+CREATE TABLE `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` int(11) NOT NULL,
   `name` int(11) NOT NULL,
@@ -136,7 +133,7 @@ INSERT INTO `category` (`id`, `deleted`, `name`, `description`, `articles`, `ima
 -- Structure de la table `cms_site_params`
 --
 
-CREATE TABLE IF NOT EXISTS `cms_site_params` (
+CREATE TABLE `cms_site_params` (
   `title` text NOT NULL,
   `time` text NOT NULL,
   `theme` text NOT NULL
@@ -155,7 +152,7 @@ INSERT INTO `cms_site_params` (`title`, `time`, `theme`) VALUES
 -- Structure de la table `comment`
 --
 
-CREATE TABLE IF NOT EXISTS `comment` (
+CREATE TABLE `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `article` int(11) NOT NULL,
   `author` int(11) NOT NULL,
@@ -179,7 +176,7 @@ INSERT INTO `comment` (`id`, `article`, `author`, `text`, `date`, `deleted`) VAL
 -- Structure de la table `image`
 --
 
-CREATE TABLE IF NOT EXISTS `image` (
+CREATE TABLE `image` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
   `type` text NOT NULL,
@@ -208,13 +205,13 @@ INSERT INTO `image` (`id`, `name`, `type`, `width`, `height`, `deleted`, `size`)
 -- Structure de la table `lang`
 --
 
-CREATE TABLE IF NOT EXISTS `lang` (
+CREATE TABLE `lang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_lang` int(11) NOT NULL,
   `lang` text NOT NULL,
   `translation` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=239 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=253 ;
 
 --
 -- Contenu de la table `lang`
@@ -266,7 +263,21 @@ INSERT INTO `lang` (`id`, `id_lang`, `lang`, `translation`) VALUES
 (234, 1, 'en', 'Integration'),
 (235, 27, 'en', 'This text doesn''t has its traduction !'),
 (237, 76, 'en', 'Backend notification'),
-(238, 77, 'en', 'Notification for the backend home');
+(238, 77, 'en', 'Notification for the backend home'),
+(239, 82, 'fr', 'Pages'),
+(240, 83, 'fr', 'Pages'),
+(241, 84, 'fr', 'à propos'),
+(242, 85, 'fr', '<div class="title">À propos</div>\n<ul>\n<p>Webtuts est un blog présentant des tutoriels solutionnant des problèmes concrets sur la réalisation de son propre site web avec diverses astuces et techniques expliquées de façon détaillés pour répondre aux besoins de tous. Le développement de ce même blog sera, le plus souvent possible, prit comme exemple à ces tutoriaux.<p>\n</ul>\n\n<div class="title">L''équipe</div>\n<div class="sub-title">Jonathan<span class="color-grey"> Rédacteur en chef / Développeur </span></div>\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit nisi harum consectetur quos cumque atque tempore maxime doloribus eaque vel qui odio rerum et labore impedit. Dolores illo similique nihil.</p>\n<div class="sub-title">Quentin<span class="color-grey"> Directeur / Développeur </span></div>\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit nisi harum consectetur quos cumque atque tempore maxime doloribus eaque vel qui odio rerum et labore impedit. Dolores illo similique nihil.</p>\n<div class="sub-title">Richard<span class="color-grey"> Développeur </span></div>\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit nisi harum consectetur quos cumque atque tempore maxime doloribus eaque vel qui odio rerum et labore impedit. Dolores illo similique nihil.</p>\n<div class="sub-title">Thibault<span class="color-grey"> Responsable marketing / Développeur </span></div>\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit nisi harum consectetur quos cumque atque tempore maxime doloribus eaque vel qui odio rerum et labore impedit. Dolores illo similique nihil.</p>'),
+(243, 86, 'fr', 'nous contacter'),
+(244, 87, 'fr', '<div class="title">Contact</div>'),
+(245, 84, 'en', 'about'),
+(246, 86, 'en', 'contact us'),
+(247, 85, 'en', '<div class="title">About us</div>\r\n<ul>\r\n<p>Webtuts is a website for showing a lot of tuts. These tuts are about website: how to make it, how to manage it and much more. Tricks and technics are explain for everyone, with or without skills. Redactors using the development of this own website for writing tuts.\r\n</ul>\r\n\r\n<div class="title">The team</div>\r\n<div class="sub-title">Jonathan<span class="color-grey"> Chef redactor / Developer </span></div>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit nisi harum consectetur quos cumque atque tempore maxime doloribus eaque vel qui odio rerum et labore impedit. Dolores illo similique nihil.</p>\r\n<div class="sub-title">Quentin<span class="color-grey"> Director / Developer </span></div>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit nisi harum consectetur quos cumque atque tempore maxime doloribus eaque vel qui odio rerum et labore impedit. Dolores illo similique nihil.</p>\r\n<div class="sub-title">Richard<span class="color-grey"> Developer </span></div>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit nisi harum consectetur quos cumque atque tempore maxime doloribus eaque vel qui odio rerum et labore impedit. Dolores illo similique nihil.</p>\r\n<div class="sub-title">Thibault<span class="color-grey"> Marketing / Developer </span></div>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit nisi harum consectetur quos cumque atque tempore maxime doloribus eaque vel qui odio rerum et labore impedit. Dolores illo similique nihil.</p>'),
+(248, 87, 'en', '<div class="title">Contact</div>'),
+(249, 88, 'fr', 'tous les partenaires'),
+(250, 89, 'fr', '<div class="title">Partenaires</div>'),
+(251, 88, 'en', 'all partners'),
+(252, 89, 'en', '<div class="title">Partners</div>');
 
 -- --------------------------------------------------------
 
@@ -274,7 +285,7 @@ INSERT INTO `lang` (`id`, `id_lang`, `lang`, `translation`) VALUES
 -- Structure de la table `newsletter`
 --
 
-CREATE TABLE IF NOT EXISTS `newsletter` (
+CREATE TABLE `newsletter` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `mail` text NOT NULL,
   PRIMARY KEY (`id`)
@@ -301,13 +312,13 @@ INSERT INTO `newsletter` (`id`, `mail`) VALUES
 -- Structure de la table `node`
 --
 
-CREATE TABLE IF NOT EXISTS `node` (
+CREATE TABLE `node` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` tinyint(4) NOT NULL,
   `name` int(11) NOT NULL,
   `description` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `node`
@@ -316,7 +327,8 @@ CREATE TABLE IF NOT EXISTS `node` (
 INSERT INTO `node` (`id`, `deleted`, `name`, `description`) VALUES
 (1, 0, 27, 28),
 (2, 0, 29, 30),
-(3, 0, 76, 77);
+(3, 0, 76, 77),
+(4, 0, 82, 83);
 
 -- --------------------------------------------------------
 
@@ -324,7 +336,7 @@ INSERT INTO `node` (`id`, `deleted`, `name`, `description`) VALUES
 -- Structure de la table `orm_columns_types`
 --
 
-CREATE TABLE IF NOT EXISTS `orm_columns_types` (
+CREATE TABLE `orm_columns_types` (
   `name_table` text NOT NULL,
   `name_column` text NOT NULL,
   `type` text NOT NULL
@@ -395,7 +407,7 @@ INSERT INTO `orm_columns_types` (`name_table`, `name_column`, `type`) VALUES
 -- Structure de la table `page`
 --
 
-CREATE TABLE IF NOT EXISTS `page` (
+CREATE TABLE `page` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` int(11) NOT NULL,
   `content` int(11) NOT NULL,
@@ -417,7 +429,7 @@ INSERT INTO `page` (`id`, `title`, `content`, `date`, `author`) VALUES
 -- Structure de la table `tag`
 --
 
-CREATE TABLE IF NOT EXISTS `tag` (
+CREATE TABLE `tag` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` tinyint(4) DEFAULT '0',
   `name` int(11) NOT NULL,
@@ -443,33 +455,36 @@ INSERT INTO `tag` (`id`, `deleted`, `name`, `description`, `articles`) VALUES
 -- Structure de la table `urlrewriting`
 --
 
-CREATE TABLE IF NOT EXISTS `urlrewriting` (
+CREATE TABLE `urlrewriting` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `lang` text NOT NULL,
   `app` text CHARACTER SET utf8 NOT NULL,
   `controler` text CHARACTER SET utf8 NOT NULL,
   `action` text CHARACTER SET utf8 NOT NULL,
   `matchurl` text CHARACTER SET utf8 NOT NULL,
   `route_order` int(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Contenu de la table `urlrewriting`
 --
 
-INSERT INTO `urlrewriting` (`id`, `app`, `controler`, `action`, `matchurl`, `route_order`) VALUES
-(1, 'frontend', 'blog', 'categories', 'les-categories.html', 0),
-(2, 'frontend', 'blog', 'article', 'categorie-{2}/article-{1}.html', 0),
-(3, 'frontend', 'blog', 'category', 'categorie-{1}.html', 1),
-(4, 'frontend', 'blog', 'articles', 'les-articles.html', 0),
-(5, 'frontend', 'blog', 'actualites', 'les-actualites.html', 0),
-(6, 'frontend', 'blog', 'actualite', 'actualite-{1}.html', 1),
-(7, 'frontend', 'error', '404', '404.html', 0),
-(8, 'frontend', 'blog', 'tags', 'les-tags.html', 0),
-(9, 'frontend', 'blog', 'tag', 'tag-{1}.html', 1),
-(10, 'frontend', 'user', 'subscription', 'inscription-webtuts.html', 0),
-(11, 'frontend', 'user', 'connection', 'connexion-webtuts.html', 0),
-(13, 'frontend', 'user', 'profil', 'compte/{1}.html', 2);
+INSERT INTO `urlrewriting` (`id`, `lang`, `app`, `controler`, `action`, `matchurl`, `route_order`) VALUES
+(1, 'fr', 'frontend', 'blog', 'categories', 'les-categories.html', 0),
+(2, 'fr', 'frontend', 'blog', 'article', 'categorie-{2}/article-{1}.html', 0),
+(3, 'fr', 'frontend', 'blog', 'category', 'categorie-{1}.html', 1),
+(4, 'fr', 'frontend', 'blog', 'articles', 'les-articles.html', 0),
+(5, 'fr', 'frontend', 'blog', 'actualites', 'les-actualites.html', 0),
+(6, 'fr', 'frontend', 'blog', 'actualite', 'actualite-{1}.html', 1),
+(7, 'fr', 'frontend', 'error', '404', '404.html', 0),
+(8, 'fr', 'frontend', 'blog', 'tags', 'les-tags.html', 0),
+(9, 'fr', 'frontend', 'blog', 'tag', 'tag-{1}.html', 1),
+(10, 'fr', 'frontend', 'user', 'subscription', 'inscription-webtuts.html', 0),
+(11, 'fr', 'frontend', 'user', 'connection', 'connexion-webtuts.html', 0),
+(13, 'fr', 'frontend', 'user', 'profil', 'compte/{1}.html', 2),
+(14, 'fr', 'frontend', 'page', 'index', 'page-{1}.html', 0),
+(15, 'en', 'frontend', 'blog', 'categories', 'categories.html', 0);
 
 -- --------------------------------------------------------
 
@@ -477,7 +492,7 @@ INSERT INTO `urlrewriting` (`id`, `app`, `controler`, `action`, `matchurl`, `rou
 -- Structure de la table `user`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` tinyint(1) NOT NULL,
   `banned` double NOT NULL,
@@ -502,7 +517,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `deleted`, `banned`, `pseudo`, `name`, `surname`, `mail`, `image`, `datesignin`, `civility`, `password`, `country`, `city`, `site`, `languages`, `access`) VALUES
-(1, 0, 0, 'fozeek', 'quentin', 'deneuve', 'quentin.deneuve@gmail.com', 0, '2013-02-01 00:00:00', 'homme', 'cc414bfc9c00475b59c87595299ff31d', 'France', 'Briis-sous-forge', 'http://fozeek.fr', 'html,css,php,javascript,jquery', 0),
+(1, 0, 0, 'fozeek', 'quentin', 'deneuve', 'quentin.deneuve@gmail.com', 0, '2013-02-01 00:00:00', 'homme', 'e1d75b9a8b4d045d96180b6ec6f5e686', 'France', 'Briis-sous-forge', 'http://fozeek.fr', 'html,css,php,javascript,jquery', 0),
 (2, 0, 0, 'fitz_lucassen', 'thibault', 'dulon', 'thibault.dulon@gmail.com', 0, '2013-02-03 00:00:00', 'homme', 'ce0608b1cb5f1b15c59f9344f53729fd', 'France', 'Paris', 'http://fitz.hebergratuit.com', 'html,css,php,javascript,jquery,asp.net,csharp', 0);
 
 -- --------------------------------------------------------
@@ -511,11 +526,7 @@ INSERT INTO `user` (`id`, `deleted`, `banned`, `pseudo`, `name`, `surname`, `mai
 -- Structure de la table `user_access`
 --
 
-CREATE TABLE IF NOT EXISTS `user_access` (
+CREATE TABLE `user_access` (
   `id_user` int(11) NOT NULL,
   `id_access` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

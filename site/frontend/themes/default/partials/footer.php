@@ -12,10 +12,10 @@
 			
 			<div id="middle-top-footer" class="footer-box">
 				<h2><?php echo USEFUL_LINKS; ?> :</h2>
-				<a href="<?php echo Kernel::getUrl("page/index/a-propos"); ?>"><?php echo ABOUT; ?></a>
-				<a href="<?php echo Kernel::getUrl("page/index/contact"); ?>"><?php echo CONTACT_US; ?></a>
-				<a href="#"><?php echo SITEMAP; ?></a>
-				<a href="#"><?php echo PARTNERS; ?></a>
+				<a href="<?php echo Kernel::getUrl("page/about"); ?>"><?php echo ABOUT; ?></a>
+				<a href="<?php echo Kernel::getUrl("page/contact"); ?>"><?php echo CONTACT_US; ?></a>
+				<a href="<?php echo Kernel::getUrl("page/sitemap"); ?>"><?php echo SITEMAP; ?></a>
+				<a href="<?php echo Kernel::getUrl("page/partners"); ?>"><?php echo PARTNERS; ?></a>
 			</div>
 			
 			<div id="right-top-footer" class="footer-box">
