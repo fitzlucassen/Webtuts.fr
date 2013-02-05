@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mar 05 Février 2013 à 21:36
+-- Généré le: Mar 05 Février 2013 à 22:08
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.3.13
 
@@ -173,8 +173,8 @@ CREATE TABLE IF NOT EXISTS `comment` (
 --
 
 INSERT INTO `comment` (`id`, `article`, `author`, `text`, `date`, `deleted`) VALUES
-(1, 1, 1, 'Coooool !', '2013-02-11 00:00:00', 1),
-(2, 1, 1, 'essais', '2013-01-03 03:11:55', 1);
+(1, 1, 1, 'Coooool !', '2013-02-11 00:00:00', 0),
+(2, 1, 1, 'essais', '2013-01-03 03:11:55', 0);
 
 -- --------------------------------------------------------
 
@@ -251,7 +251,6 @@ INSERT INTO `lang` (`id`, `id_lang`, `lang`, `translation`) VALUES
 (24, 24, 'fr', 'Tous les tutoriels utilisant le langage javascript'),
 (25, 25, 'fr', 'JQuery'),
 (26, 26, 'fr', 'Tous les tutoriels utilisant la bibliothèque JQuery, basé sur javascript'),
-(27, 27, 'fr', 'tutorielPROUT'),
 (28, 28, 'fr', 'Les types de contenu étant des tutoriels'),
 (29, 29, 'fr', 'actualité'),
 (30, 30, 'fr', 'Les types de contenu étant des actualités'),
