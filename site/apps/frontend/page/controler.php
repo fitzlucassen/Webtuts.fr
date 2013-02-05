@@ -24,6 +24,10 @@ class PageControler extends Controler {
 	public function AboutAction($params) {
 		return $this->render(null);
 	}
+
+	public function PartnersAction($params) {
+		return $this->render(null);
+	}
 }
 
 ?>

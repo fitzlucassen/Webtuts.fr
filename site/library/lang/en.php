@@ -7,7 +7,7 @@
 	// Header
     define("MY_PROFILE", "My Profile");
     define("CONNECTION", "Connection");
-    define("INSCRIPTION", "Inscription");
+    define("INSCRIPTION", "Subscription");
     define("QUICK_SEARCH", "Quick search");
     define("SEARCH", "Search");
     define("HOME", "Home");
@@ -28,6 +28,12 @@
     define("RSS", "RSS");
     define("NEWSLETTERS", "Newsletter");
     define("COPYRIGHTS", "Credits and Copyright");
+
+    // Pages
+    define("COMMUNITY", "Community");
+    define("BLOG", "Blog");
+    define("IN_COMING", "IN COMING ...");
+    define("MSG_PARTNERS", "You want to be here ? Please tell us : ");
     
 	// Content
     define("WEBTUTS_TITLE", "Webtuts - The dark web languages by category");

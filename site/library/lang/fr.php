@@ -28,6 +28,12 @@
     define("RSS", "Flux RSS");
     define("NEWSLETTERS", "Newsletter");
     define("COPYRIGHTS", "Crédits et Copyright");
+
+    // Pages
+    define("COMMUNITY", "Communauté");
+    define("BLOG", "Blog");
+    define("IN_COMING", "Bientôt ...");
+    define("MSG_PARTNERS", "Vous voulez être ici ? Dites le nous : ");
     
 	// Content
     define("WEBTUTS_TITLE", "Webtuts - Les sombres langages du web par catégorie");
