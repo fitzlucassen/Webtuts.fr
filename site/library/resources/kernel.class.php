@@ -223,14 +223,14 @@ class Kernel {
 		$data = Sql2::create()->select("matchurl")
 				      ->from("urlrewriting")
 				      ->where("app", "=", __app__)
-				      ->andWhere("lang", "=", Kernel::get("lang"))
+				      ->andWhere("lang", "=", $lang)
 				      ->andWhere("controler", "=", $controler)
 				      ->andWhere("route_order", "=", 0)
 				      ->andWhere("action", "=", $action)->fetch();
 		
 		$route_order_max = Sql2::create()->select("MAX(route_order)")
 				    	 ->where("app", "=", __app__)
-				    	 ->andWhere("lang", "=", Kernel::get("lang"))
+				    	 ->andWhere("lang", "=", $lang)
 						 ->from("urlrewriting")->fetch();
 		
 		$i = 1;
@@ -238,7 +238,7 @@ class Kernel {
 		    $data = Sql2::create()->select("matchurl")
 					->from("urlrewriting")
 				    ->where("app", "=", __app__)
-				    ->andWhere("lang", "=", Kernel::get("lang"))
+				    ->andWhere("lang", "=", $lang)
 					->andWhere("controler", "=", $controler)
 					->andWhere("route_order", "=", $i)
 					->andWhere("action", "=", $action)->fetch();
