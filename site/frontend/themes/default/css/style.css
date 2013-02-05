@@ -337,10 +337,13 @@ nav ul#right-nav{
 nav #logo{
 	margin: auto;
 	width: 195px;
-	height: 149px;
+	height: 95px;
+	position: relative;
 }
 nav #logo img{
-	margin-top: -55px;
+	position: absolute;
+	top: -55px;
+	left: 0;
 	
 	transform: rotate(0deg);
 	-ms-transform: rotate(0deg);
