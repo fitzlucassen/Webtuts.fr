@@ -13,6 +13,78 @@
 
     margin: 20px 0 30px 0;
 }
+#profil-page .informations-minor-container{
+    padding: 10px;
+    width: 400px;
+    background: #fff;
+    
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    -moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    -o-box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    -ms-box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    
+    float: right;
+}
+#profil-page .informations-major-container{
+    padding: 10px;
+    width: 400px;
+    background: #fff;
+    
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    -moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    -o-box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    -ms-box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    
+    float: left;
+}
+#profil-page .informations-major-container h2, #profil-page .informations-minor-container h2{
+    font-family: "Segoe UI light";
+    color: #3F6EC2;
+    font-weight: normal;
+    font-size: 24px;
+    margin: 0 0 10px 0;
+}
+#profil-page .informations-major-container img{
+    margin: 10px 30px 10px 53px;
+    
+    border: 2px solid #ccc;
+    
+    float: left;
+    display: block;
+}
+#profil-page .informations-major-container .pContainer, #profil-page .informations-minor-container .pContainer{
+    float: left;
+    display: block;
+    margin-top: 5px;
+    margin-left: 33px;
+}
+#profil-page .informations-major-container .pContainer label.label, #profil-page .informations-minor-container .pContainer label.label{
+    font-size: 18px;
+    color: #3F6EC2;
+    
+}
+#profil-page .informations-major-container .pContainer p, #profil-page .informations-minor-container .pContainer p{
+    font-size: 18px;
+    line-height:22px;
+    margin-bottom: 10px;
+}
+#profil-page .informations-major-container, #profil-page .informations-minor-container{
+    margin-top: 20px;
+}
 #oiseau-congrats{
     background: transparent url(../images/oiseau-modele.png) center center no-repeat;
     width: 73px;

@@ -81,9 +81,20 @@
     define("OPTIONAL_INFORMATIONS", "Informations facultatives");
     define("SUBSCRIBE", "S'inscrire");
     define("LOGIN", "Connexion");
-    define("WELCOME", "Bienvenue sur votre compte");
+    define("WELCOME", "Bienvenue sur le profil de");
     define("NOT_SUBSCRIBER", "Pas encore inscrit ? C'est par ici !");
-    
+    define("IDENTITY", "Identité");
+    define("AVATAR", "Avatar de");
+    define("RECOGNIZE_HIM", "Le reconnaître");
+    define("CONTACT_HIM", "Le contacter");
+    define("DATE_SIGNIN", "Date d'inscription");
+    define("MORE_ABOUT_HIM", "Un peu plus sur");
+    define("FIND_HIM", "Le trouver");
+    define("IN", "en");
+    define("SEE_WORK", "Voir ses travaux");
+    define("WHAT_HE_DO", "Ce qu'il pratique");
+
+
     define("LBL_NAME", "Nom");
     define("LBL_FIRSTNAME", "Prénom");
     define("LBL_PSEUDO", "Pseudo");

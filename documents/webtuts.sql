@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mar 05 Février 2013 à 20:19
+-- Généré le: Mar 05 Février 2013 à 21:36
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.3.13
 
@@ -191,7 +191,7 @@ CREATE TABLE IF NOT EXISTS `image` (
   `deleted` tinyint(1) NOT NULL,
   `size` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Contenu de la table `image`
@@ -203,7 +203,8 @@ INSERT INTO `image` (`id`, `name`, `type`, `width`, `height`, `deleted`, `size`)
 (3, 'etoile', 'png', 62, 79, 0, 592),
 (4, 'coupe', 'png', 86, 80, 0, 871),
 (5, 'dossier', 'png', 56, 76, 0, 473),
-(6, 'outils', 'png', 76, 77, 0, 727);
+(6, 'outils', 'png', 76, 77, 0, 727),
+(7, 'fitz-lucassen.png', '', 80, 80, 0, 790);
 
 -- --------------------------------------------------------
 
@@ -405,7 +406,11 @@ INSERT INTO `orm_columns_types` (`name_table`, `name_column`, `type`) VALUES
 ('category', 'deleted', 'type bool'),
 ('user', 'access', 'class access'),
 ('tag', 'deleted', 'type bool'),
-('tag', 'articles', 'collection article');
+('tag', 'articles', 'collection article'),
+('user', 'city', 'type text'),
+('user', 'country', 'type text'),
+('user', 'languages', 'type text'),
+('user', 'site', 'type text');
 
 -- --------------------------------------------------------
 
@@ -524,8 +529,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `deleted`, `banned`, `pseudo`, `name`, `surname`, `mail`, `image`, `datesignin`, `civility`, `password`, `country`, `city`, `site`, `languages`, `access`) VALUES
-(1, 0, 0, 'fozeek', 'quentin', 'deneuve', 'quentin.deneuve@gmail.com', 0, '2013-02-01 00:00:00', 'homme', 'e1d75b9a8b4d045d96180b6ec6f5e686', 'France', 'Briis-sous-forge', 'http://fozeek.fr', 'html,css,php,javascript,jquery', 0),
-(2, 0, 0, 'fitz_lucassen', 'thibault', 'dulon', 'thibault.dulon@gmail.com', 0, '2013-02-03 00:00:00', 'homme', 'ce0608b1cb5f1b15c59f9344f53729fd', 'France', 'Paris', 'http://fitz.hebergratuit.com', 'html,css,php,javascript,jquery,asp.net,csharp', 0);
+(1, 0, 0, 'fozeek', 'quentin', 'deneuve', 'quentin.deneuve@gmail.com', 0, '2013-02-01 00:00:00', 'homme', '76825accf2618c12342b61a1ca2dad0f', 'France', 'Briis-sous-forge', 'http://fozeek.fr', 'html,css,php,javascript,jquery', 0),
+(2, 0, 0, 'fitz_lucassen', 'thibault', 'dulon', 'thibault.dulon@gmail.com', 7, '2013-02-03 00:00:00', 'homme', 'ce0608b1cb5f1b15c59f9344f53729fd', 'France', 'Paris', 'http://fitz.hebergratuit.com', 'html,css,php,javascript,jquery,asp.net,csharp', 0);
 
 -- --------------------------------------------------------
 

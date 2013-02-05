@@ -82,9 +82,19 @@
     define("OPTIONAL_INFORMATIONS", "Optional Informations");
     define("SUBSCRIBE", "Subscribe");
     define("LOGIN", "Connection");
-    define("WELCOME", "Welcome in your account");
+    define("WELCOME", "Welcome in the page of");
     define("NOT_SUBSCRIBER", "Not yet registered? It's over here!");
-
+    define("IDENTITY", "Identity");
+    define("AVATAR", "Avatar of");
+    define("RECOGNIZE_HIM", "Recognize him");
+    define("CONTACT_HIM", "Contact him");
+    define("DATE_SIGNIN", "Subscription date");
+    define("MORE_ABOUT_HIM", "More about");
+    define("FIND_HIM", "Find him");
+    define("IN", "in");
+    define("SEE_WORK", "See his work");
+    define("WHAT_HE_DO", "What he know");
+    
     define("LBL_NAME", "Name");
     define("LBL_FIRSTNAME", "firstname");
     define("LBL_PSEUDO", "Login");
@@ -143,7 +153,7 @@
     define("LEFT_PRINT_CATEGORY", "See this");
     define("RIGHT_PRINT_CATEGORY", "category");
     
-    define("SEE_TUTO", "See all tuts from this categorie");
+    define("SEE_TUTO", "See all tuts from this category");
     define("TUTOS", "tutoriels");
     define("TUTO", "tutoriel");
     
