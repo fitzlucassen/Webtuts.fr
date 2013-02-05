@@ -6,10 +6,10 @@
 		      (Kernel::get("action") == "profil" && !Kernel::get("session")->containsKey("first_connection")) ||
 		      (Kernel::get("action") == "profil" && Kernel::get("session")->containsKey("first_connection") && !Kernel::get("session")->get("first_connection")))){
 		?>
-		<div id="oiseau-anime">
-			<img src="<?php echo '/'._theme_path_ . 'images/'; ?>oeuil-oiseau.png" alt="<?php echo ALT_BIRD_EYE; ?>" class="bird-eye" id="left-eye"/>
-			<img src="<?php echo '/'._theme_path_ . 'images/'; ?>oeuil-oiseau.png" alt="<?php echo ALT_BIRD_EYE; ?>" class="bird-eye" id="right-eye"/>
-		</div>
+			<div id="oiseau-anime">
+				<img src="<?php echo '/'._theme_path_ . 'images/'; ?>oeuil-oiseau.png" alt="<?php echo ALT_BIRD_EYE; ?>" class="bird-eye" id="left-eye"/>
+				<img src="<?php echo '/'._theme_path_ . 'images/'; ?>oeuil-oiseau.png" alt="<?php echo ALT_BIRD_EYE; ?>" class="bird-eye" id="right-eye"/>
+			</div>
 		<?php
 		    }
 		?>
@@ -74,7 +74,7 @@
 		<ul id="right-nav">
 			<li><a href="<?php echo Kernel::getUrl("blog/actualites"); ?>"><?php echo NEWS; ?></a></li>
 			<li><a href="#"><?php echo SEARCH; ?></a></li>
-			<li><a href="#"><?php echo CONTACT; ?></a></li>			
+			<li><a href="<?php echo Kernel::getUrl("page/contact"); ?>"><?php echo CONTACT; ?></a></li>			
 		</ul>
 	</nav>
 </header>

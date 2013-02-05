@@ -13,7 +13,7 @@
 	    else if($action == "articles"){
 		$title = "Les articles de Webtuts";
 	    }
-	    else if($action == "categorie"){
+	    else if($action == "category"){
 		$title = "Page de la catégorie";
 	    }
 	    else if($action == "article"){

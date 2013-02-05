@@ -22,7 +22,7 @@
 		$nb_comment = $new->get("comments")->count();
 		$text_comment = ($nb_comment > 1 ? COMMENTS : COMMENT);
 	    ?>
-	    <a href="#"><?php echo $nb_comment . " " . $text_comment; ?></a>
+	    <a href="<?php echo $urlNews; ?>#ancre-comments"><?php echo $nb_comment . " " . $text_comment; ?></a>
 	</p>
 	<div class="cl"></div>
 

@@ -13,7 +13,7 @@
 	    <h4>
 		<span class="date"><?php echo PUBLISHED . " " . format_date($article->get("date")); ?></span>
 		<span class="date"><?php echo BY; ?></span>
-		<span class="author"><a href="#"><?php echo $article->get("author")->get("pseudo"); ?></a></span>
+		<span class="author"><a href="<?php echo Kernel::getUrl("user/profil/" . $article->get("author")->get("pseudo")); ?>"><?php echo $article->get("author")->get("pseudo"); ?></a></span>
 	    </h4>
 	    <div class="article-tags right">
 		<?php 
@@ -32,7 +32,7 @@
 	    </p>
 	</div>
 	
-	<div class="article-comments">
+	<div id="ancre-comments" class="article-comments">
 	    <?php
 		$text_comment = (count($article->get("comments")) > 0 ? COMMENTS_LIST : NO_COMMENT);
 	    ?>
@@ -48,7 +48,7 @@
 		</div>
 		<div class="comment-body">
 		    <div class="comment-header">
-			<span class="author"><a href="#"><?php echo $comment->get("author")->get("pseudo"); ?></a></span>
+			<span class="author"><a href="<?php echo Kernel::getUrl("user/profil/" . $comment->get("author")->get("pseudo")); ?>"><?php echo $comment->get("author")->get("pseudo"); ?></a></span>
 			<span class="date"><?php echo PUBLISH . " " . format_date($comment->get("date")); ?></span>
 		    </div>
 		    <p><?php echo $comment->get("text"); ?></p>

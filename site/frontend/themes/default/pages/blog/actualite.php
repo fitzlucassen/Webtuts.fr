@@ -33,7 +33,7 @@
 	    </p>
 	</div>
 	
-	<div class="article-comments">
+	<div id="ancre-comments" class="article-comments">
 	    <?php
 		$text_comment = (count($news->get("comments")) > 0 ? COMMENTS_LIST : NO_COMMENT);
 	    ?>

@@ -4,7 +4,9 @@
 
 <div class="one-article one-big-news">
     <div class="left" style="width: 339px; height: 216px;text-align: center;">
+	<a href="<?php echo $urlNews; ?>">
 	    <img src="<?php echo $url_image; ?>" alt="<?php echo ALT_NEWS_IMAGE . " " . $new->get("title"); ?>" />
+	</a>
     </div>
 
     
@@ -13,7 +15,7 @@
 
 	<p class="article-caption">
 	    <span class="date"><?php echo THE . " " . format_date($new->get("date")) . " " . BY; ?></span>
-	    <a href="#"><?php echo $new->get("author")->get("pseudo"); ?></a>
+	    <a href="<?php echo Kernel::getUrl("user/profil/" . $new->get("author")->get("pseudo")); ?>"><?php echo $new->get("author")->get("pseudo"); ?></a>
 	</p>
 	<p class="content-introduction">
 	    <?php echo short_description($new->get("text")); ?>
@@ -23,7 +25,7 @@
 		[...] <a href="<?php echo $urlNews; ?>"><?php echo SEE_MORE; ?></a>
 	    </p>
 	    <p class="comment">
-		<a href="#">
+		<a href="<?php echo $urlNews; ?>#ancre-comments">
 		    <img src="<?php echo '/'._theme_path_ . 'images/'; ?>bulle.png" alt="<?php echo ALT_SEE_COMMENTS; ?>" />
 		    <?php 
 			$nb_comment = $new->get("comments")->count();

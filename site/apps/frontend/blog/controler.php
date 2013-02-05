@@ -7,7 +7,7 @@ class BlogControler extends Controler {
 	    return $this->render(array('article' => $return));
 	}
 	public function ArticleAction($params) {
-	    $article = App::getTable("article")->getBySanitizeTitle($params[3]);
+	    $article = App::getTable("article")->getBySanitizeTitle($params[4]);
 	    
 	    return $this->render(array('article' => $article));
 	}

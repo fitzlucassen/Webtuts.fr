@@ -1,10 +1,12 @@
 <?php
-    $urlArticle = Kernel::getUrl("blog/article/" . Kernel::sanitize($article->get("title")) . "/" . Kernel::sanitize($article->get("category")->get("name")));
+    $urlArticle = Kernel::getUrl("blog/article/" . Kernel::sanitize($article->get("category")->get("name")) . "/" . Kernel::sanitize($article->get("title")));
 ?>
 
 <div class="one-article">
     <div class="left" style="width: 339px; height: 216px;text-align: center;">
+	<a href="<?php echo $urlArticle; ?>">
 	    <img src="<?php echo $url_image; ?>" alt="<?php echo ALT_ARTICLE_IMAGE . " " . $article->get("title"); ?>" />
+	</a>
     </div>
 
     
@@ -13,7 +15,7 @@
 
 	<p class="article-caption">
 	    <span class="date"><?php echo THE . " " . format_date($article->get("date")) . " " . BY; ?></span>
-	    <a href="#"><?php echo $article->get("author")->get("pseudo"); ?></a>
+	    <a href="<?php echo Kernel::getUrl("user/profil/" . $article->get("author")->get("pseudo")); ?>"><?php echo $article->get("author")->get("pseudo"); ?></a>
 	</p>
 	<p class="content-introduction">
 	    <?php echo short_description($article->get("text")); ?>
@@ -23,7 +25,7 @@
 		[...] <a href="<?php echo $urlArticle; ?>"><?php echo SEE_MORE; ?></a>
 	    </p>
 	    <p class="comment">
-		<a href="#">
+		<a href="<?php echo $urlArticle; ?>#ancre-comments">
 		    <img src="<?php echo '/'._theme_path_ . 'images/'; ?>bulle.png" alt="<?php echo ALT_SEE_COMMENTS; ?>" />
 		    <?php 
 			$nb_comment = $article->get("comments")->count();

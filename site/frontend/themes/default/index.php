@@ -10,8 +10,17 @@
 	    <?php
 		include("partials/meta.php");
 	    //Kernel::get("cache")->inc(_theme_path_."partials/meta.php");
+		$end_title = "";
+		if(Kernel::get("action") == "category" ||
+		   Kernel::get("action") == "article" ||
+		   Kernel::get("action") == "actualite" ||
+		   Kernel::get("action") == "tag" ||
+		   Kernel::get("action") == "profil"){
+		   $end_title = str_replace("-"," ",end(explode("/", Kernel::$URL)));
+		   
+		}
 	    ?>
-	    <title><?php echo get_title_from_url(Kernel::get("controller"),Kernel::get("action")); ?></title>
+	    <title><?php echo get_title_from_url(Kernel::get("controler"),Kernel::get("action")) . " " . $end_title; ?></title>
 	    <link type="text/css" rel="stylesheet" href="<?php echo _host_absolute_ . _theme_path_ ?>css/<?php echo Kernel::get("action"); ?>.css" />
 	</head>
 	<body>
