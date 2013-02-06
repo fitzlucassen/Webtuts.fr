@@ -29,17 +29,6 @@
     define("NEWSLETTERS", "Newsletter");
     define("COPYRIGHTS", "Credits and Copyright");
 
-    // Pages
-    define("COMMUNITY", "Community");
-    define("BLOG", "Blog");
-    define("IN_COMING", "In coming ...");
-    define("MSG_PARTNERS", "You want to be here ? Please tell us : ");
-    define("ABOUT_TEXT", "Traduction is not available.");
-    define("CONTACT_TEXT", "Any question, problem ? Let we know your issu :");
-    define("CONTACT_PSEUDO", "Any question, problem ? Let we know your issu :");
-    define("LBL_MSG", "Message");
-    define("LBL_OBJECT", "Object");
-    
 	// Content
     define("WEBTUTS_TITLE", "Webtuts - The dark web languages by category");
     define("WEBTUTS_INTRODUCTION_TEXT", "Webtuts experts decrypt for you all web languages!
@@ -78,6 +67,28 @@
     // Placeholders
     define("PL_SEARCH", "Search");
     
+    /**********
+     *  PAGES  *
+     **********/
+    define("COMMUNITY", "Community");
+    define("BLOG", "Blog");
+    define("IN_COMING", "In coming ...");
+    define("MSG_PARTNERS", "You want to be here ? Please tell us : ");
+    define("ABOUT_TEXT", "Webtuts is a common project of four students bringing together complementary skills in the web world. <br/>
+			    C'est un blog consistant à aider les novices des langages web et même les plus expérimenter via des dizaines de tutoriels abordant les thèmes clef du développement d'un site web.
+			    L'open source étant une mentalité commune, les ressources de nos tutoriels sont évidemment accessibles sur chaque tutoriel.<br/><br/>
+			    Dans un premier temps, notre équipe s'efforcera d'ajouter des articles le plus souvent possible, afin de répondre aux besoins majeurs des utilisateurs,
+			     mais aussi d'améliorer ce site qui nous tiens à coeur.<br/>
+			    Dans un second temps, nous souhaitons faire évoluer ce blog en un site de plus en plus communautaire où les développeur web pourront echanger professionellement 
+			    sur leurs emploi, leurs projets, leurs besoins...etc.<br/><br/>
+			    Ainsi, et en vue de cet aspect communautaire auquel nous tenons beaucoup, n'hésitez pas à nous faire part de vos idées, de vos insatisfactions ou même de vos questions via <a href=\"/contact.html\">la page contact.</a><br/><br/><br/>
+			    <span class=\"blue\">L'équipe Webtuts.</span>");
+    define("CONTACT_TEXT", "Any question, problem ? Let we know your issu :");
+    define("CONTACT_PSEUDO", "Any question, problem ? Let we know your issu :");
+    define("LBL_MSG", "Message");
+    define("LBL_OBJECT", "Object");
+    define("PL_MSG", "Your message");
+    define("PL_OBJECT", "Your message subject");
     
     /**********
      *  USER  *

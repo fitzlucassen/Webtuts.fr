@@ -118,6 +118,7 @@ class Kernel {
 	}
 
 	private function dispatcher($url) {
+
 		// Appel de l'app et du controler
 		if(!empty($route[Kernel::$CODE_CONTROLER]) && in_array($route[Kernel::$CODE_CONTROLER], Kernel::$CONTROLER_WITHOUT_NEEDS)) {
 			$return = new Response();
@@ -316,6 +317,7 @@ class Kernel {
 		foreach ($paramsName as $value) {
 			$newUrl .= "/".$params[$value-1];
 		}
+		
 		return $newUrl;
 	}
 }

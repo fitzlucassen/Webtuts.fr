@@ -28,16 +28,6 @@
     define("RSS", "Flux RSS");
     define("NEWSLETTERS", "Newsletter");
     define("COPYRIGHTS", "Crédits et Copyright");
-
-    // Pages
-    define("COMMUNITY", "Communauté");
-    define("BLOG", "Blog");
-    define("IN_COMING", "Bientôt ...");
-    define("MSG_PARTNERS", "Vous voulez être ici ? Dites le nous : ");
-    define("ABOUT_TEXT", "Webtuts est un blog présentant des tutoriels solutionnant des problèmes concrets sur la réalisation de son propre site web avec diverses astuces et techniques expliquées de façon détaillés pour répondre aux besoins de tous. Le développement de ce même blog sera, le plus souvent possible, prit comme exemple à ces tutoriaux.");
-    define("CONTACT_TEXT", "Vous avez une question, un problème ? N'hésitez pas à nous le dire grâce à ce formulaire :");
-    define("LBL_MSG", "Message");
-    define("LBL_OBJECT", "Objet de votre message");
     
 	// Content
     define("WEBTUTS_TITLE", "Webtuts - Les sombres langages du web par catégorie");
@@ -76,6 +66,29 @@
     
     // Placeholders
     define("PL_SEARCH", "Rechercher");
+    
+    
+    /**********
+     *  PAGES  *
+     **********/
+    define("COMMUNITY", "Communauté");
+    define("BLOG", "Blog");
+    define("IN_COMING", "Bientôt ...");
+    define("MSG_PARTNERS", "Vous voulez être ici ? Dites le nous : ");
+    define("ABOUT_TEXT", "Webtuts est un projet commun de quatres étudiants rassemblant des compétences complémentaires dans le monde du web.<br/>
+			    C'est un blog consistant à aider les novices des langages web et même les plus expérimenter via des dizaines de tutoriels abordant les thèmes clef du développement d'un site web.
+			    L'open source étant une mentalité commune, les ressources de nos tutoriels sont évidemment accessibles sur chaque tutoriel.<br/><br/>
+			    Dans un premier temps, notre équipe s'efforcera d'ajouter des articles le plus souvent possible, afin de répondre aux besoins majeurs des utilisateurs,
+			     mais aussi d'améliorer ce site qui nous tiens à coeur.<br/>
+			    Dans un second temps, nous souhaitons faire évoluer ce blog en un site de plus en plus communautaire où les développeur web pourront echanger professionellement 
+			    sur leurs emploi, leurs projets, leurs besoins...etc.<br/><br/>
+			    Ainsi, et en vue de cet aspect communautaire auquel nous tenons beaucoup, n'hésitez pas à nous faire part de vos idées, de vos insatisfactions ou même de vos questions via <a href=\"/contact.html\">la page contact.</a><br/><br/><br/>
+			    <span class=\"blue\">L'équipe Webtuts.</span>");
+    define("CONTACT_TEXT", "Vous avez une question, un problème ? N'hésitez pas à nous le dire grâce à ce formulaire :");
+    define("LBL_MSG", "Message");
+    define("LBL_OBJECT", "Objet de votre message");
+    define("PL_MSG", "Votre message");
+    define("PL_OBJECT", "L'objet de votre message");
     
     /**********
      *  USER  *

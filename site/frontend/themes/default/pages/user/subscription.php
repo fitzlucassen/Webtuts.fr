@@ -27,37 +27,37 @@
 		<div class="cl"></div>
 		
 		<label class="label"><?php echo LBL_NAME; ?> :</label>
-		<input type="text" name="firstname" id="firstname" value="<?php echo ((isset($error) && count($error) > 0) ? $attr["surname"] : ''); ?>" placeholder="<?php echo PL_NAME; ?>" />
+		<input type="text" name="firstname" id="firstname" value="<?php echo ((isset($error) && count($error) > 0) ? $attr["surname"] : ''); ?>" placeholder="<?php echo PL_NAME; ?>" required/>
 
 		<div class="cl"></div>
 		<span class="tooltip" <?php echo (isset($error["surname"]) ? 'style="display: block;"' : ''); ?>><?php echo REQUIRED_FIELD; ?></span>
 
 		<label class="label"><?php echo LBL_FIRSTNAME; ?> :</label>
-		<input type="text" name="name" id="name" value="<?php echo ((isset($error) && count($error) > 0) ? $attr["name"] : ''); ?>" placeholder="<?php echo PL_FIRSTNAME; ?>"  />
+		<input type="text" name="name" id="name" value="<?php echo ((isset($error) && count($error) > 0) ? $attr["name"] : ''); ?>" placeholder="<?php echo PL_FIRSTNAME; ?>"  required/>
 
 		<div class="cl"></div>
 		<span class="tooltip" <?php echo (isset($error["name"]) ? 'style="display: block;"' : ''); ?>><?php echo REQUIRED_FIELD; ?></span>
 		
 		<label class="label"><?php echo LBL_PSEUDO; ?> :</label>
-		<input type="text" name="pseudo" id="pseudo" value="<?php echo ((isset($error) && count($error) > 0) ? $attr["pseudo"] : ''); ?>" placeholder="<?php echo PL_PSEUDO; ?>"  />
+		<input type="text" name="pseudo" id="pseudo" value="<?php echo ((isset($error) && count($error) > 0) ? $attr["pseudo"] : ''); ?>" placeholder="<?php echo PL_PSEUDO; ?>"  required/>
 
 		<div class="cl"></div>
 		<span class="tooltip" <?php echo (isset($error["pseudo"]) ? 'style="display: block;"' : ''); ?>><?php echo SIX_CHAR_MIN; ?></span>
 		
 		<label class="label"><?php echo LBL_PASSWORD; ?> :</label>
-		<input type="password" name="password" value="" id="password1" placeholder="<?php echo PL_PASSWORD; ?>"  />
+		<input type="password" name="password" value="" id="password1" placeholder="<?php echo PL_PASSWORD; ?>"  required/>
 
 		<div class="cl"></div>
 		<span class="tooltip" <?php echo (isset($error["password"]) ? 'style="display: block;"' : ''); ?>><?php echo SIX_CHAR_MIN; ?></span>
 		
 		<label class="label"><?php echo LBL_CONFIRM_PASSWORD; ?> :</label>
-		<input type="password" name="confirm_password" value="" id="password2" placeholder="<?php echo PL_CONFIRM_PASSWORD; ?>"  />
+		<input type="password" name="confirm_password" value="" id="password2" placeholder="<?php echo PL_CONFIRM_PASSWORD; ?>"  required/>
 
 		<div class="cl"></div>
 		<span class="tooltip" <?php echo (isset($error["password"]) ? 'style="display: block;"' : ''); ?>><?php echo WRONG_CONFIRM_PWD; ?></span>
 		
 		<label class="label"><?php echo LBL_EMAIL; ?> :</label>
-		<input type="text" name="email" id="email" value="<?php echo ((isset($error) && count($error) > 0) ? $attr["mail"] : ''); ?>" placeholder="<?php echo PL_EMAIL; ?>" pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+\.[a-zA-Z]+"  />
+		<input type="text" name="email" id="email" value="<?php echo ((isset($error) && count($error) > 0) ? $attr["mail"] : ''); ?>" placeholder="<?php echo PL_EMAIL; ?>" pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+\.[a-zA-Z]+"  required/>
 		
 		<div class="cl"></div>
 		<span class="tooltip" <?php echo (isset($error["mail"]) ? 'style="display: block;"' : ''); ?>><?php echo WRONG_PATTERN_EMAIL; ?></span>

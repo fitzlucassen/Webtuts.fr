@@ -17,3 +17,9 @@
 	width: 500px;
 	max-width: 500px;
 }
+#contact-page .border-big-title{
+    margin-bottom: 20px;
+}
+#contact-page .middle-column p{
+    margin: 10px 0 30px 0;
+}
