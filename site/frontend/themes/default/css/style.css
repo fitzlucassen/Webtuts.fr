@@ -180,6 +180,17 @@ h4.left-title span{
 	background: transparent url(../images/border.png) left 9px repeat-x;
 	z-index: -1;
 }
+.middle-column > .border-big-title{
+    height: auto;
+    background: transparent url(../images/border.png) left 18px repeat-x;
+    width: 100%;
+}
+.middle-column > .border-big-title > h1.big-title{
+    font-size: 34px;
+    height: auto;
+    padding-top: 0;
+    color: rgb(51,86,129);
+}
 #main-title-article{
     margin-left: 13px;
 }
@@ -815,4 +826,110 @@ aside #social-box #newsletter-social:hover{
 .comment-body{
     float: left;
     padding-left: 10px;
+}
+
+/** form **/
+form label.label{
+    display: block;
+    float: left;
+    width: 150px;
+    height: 30px;
+    
+    padding-top: 10px;	
+}
+form label{
+    font-family: Oregon;
+    font-size: 14px;
+    color: #444;
+    vertical-align: middle;
+}
+form input[type="text"], form input[type="password"], form select, form textarea{
+    display: block;
+    float: left;
+    width: 200px;
+    height: 30px;
+    vertical-align: middle;
+    padding: 5px;
+    font-family: Oregon;
+    font-size: 12px;
+    color: #111;
+    
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    -ms-border-radius: 4px;
+    
+}
+form input[type="text"]:focus,  forminput[type="password"]:focus{
+    box-shadow: 0 0 4px rgba(51,86,229, 0.6);
+}
+form input[type="radio"], form input[type="checkbox"]{
+    vertical-align: -2px;
+}
+form input[type="radio"], form input[type="checkbox"], label.box-next{
+    margin-top: 10px;
+    display: block;
+    float: left;
+}
+form textarea {
+    height: 100px;
+    width: 400px;
+}
+form label.box-next{
+    margin-right: 10px;
+}
+.marginAuto{
+    margin-top: 40px;
+}
+.button span input[type="submit"]{
+    padding-top: 0px;
+    height: 33px;
+    cursor: pointer;
+    font-family: Ubuntu-c;
+    font-size: 16px;
+}
+
+/** tooltip **/
+.correct 
+{
+	border-color: rgba(68, 191, 68, 0.75);
+}
+
+.correct:focus 
+{
+	border-color: rgba(68, 191, 68, 0.75);
+	-moz-box-shadow: 0 0 10px rgba(68, 191, 68, 0.5);
+	-webkit-box-shadow: 0 0 10px rgba(68, 191, 68, 0.5);
+	box-shadow: 0 0 10px rgba(68, 191, 68, 0.5);
+}
+
+.incorrect 
+{
+	border-color: rgba(191, 68, 68, 0.75);
+}
+
+.incorrect:focus 
+{
+	border-color: rgba(191, 68, 68, 0.75);
+	-moz-box-shadow: 0 0 10px rgba(191, 68, 68, 0.5);
+	-webkit-box-shadow: 0 0 10px rgba(191, 68, 68, 0.5);
+	box-shadow: 0 0 10px rgba(191, 68, 68, 0.5);
+}
+
+.tooltip 
+{
+
+	display: none;
+	padding: 10px;
+	background-color: #F7E7E7;
+	color: #AE3638;
+	margin: 0 0 8px 150px;
+	
+	border: 1px solid #ccc;
+	moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
 }

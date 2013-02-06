@@ -6,17 +6,6 @@
     float: right;
     width: 470px;
 }
-#subscription-page > .middle-column > .border-title{
-    height: auto;
-    background: transparent url(../images/border.png) left 18px repeat-x;
-    width: 100%;
-}
-#subscription-page > .middle-column > .border-title > .left-title{
-    font-size: 34px;
-    height: auto;
-    padding-top: 0;
-    color: rgb(51,86,129);
-}
 #subscription-page #explanation-text-page{
     float: none;
     text-align: justify;
@@ -25,107 +14,7 @@
 
 /** form **/
 #subscription-page #register-form h2{
-    font-family: 'Segoe UI';
+    font-family: 'Segoe UI light';
     font-size: 18px;
     color: #333;
-}
-#subscription-page label.label{
-    display: block;
-    float: left;
-    width: 150px;
-    height: 30px;
-    
-    padding-top: 10px;	
-}
-#subscription-page label{
-    font-family: Oregon;
-    font-size: 14px;
-    color: #444;
-    vertical-align: middle;
-}
-#subscription-page input[type="text"], #subscription-page input[type="password"], #subscription-page select{
-    display: block;
-    float: left;
-    width: 200px;
-    height: 30px;
-    vertical-align: middle;
-    padding: 5px;
-    font-family: Oregon;
-    font-size: 12px;
-    color: #111;
-    
-    outline: none;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -o-border-radius: 4px;
-    -ms-border-radius: 4px;
-    
-}
-#subscription-page input[type="text"]:focus, #subscription-page input[type="password"]:focus{
-    box-shadow: 0 0 4px rgba(51,86,229, 0.6);
-}
-#subscription-page input[type="radio"], #subscription-page input[type="checkbox"]{
-    vertical-align: -2px;
-}
-#subscription-page input[type="radio"], #subscription-page input[type="checkbox"], #subscription-page label.box-next{
-    margin-top: 10px;
-    display: block;
-    float: left;
-}
-#subscription-page label.box-next{
-    margin-right: 10px;
-}
-#subscription-page .marginAuto{
-    margin-top: 40px;
-}
-#subscription-page .button span input[type="submit"]{
-    padding-top: 0px;
-    height: 33px;
-    cursor: pointer;
-    font-family: Ubuntu-c;
-    font-size: 16px;
-}
-
-/** tooltip **/
-.correct 
-{
-	border-color: rgba(68, 191, 68, 0.75);
-}
-
-.correct:focus 
-{
-	border-color: rgba(68, 191, 68, 0.75);
-	-moz-box-shadow: 0 0 10px rgba(68, 191, 68, 0.5);
-	-webkit-box-shadow: 0 0 10px rgba(68, 191, 68, 0.5);
-	box-shadow: 0 0 10px rgba(68, 191, 68, 0.5);
-}
-
-.incorrect 
-{
-	border-color: rgba(191, 68, 68, 0.75);
-}
-
-.incorrect:focus 
-{
-	border-color: rgba(191, 68, 68, 0.75);
-	-moz-box-shadow: 0 0 10px rgba(191, 68, 68, 0.5);
-	-webkit-box-shadow: 0 0 10px rgba(191, 68, 68, 0.5);
-	box-shadow: 0 0 10px rgba(191, 68, 68, 0.5);
-}
-
-.tooltip 
-{
-
-	display: none;
-	padding: 10px;
-	background-color: #F7E7E7;
-	color: #AE3638;
-	margin: 0 0 8px 150px;
-	
-	border: 1px solid #ccc;
-	moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	border-radius: 4px;
 }

@@ -1,5 +1,13 @@
-<div id="content" style="padding: 20px;margin-top: 20px;">	
-	<span style="padding: 20px;font-size: 3em;color: rgb(51,86,129);">Site Map</span><br />
+<div id="sitemap-page">
+<!-- sitemap content -->
+    <div class="middle-column">
+	<div class="border-big-title">
+		<h1 class="left-title big-title">
+		    Plan du site
+		</h1>
+	    <div class="cl"></div>
+	</div>
+	
 	<div style="float: left;width: 283px;padding: 20px;line-height: 2em;">
 		<span style="font-size: 1.2em;font-weight: bold;line-height: 3em;">Webtuts</span>
 		<br />
@@ -25,4 +33,5 @@
 	</div>
 	<div style="clear: left;">
 	</div>
+    </div>
 </div>

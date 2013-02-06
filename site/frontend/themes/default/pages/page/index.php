@@ -1,5 +1,4 @@
-<div style="padding: 20px;padding-top: 50px;">
-
+<div>
 	<style type="text/css">
 		#text-page {
 			line-height: 25px;
@@ -26,7 +25,6 @@
 			font-weight: bold;
 			text-shadow: 0 1px 0px rgba(0,0,0,0.6);
 		}
-
 	</style>
 
 	<div id="text-page">

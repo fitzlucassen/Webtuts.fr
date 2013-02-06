@@ -1,8 +1,8 @@
 <div id="subscription-page">
 <!-- Subscription content -->
     <div class="middle-column">
-	<div class="border-title">
-		<h1 class="left-title">
+	<div class="border-big-title">
+		<h1 class="left-title big-title">
 		    <?php echo SUBSCRIPTION_TITLE; ?>
 		</h1>
 	    <div class="cl"></div>

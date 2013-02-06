@@ -3,8 +3,8 @@
 
 <div id="actualite-page">
     <div class="middle-column">
-	<div class="border-title">
-	    <h1 class="left-title">
+	<div class="border-big-title">
+	    <h1 class="left-title big-title">
 		<?php echo $news->get("title"); ?>
 	    </h1>
 	    <div class="cl"></div>

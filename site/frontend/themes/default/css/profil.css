@@ -1,14 +1,3 @@
-#profil-page > .middle-column > .border-title{
-    height: auto;
-    background: transparent url(../images/border.png) left 18px repeat-x;
-    width: 100%;
-}
-#profil-page > .middle-column > .border-title > .left-title{
-    font-size: 34px;
-    height: auto;
-    padding-top: 0;
-    color: rgb(51,86,129);
-}
 #profil-page #explanation-text-page{
 
     margin: 20px 0 30px 0;
@@ -72,7 +61,7 @@
     margin-top: 5px;
     margin-left: 33px;
 }
-#profil-page .informations-major-container .pContainer label.label, #profil-page .informations-minor-container .pContainer label.label{
+#profil-page .informations-major-container .pContainer label.label-presentation, #profil-page .informations-minor-container .pContainer label.label-presentation{
     font-size: 18px;
     color: #3F6EC2;
     

@@ -1,8 +1,11 @@
-<div id="content" style="padding: 20px;margin-top: 20px;">	
-	<span style="padding: 20px;font-size: 3em;color: rgb(51,86,129);"><?php echo ABOUT; ?></span><br /><br /><br />
-	
-	
-
-
-
+<div id="about-page">
+<!-- about content -->
+    <div class="middle-column">
+	<div class="border-big-title">
+		<h1 class="left-title big-title">
+		    <?php echo ABOUT; ?>
+		</h1>
+	    <div class="cl"></div>
+	</div>
+    </div>
 </div>
