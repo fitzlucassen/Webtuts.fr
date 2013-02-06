@@ -1,3 +1,13 @@
+#connection-page #explanation-text-page{
+
+    margin: 20px 0 30px 0;
+}
+#connection-page #login-form{
+    margin: auto;
+    width: 350px;
+    
+}
+
 #profil-page #explanation-text-page{
 
     margin: 20px 0 30px 0;
@@ -78,4 +88,39 @@
     background: transparent url(../images/oiseau-modele.png) center center no-repeat;
     width: 73px;
     height: 94px;
+}
+
+.tooltip, .main-tooltip
+{
+	display: none;
+	padding: 10px;
+	background-color: #F7E7E7;
+	color: #AE3638;
+	margin: 0 0 8px 150px;
+	
+	border: 1px solid #ccc;
+	moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+#subscription-page .left-column{
+    float: left;
+    width: 470px;
+}
+#subscription-page .right-column{
+    float: right;
+    width: 470px;
+}
+#subscription-page #explanation-text-page{
+    float: none;
+    text-align: justify;
+    margin: 20px 0 30px 0;
+}
+
+/** form **/
+#subscription-page #register-form h2{
+    font-family: 'Segoe UI light';
+    font-size: 18px;
+    color: #333;
 }
