@@ -590,7 +590,7 @@ footer #bottom-footer{
     text-align: right;
     
     top: 0;
-    left: -313px;
+    left: -240px;
     
     background: rgba(0,0,0,0.6);
     
@@ -624,7 +624,7 @@ footer #bottom-footer{
     text-align: left;
 
     top: 0;
-    right: -313px;
+    right: -240px;
     
     background: rgba(0,0,0,0.6);
     
@@ -632,6 +632,13 @@ footer #bottom-footer{
     transition-duration: 1s;
     -webkit-transition-property: all;
     -webkit-transition-duration: 1s;
+    -moz-transition-property: all;
+    -moz-transition-duration: 1s;
+    -o-transition-property: all;
+    -o-transition-duration: 1s;
+    -ms-transition-property: all;
+    -ms-transition-duration: 1s;
+    
 
     border-top-right-radius: 2px;
     -webkit-border-top-right-radius: 2px;
