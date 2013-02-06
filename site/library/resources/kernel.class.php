@@ -86,76 +86,38 @@ class Kernel {
 		$this->$attr = $value;
 	}
 
-	public function setKernel($url, $path_type) {
-		
-		/*
-		///categorie-nom/article-nom/
-
-		///categorie-{%1}/article-{%2}/
-
-		///blog/tags/mes-fesses/
-
-		$resultatSQL = mysql_query("SELECT * FROM rewritingurl A, routeurl B WHERE A.idroute=B.id");
-		while($ligne = mysql_fetch_array($resultatSQL))  { 
-		 	echo "Exp : ";
-		 	$expression = $ligne["matchurl"];
-		 	$found = true;
-		 	$cpt = 1;
-		 	$var = "{%".$cpt."}";
-		 	echo "[".$var." : ".$expression."]";
-		 	while(preg_match($var, $expression)!==false) {
-		 		echo "lol";
-		 		str_replace($var, "(.*)",$expression);
-		 		$cpt++;
-		 		$var = "\{\%".$cpt."\}";
-		 	}
-		 	echo $expression."<br />";
-		} */
+	private function parse($url) {
 		$firstUrl = $url;
 		$lang = explode("/", $firstUrl);
 		$lang = $lang[0];
 		Kernel::$LANG = $lang;
-		if(!in_array($lang, $this->_LANG_ACCEPTED_)) {
-			$lang = Kernel::$LANG_DEFAULT;
-			Kernel::$LANG = $lang;
+		if(!in_array($lang, self::$LANGS)) {
+			$lang = self::$LANG_DEFAULT;
+			self::$LANG = $lang;
 			header("Location:/".$lang."/".$url);
 		}
-		define("__lang__", Kernel::$LANG);
+		define("__lang__", self::$LANG);
 
 		// On enleve la langue
 		$urlTmp = explode("/", $url);
-		if(in_array($urlTmp[0], $this->_LANG_ACCEPTED_)) {
+		if(in_array($urlTmp[0], self::$LANGS)) {
 			$urlTmp[0] = "";
 			$url = implode("/", $urlTmp);
 			$url = ltrim($url, "/");
 		}
 
 		$url = $this->setUrl($url);
-		Kernel::$URL = $url;
+		self::$URL = $url;
 		$url = $lang."/".$url;
 		
-
-
 		if(!empty($url))
 			$tmp = explode("/", $url);
 		else
 			$tmp = array();
+		return $tmp;
+	}
 
-		// Création du tableau de l'URL
-		$cpt = 0;
-		foreach ($path_type as $key => $value) {
-			if(!empty($tmp[$cpt]))
-				$route[$value] = $tmp[$cpt];
-			$cpt++;
-		}
-		// Ajout du reste des params
-		for($cpt=$cpt-1;$cpt<count($tmp);$cpt++) {
-			if(!empty($tmp[$cpt]))
-				$route[$cpt] = $tmp[$cpt];
-		}
-
-		
-
+	private function dispatcher($url) {
 		// Appel de l'app et du controler
 		if(!empty($route[Kernel::$CODE_CONTROLER]) && in_array($route[Kernel::$CODE_CONTROLER], Kernel::$CONTROLER_WITHOUT_NEEDS)) {
 			$return = new Response();
@@ -198,6 +160,11 @@ class Kernel {
 		else
 			Kernel::$ACTION = "index";
 		return $return;
+	}
+
+	public function setKernel($url) {
+		$url = $this->parse($url);
+		return $this->dispatcher($url);
 	}
 
 	public static function getUrl($url) {
@@ -285,7 +252,7 @@ class Kernel {
 		return $string;
 	}
 
-	public function setUrl($url) {
+	private function setUrl($url) {
 		$data = Sql2::create()->from("urlrewriting")
 				      ->where("app", "=", __app__)
 				      ->andWhere("lang", "=", Kernel::get("lang"))

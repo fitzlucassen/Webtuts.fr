@@ -1,3 +1,19 @@
 #article-page .date{
     font-size: 16px;
 }
+
+
+#article-page div.marginAuto {
+	margin-top: 10px;
+	margin-left: -2px;
+}
+
+#article-page textarea {
+	height: 150px;
+	width: 800px;
+	font-size: 15px;
+	outline: none;
+	padding: 5px;
+	margin: 0px;
+	border: 1px solid #E5E5E5;
+}

@@ -3,18 +3,12 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mar 05 Février 2013 à 22:08
--- Version du serveur: 5.5.24-log
--- Version de PHP: 5.3.13
+-- Généré le: Mer 06 Février 2013 à 14:27
+-- Version du serveur: 5.5.25
+-- Version de PHP: 5.4.4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Base de données: `webtuts`
@@ -26,12 +20,20 @@ SET time_zone = "+00:00";
 -- Structure de la table `access`
 --
 
-CREATE TABLE IF NOT EXISTS `access` (
+CREATE TABLE `access` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` int(11) NOT NULL,
+  `deleted` tinyint(4) NOT NULL,
+  `code` text NOT NULL,
   `description` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `access`
+--
+
+INSERT INTO `access` (`id`, `deleted`, `code`, `description`) VALUES
+(1, 0, 'ACCESS_BO', 0);
 
 -- --------------------------------------------------------
 
@@ -39,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `access` (
 -- Structure de la table `article`
 --
 
-CREATE TABLE IF NOT EXISTS `article` (
+CREATE TABLE `article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` tinyint(1) NOT NULL,
   `category` int(11) NOT NULL,
@@ -74,7 +76,7 @@ INSERT INTO `article` (`id`, `deleted`, `category`, `node`, `tags`, `author`, `d
 -- Structure de la table `article_category`
 --
 
-CREATE TABLE IF NOT EXISTS `article_category` (
+CREATE TABLE `article_category` (
   `id_category` int(11) NOT NULL,
   `id_article` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -92,7 +94,7 @@ INSERT INTO `article_category` (`id_category`, `id_article`) VALUES
 -- Structure de la table `article_tag`
 --
 
-CREATE TABLE IF NOT EXISTS `article_tag` (
+CREATE TABLE `article_tag` (
   `id_article` int(11) NOT NULL,
   `id_tag` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -111,7 +113,7 @@ INSERT INTO `article_tag` (`id_article`, `id_tag`) VALUES
 -- Structure de la table `category`
 --
 
-CREATE TABLE IF NOT EXISTS `category` (
+CREATE TABLE `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` int(11) NOT NULL,
   `name` int(11) NOT NULL,
@@ -139,18 +141,19 @@ INSERT INTO `category` (`id`, `deleted`, `name`, `description`, `articles`, `ima
 -- Structure de la table `cms_site_params`
 --
 
-CREATE TABLE IF NOT EXISTS `cms_site_params` (
+CREATE TABLE `cms_site_params` (
   `title` text NOT NULL,
   `time` text NOT NULL,
-  `theme` text NOT NULL
+  `theme` text NOT NULL,
+  `app` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `cms_site_params`
 --
 
-INSERT INTO `cms_site_params` (`title`, `time`, `theme`) VALUES
-('webtuts', 'test', 'default');
+INSERT INTO `cms_site_params` (`title`, `time`, `theme`, `app`) VALUES
+('webtuts', 'test', 'default', 'frontend');
 
 -- --------------------------------------------------------
 
@@ -158,7 +161,7 @@ INSERT INTO `cms_site_params` (`title`, `time`, `theme`) VALUES
 -- Structure de la table `comment`
 --
 
-CREATE TABLE IF NOT EXISTS `comment` (
+CREATE TABLE `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `article` int(11) NOT NULL,
   `author` int(11) NOT NULL,
@@ -182,7 +185,7 @@ INSERT INTO `comment` (`id`, `article`, `author`, `text`, `date`, `deleted`) VAL
 -- Structure de la table `image`
 --
 
-CREATE TABLE IF NOT EXISTS `image` (
+CREATE TABLE `image` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
   `type` text NOT NULL,
@@ -212,7 +215,7 @@ INSERT INTO `image` (`id`, `name`, `type`, `width`, `height`, `deleted`, `size`)
 -- Structure de la table `lang`
 --
 
-CREATE TABLE IF NOT EXISTS `lang` (
+CREATE TABLE `lang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_lang` int(11) NOT NULL,
   `lang` text NOT NULL,
@@ -291,7 +294,7 @@ INSERT INTO `lang` (`id`, `id_lang`, `lang`, `translation`) VALUES
 -- Structure de la table `newsletter`
 --
 
-CREATE TABLE IF NOT EXISTS `newsletter` (
+CREATE TABLE `newsletter` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `mail` text NOT NULL,
   PRIMARY KEY (`id`)
@@ -318,7 +321,7 @@ INSERT INTO `newsletter` (`id`, `mail`) VALUES
 -- Structure de la table `node`
 --
 
-CREATE TABLE IF NOT EXISTS `node` (
+CREATE TABLE `node` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` tinyint(4) NOT NULL,
   `name` int(11) NOT NULL,
@@ -342,7 +345,7 @@ INSERT INTO `node` (`id`, `deleted`, `name`, `description`) VALUES
 -- Structure de la table `orm_columns_types`
 --
 
-CREATE TABLE IF NOT EXISTS `orm_columns_types` (
+CREATE TABLE `orm_columns_types` (
   `name_table` text NOT NULL,
   `name_column` text NOT NULL,
   `type` text NOT NULL
@@ -353,7 +356,7 @@ CREATE TABLE IF NOT EXISTS `orm_columns_types` (
 --
 
 INSERT INTO `orm_columns_types` (`name_table`, `name_column`, `type`) VALUES
-('access', 'name', 'type lang'),
+('access', 'code', 'type text'),
 ('access', 'description', 'type lang'),
 ('article', 'deleted', 'type bool'),
 ('article', 'category', 'class category'),
@@ -403,13 +406,15 @@ INSERT INTO `orm_columns_types` (`name_table`, `name_column`, `type`) VALUES
 ('page', 'author', 'class user'),
 ('page', 'date', 'type datetime'),
 ('category', 'deleted', 'type bool'),
-('user', 'access', 'class access'),
+('user', 'access', 'collection access'),
 ('tag', 'deleted', 'type bool'),
 ('tag', 'articles', 'collection article'),
 ('user', 'city', 'type text'),
 ('user', 'country', 'type text'),
 ('user', 'languages', 'type text'),
-('user', 'site', 'type text');
+('user', 'site', 'type text'),
+('user', 'app', 'type text'),
+('user', 'theme', 'type text');
 
 -- --------------------------------------------------------
 
@@ -417,7 +422,7 @@ INSERT INTO `orm_columns_types` (`name_table`, `name_column`, `type`) VALUES
 -- Structure de la table `page`
 --
 
-CREATE TABLE IF NOT EXISTS `page` (
+CREATE TABLE `page` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` int(11) NOT NULL,
   `content` int(11) NOT NULL,
@@ -439,7 +444,7 @@ INSERT INTO `page` (`id`, `title`, `content`, `date`, `author`) VALUES
 -- Structure de la table `tag`
 --
 
-CREATE TABLE IF NOT EXISTS `tag` (
+CREATE TABLE `tag` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` tinyint(4) DEFAULT '0',
   `name` int(11) NOT NULL,
@@ -465,7 +470,7 @@ INSERT INTO `tag` (`id`, `deleted`, `name`, `description`, `articles`) VALUES
 -- Structure de la table `urlrewriting`
 --
 
-CREATE TABLE IF NOT EXISTS `urlrewriting` (
+CREATE TABLE `urlrewriting` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `lang` text NOT NULL,
   `app` text CHARACTER SET utf8 NOT NULL,
@@ -503,10 +508,12 @@ INSERT INTO `urlrewriting` (`id`, `lang`, `app`, `controler`, `action`, `matchur
 -- Structure de la table `user`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` tinyint(1) NOT NULL,
   `banned` double NOT NULL,
+  `app` text NOT NULL,
+  `theme` text NOT NULL,
   `pseudo` text NOT NULL,
   `name` text NOT NULL,
   `surname` text NOT NULL,
@@ -527,9 +534,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Contenu de la table `user`
 --
 
-INSERT INTO `user` (`id`, `deleted`, `banned`, `pseudo`, `name`, `surname`, `mail`, `image`, `datesignin`, `civility`, `password`, `country`, `city`, `site`, `languages`, `access`) VALUES
-(1, 0, 0, 'fozeek', 'quentin', 'deneuve', 'quentin.deneuve@gmail.com', 0, '2013-02-01 00:00:00', 'homme', '76825accf2618c12342b61a1ca2dad0f', 'France', 'Briis-sous-forge', 'http://fozeek.fr', 'html,css,php,javascript,jquery', 0),
-(2, 0, 0, 'fitz_lucassen', 'thibault', 'dulon', 'thibault.dulon@gmail.com', 7, '2013-02-03 00:00:00', 'homme', 'ce0608b1cb5f1b15c59f9344f53729fd', 'France', 'Paris', 'http://fitz.hebergratuit.com', 'html,css,php,javascript,jquery,asp.net,csharp', 0);
+INSERT INTO `user` (`id`, `deleted`, `banned`, `app`, `theme`, `pseudo`, `name`, `surname`, `mail`, `image`, `datesignin`, `civility`, `password`, `country`, `city`, `site`, `languages`, `access`) VALUES
+(1, 0, 0, 'frontend', 'default', 'fozeek', 'quentin', 'deneuve', 'quentin.deneuve@gmail.com', 0, '2013-02-01 00:00:00', 'homme', 'e1d75b9a8b4d045d96180b6ec6f5e686', 'France', 'Briis-sous-forge', 'http://fozeek.fr', 'html,css,php,javascript,jquery', 0),
+(2, 0, 0, '', '', 'fitz_lucassen', 'thibault', 'dulon', 'thibault.dulon@gmail.com', 7, '2013-02-03 00:00:00', 'homme', 'ce0608b1cb5f1b15c59f9344f53729fd', 'France', 'Paris', 'http://fitz.hebergratuit.com', 'html,css,php,javascript,jquery,asp.net,csharp', 0);
 
 -- --------------------------------------------------------
 
@@ -537,11 +544,14 @@ INSERT INTO `user` (`id`, `deleted`, `banned`, `pseudo`, `name`, `surname`, `mai
 -- Structure de la table `user_access`
 --
 
-CREATE TABLE IF NOT EXISTS `user_access` (
+CREATE TABLE `user_access` (
   `id_user` int(11) NOT NULL,
   `id_access` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+--
+-- Contenu de la table `user_access`
+--
+
+INSERT INTO `user_access` (`id_user`, `id_access`) VALUES
+(1, 1);

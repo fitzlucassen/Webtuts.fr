@@ -38,11 +38,17 @@
 		</div>
 		<div class="right search-flag-container">
 			<div id="flag-box">
-			    <a href="<?php echo Kernel::getUrl("fr/".Kernel::get("url"));?>">
+				<?php 
+					if(empty($link)) {
+						$link["fr"] = Kernel::getUrl("fr/".Kernel::get("url"));
+						$link["en"] = Kernel::getUrl("en/".Kernel::get("url"));
+					}
+				?>
+			    <a href="<?php echo $link["fr"];?>">
 					<img src="<?php echo '/'._theme_path_ . 'images/'; ?>flag_fr.png" alt="<?php echo ALT_TRANSLATE_FR; ?>" />
 					<span class="flag-caption">FR</span>
 				</a>
-			    <a href="<?php echo Kernel::getUrl("en/".Kernel::get("url"));?>">
+			    <a href="<?php echo $link["en"];?>">
 					<img src="<?php echo '/'._theme_path_ . 'images/'; ?>/flag_en.png" alt="<?php echo ALT_TRANSLATE_EN; ?>" />
 					<span class="flag-caption">EN</span>
 				</a>

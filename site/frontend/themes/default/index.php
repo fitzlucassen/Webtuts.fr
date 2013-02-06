@@ -7,6 +7,7 @@
 ?>
 <html>
 	<head>
+		<link type="text/css" rel="stylesheet" href="<?php echo _host_absolute_ . _theme_path_ ?>css/<?php echo Kernel::get("action"); ?>.css" />
 	    <?php
 		include("partials/meta.php");
 	    //Kernel::get("cache")->inc(_theme_path_."partials/meta.php");
@@ -22,8 +23,7 @@
 		}
 	    ?>
 	    <title><?php echo get_title_from_url(Kernel::get("controler"),Kernel::get("action")) . " " . $end_title; ?></title>
-	    <link type="text/css" rel="stylesheet" href="<?php echo _host_absolute_ . _theme_path_ ?>css/<?php echo Kernel::get("action"); ?>.css" />
-	</head>
+	   </head>
 	<body>
 		<div id="global">
 			<!-- Header -->
