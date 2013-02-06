@@ -81,7 +81,7 @@
 			    In a second step, we want to move this blog to a website more and more community where web developers could professionally exchanging
 			    their jobs, their projects, their needs ... etc.<br/><br/>
 			    Thus, and for this community aspect that we want a lot, do not hesitate to give us your ideas, your dissatisfaction or even your questions via the <a href=\"" . Kernel::getUrl(("page/contact")) . "\">Contact page.</a><br/><br/><br/>
-			    <span class=\"blue\">L'équipe Webtuts.</span>");
+			    <span class=\"blue\">Webtuts team.</span>");
     define("CONTACT_TEXT", "Any question, problem ? Let we know your issu :");
     define("CONTACT_PSEUDO", "Any question, problem ? Let we know your issu :");
     define("LBL_MSG", "Message");
