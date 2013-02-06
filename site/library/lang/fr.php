@@ -16,6 +16,7 @@
     define("NEWS", "Actus");
     define("CONTACT", "Contact");
     define("DECONNECTION", "Deconnexion");
+    define("MY_ACCOUNT", "Mon compte");
     
 	// Footer
     define("PARTNER_LINKS", "Les liens partenaires");
@@ -169,10 +170,6 @@
     define("TAGS_TEXT", "Vous trouverez ici la liste de tous les tags du blog.
 			Cliquez sur l'un d'eux pour voir les articles qui y sont rattachés.");
     
-    define("LEFT_PRINT_ARTICLE", "Voir l'");
-    define("RIGHT_PRINT_ARTICLE", "article");
-    define("LEFT_PRINT_NEWS", "Voir l'a");
-    define("RIGHT_PRINT_NEWS", "ctualité");
     define("LEFT_PRINT_CATEGORY", "Voir la c");
     define("RIGHT_PRINT_CATEGORY", "ategorie");
     

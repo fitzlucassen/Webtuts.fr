@@ -29,6 +29,10 @@
 				<?php echo MY_PROFILE; ?>
 			</a>
 			<span>&nbsp;-&nbsp;</span>
+			<a href="<?php echo Kernel::getUrl("user/compte/" . Kernel::get("user")->get("pseudo")); ?>">
+				<?php echo MY_ACCOUNT; ?>
+			</a>
+			<span>&nbsp;-&nbsp;</span>
 			<a href="<?php echo Kernel::getUrl("user/disconnect"); ?>">
 				<?php echo DECONNECTION; ?>
 			</a>

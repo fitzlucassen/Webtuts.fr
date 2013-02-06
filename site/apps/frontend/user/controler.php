@@ -168,6 +168,10 @@ class UserControler extends Controler {
 	    Kernel::get("session")->disconnect();
 	    return $this->redirect("/");
 	}
+	
+	public function CompteAction($params){
+	    return $this->render(array('user' => null));
+	}
 }
 
 ?>

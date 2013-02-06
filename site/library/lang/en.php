@@ -16,6 +16,7 @@
     define("NEWS", "News");
     define("CONTACT", "Contact");
     define("DECONNECTION", "Deconnection");
+    define("MY_ACCOUNT", "My account");
 
 	// Footer
     define("PARTNER_LINKS", "Our partner links");
@@ -167,12 +168,8 @@
     define("TAGS_TEXT", "You will find here the list of all webtuts-tags..
 			Click on one of them to see all articles attached to this tag.");
     
-    define("LEFT_PRINT_ARTICLE", "See the");
-    define("RIGHT_PRINT_ARTICLE", "article");
-    define("LEFT_PRINT_NEWS", "See thi");
-    define("RIGHT_PRINT_NEWS", "s news");
-    define("LEFT_PRINT_CATEGORY", "See this");
-    define("RIGHT_PRINT_CATEGORY", "category");
+    define("LEFT_PRINT_CATEGORY", "See&nbsp;this");
+    define("RIGHT_PRINT_CATEGORY", "&nbsp;category");
     
     define("SEE_TUTO", "See all tuts from this category");
     define("TUTOS", "tutoriels");
