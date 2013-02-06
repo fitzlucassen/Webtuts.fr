@@ -8,6 +8,7 @@
     
 }
 
+/** profil page **/
 #profil-page #explanation-text-page{
 
     margin: 20px 0 30px 0;
@@ -104,6 +105,7 @@
 	border-radius: 4px;
 }
 
+/** subscription page **/
 #subscription-page .left-column{
     float: left;
     width: 470px;

@@ -80,7 +80,7 @@
 			    In a first step, our team will endeavor to add articles as often as possible in order to meet the major users needs, but also to improve this website which is important for us.<br/>
 			    In a second step, we want to move this blog to a website more and more community where web developers could professionally exchanging
 			    their jobs, their projects, their needs ... etc.<br/><br/>
-			    Thus, and for this community aspect that we want a lot, do not hesitate to give us your ideas, your dissatisfaction or even your questions via the <a href=\"/contact.html\">Contact page.</ a><br/>
+			    Thus, and for this community aspect that we want a lot, do not hesitate to give us your ideas, your dissatisfaction or even your questions via the <a href=\"" . Kernel::getUrl(("page/contact")) . "\">Contact page.</a><br/><br/><br/>
 			    <span class=\"blue\">L'équipe Webtuts.</span>");
     define("CONTACT_TEXT", "Any question, problem ? Let we know your issu :");
     define("CONTACT_PSEUDO", "Any question, problem ? Let we know your issu :");

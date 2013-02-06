@@ -82,7 +82,7 @@
 			     mais aussi d'améliorer ce site qui nous tiens à coeur.<br/>
 			    Dans un second temps, nous souhaitons faire évoluer ce blog en un site de plus en plus communautaire où les développeur web pourront echanger professionellement 
 			    sur leurs emploi, leurs projets, leurs besoins...etc.<br/><br/>
-			    Ainsi, et en vue de cet aspect communautaire auquel nous tenons beaucoup, n'hésitez pas à nous faire part de vos idées, de vos insatisfactions ou même de vos questions via <a href=\"/contact.html\">la page contact.</a><br/><br/><br/>
+			    Ainsi, et en vue de cet aspect communautaire auquel nous tenons beaucoup, n'hésitez pas à nous faire part de vos idées, de vos insatisfactions ou même de vos questions via <a href=\"" . Kernel::getUrl(("page/contact")) . "\">la page contact.</a><br/><br/><br/>
 			    <span class=\"blue\">L'équipe Webtuts.</span>");
     define("CONTACT_TEXT", "Vous avez une question, un problème ? N'hésitez pas à nous le dire grâce à ce formulaire :");
     define("LBL_MSG", "Message");

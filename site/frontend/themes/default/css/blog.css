@@ -2,6 +2,7 @@
     font-size: 16px;
 }
 
+/** actualites page **/
 #actualites-page aside{
     float: right;
     padding: 13px 0;
@@ -14,7 +15,7 @@
     font-size: 16px;
 }
 
-
+/** article page **/
 #article-page div.marginAuto {
 	margin-top: 10px;
 	margin-left: -2px;
@@ -30,11 +31,13 @@
 	border: 1px solid #E5E5E5;
 }
 
+/** articles page **/
 #articles-page aside{
     padding: 13px 0 !important;
     float: right;
 }
 
+/** categories page **/
 #categories-page .article-content h2{
     font-size: 24px;
 }
@@ -93,6 +96,7 @@
     right: -240px;
 }
 
+/** category page **/
 #category-page .category-image{
     float: left;
     width: 339px;
@@ -133,6 +137,7 @@
     color: rgb(51,86,129);
 }
 
+/** tag page **/
 #tag-page .middle-column > .border-title{
     height: auto;
     background: transparent url(../images/border.png) left 18px repeat-x;
