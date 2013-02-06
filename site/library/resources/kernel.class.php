@@ -120,9 +120,10 @@ class Kernel {
 	private function dispatcher($route) {
 		// Appel de l'app et du controler
 		if(!empty($route[Kernel::$CODE_CONTROLER]) && in_array($route[Kernel::$CODE_CONTROLER], Kernel::$CONTROLER_WITHOUT_NEEDS)) {
-			$return = new Response();
-			Kernel::$RESPONSE = $return;
 			$appRoute = array($route[Kernel::$CODE_CONTROLER], $route[Kernel::$CODE_ACTION]);
+			$return = new Response(Response::$STATUS_404, $appRoute);
+			Kernel::$RESPONSE = $return;
+			
 		}
 		else {
 			if(empty($route[Kernel::$CODE_CONTROLER]))
