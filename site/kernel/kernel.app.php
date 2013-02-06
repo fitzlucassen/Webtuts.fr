@@ -49,13 +49,12 @@
 		Mise à disposition des variables pour le thème et gestion des erreurs.
 	*/
 	if(get_class($response)!="Error") {
-
-		// Création des variables pour le thème
-		extract($response->getVars());
-		$response = null;
-
+		if($response->getStatus()==Response::$STATUS_REDIRECT) {
+			header("Location:".$response->getRoute());
+			die();
+		}
+		unset($_kernel);
+		if($response->hasVars())
+			extract($response->getVars());
 	}
-		
-	$_kernel = null;
-	$response = null;
 ?>
