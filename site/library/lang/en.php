@@ -35,6 +35,10 @@
     define("IN_COMING", "In coming ...");
     define("MSG_PARTNERS", "You want to be here ? Please tell us : ");
     define("ABOUT_TEXT", "Traduction is not available.");
+    define("CONTACT_TEXT", "Any question, problem ? Let we know your issu :");
+    define("CONTACT_PSEUDO", "Any question, problem ? Let we know your issu :");
+    define("LBL_MSG", "Message");
+    define("LBL_OBJECT", "Object");
     
 	// Content
     define("WEBTUTS_TITLE", "Webtuts - The dark web languages by category");

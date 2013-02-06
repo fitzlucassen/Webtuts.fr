@@ -35,6 +35,9 @@
     define("IN_COMING", "Bientôt ...");
     define("MSG_PARTNERS", "Vous voulez être ici ? Dites le nous : ");
     define("ABOUT_TEXT", "Webtuts est un blog présentant des tutoriels solutionnant des problèmes concrets sur la réalisation de son propre site web avec diverses astuces et techniques expliquées de façon détaillés pour répondre aux besoins de tous. Le développement de ce même blog sera, le plus souvent possible, prit comme exemple à ces tutoriaux.");
+    define("CONTACT_TEXT", "Vous avez une question, un problème ? N'hésitez pas à nous le dire grâce à ce formulaire :");
+    define("LBL_MSG", "Message");
+    define("LBL_OBJECT", "Objet de votre message");
     
 	// Content
     define("WEBTUTS_TITLE", "Webtuts - Les sombres langages du web par catégorie");

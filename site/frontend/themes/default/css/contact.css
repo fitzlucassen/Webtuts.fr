@@ -1,4 +1,4 @@
-label.label-contact {
+#contact-page label.label {
 	display: block;
 	float: left;
 	width: 200px;
@@ -6,21 +6,14 @@ label.label-contact {
 	padding-top: 10px;
 }
 
-div.marginAuto-contact {
+#contact-page div.marginAuto {
 	margin-top: 20px;
 	margin-left: 200px;
 }
-
-div.marginAuto-contact {
-	margin-top: 20px;
-	margin-left: 200px;
-}
-
-.input-contact {
+#contact-page .input-contact {
 	width: 400px;
 }
-
-textarea.textarea-contact {
+#contact-page textarea.textarea {
 	width: 500px;
 	max-width: 500px;
 }
