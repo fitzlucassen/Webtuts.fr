@@ -43,5 +43,6 @@
 	/* Database */
 	define("__SQL_db__", "webtuts");
 	
+	
 
 ?>
