@@ -117,7 +117,7 @@ class Kernel {
 		return $tmp;
 	}
 
-	private function dispatcher($url) {
+	private function dispatcher($route) {
 		// Appel de l'app et du controler
 		if(!empty($route[Kernel::$CODE_CONTROLER]) && in_array($route[Kernel::$CODE_CONTROLER], Kernel::$CONTROLER_WITHOUT_NEEDS)) {
 			$return = new Response();
@@ -147,7 +147,7 @@ class Kernel {
 			Kernel::$RESPONSE = $return;
 			if($return->hasRoute())
 				$appRoute = $return->getRoute();
-			else
+			else 
 				$appRoute = array($route[Kernel::$CODE_CONTROLER], $route[Kernel::$CODE_ACTION]);
 		}
 

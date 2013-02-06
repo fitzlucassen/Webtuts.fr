@@ -16,14 +16,14 @@ abstract class Controler {
 		Pour renvoyer vers la vue avec les informations necessaires.
 	*/
 	public function render($vars, $route=null) {
-		return new Response($vars, $route);
+		return new Response(Response::$STATUS_HTTP, $route, $vars);
 	}
 
 	/*
 		Pour renvoyer un fichier json de $array
 	*/
 	public function renderJson($array) {
-		return new Response($vars, $route);
+		return new Response(Response::$STATUS_HTTP, $route, $vars);
 	}
 
 	/*
@@ -31,14 +31,14 @@ abstract class Controler {
 	*/
 	public function renderXML($array, $params) {
 		//http://sebsauvage.net/comprendre/rss/creer.html
-		return new Response($vars, $route);
+		return new Response(Response::$STATUS_HTTP, $route, $vars);
 	}
 
 	/*
 		Pour faire une redirection
 	*/
 	public function redirect($url) {
-		return new Response($url, Response::$STATUS_REDIRECT);
+		return new Response(Response::$STATUS_REDIRECT, $url);
 	}
 
 	/*
