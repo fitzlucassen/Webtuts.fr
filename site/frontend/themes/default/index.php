@@ -16,7 +16,8 @@
 		   Kernel::get("action") == "actualite" ||
 		   Kernel::get("action") == "tag" ||
 		   Kernel::get("action") == "profil"){
-		   $end_title = str_replace("-"," ",end(explode("/", Kernel::$URL)));
+		   $newUrl = explode("/", Kernel::$URL);
+		   $end_title = str_replace("-"," ",end($newUrl));
 		   
 		}
 	    ?>
