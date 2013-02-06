@@ -32,8 +32,9 @@
     // Pages
     define("COMMUNITY", "Community");
     define("BLOG", "Blog");
-    define("IN_COMING", "IN COMING ...");
+    define("IN_COMING", "In coming ...");
     define("MSG_PARTNERS", "You want to be here ? Please tell us : ");
+    define("ABOUT_TEXT", "Traduction is not available.");
     
 	// Content
     define("WEBTUTS_TITLE", "Webtuts - The dark web languages by category");

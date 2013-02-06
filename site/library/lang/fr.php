@@ -21,7 +21,7 @@
     define("PARTNER_LINKS", "Les liens partenaires");
     define("USEFUL_LINKS", "Les liens utiles");
     define("FOLLOW_NEWS", "Suivez notre actualité");
-    define("ABOUT", "A propos");
+    define("ABOUT", "À propos");
     define("CONTACT_US", "Nous contacter");
     define("SITEMAP", "Plan du site");
     define("PARTNERS", "Tous les partenaires");
@@ -34,6 +34,7 @@
     define("BLOG", "Blog");
     define("IN_COMING", "Bientôt ...");
     define("MSG_PARTNERS", "Vous voulez être ici ? Dites le nous : ");
+    define("ABOUT_TEXT", "Webtuts est un blog présentant des tutoriels solutionnant des problèmes concrets sur la réalisation de son propre site web avec diverses astuces et techniques expliquées de façon détaillés pour répondre aux besoins de tous. Le développement de ce même blog sera, le plus souvent possible, prit comme exemple à ces tutoriaux.");
     
 	// Content
     define("WEBTUTS_TITLE", "Webtuts - Les sombres langages du web par catégorie");

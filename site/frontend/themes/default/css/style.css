@@ -195,7 +195,6 @@ h4.left-title span{
     margin-left: 13px;
 }
 .button{
-	position: absolute;
 	bottom: 0;
 	right: 0;
 	background: transparent url(../images/btn_bord_gch.png) left top no-repeat;

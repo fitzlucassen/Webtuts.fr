@@ -1,0 +1,26 @@
+label.label-contact {
+	display: block;
+	float: left;
+	width: 200px;
+	height: 30px;
+	padding-top: 10px;
+}
+
+div.marginAuto-contact {
+	margin-top: 20px;
+	margin-left: 200px;
+}
+
+div.marginAuto-contact {
+	margin-top: 20px;
+	margin-left: 200px;
+}
+
+.input-contact {
+	width: 400px;
+}
+
+textarea.textarea-contact {
+	width: 500px;
+	max-width: 500px;
+}
