@@ -59,6 +59,33 @@
 	    <?php
 		}
 	    ?>
+	    <?php if($user = Kernel::get("user")) { 
+	    	$url_image = get_url_image($user);
+	    	$alt_image = "avatar de " . $user->get("pseudo");
+	    ?>
+	   	<div class="one-comment" style="background: #f2f2f2;">
+			<div class="comment-user-image">
+			    <img src="<?php echo $url_image; ?>" alt="<?php echo $alt_image;?>" width="100px" />
+			</div>
+			<div class="comment-body">
+			    <div class="comment-header">
+				<span class="author"><a href="<?php echo Kernel::getUrl("user/profil/" . $user->get("pseudo")); ?>"><?php echo $user->get("pseudo"); ?></a></span>
+			    </div>
+			    <textarea class="textarea" placeholder="Votre commentaire ici."></textarea>
+			
+			     <div class="marginAuto">
+					<div class="button big-button">
+					    <span>
+						<input type="submit" value="Envoyer" />
+					    </span>
+					</div>
+			    </div>
+			</div>
+			
+			<div class="cl"></div>
+	    </div>
+	    <?php } ?>
+
 	</div>
     </div>
 </div>
