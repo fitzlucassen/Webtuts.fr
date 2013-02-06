@@ -3,10 +3,16 @@
     function get_title_from_url($controller, $action){
 	$title = "";
 	if($controller == "home"){
+	    
+	    // HOME TITLES	    
+	    
 	    if($action == "index"){
 		$title = "Page d'accueil Webtuts";
 	    }
 	} else if($controller == "blog") {
+	    
+	    // BLOG TITLES
+	    
 	    if($action == "categories"){
 		$title = "Les catégories de Webtuts";
 	    }
@@ -35,6 +41,9 @@
 		$title = "Page de Webtuts";
 	    }
 	} else if($controller == "user") {
+	    
+	    // USER TITLES
+	    
 	    if($action == "connection"){
 		$title = "Connectez vous à votre compte";
 	    }
@@ -43,6 +52,22 @@
 	    }
 	    else if($action == "profil"){
 		$title = "Le compte utilisateur de";
+	    }
+	} else if($controller == "page") {
+	    
+	    // PAGES TITLES
+	    
+	    if($action == "contact"){
+		$title = "Contactez l'équipe de Webtuts";
+	    }
+	    else if($action == "about"){
+		$title = "Présentation du projet Webtuts";
+	    }
+	    else if($action == "partners"){
+		$title = "Tous les partenaires de Webtuts";
+	    }
+	    else if($action == "sitemap"){
+		$title = "Le plan du site de Webtuts";
 	    }
 	}
 	return $title;

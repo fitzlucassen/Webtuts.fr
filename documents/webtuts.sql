@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mer 06 Février 2013 à 21:43
+-- Généré le: Mer 06 Février 2013 à 21:51
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.3.13
 
@@ -508,7 +508,7 @@ CREATE TABLE IF NOT EXISTS `urlrewriting` (
   `matchurl` text CHARACTER SET utf8 NOT NULL,
   `route_order` int(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 --
 -- Contenu de la table `urlrewriting`
@@ -542,7 +542,15 @@ INSERT INTO `urlrewriting` (`id`, `lang`, `app`, `controler`, `action`, `matchur
 (27, 'en', 'frontend', 'user', 'connection', 'webtuts-connection.html', 0),
 (28, 'en', 'frontend', 'user', 'profil', 'profile-{1}.html', 1),
 (29, 'en', 'frontend', 'page', 'index', 'page-{1}.html', 1),
-(30, 'en', 'frontend', 'user', 'compte', 'account.html', 0);
+(30, 'en', 'frontend', 'user', 'compte', 'account.html', 0),
+(31, 'fr', 'frontend', 'page', 'contact', 'contactez-nous.html', 0),
+(32, 'en', 'frontend', 'page', 'contact', 'contact-us.html', 0),
+(33, 'fr', 'frontend', 'page', 'about', 'a-propos-de-webtuts.html', 0),
+(34, 'en', 'frontend', 'page', 'about', 'about-webtuts.html', 0),
+(35, 'fr', 'frontend', 'page', 'sitemap', 'plan-du-site.html', 0),
+(36, 'en', 'frontend', 'page', 'sitemap', 'sitemap.html', 0),
+(37, 'fr', 'frontend', 'page', 'partners', 'tous-les-partenaires-de-webtuts.html', 0),
+(38, 'en', 'frontend', 'page', 'partners', 'all-webtuts-partners.html', 0);
 
 -- --------------------------------------------------------
 
