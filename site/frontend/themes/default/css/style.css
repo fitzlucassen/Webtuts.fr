@@ -876,9 +876,12 @@ form input[type="radio"], form input[type="checkbox"], label.box-next{
     display: block;
     float: left;
 }
-form textarea {
+form textarea, .one-comment textarea {
     height: 100px;
     width: 400px;
+    
+    max-width: 400px;
+    min-width: 400px;
 }
 form label.box-next{
     margin-right: 10px;
