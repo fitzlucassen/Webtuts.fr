@@ -8,10 +8,10 @@
 	    <div class="cl"></div>
 	</div>
 	
-	<div style="margin: 60px;font-size: 5em;text-align: center;color: grey;">
-		<?php echo IN_COMING; ?>
-		<br />
-		<span style="font-size: 13px;color: black;"><?php echo MSG_PARTNERS; ?><a href="mailto:contact@webtuts.fr">contact@webtuts.fr</a></span>
+	<div class="soon-container">
+	    <h1><?php echo IN_COMING; ?></h1>
+	    
+	    <p><?php echo MSG_PARTNERS; ?><a href="mailto:contact@webtuts.fr">contact@webtuts.fr</a></p>
 	</div>
     </div>
 </div>

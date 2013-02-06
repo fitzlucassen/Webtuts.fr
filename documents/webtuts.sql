@@ -3,12 +3,18 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mer 06 Février 2013 à 14:27
--- Version du serveur: 5.5.25
--- Version de PHP: 5.4.4
+-- Généré le: Mer 06 Février 2013 à 21:43
+-- Version du serveur: 5.5.24-log
+-- Version de PHP: 5.3.13
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Base de données: `webtuts`
@@ -20,7 +26,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `access`
 --
 
-CREATE TABLE `access` (
+CREATE TABLE IF NOT EXISTS `access` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` tinyint(4) NOT NULL,
   `code` text NOT NULL,
@@ -41,7 +47,7 @@ INSERT INTO `access` (`id`, `deleted`, `code`, `description`) VALUES
 -- Structure de la table `article`
 --
 
-CREATE TABLE `article` (
+CREATE TABLE IF NOT EXISTS `article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` tinyint(1) NOT NULL,
   `category` int(11) NOT NULL,
@@ -76,7 +82,7 @@ INSERT INTO `article` (`id`, `deleted`, `category`, `node`, `tags`, `author`, `d
 -- Structure de la table `article_category`
 --
 
-CREATE TABLE `article_category` (
+CREATE TABLE IF NOT EXISTS `article_category` (
   `id_category` int(11) NOT NULL,
   `id_article` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -94,7 +100,7 @@ INSERT INTO `article_category` (`id_category`, `id_article`) VALUES
 -- Structure de la table `article_tag`
 --
 
-CREATE TABLE `article_tag` (
+CREATE TABLE IF NOT EXISTS `article_tag` (
   `id_article` int(11) NOT NULL,
   `id_tag` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -113,7 +119,7 @@ INSERT INTO `article_tag` (`id_article`, `id_tag`) VALUES
 -- Structure de la table `category`
 --
 
-CREATE TABLE `category` (
+CREATE TABLE IF NOT EXISTS `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` int(11) NOT NULL,
   `name` int(11) NOT NULL,
@@ -141,7 +147,7 @@ INSERT INTO `category` (`id`, `deleted`, `name`, `description`, `articles`, `ima
 -- Structure de la table `cms_site_params`
 --
 
-CREATE TABLE `cms_site_params` (
+CREATE TABLE IF NOT EXISTS `cms_site_params` (
   `title` text NOT NULL,
   `time` text NOT NULL,
   `theme` text NOT NULL,
@@ -161,7 +167,7 @@ INSERT INTO `cms_site_params` (`title`, `time`, `theme`, `app`) VALUES
 -- Structure de la table `comment`
 --
 
-CREATE TABLE `comment` (
+CREATE TABLE IF NOT EXISTS `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `article` int(11) NOT NULL,
   `author` int(11) NOT NULL,
@@ -185,7 +191,7 @@ INSERT INTO `comment` (`id`, `article`, `author`, `text`, `date`, `deleted`) VAL
 -- Structure de la table `image`
 --
 
-CREATE TABLE `image` (
+CREATE TABLE IF NOT EXISTS `image` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
   `type` text NOT NULL,
@@ -215,13 +221,13 @@ INSERT INTO `image` (`id`, `name`, `type`, `width`, `height`, `deleted`, `size`)
 -- Structure de la table `lang`
 --
 
-CREATE TABLE `lang` (
+CREATE TABLE IF NOT EXISTS `lang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_lang` int(11) NOT NULL,
   `lang` text NOT NULL,
   `translation` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=253 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=277 ;
 
 --
 -- Contenu de la table `lang`
@@ -229,23 +235,23 @@ CREATE TABLE `lang` (
 
 INSERT INTO `lang` (`id`, `id_lang`, `lang`, `translation`) VALUES
 (1, 1, 'fr', 'Intégration'),
-(2, 2, 'fr', 'Ici vous apprendrez les secrets du "Savoir faire un beau site"'),
+(2, 2, 'fr', 'Ici vous verrez tous les secrets d''une bonne intégration en apprenant les bons réflexe à acquérir ainsi que certaines astuces importantes à connaître pour ne pas se torturer la tête pendant des heures !'),
 (3, 4, 'fr', 'Le HTML5, super !'),
 (4, 5, 'fr', 'Lorem ipsum dolor sit amet, consecterus us adipiscing elit. Lorem ipsum dolor sit amet, consecterus us adipiscing elit. Lorem ipsum dolor sit amet, consecterus us adipiscing elit. Lorem ipsum dolor sit amet, consecterus us adipiscing elit.'),
 (5, 3, 'fr', 'Article'),
 (6, 7, 'fr', 'Actualité'),
 (7, 6, 'fr', 'Animation'),
-(8, 8, 'fr', 'Ici vous apprendrez à dynamiser vos site web grace à des animations innovante ou utiles pour vos sites web'),
+(8, 8, 'fr', 'Ici vous apprendrez à dynamiser vos site web grace à des animations innovante ou utiles pour vos sites web ainsi que pour rendre design encore plus attractif !'),
 (9, 9, 'fr', 'Logiciels'),
-(10, 10, 'fr', 'Ici vous apprendrez à vous servir de certain logiciels très utiles pour faciliter vos développements.'),
+(10, 10, 'fr', 'Ici vous apprendrez à vous servir de certain logiciels très utiles pour faciliter vos développements. L''environnement de développement et les avantages qu''il peut apporter sont souvent négligés par la plupart des développeurs.'),
 (11, 11, 'fr', 'PHP'),
 (12, 12, 'fr', 'Tous les tutoriels utilisant le langage PHP'),
 (13, 13, 'fr', 'Développement Fonctionnel'),
-(14, 14, 'fr', 'Ici vous apprendrez à gérez la partit fonctionnel de votre site, c''est à dire la partie "Intelligente" de celui-ci.'),
+(14, 14, 'fr', 'Ici vous apprendrez à gérez la partit fonctionnel de votre site, c''est à dire la partie "Intelligente" de celui-ci.\nC''est une partie importante d''un site car sans les langages serveurs, votre site ne pourrait être dynamique.'),
 (15, 15, 'fr', 'Référencement'),
-(16, 16, 'fr', 'Pour que votre site soit visible, il est essentiel d''accorder une grande importance au référencement de celui-ci afin de devenir "SEO friendly" ! C''est par ici !'),
+(16, 16, 'fr', 'Pour que votre site soit visible, il est essentiel d''accorder une grande importance au référencement de celui-ci afin de devenir "SEO friendly" ! Les robots de google sont intransigeant et il faut très vite acquérir les bons réflexes pour augmenter son référencement naturel !'),
 (17, 17, 'fr', 'Autres'),
-(18, 18, 'fr', 'Tous les tutoriels inclassable dans les autres catégories seront dans celle-ci. Vous pourrez des articles divers sur le travail d''un web-developer par exemple.'),
+(18, 18, 'fr', 'Tous les tutoriels inclassable dans les autres catégories seront dans celle-ci. Vous pourrez donc trouver des articles divers sur le travail d''un web-developer par exemple.'),
 (19, 19, 'fr', 'HTML'),
 (20, 20, 'fr', 'Tous les tutoriels utilisant le langage HTML'),
 (21, 21, 'fr', 'CSS'),
@@ -286,7 +292,30 @@ INSERT INTO `lang` (`id`, `id_lang`, `lang`, `translation`) VALUES
 (249, 88, 'fr', 'tous les partenaires'),
 (250, 89, 'fr', '<div class="title">Partenaires</div>'),
 (251, 88, 'en', 'all partners'),
-(252, 89, 'en', '<div class="title">Partners</div>');
+(252, 89, 'en', '<div class="title">Partners</div>'),
+(255, 3, 'en', 'Article'),
+(254, 2, 'en', 'Here you will find all the secrets of a successful integration in learning good reflex, as well as some important tips to know to not to torture your mind for hours!'),
+(256, 6, 'en', 'Animation'),
+(257, 7, 'en', 'News'),
+(258, 8, 'en', 'Here you will learn how to boost your website thanks to innovative or useful animations for your webdesign and to make it even more attractive!'),
+(259, 10, 'en', 'Here you will learn to use some useful software to help your development. The development environment and the benefits it can provide are often overlooked by most developers.'),
+(260, 9, 'en', 'Software'),
+(261, 11, 'en', 'PHP'),
+(262, 12, 'en', 'All tuts using PHP language'),
+(263, 13, 'en', 'Functional development'),
+(264, 14, 'en', 'Here you will learn how to manage the functional part of your website, it''s the "Intelligent" part of it.\r\nThis is an important part of a website because without server languages, your website couldn''t be dynamic.'),
+(265, 15, 'en', 'SEO'),
+(266, 17, 'en', 'Others'),
+(267, 19, 'en', 'HTML'),
+(268, 21, 'en', 'CSS'),
+(269, 16, 'en', 'To your website be visible, it is essential to give importance to SEO and becoming "SEO friendly"! Google bots are uncompromising and you must quickly acquire good habits to increase your SEO!'),
+(270, 18, 'en', 'All tutorials unclassifiable in other categories will be in it. So you can find various articles on the work of a web-developer for example.'),
+(271, 22, 'en', 'All tuts using CSS language'),
+(272, 20, 'en', 'All tuts using HTML language'),
+(273, 23, 'en', 'Javascript'),
+(274, 25, 'en', 'JQuery'),
+(275, 24, 'en', 'All tuts using Javascript language'),
+(276, 26, 'en', 'All tuts using JQuery framework');
 
 -- --------------------------------------------------------
 
@@ -294,7 +323,7 @@ INSERT INTO `lang` (`id`, `id_lang`, `lang`, `translation`) VALUES
 -- Structure de la table `newsletter`
 --
 
-CREATE TABLE `newsletter` (
+CREATE TABLE IF NOT EXISTS `newsletter` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `mail` text NOT NULL,
   PRIMARY KEY (`id`)
@@ -321,7 +350,7 @@ INSERT INTO `newsletter` (`id`, `mail`) VALUES
 -- Structure de la table `node`
 --
 
-CREATE TABLE `node` (
+CREATE TABLE IF NOT EXISTS `node` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` tinyint(4) NOT NULL,
   `name` int(11) NOT NULL,
@@ -345,7 +374,7 @@ INSERT INTO `node` (`id`, `deleted`, `name`, `description`) VALUES
 -- Structure de la table `orm_columns_types`
 --
 
-CREATE TABLE `orm_columns_types` (
+CREATE TABLE IF NOT EXISTS `orm_columns_types` (
   `name_table` text NOT NULL,
   `name_column` text NOT NULL,
   `type` text NOT NULL
@@ -422,7 +451,7 @@ INSERT INTO `orm_columns_types` (`name_table`, `name_column`, `type`) VALUES
 -- Structure de la table `page`
 --
 
-CREATE TABLE `page` (
+CREATE TABLE IF NOT EXISTS `page` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` int(11) NOT NULL,
   `content` int(11) NOT NULL,
@@ -444,7 +473,7 @@ INSERT INTO `page` (`id`, `title`, `content`, `date`, `author`) VALUES
 -- Structure de la table `tag`
 --
 
-CREATE TABLE `tag` (
+CREATE TABLE IF NOT EXISTS `tag` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` tinyint(4) DEFAULT '0',
   `name` int(11) NOT NULL,
@@ -470,7 +499,7 @@ INSERT INTO `tag` (`id`, `deleted`, `name`, `description`, `articles`) VALUES
 -- Structure de la table `urlrewriting`
 --
 
-CREATE TABLE `urlrewriting` (
+CREATE TABLE IF NOT EXISTS `urlrewriting` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `lang` text NOT NULL,
   `app` text CHARACTER SET utf8 NOT NULL,
@@ -479,7 +508,7 @@ CREATE TABLE `urlrewriting` (
   `matchurl` text CHARACTER SET utf8 NOT NULL,
   `route_order` int(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
 --
 -- Contenu de la table `urlrewriting`
@@ -500,7 +529,20 @@ INSERT INTO `urlrewriting` (`id`, `lang`, `app`, `controler`, `action`, `matchur
 (13, 'fr', 'frontend', 'user', 'profil', 'profil-{1}.html', 1),
 (14, 'fr', 'frontend', 'page', 'index', 'page-{1}.html', 1),
 (15, 'en', 'frontend', 'blog', 'categories', 'categories.html', 0),
-(16, 'fr', 'frontend', 'user', 'compte', 'compte.html', 0);
+(16, 'fr', 'frontend', 'user', 'compte', 'compte.html', 0),
+(18, 'en', 'frontend', 'blog', 'article', 'category-{1}/article-{2}.html', 0),
+(19, 'en', 'frontend', 'blog', 'category', 'category-{1}.html', 1),
+(20, 'en', 'frontend', 'blog', 'articles', 'articles.html', 0),
+(21, 'en', 'frontend', 'blog', 'actualites', 'news.html', 0),
+(22, 'en', 'frontend', 'blog', 'actualite', 'news-{1}.html', 1),
+(23, 'en', 'frontend', 'error', '404', 'error-404.html', 0),
+(24, 'en', 'frontend', 'blog', 'tags', 'tags.html', 0),
+(25, 'en', 'frontend', 'blog', 'tag', 'tag-{1}.html', 1),
+(26, 'en', 'frontend', 'user', 'subscription', 'webtuts-subscription.html', 0),
+(27, 'en', 'frontend', 'user', 'connection', 'webtuts-connection.html', 0),
+(28, 'en', 'frontend', 'user', 'profil', 'profile-{1}.html', 1),
+(29, 'en', 'frontend', 'page', 'index', 'page-{1}.html', 1),
+(30, 'en', 'frontend', 'user', 'compte', 'account.html', 0);
 
 -- --------------------------------------------------------
 
@@ -508,7 +550,7 @@ INSERT INTO `urlrewriting` (`id`, `lang`, `app`, `controler`, `action`, `matchur
 -- Structure de la table `user`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` tinyint(1) NOT NULL,
   `banned` double NOT NULL,
@@ -544,7 +586,7 @@ INSERT INTO `user` (`id`, `deleted`, `banned`, `app`, `theme`, `pseudo`, `name`,
 -- Structure de la table `user_access`
 --
 
-CREATE TABLE `user_access` (
+CREATE TABLE IF NOT EXISTS `user_access` (
   `id_user` int(11) NOT NULL,
   `id_access` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -555,3 +597,7 @@ CREATE TABLE `user_access` (
 
 INSERT INTO `user_access` (`id_user`, `id_access`) VALUES
 (1, 1);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

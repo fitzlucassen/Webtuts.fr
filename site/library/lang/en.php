@@ -75,13 +75,12 @@
     define("IN_COMING", "In coming ...");
     define("MSG_PARTNERS", "You want to be here ? Please tell us : ");
     define("ABOUT_TEXT", "Webtuts is a common project of four students bringing together complementary skills in the web world. <br/>
-			    C'est un blog consistant à aider les novices des langages web et même les plus expérimenter via des dizaines de tutoriels abordant les thèmes clef du développement d'un site web.
-			    L'open source étant une mentalité commune, les ressources de nos tutoriels sont évidemment accessibles sur chaque tutoriel.<br/><br/>
-			    Dans un premier temps, notre équipe s'efforcera d'ajouter des articles le plus souvent possible, afin de répondre aux besoins majeurs des utilisateurs,
-			     mais aussi d'améliorer ce site qui nous tiens à coeur.<br/>
-			    Dans un second temps, nous souhaitons faire évoluer ce blog en un site de plus en plus communautaire où les développeur web pourront echanger professionellement 
-			    sur leurs emploi, leurs projets, leurs besoins...etc.<br/><br/>
-			    Ainsi, et en vue de cet aspect communautaire auquel nous tenons beaucoup, n'hésitez pas à nous faire part de vos idées, de vos insatisfactions ou même de vos questions via <a href=\"/contact.html\">la page contact.</a><br/><br/><br/>
+			    It's a blog helping web languages beginners and even the most skilled through dozens of tutorials dealing with the main website-development topics.
+			    Open source is a common mentality with us, therefore, the resources of our tutorials are available on each tutorial.<br/><br/>
+			    In a first step, our team will endeavor to add articles as often as possible in order to meet the major users needs, but also to improve this website which is important for us.<br/>
+			    In a second step, we want to move this blog to a website more and more community where web developers could professionally exchanging
+			    their jobs, their projects, their needs ... etc.<br/><br/>
+			    Thus, and for this community aspect that we want a lot, do not hesitate to give us your ideas, your dissatisfaction or even your questions via the <a href=\"/contact.html\">Contact page.</ a><br/>
 			    <span class=\"blue\">L'équipe Webtuts.</span>");
     define("CONTACT_TEXT", "Any question, problem ? Let we know your issu :");
     define("CONTACT_PSEUDO", "Any question, problem ? Let we know your issu :");

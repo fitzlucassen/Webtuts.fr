@@ -583,7 +583,7 @@ footer #bottom-footer{
 }
 .one-article .hover-article .left-hover{
     position: absolute;
-    width: 313px;
+    width: 240px;
     height: 163px;
     
     padding-top: 105px;
@@ -617,7 +617,7 @@ footer #bottom-footer{
 }
 .one-article .hover-article .right-hover{
     position: absolute;
-    width: 313px;
+    width: 240px;
     height: 163px;
     
     padding-top: 105px;
@@ -810,6 +810,9 @@ aside #social-box #newsletter-social:hover{
     text-align: center;
     float: left;
 }
+.comment-user-image img{
+    border: 2px solid #ccc;
+}
 .comment-header{
     margin-bottom: 10px;
 }
@@ -842,7 +845,7 @@ form label{
     color: #444;
     vertical-align: middle;
 }
-form input[type="text"], form input[type="password"], form select, form textarea{
+form input[type="text"], form input[type="password"], form select, form textarea, .one-comment textarea{
     display: block;
     float: left;
     width: 200px;

@@ -1,0 +1,9 @@
+#partner-page .soon-container{
+    width: 450px;
+    margin: 30px auto;
+}
+#partner-page .soon-container h1{
+    font-size: 5em;
+    color: #333;
+    line-height: 130px;
+}

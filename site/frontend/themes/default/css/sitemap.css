@@ -1,0 +1,17 @@
+#sitemap-page .sitemap-container{
+    margin: 30px auto;
+    width: 750px;
+}
+#sitemap-page .category-sitemap{
+    float:left;
+    width: 250px;
+    text-align: center;
+}
+#sitemap-page .category-sitemap h2{
+    font-family: 'Segoe UI light';
+    font-size: 24px;
+    color: #3F6EC2;
+}
+#sitemap-page .category-sitemap a{
+    line-height: 20px;
+}
