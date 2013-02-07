@@ -25,6 +25,5 @@
 	/* 
 		Appel du theme
 	*/
-	$params = Kernel::get("params");
-	require_once(__themes_dir__.$params["theme"].'/index.php');
+	
 ?>

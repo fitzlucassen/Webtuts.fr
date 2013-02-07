@@ -29,9 +29,10 @@ abstract class Controler {
 	/*
 		Pour renvoyer un fichier XML avec les parametres de params (ex : RSS)
 	*/
-	public function renderXML($array, $params) {
+	public function renderRSS($name, $params) {
 		//http://sebsauvage.net/comprendre/rss/creer.html
-		return new Response(Response::$STATUS_HTTP, $route, $vars);
+		$route = null;
+		return new Response(Response::$STATUS_XML, $route, array("type" => "RSS", "name" => $name, "params" => $params));
 	}
 
 	/*

@@ -78,7 +78,7 @@ class Kernel {
 
 	public function startCache($folder, $time = null) {
 		if($time == null)
-			$time = 10;
+			$time = 60;
 		Kernel::$CACHE = new Cache($folder, $time);
 	}
 
@@ -132,18 +132,17 @@ class Kernel {
 			$bundle = new $bundleName();
 			if(empty($route[Kernel::$CODE_ACTION]) || is_numeric($route[Kernel::$CODE_ACTION])) 
 				$route[Kernel::$CODE_ACTION] = "index";
-			if(!method_exists($bundle,$route[Kernel::$CODE_ACTION]."Action")) {
-				if($this->_KERNEL_DEBUG_)
-					return new Error(343);
-				else
-					header("Location:"._host_.$this->get("lang")."/".$route[Kernel::$CODE_CONTROLER]);
-			}
 			$controlerName = $route[Kernel::$CODE_ACTION]."Action";
+			$controlerName = ucfirst($controlerName);
+			if(!method_exists($bundle,$controlerName)) {
+				header("Location:".Kernel::getUrl("error/404"));
+			}
+
 			$params = array();
 			foreach ($route as $key => $value) {
 				$params[] = $value;
 			}
-			$controlerName = ucfirst($controlerName);
+			
 			$return = $bundle->$controlerName($route);
 			Kernel::$RESPONSE = $return;
 			if($return->hasRoute())

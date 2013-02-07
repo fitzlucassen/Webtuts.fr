@@ -7,9 +7,7 @@ class BlogControler extends Controler {
 	public static $ID_NODE_NOTIFBO = 3;
 
 	public function IndexAction($params) {
-	    $return = App::getClass("article", 1);
-
-	    return $this->render(array('article' => $return));
+	    return $this->redirect(Kernel::getUrl(""));
 	}
 	public function ArticleAction($params) {
 	    $article = App::getTable("article")->getBySanitizeTitle($params[4]);
@@ -66,6 +64,15 @@ class BlogControler extends Controler {
 	    	"fr" => Kernel::getUrl("fr/".$params[1]."/".$params[2]."/".Kernel::sanitize($tag_target->get("name", "fr")))
 	    );
 	    return $this->render(array("tag_target" => $tag_target, "tags" => $tags));
+	}
+	public function RssAction($params){
+	    $articles = App::getClassArray("article", array("where" => "node = " . self::$ID_NODE_ARTICLE));
+	    $return = array();
+	    foreach ($articles as $article) {
+	    	$link = Kernel::getUrl("blog/article/".$article->get("category")->get("name")."/".$article->get("title"));
+	    	$return[] = array("title" => "".$article->get("title"), "link" => $link, "guid" => $link, "description" => "".$article->get("text"), "date" => "".$article->get("date"));
+	    }
+	    return $this->renderRSS("articles-".Kernel::get("lang"), $return);
 	}
 }
 
