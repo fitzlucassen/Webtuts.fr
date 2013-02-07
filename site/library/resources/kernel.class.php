@@ -254,9 +254,75 @@ class Kernel {
 
 	public static function BBcode($string) {
 		$tmp = str_split($string);
+		$spec = false;
+		$inter = false;
+		$buffer_inter = "";
+		$buffer_spec = "";
+		$return = "";
 		foreach ($tmp as $car) {
-			echo "lol";
+			if(!$spec && !$inter) {
+				if($car=="[") {
+					$spec = true;
+					$buffer_spec = "";
+				}
+				else {
+					$return .= $car;
+				}
+			}
+			elseif($spec) {
+				
+				if($car=="]") {
+					
+					if($buffer_spec=="/link") {
+						$return .= "$buffer_inter\">$buffer_inter</a>";
+					}
+					elseif($buffer_spec=="link") {
+						$return .= "<a target=\"_BLANK\" href=\"";
+					}
+					elseif($buffer_spec=="/i") {
+						$return .= "$buffer_inter</i>";
+					}
+					elseif($buffer_spec=="i") {
+						$return .= "<i>";
+					}
+					elseif($buffer_spec=="/strong") {
+						$return .= "$buffer_inter</strong>";
+					}
+					elseif($buffer_spec=="strong") {
+						$return .= "<strong>";
+					}
+					elseif($buffer_spec=="/u") {
+						$return .= "$buffer_inter</u>";
+					}
+					elseif($buffer_spec=="u") {
+						$return .= "<u>";
+					}
+
+
+					$buffer_spec = "";
+					if(!empty($buffer_inter)) {
+						$inter = false;
+						$spec = false;
+						$buffer_inter = "";
+					}
+					else {
+						$inter = true;
+						$spec = false;
+					}
+				}
+				else
+					$buffer_spec .= $car;
+			}
+			elseif($inter) {
+				if($car=="[") {
+					$inter = false;
+					$spec = true;
+				} 
+				else
+					$buffer_inter .= $car;
+			}
 		}
+		return $return;
 	}
 
 	private function setUrl($url) {
