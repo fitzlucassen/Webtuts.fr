@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mer 06 Février 2013 à 21:51
+-- Généré le: Jeu 07 Février 2013 à 21:00
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.3.13
 
@@ -441,9 +441,7 @@ INSERT INTO `orm_columns_types` (`name_table`, `name_column`, `type`) VALUES
 ('user', 'city', 'type text'),
 ('user', 'country', 'type text'),
 ('user', 'languages', 'type text'),
-('user', 'site', 'type text'),
-('user', 'app', 'type text'),
-('user', 'theme', 'type text');
+('user', 'site', 'type text');
 
 -- --------------------------------------------------------
 
@@ -508,7 +506,7 @@ CREATE TABLE IF NOT EXISTS `urlrewriting` (
   `matchurl` text CHARACTER SET utf8 NOT NULL,
   `route_order` int(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
 
 --
 -- Contenu de la table `urlrewriting`
@@ -529,7 +527,7 @@ INSERT INTO `urlrewriting` (`id`, `lang`, `app`, `controler`, `action`, `matchur
 (13, 'fr', 'frontend', 'user', 'profil', 'profil-{1}.html', 1),
 (14, 'fr', 'frontend', 'page', 'index', 'page-{1}.html', 1),
 (15, 'en', 'frontend', 'blog', 'categories', 'categories.html', 0),
-(16, 'fr', 'frontend', 'user', 'compte', 'compte.html', 0),
+(16, 'fr', 'frontend', 'user', 'compte', 'compte-de-{1}.html', 1),
 (18, 'en', 'frontend', 'blog', 'article', 'category-{1}/article-{2}.html', 0),
 (19, 'en', 'frontend', 'blog', 'category', 'category-{1}.html', 1),
 (20, 'en', 'frontend', 'blog', 'articles', 'articles.html', 0),
@@ -542,7 +540,7 @@ INSERT INTO `urlrewriting` (`id`, `lang`, `app`, `controler`, `action`, `matchur
 (27, 'en', 'frontend', 'user', 'connection', 'webtuts-connection.html', 0),
 (28, 'en', 'frontend', 'user', 'profil', 'profile-{1}.html', 1),
 (29, 'en', 'frontend', 'page', 'index', 'page-{1}.html', 1),
-(30, 'en', 'frontend', 'user', 'compte', 'account.html', 0),
+(30, 'en', 'frontend', 'user', 'compte', 'account-of-{1}.html', 1),
 (31, 'fr', 'frontend', 'page', 'contact', 'contactez-nous.html', 0),
 (32, 'en', 'frontend', 'page', 'contact', 'contact-us.html', 0),
 (33, 'fr', 'frontend', 'page', 'about', 'a-propos-de-webtuts.html', 0),
@@ -550,7 +548,9 @@ INSERT INTO `urlrewriting` (`id`, `lang`, `app`, `controler`, `action`, `matchur
 (35, 'fr', 'frontend', 'page', 'sitemap', 'plan-du-site.html', 0),
 (36, 'en', 'frontend', 'page', 'sitemap', 'sitemap.html', 0),
 (37, 'fr', 'frontend', 'page', 'partners', 'tous-les-partenaires-de-webtuts.html', 0),
-(38, 'en', 'frontend', 'page', 'partners', 'all-webtuts-partners.html', 0);
+(38, 'en', 'frontend', 'page', 'partners', 'all-webtuts-partners.html', 0),
+(39, 'fr', 'frontend', 'blog', 'rss', 's-abonner-au-flux-rss.html', 0),
+(40, 'en', 'frontend', 'blog', 'rss', 'subscribe-to-rss-stream.html', 0);
 
 -- --------------------------------------------------------
 
@@ -562,8 +562,6 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` tinyint(1) NOT NULL,
   `banned` double NOT NULL,
-  `app` text NOT NULL,
-  `theme` text NOT NULL,
   `pseudo` text NOT NULL,
   `name` text NOT NULL,
   `surname` text NOT NULL,
@@ -578,15 +576,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   `languages` varchar(255) DEFAULT '',
   `access` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Contenu de la table `user`
 --
 
-INSERT INTO `user` (`id`, `deleted`, `banned`, `app`, `theme`, `pseudo`, `name`, `surname`, `mail`, `image`, `datesignin`, `civility`, `password`, `country`, `city`, `site`, `languages`, `access`) VALUES
-(1, 0, 0, 'frontend', 'default', 'fozeek', 'quentin', 'deneuve', 'quentin.deneuve@gmail.com', 0, '2013-02-01 00:00:00', 'homme', 'e1d75b9a8b4d045d96180b6ec6f5e686', 'France', 'Briis-sous-forge', 'http://fozeek.fr', 'html,css,php,javascript,jquery', 0),
-(2, 0, 0, '', '', 'fitz_lucassen', 'thibault', 'dulon', 'thibault.dulon@gmail.com', 7, '2013-02-03 00:00:00', 'homme', 'ce0608b1cb5f1b15c59f9344f53729fd', 'France', 'Paris', 'http://fitz.hebergratuit.com', 'html,css,php,javascript,jquery,asp.net,csharp', 0);
+INSERT INTO `user` (`id`, `deleted`, `banned`, `pseudo`, `name`, `surname`, `mail`, `image`, `datesignin`, `civility`, `password`, `country`, `city`, `site`, `languages`, `access`) VALUES
+(1, 0, 0, 'fozeek', 'quentin', 'deneuve', 'quentin.deneuve@gmail.com', 0, '2013-02-01 00:00:00', 'homme', '76825accf2618c12342b61a1ca2dad0f', 'France', 'Briis-sous-forge', 'http://fozeek.fr', 'html,css,php,javascript,jquery', 0),
+(2, 0, 0, 'fitz_lucassen', 'thibault', 'dulon', 'thibault.dulon@gmail.com', 7, '2013-02-03 00:00:00', 'homme', 'ce0608b1cb5f1b15c59f9344f53729fd', 'France', 'Paris', 'http://fitz.hebergratuit.com', 'html,css,php,javascript,jquery,asp.net,csharp', 0);
 
 -- --------------------------------------------------------
 
