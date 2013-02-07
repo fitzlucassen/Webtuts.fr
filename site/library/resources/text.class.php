@@ -9,8 +9,6 @@ class TextType implements Type {
 		$valid = true;
 		if(!is_string($data))
 			$valid = false;
-		if(empty($data))
-			$valid=false;
 		return $valid;
 	}
 
@@ -36,7 +34,7 @@ class TextType implements Type {
 	}
 
 	public function __toString() {
-		return $this->_attribut;
+		return $this->_attribut."";
 	}
 
 }
