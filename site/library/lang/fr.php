@@ -105,7 +105,8 @@
     define("OPTIONAL_INFORMATIONS", "Informations facultatives");
     define("SUBSCRIBE", "S'inscrire");
     define("LOGIN", "Connexion");
-    define("WELCOME", "Bienvenue sur le profil de");
+    define("WELCOME_PROFIL", "Bienvenue sur le profil de");
+    define("WELCOME_ACCOUNT", "Bienvenue sur votre compte");
     define("NOT_SUBSCRIBER", "Pas encore inscrit ? C'est par ici !");
     define("IDENTITY", "Identité");
     define("AVATAR", "Avatar de");
@@ -117,7 +118,8 @@
     define("IN", "en");
     define("SEE_WORK", "Voir ses travaux");
     define("WHAT_HE_DO", "Ce qu'il pratique");
-
+    define("ACCOUNT_SETTINGS", "C'est ici que vous pourrez modifier vos informations et, plus tard, gérer votre communauté.");
+    define("UPDATE", "Modifier");
 
     define("LBL_NAME", "Nom");
     define("LBL_FIRSTNAME", "Prénom");

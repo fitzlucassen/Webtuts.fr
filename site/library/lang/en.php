@@ -104,7 +104,8 @@
     define("OPTIONAL_INFORMATIONS", "Optional Informations");
     define("SUBSCRIBE", "Subscribe");
     define("LOGIN", "Connection");
-    define("WELCOME", "Welcome in the page of");
+    define("WELCOME_PROFIL", "Welcome in the page of");
+    define("WELCOME_ACCOUNT", "Welcome on your account");
     define("NOT_SUBSCRIBER", "Not yet registered? It's over here!");
     define("IDENTITY", "Identity");
     define("AVATAR", "Avatar of");
@@ -116,7 +117,9 @@
     define("IN", "in");
     define("SEE_WORK", "See his work");
     define("WHAT_HE_DO", "What he know");
-    
+    define("ACCOUNT_SETTINGS", "It's here that you will update your data and, later, manage your community.");
+    define("UPDATE", "Update");
+
     define("LBL_NAME", "Name");
     define("LBL_FIRSTNAME", "firstname");
     define("LBL_PSEUDO", "Login");

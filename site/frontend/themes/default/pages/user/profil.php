@@ -3,7 +3,7 @@
     <div class="middle-column">
 	<div class="border-title border-big-title">
 		<h1 class="left-title big-title">
-		    <?php echo WELCOME . " " . ucfirst($user->get("pseudo")); ?>
+		    <?php echo WELCOME_PROFIL . " " . ucfirst($user->get("pseudo")); ?>
 		</h1>
 	    <div class="cl"></div>
 	</div>

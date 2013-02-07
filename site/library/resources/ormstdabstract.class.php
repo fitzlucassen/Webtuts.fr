@@ -204,7 +204,6 @@ abstract class OrmStdAbstract {
 						$this->$key = $type::save($this->$key);
 					}
 				}
-
 				if($id = Sql2::create()->insert($this->_class)->columnsValues($this->_attributes)->execute())
 					return Sql2::create()->from($this->_class)->where("id", Sql2::$OPE_EQUAL, $id)->fetchClass();
 				else

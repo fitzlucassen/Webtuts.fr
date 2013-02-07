@@ -136,4 +136,5 @@
     function format_for_url($string){
 	return strtolower(str_replace('--', '-', str_replace(' ', '-', str_replace(',', '-', $string))));
     }
+
 ?>

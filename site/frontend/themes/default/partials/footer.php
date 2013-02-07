@@ -22,7 +22,7 @@
 				<h2><?php echo FOLLOW_NEWS; ?> :</h2>
 				<a href="https://twitter.com/webtuts_fr">Twitter</a>
 				<a href="https://www.facebook.com/webtuts.fr">Facebook</a>
-				<a href="#"><?php echo RSS; ?></a>
+				<a href="<?php echo Kernel::getUrl("blog/rss"); ?>"><?php echo RSS; ?></a>
 				<a href="#"><?php echo NEWSLETTERS; ?></a>
 			</div>
 		</div>

@@ -84,7 +84,7 @@
 	    <a href="https://twitter.com/webtuts_fr" id="twitter-social">
 		Twitter
 	    </a>
-	    <a href="#" id="rss-social">
+	    <a href="<?php echo Kernel::getUrl("blog/rss"); ?>" id="rss-social">
 		<?php echo RSS; ?>
 	    </a>
 	    <a href="#" id="newsletter-social">
