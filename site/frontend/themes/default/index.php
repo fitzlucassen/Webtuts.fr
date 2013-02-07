@@ -3,10 +3,6 @@
 	 define("_theme_path_", __themes_dir__ . "default/");
 	 include(__library_dir__ . "lang/" . Kernel::get("lang") . ".php");
  	 include("functions.php");
- 	 if(Kernel::get("action")=="rss") {
- 	 	include(_theme_path_."pages/".Kernel::get("controler").'/'.Kernel::get("action").".php");
- 	 }
- 	 else {
 
 ?>
 <html>
@@ -44,4 +40,3 @@
 		</div>
 	</body>
 </html>
-<?php } ?>

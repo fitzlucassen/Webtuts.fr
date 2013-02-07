@@ -252,6 +252,13 @@ class Kernel {
 		return $string;
 	}
 
+	public static function BBcode($string) {
+		$tmp = str_split($string);
+		foreach ($tmp as $car) {
+			echo "lol";
+		}
+	}
+
 	private function setUrl($url) {
 		$data = Sql2::create()->from("urlrewriting")
 				      ->where("app", "=", __app__)
