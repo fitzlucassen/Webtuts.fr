@@ -54,8 +54,6 @@ class UserControler extends Controler {
 
 			$languages_array = explode(',', $attr["languages"]);
 			
-			$attr["image"] = upload_image($_FILES, $data["avatar"], $error);
-			
 			if(count($error) > 0)
 			    $bool_error = true;
 			

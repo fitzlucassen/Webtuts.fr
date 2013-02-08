@@ -89,11 +89,6 @@
 
 		<div class="cl"></div>
 		<span class="tooltip" <?php echo (isset($error["site"]) ? 'style="display: block;"' : ''); ?>><?php echo WRONG_PATTERN_URL; ?></span>
-		
-		<label class="label"><?php echo LBL_PICTURE; ?> :</label>
-		<input type="file" name="avatar" id="avatar" value="" />
-		
-		<div class="cl"></div>
 
 		<label class="label"><?php echo LBL_LANGAGE; ?> :</label>
 		<input type="checkbox" name="langage-php" value="php" id="langage-php" class="check-langage"/>
