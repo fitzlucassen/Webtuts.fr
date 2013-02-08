@@ -15,7 +15,31 @@ class ArticleControler extends Controler {
 	}
 
 	public function AddAction($params) {
-		return $this->render(array('user' => null));
+		$categories = App::getClassArray("category");
+		$nodes = App::getClassArray("node");
+	
+		$form = $this->getRequest();
+		if($form->isMethod("post")) {
+			$data = $form->getData();
+			$title = array("fr" => $data["titlefr"], "en" => $data["titleen"]);
+			$text = array("fr" => $data["textfr"], "en" => $data["texten"]);
+			
+			$attr["category"] = $data['category'];
+			$attr["node"] = $data["node"];
+			$attr["tag"] = 1;
+			//$attr["image"] = $data["image"];
+			$attr["author"] = Kernel::get("user");
+			$attr["date"] = date("Y-m-d H:i:s");
+			$attr["title"] = $title;
+			$attr["text"] = $text;
+			if($article = App::getClass("article")->hydrate($attr)->save())
+				return $this->redirect("category/show/".$categorie->get("id"));
+			else
+				return $this->render(array("error" => "Vous n'avez pas bien rempli le formulaire"));
+		}
+		else {
+			return $this->render(array('categories' => $categories, 'nodes' => $nodes));
+		}
 	}
 
 	public function DeleteAction($params) {

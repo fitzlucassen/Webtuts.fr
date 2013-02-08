@@ -9,19 +9,63 @@
 
 	<form action="" method="post">
 		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
-			<?php echo ucfirst(text("title")); ?>
+			<?php echo ucfirst(text("title")); ?> (fr)
 		</div>
 		<div style="overflow: hidden;padding: 10px;">
-			<input name="title" type="text"/>
+			<input name="titlefr" type="text"/>
+		</div>
+		<div style="clear: left;">
+		</div>
+		
+		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
+			<?php echo ucfirst(text("title")); ?> (en)
+		</div>
+		<div style="overflow: hidden;padding: 10px;">
+			<input name="titleen" type="text"/>
 		</div>
 		<div style="clear: left;">
 		</div>
 
 		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
-			<?php echo ucfirst(text("text")); ?>
+			<?php echo ucfirst(text("text")); ?> (fr)
 		</div>
 		<div style="overflow: hidden;padding: 10px;">
-			<textarea name="text"></textarea>
+			<textarea name="textfr"></textarea>
+		</div>
+		<div style="clear: left;">
+		</div>
+		
+		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
+			<?php echo ucfirst(text("text")); ?> (en)
+		</div>
+		<div style="overflow: hidden;padding: 10px;">
+			<textarea name="texten"></textarea>
+		</div>
+		<div style="clear: left;">
+		</div>
+		
+		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
+			<?php echo ucfirst(text("category")); ?>
+		</div>
+		<div style="overflow: hidden;padding: 10px;">
+			<select name="category">
+				<?php foreach($categories as $category){ ?>
+					<option value=<?php echo $category->get('id'); ?> ><?php echo lang($category->get('name')); ?></option>
+				<?php } ?>
+			</select>
+		</div>
+		<div style="clear: left;">
+		</div>
+		
+		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
+			<?php echo ucfirst(text("node")); ?>
+		</div>
+		<div style="overflow: hidden;padding: 10px;">
+			<select name="node">
+				<?php foreach($nodes as $node){ ?>
+					<option value=<?php echo $node->get('id'); ?> ><?php echo lang($node->get('name')); ?></option>
+				<?php } ?>
+			</select>
 		</div>
 		<div style="clear: left;">
 		</div>
