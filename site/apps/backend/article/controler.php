@@ -26,9 +26,9 @@ class ArticleControler extends Controler {
 			
 			$attr["category"] = $data['category'];
 			$attr["node"] = $data["node"];
-			$attr["tag"] = 1;
+			//$attr["tag"] = 1;
 			//$attr["image"] = $data["image"];
-			$attr["author"] = Kernel::get("user");
+			$attr["author"] = Kernel::get("user")->get("id");
 			$attr["date"] = date("Y-m-d H:i:s");
 			$attr["title"] = $title;
 			$attr["text"] = $text;
