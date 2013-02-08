@@ -50,14 +50,22 @@ class UserControler extends Controler {
 			$attr["banned"] = 0;
 			$attr["image"] = 0;
 			$attr["access"] = 0;
-
 			$attr["languages"] = htmlspecialchars($data["langage"]);
 
 			$languages_array = explode(',', $attr["languages"]);
-
+			
+			$attr["image"] = upload_image($_FILES, $data["avatar"], $error);
+			
+			if(count($error) > 0)
+			    $bool_error = true;
+			
 			if(strlen($attr["pseudo"]) < 6){
 			    $bool_error = true;
 			    $error["pseudo"] = "error";
+			}
+			else if(App::getTable("user")->getBySanitizePseudo($attr["pseudo"])){
+			    $bool_error = true;
+			    $error["pseudo_exist"] = "error";
 			}
 			if(strlen($attr["name"]) < 1){
 			    $bool_error = true;
@@ -89,7 +97,6 @@ class UserControler extends Controler {
 				$error["languages"] = "error";
 			    }
 			}
-			
 			if($bool_error){
 			    return $this->render(array("error" => $error, "attr" => $attr));
 			}
@@ -194,7 +201,6 @@ class UserControler extends Controler {
 		    $attr["name"] = htmlspecialchars($data["name"]);
 		    $attr["surname"] = htmlspecialchars($data["firstname"]);
 		    $attr["mail"] = htmlspecialchars($data["email"]);
-		    $attr["datesignin"] = date("Y-m-d H:i:s");
 		    $attr["civility"] = htmlspecialchars($data["civilite"]);
 		    $attr["country"] = htmlspecialchars($data["pays"]);
 		    $attr["city"] = htmlspecialchars($data["city"]);
@@ -210,6 +216,10 @@ class UserControler extends Controler {
 		    if(strlen($attr["pseudo"]) < 6){
 			$bool_error = true;
 			$error["pseudo"] = "error";
+		    }
+		    else if(App::getTable("user")->getBySanitizePseudo($attr["pseudo"])){
+			$bool_error = true;
+			$error["pseudo_exist"] = "error";
 		    }
 		    if(strlen($attr["name"]) < 1){
 			$bool_error = true;
@@ -237,9 +247,18 @@ class UserControler extends Controler {
 			    $error["languages"] = "error";
 			}
 		    }
-
+		    
 		    if($bool_error){
-			return $this->render(array("error" => $error, "attr" => $attr));
+			return $this->render(array("user" => $user, "error" => $error, "attr" => $attr));
+		    }
+		    else {
+			$id = intval($data["id"]);
+			if($user = App::getClass("user", $id)->set($attr)){
+			    return $this->redirect(Kernel::getUrl("user/compte"));
+			}
+			else{
+			    return $this->render(array("error" => "Vous n'avez pas bien rempli le formulaire"));
+			}
 		    }
 		}
 		else {
@@ -254,6 +273,8 @@ class UserControler extends Controler {
 		return $this->render(array('user' => $user, "attr" => $attr));
 	    }
 	}
+	
+	
 }
 
 ?>

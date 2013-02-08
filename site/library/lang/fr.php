@@ -120,7 +120,8 @@
     define("WHAT_HE_DO", "Ce qu'il pratique");
     define("ACCOUNT_SETTINGS", "C'est ici que vous pourrez modifier vos informations et, plus tard, gérer votre communauté.");
     define("UPDATE", "Modifier");
-
+    define("CONGRATS", "Félicitation, vous avez fait le bon<br/>choix !<br/>Moi, Paf, fais le serment de vous enseigner le Web !");
+    
     define("LBL_NAME", "Nom");
     define("LBL_FIRSTNAME", "Prénom");
     define("LBL_PSEUDO", "Pseudo");
@@ -135,6 +136,7 @@
     define("LBL_LANGAGE", "Langages connus");
     define("LBL_SITE", "Site web");
     define("LBL_CONFIRM_PASSWORD", "Confirmation mot de passe");
+    define("LBL_PICTURE", "Votre avatar");
     
     // Placeholders
     define("PL_NAME", "Votre nom");
@@ -153,6 +155,7 @@
     define("WRONG_PATTERN_EMAIL", "Un email doit être de la forme xxx@yyy.zzz");
     define("WRONG_PATTERN_URL", "Un URL doit être de la forme http(s)://xxx.zzz");
     define("BAD_LOGIN", "Cette combinaison login/mot de passe n'existe pas");
+    define("ALREADY_EXIST", "Ce pseudo est déjà utilisé par un utilisateur !");
 
     /**********
      *  BLOG  *

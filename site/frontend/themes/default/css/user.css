@@ -89,6 +89,18 @@
     background: transparent url(../images/oiseau-modele.png) center center no-repeat;
     width: 73px;
     height: 94px;
+    float: left;
+    margin-top: 80px;
+}
+#bulle-paf{
+    float: left;
+    background: transparent url(../images/bulle_bd.png) center top no-repeat;
+    
+    width: 226px;
+    height: 150px;
+    margin-top: -50px;
+    padding-top: 50px;
+    padding-left: 40px;
 }
 
 .tooltip, .main-tooltip

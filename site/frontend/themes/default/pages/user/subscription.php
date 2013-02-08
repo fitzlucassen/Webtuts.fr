@@ -43,7 +43,8 @@
 
 		<div class="cl"></div>
 		<span class="tooltip" <?php echo (isset($error["pseudo"]) ? 'style="display: block;"' : ''); ?>><?php echo SIX_CHAR_MIN; ?></span>
-		
+		<span class="main-tooltip" <?php echo (isset($error["pseudo_exist"]) ? 'style="display: block;"' : ''); ?>><?php echo ALREADY_EXIST; ?></span>
+
 		<label class="label"><?php echo LBL_PASSWORD; ?> :</label>
 		<input type="password" name="password" value="" id="password1" placeholder="<?php echo PL_PASSWORD; ?>"  required/>
 
@@ -89,6 +90,11 @@
 		<div class="cl"></div>
 		<span class="tooltip" <?php echo (isset($error["site"]) ? 'style="display: block;"' : ''); ?>><?php echo WRONG_PATTERN_URL; ?></span>
 		
+		<label class="label"><?php echo LBL_PICTURE; ?> :</label>
+		<input type="file" name="avatar" id="avatar" value="" />
+		
+		<div class="cl"></div>
+
 		<label class="label"><?php echo LBL_LANGAGE; ?> :</label>
 		<input type="checkbox" name="langage-php" value="php" id="langage-php" class="check-langage"/>
 		<label for="langage-php" class="box-next">&nbsp; PHP</label>
