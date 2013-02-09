@@ -57,7 +57,7 @@
 		<div class="cl"></div>
 		<span class="tooltip" <?php echo (isset($error["password"]) ? 'style="display: block;"' : ''); ?>><?php echo WRONG_CONFIRM_PWD; ?></span>
 		
-		<label class="label"><?php echo LBL_EMAIL; ?> :</label>
+		<label class="label"><?php echo LBL_EMAIL; ?>* :</label>
 		<input type="text" name="email" id="email" value="<?php echo ((isset($error) && count($error) > 0) ? $attr["mail"] : ''); ?>" placeholder="<?php echo PL_EMAIL; ?>" pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+\.[a-zA-Z]+"  required/>
 		
 		<div class="cl"></div>
@@ -120,6 +120,7 @@
 	    
 	    <div class="cl"></div>
 	    
+	    <h4>*<?php echo IF_HAVE_ACCOUNT; ?> <a href="http://fr.gravatar.com">gravatar</a>, <?php echo USE_IT; ?></h4>
 	    <div class="marginAuto">
 		<div class="button big-button">
 		    <span>

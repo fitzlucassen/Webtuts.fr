@@ -138,3 +138,6 @@
     font-size: 18px;
     color: #333;
 }
+#subscription-page h4, #compte-page h4{
+    font-size: 12px;
+}

@@ -17,8 +17,17 @@ class UserControler extends Controler {
 	
 	public function ProfilAction($params) {
 	    $user = App::getTable("user")->getBySanitizePseudo($params[3]);
-
-	    return $this->render(array('user' => $user));
+	    
+	    $image = "";
+	    
+	    if($user->get("image") != "" && $user->get("image") != null){
+		$image = "IN_USER";
+	    }
+	    else {
+		$image = md5(strtolower(trim($user->get("mail"))));
+	    }
+	    
+	    return $this->render(array('user' => $user, "image" => $image));
 	}
 	
 	public function SubscriptionAction($params) {
@@ -215,9 +224,12 @@ class UserControler extends Controler {
 			$bool_error = true;
 			$error["pseudo"] = "error";
 		    }
-		    else if(App::getTable("user")->getBySanitizePseudo($attr["pseudo"])){
-			$bool_error = true;
-			$error["pseudo_exist"] = "error";
+		    else if($user_bis = App::getTable("user")->getBySanitizePseudo($attr["pseudo"])){
+			
+			if($user->get("id") != $user_bis->get("id")){
+			    $bool_error = true;
+			    $error["pseudo_exist"] = "error";
+			}
 		    }
 		    if(strlen($attr["name"]) < 1){
 			$bool_error = true;
@@ -245,13 +257,13 @@ class UserControler extends Controler {
 			    $error["languages"] = "error";
 			}
 		    }
-		    
 		    if($bool_error){
 			return $this->render(array("user" => $user, "error" => $error, "attr" => $attr));
 		    }
 		    else {
 			$id = intval($data["id"]);
-			if($user = App::getClass("user", $id)->set($attr)){
+			if(App::getClass("user", $id)->set($attr)){
+			    
 			    return $this->redirect(Kernel::getUrl("user/compte"));
 			}
 			else{

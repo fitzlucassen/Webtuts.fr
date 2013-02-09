@@ -51,7 +51,10 @@
 		$title = "Inscrivez-vous sur Webtuts";
 	    }
 	    else if($action == "profil"){
-		$title = "Le compte utilisateur de";
+		$title = "Le profil de";
+	    }
+	    else if($action == "compte"){
+		$title = "Votre compte utilisateur";
 	    }
 	} else if($controller == "page") {
 	    

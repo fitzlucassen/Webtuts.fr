@@ -121,6 +121,8 @@
     define("UPDATE", "Update");
     define("CONGRATS", "Congratulation, you just have<br/>made the good choice !<br/>
 			Me, Paf, promise you to learn you<br/>the Web !");
+    define("IF_HAVE_ACCOUNT", "If you have an account on");
+    define("USE_IT", "use the same email address to keep your avatar.");
     
     define("LBL_NAME", "Name");
     define("LBL_FIRSTNAME", "firstname");

@@ -121,6 +121,8 @@
     define("ACCOUNT_SETTINGS", "C'est ici que vous pourrez modifier vos informations et, plus tard, gérer votre communauté.");
     define("UPDATE", "Modifier");
     define("CONGRATS", "Félicitation, vous avez fait le bon<br/>choix !<br/>Moi, Paf, fais le serment de vous enseigner le Web !");
+    define("IF_HAVE_ACCOUNT", "Si vous avez un compte");
+    define("USE_IT", "utiliser la même adresse e-mail afin de bénéficier de votre avatar.");
     
     define("LBL_NAME", "Nom");
     define("LBL_FIRSTNAME", "Prénom");

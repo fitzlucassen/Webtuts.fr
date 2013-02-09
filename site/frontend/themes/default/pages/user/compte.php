@@ -58,7 +58,7 @@
 		<span class="tooltip" <?php echo (isset($error["pseudo"]) ? 'style="display: block;"' : ''); ?>><?php echo SIX_CHAR_MIN; ?></span>
 		<span class="main-tooltip" <?php echo (isset($error["pseudo_exist"]) ? 'style="display: block;"' : ''); ?>><?php echo ALREADY_EXIST; ?></span>
 
-		<label class="label"><?php echo LBL_EMAIL; ?> :</label>
+		<label class="label"><?php echo LBL_EMAIL; ?>* :</label>
 		<input type="text" name="email" id="email" value="<?php echo $attr["mail"]; ?>" placeholder="<?php echo PL_EMAIL; ?>" pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+\.[a-zA-Z]+"  required/>
 		
 		<div class="cl"></div>
@@ -120,6 +120,8 @@
 	    </div>
 	    
 	    <div class="cl"></div>
+	    
+	    <h4>*<?php echo IF_HAVE_ACCOUNT; ?> <a href="http://fr.gravatar.com">gravatar</a>, <?php echo USE_IT; ?></h4>
 	    
 	    <div class="marginAuto">
 		<div class="button big-button">
