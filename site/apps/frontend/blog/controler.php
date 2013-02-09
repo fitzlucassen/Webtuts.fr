@@ -46,17 +46,28 @@ class BlogControler extends Controler {
 	    $articles = App::getClassArray("article", array("where" => "node = " . self::$ID_NODE_ARTICLE, "limit" => 5));
 	    return $this->render(array("news" => $news, "articles" => $articles));
 	}
+	
+
+	/*
+		Action : Actualite
+		Description : 	Retourne un article selon le titre passé en paramêtre
+	*/
 	public function ActualiteAction($params){
+	    // Récupère l'article
 	    if($news = App::getTable("article")->getBySanitizeTitle($params[3])) { 
+		    // Création des liens pour le changement de langue
 		    $link = array(
 		    	"en" => Kernel::getUrl("en/".$params[1]."/".$params[2]."/".Kernel::sanitize($news->get("title", "en"))),
 		    	"fr" => Kernel::getUrl("fr/".$params[1]."/".$params[2]."/".Kernel::sanitize($news->get("title", "fr")))
 		    );
-		    return $this->render(array("news" => $news));
+		    // Retourne à la vue l'article et les liens
+		    return $this->render(array("news" => $news, 'link' => $link));
 		}
-		else
+		else // Si aucun article n'est trouvé : page 404
 			return $this->redirect(Kernel::getUrl("error/404"));
 	}
+
+
 	public function TagsAction($params){
 	    $tags = App::getClassArray("tag");
 	    return $this->render(array("tags" => $tags));
