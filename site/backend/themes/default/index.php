@@ -94,10 +94,10 @@
 						<div style="float: right;padding: 9px;color: rgb(148, 148, 148);cursor: pointer;">
 							Déconnexion
 						</div>
-						<a href="#" style="display: inline-block;padding: 9px;border-right: 1px solid #E5E5E5;color: rgb(148, 148, 148);cursor: pointer;border-top:  1px solid white;">
+						<a href="#" style="display: inline-block;padding: 9px;border-right: 1px solid #E5E5E5;cursor: pointer;border-top:  1px solid white;">
 							Aller au site
 						</a>
-						<a href="/article/add" style="display: inline-block;padding: 9px;border-right: 1px solid #E5E5E5;color: rgb(148, 148, 148);cursor: pointer;border-top:  1px solid white;">
+						<a href="/article/add" style="display: inline-block;padding: 9px;border-right: 1px solid #E5E5E5;cursor: pointer;border-top:  1px solid white;">
 							Ajouter un article
 						</a>
 						<div style="clear: both;">
