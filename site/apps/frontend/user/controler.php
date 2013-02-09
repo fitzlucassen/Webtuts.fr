@@ -212,10 +212,10 @@ class UserControler extends Controler {
 		    $attr["country"] = htmlspecialchars($data["pays"]);
 		    $attr["city"] = htmlspecialchars($data["city"]);
 		    $attr["site"] = htmlspecialchars($data["site"]);
-		    $attr["deleted"] = 0;
-		    $attr["banned"] = 0;
-		    $attr["image"] = 0;
-		    $attr["access"] = 0;
+		    //$attr["deleted"] = 0;
+		    //$attr["banned"] = 0;
+		    //$attr["image"] = 0;
+		    //$attr["access"] = 0;
 		    $attr["languages"] = htmlspecialchars($data["langage"]);
 
 		    $languages_array = explode(',', $attr["languages"]);
@@ -262,6 +262,7 @@ class UserControler extends Controler {
 		    }
 		    else {
 			$id = intval($data["id"]);
+
 			if(App::getClass("user", $id)->set($attr)){
 			    
 			    return $this->redirect(Kernel::getUrl("user/compte"));
