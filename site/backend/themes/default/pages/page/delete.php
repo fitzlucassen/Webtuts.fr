@@ -17,7 +17,9 @@
 		Supression
 	</div>
 	<div style="overflow: hidden;padding: 15px;">
-		Are you sur guy ?
+		<form method="post" action="<?php Kernel::getUrl("page/delete"); ?>">
+			<input type="submit" value="Supprimer"/>
+		</form>
 	</div>
 	<div style="clear: left;">
 	</div>

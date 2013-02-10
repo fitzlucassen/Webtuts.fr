@@ -65,7 +65,7 @@ class ArticleControler extends Controler {
 			$articles = App::getClassArray("article");
 			$this->cache->read("ArticleListeAction", print_r(App::getClassArray("article")));
 		}*/
-		$articles = App::getClassArray("article");//, array("where" => "have category"));
+		$articles = App::getClassArray("article", array("where" => "node != 4"));//, array("where" => "have category"));
 		return $this->render(array('articles' => $articles));
 	}
 }
