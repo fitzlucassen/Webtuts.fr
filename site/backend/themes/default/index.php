@@ -1,4 +1,6 @@
 <?php define("_theme_path_", __themes_dir__ . "default/"); include("functions.php"); ?>
+<?php if(!Kernel::get("user") && Kernel::get("action") == "connect" && Kernel::get("controler") == "home") { include(_theme_path_."pages/".Kernel::get("controler").'/'.Kernel::get("action").".php"); die(); } ?>
+<?php if(!Kernel::get("user")) { header("Location:".Kernel::getUrl("home/connect")); die(); } ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -91,9 +93,9 @@
 			<div style="position: fixed;top: 0px;left: 0px;width: 100%;height: 35px;background: white;border-bottom: 1px solid #E5E5E5;">
 				<div style="position: relative;background: rgb(248, 248, 248);height: 35px;">
 					<div style="">
-						<div style="float: right;padding: 9px;color: rgb(148, 148, 148);cursor: pointer;">
+						<a href="<?php echo Kernel::getUrl("home/disconnect"); ?>" style="display: inline-block;float: right;padding: 9px;cursor: pointer;">
 							Déconnexion
-						</div>
+						</a>
 						<a href="#" style="display: inline-block;padding: 9px;border-right: 1px solid #E5E5E5;cursor: pointer;border-top:  1px solid white;">
 							Aller au site
 						</a>
