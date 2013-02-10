@@ -6,8 +6,12 @@ class PageControler extends Controler {
 	}
 
 	public function ShowAction($params) {
-		$page = App::getClass("page", $params[3]);
-		return $this->render(array('page' => $page));
+		if(!empty($params[4]))
+			$lang = $params[4];
+		else
+			$lang = $params[0];
+		$page = App::getClass("article", $params[3]);
+		return $this->render(array('page' => $page, 'lang' => $lang));
 	}
 
 	public function AddAction($params) {
@@ -15,7 +19,7 @@ class PageControler extends Controler {
 	}
 
 	public function DeleteAction($params) {
-		$page = App::getClass("page", $params[3]);
+		$page = App::getClass("article", $params[3]);
 		return $this->render(array('page' => $page));
 	}
 
@@ -25,14 +29,18 @@ class PageControler extends Controler {
 			return $this->redirect("/page/show/".$params[3]);
 		}
 		else {
-			$page = App::getClass("page", $params[3]);
+			$page = App::getClass("article", $params[3]);
 			return $this->render(array('page' => $page));
 		}
 	}
 
 	public function ListAction($params) {
-		$pages = App::getClassArray("page");
-		return $this->render(array('pages' => $pages));
+		if(!empty($params[3]))
+			$lang = $params[3];
+		else
+			$lang = $params[0];
+		$pages = App::getClassArray("article", array("where" => "node = 4"));
+		return $this->render(array('pages' => $pages, 'lang' => $lang));
 	}
 }
 
