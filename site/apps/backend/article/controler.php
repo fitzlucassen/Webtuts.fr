@@ -59,14 +59,12 @@ class ArticleControler extends Controler {
 	}
 
 	public function ListAction($params) {
-		/*
-		$this->setCache("backend/");
-		if(!$articles = $this->cache->read("ArticleListeAction")){
-			$articles = App::getClassArray("article");
-			$this->cache->read("ArticleListeAction", print_r(App::getClassArray("article")));
-		}*/
+		if(!empty($params[3]))
+			$lang = $params[3];
+		else
+			$lang = $params[0];
 		$articles = App::getClassArray("article", array("where" => "node != 4"));//, array("where" => "have category"));
-		return $this->render(array('articles' => $articles));
+		return $this->render(array('articles' => $articles, "lang" => $lang));
 	}
 }
 

@@ -14,11 +14,12 @@
 	</div>
 
 	<form action="" method="post">
+		<input type="hidden" name="id" value="<?php echo $page->get("id"); ?>" />
 		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
 			<?php echo ucfirst(text("title")); ?> (fr)
 		</div>
 		<div style="overflow: hidden;padding: 10px;">
-			<input name="name" type="text" value="<?php echo lang($page->get("title", "fr")); ?>"/>
+			<input name="title-fr" type="text" value="<?php echo lang($page->get("title", "fr")); ?>"/>
 		</div>
 		<div style="clear: left;">
 		</div>
@@ -27,7 +28,7 @@
 			<?php echo ucfirst(text("content")); ?> (fr)
 		</div>
 		<div style="overflow: hidden;padding: 10px;">
-			<textarea name="description"><?php echo lang($page->get("text", "fr")); ?></textarea>
+			<textarea name="content-fr"><?php echo lang($page->get("text", "fr")); ?></textarea>
 		</div>
 		<div style="clear: left;">
 		</div>
@@ -36,7 +37,7 @@
 			<?php echo ucfirst(text("title")); ?> (en)
 		</div>
 		<div style="overflow: hidden;padding: 10px;">
-			<input name="name" type="text" value="<?php echo lang($page->get("title", "en")); ?>"/>
+			<input name="title-en" type="text" value="<?php echo lang($page->get("title", "en")); ?>"/>
 		</div>
 		<div style="clear: left;">
 		</div>
@@ -45,7 +46,7 @@
 			<?php echo ucfirst(text("content")); ?> (en)
 		</div>
 		<div style="overflow: hidden;padding: 10px;">
-			<textarea name="description"><?php echo lang($page->get("text", "en")); ?></textarea>
+			<textarea name="content-en"><?php echo lang($page->get("text", "en")); ?></textarea>
 		</div>
 		<div style="clear: left;">
 		</div>

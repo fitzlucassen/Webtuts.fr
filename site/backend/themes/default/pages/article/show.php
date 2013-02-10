@@ -5,6 +5,12 @@
 			<?php echo lang($article->get("title", $lang)); ?>
 		</div>
 		<div style="overflow: hidden;padding-top:10px;padding-left: 20px;">
+			<?php foreach(Kernel::get("langs") as $key => $langKernel) { ?>
+				<a <?php if($lang!=$langKernel) { ?>href="<?php echo createLink("/article/show/".$article->get("id")."/".$langKernel); ?>"<?php } ?> style="float: right;"><?php echo text($langKernel); ?></a> 
+				<?php if($key!=count(Kernel::get("langs"))-1) { ?>
+				<span style="float: right;">&nbsp;&nbsp;</span> 
+				<?php } ?>
+			<?php } ?>
 			<a href="<?php echo createLink("/article/show/".$article->get("id")); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;"><?php echo ucfirst(text("description")); ?></a>
 			<a href="<?php echo createLink("/article/update/".$article->get("id")); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;"><?php echo ucfirst(text("update")); ?></a>
 			<a href="<?php echo createLink("/article/delete/".$article->get("id")); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;"><?php echo ucfirst(text("delete")); ?></a>

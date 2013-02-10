@@ -15,19 +15,37 @@
 
 	<form action="" method="post">
 		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
-			<?php echo ucfirst(text("title")); ?>
+			<?php echo ucfirst(text("title")); ?> (fr)
 		</div>
 		<div style="overflow: hidden;padding: 10px;">
-			<input name="title" type="text" value="<?php echo lang($article->get("title")); ?>"/>
+			<input name="title" type="text" value="<?php echo lang($article->get("title", "fr")); ?>"/>
 		</div>
 		<div style="clear: left;">
 		</div>
 
 		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
-			<?php echo ucfirst(text("text")); ?>
+			<?php echo ucfirst(text("text")); ?> (fr)
 		</div>
 		<div style="overflow: hidden;padding: 10px;">
-			<textarea name="text"><?php echo lang($article->get("text")); ?></textarea>
+			<textarea name="text"><?php echo lang($article->get("text", "fr")); ?></textarea>
+		</div>
+		<div style="clear: left;">
+		</div>
+
+		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
+			<?php echo ucfirst(text("title")); ?> (en)
+		</div>
+		<div style="overflow: hidden;padding: 10px;">
+			<input name="title" type="text" value="<?php echo lang($article->get("title", "en")); ?>"/>
+		</div>
+		<div style="clear: left;">
+		</div>
+
+		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
+			<?php echo ucfirst(text("text")); ?> (en)
+		</div>
+		<div style="overflow: hidden;padding: 10px;">
+			<textarea name="text"><?php echo lang($article->get("text", "en")); ?></textarea>
 		</div>
 		<div style="clear: left;">
 		</div>

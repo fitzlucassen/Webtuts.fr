@@ -17,7 +17,8 @@
 		Supression
 	</div>
 	<div style="overflow: hidden;padding: 15px;">
-		<form method="post" action="<?php Kernel::getUrl("page/delete"); ?>">
+		<form method="post" action="<?php echo Kernel::getUrl("page/delete"); ?>">
+			<input type="hidden" name="id" value="<?php echo $page->get("id"); ?>" />
 			<input type="submit" value="Supprimer"/>
 		</form>
 	</div>
