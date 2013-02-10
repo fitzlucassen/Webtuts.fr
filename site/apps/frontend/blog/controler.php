@@ -93,6 +93,35 @@ class BlogControler extends Controler {
 	    }
 	    return $this->renderRSS("articles-".Kernel::get("lang"), $return);
 	}
+	
+	public function PostCommentAction($params){
+	    
+	    $form = $this->getRequest();
+	    if($form->isMethod("post")) {
+		$data = $form->getData();
+		$pseudo = htmlspecialchars($data["pseudo"]);
+		$message = htmlspecialchars($data["message"]);
+		$article = intval($data["article"]);
+	    }
+	    
+	    if($user = App::getTable("user")->getBySanitizePseudo($pseudo) && $message != "" && $message != null){
+
+		$attr = array();
+		$attr["article"] = $article;
+		$attr["author"] = $user->get("id");
+		$attr["text"] = $message;
+		$attr["deleted"] = 0;
+		$attr["date"] = date("Y-m-d H:i:s");
+
+		if($comment = App::getClass("comment")->hydrate($attr)->save()){
+		    $url_image = get_url_image($comment->get("author"));
+		    $alt_image = "avatar de " . $comment->get("author")->get("pseudo");
+		    
+		    return $this->render(array("comment" => $comment, "url_image" => $url_image, "alt_image" => $alt_image));
+		}
+	    }
+	    return null;
+	}
 }
 
 ?>

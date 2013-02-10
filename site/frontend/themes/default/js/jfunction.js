@@ -40,7 +40,7 @@ $(document).ready(function(){
 	
 	$.ajax({
 	    type : "post",
-	    url : "/site/frontend/themes/default/postComment.php",
+	    url : "/blog/PostComment",
 	    data : {'pseudo':pseudo, 'message':message, 'article':article},
 	    success:function(response){
 		$(".article-comments").append(response);
