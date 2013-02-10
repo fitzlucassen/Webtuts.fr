@@ -11,7 +11,8 @@ class Session {
 	public function __construct() {
 	    $this->session = $_SESSION;
 	    
-	    if(!empty($this->session)) {
+	    
+	    if(!empty($this->session["user"])) {
 		if($user = App::getClass("user", $this->session["user"]["id"])) {
 		    if($user->get("password") == $this->session["user"]["pwd"])
 			$this->user = $user;
@@ -57,6 +58,17 @@ class Session {
 	}
 	public function containsKey($key){
 	    return (isset($_SESSION[$key]));
+	}
+
+	public function saveRequest() {
+		if(!empty($_REQUEST))
+			$_SESSION["request"] = $_REQUEST;
+	}
+
+	public function getSavedRequest() {
+		if(!empty($_SESSION["request"]))
+			return $_SESSION["request"];
+		else false;
 	}
 }
 
