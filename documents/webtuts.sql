@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Ven 08 Février 2013 à 13:59
+-- Généré le: Dim 10 Février 2013 à 20:45
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.3.13
 
@@ -175,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `date` datetime NOT NULL,
   `deleted` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 --
 -- Contenu de la table `comment`
@@ -363,7 +363,7 @@ CREATE TABLE IF NOT EXISTS `node` (
 --
 
 INSERT INTO `node` (`id`, `deleted`, `name`, `description`) VALUES
-(1, 0, 27, 28),
+(1, 0, 3, 28),
 (2, 0, 29, 30),
 (3, 0, 76, 77),
 (4, 0, 82, 83);
@@ -441,9 +441,7 @@ INSERT INTO `orm_columns_types` (`name_table`, `name_column`, `type`) VALUES
 ('user', 'city', 'type text'),
 ('user', 'country', 'type text'),
 ('user', 'languages', 'type text'),
-('user', 'site', 'type text'),
-('user', 'app', 'type text'),
-('user', 'theme', 'type text');
+('user', 'site', 'type text');
 
 -- --------------------------------------------------------
 
@@ -562,8 +560,6 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` tinyint(1) NOT NULL,
   `banned` double NOT NULL,
-  `app` text NOT NULL,
-  `theme` text NOT NULL,
   `pseudo` text NOT NULL,
   `name` text NOT NULL,
   `surname` text NOT NULL,
@@ -584,9 +580,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Contenu de la table `user`
 --
 
-INSERT INTO `user` (`id`, `deleted`, `banned`, `app`, `theme`, `pseudo`, `name`, `surname`, `mail`, `image`, `datesignin`, `civility`, `password`, `country`, `city`, `site`, `languages`, `access`) VALUES
-(1, 0, 0, 'frontend', 'default', 'fozeek', 'quentin', 'deneuve', 'quentin.deneuve@gmail.com', 0, '2013-02-01 00:00:00', 'homme', 'e1d75b9a8b4d045d96180b6ec6f5e686', 'France', 'Briis-sous-forge', 'http://fozeek.fr', 'html,css,php,javascript,jquery', 0),
-(2, 0, 0, '', '', 'fitz_lucassen', 'thibault', 'dulon', 'thibault.dulon@gmail.com', 7, '2013-02-03 00:00:00', 'homme', 'ce0608b1cb5f1b15c59f9344f53729fd', 'France', 'Paris', 'http://fitz.hebergratuit.com', 'html,css,php,javascript,jquery,asp.net,csharp', 0);
+INSERT INTO `user` (`id`, `deleted`, `banned`, `pseudo`, `name`, `surname`, `mail`, `image`, `datesignin`, `civility`, `password`, `country`, `city`, `site`, `languages`, `access`) VALUES
+(1, 0, 0, 'fozeek', 'quentin', 'deneuve', 'quentin.deneuve@gmail.com', 0, '2013-02-01 00:00:00', 'homme', 'e1d75b9a8b4d045d96180b6ec6f5e686', 'France', 'Briis-sous-forge', 'http://fozeek.fr', 'html,css,php,javascript,jquery', 0),
+(2, 0, 0, 'fitz_lucassen', 'thibault', 'dulon', 'thibault.dulon@gmail.com', 7, '2013-02-03 00:00:00', 'homme', 'ce0608b1cb5f1b15c59f9344f53729fd', 'France', 'Paris', 'http://fitz.hebergratuit.com', 'html,css,php,javascript,jquery,asp.net,csharp', 0);
 
 -- --------------------------------------------------------
 
