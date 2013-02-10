@@ -122,7 +122,7 @@ abstract class OrmStdAbstract {
 					$this->$attribut = Sql2::create()->from($objectName)->where("id", Sql2::$OPE_EQUAL, $this->$attribut)->fetchClass();
 				}
 				elseif($typeLink=="collection") { // Collection of object
-					$this->setCollection($attribut, $tmp[1]);
+					$this->setCollection($attribut, $tmp[1], $params);
 				}
 			} 
 			elseif(!is_object($this->$attribut) && ($tmp[0]=="type")) {
@@ -337,7 +337,7 @@ abstract class OrmStdAbstract {
 		}
 	}
 */
-	private function setCollection($attribut, $class) {
+	private function setCollection($attribut, $class, $params) {
 		$this->$attribut = new Collection();
 		// Recupération de tous les attributs de la classe à retourner 
 		$cpt = 0;
@@ -369,8 +369,11 @@ abstract class OrmStdAbstract {
 								->from($class, $table)
 								->where("A.id", Sql2::$OPE_EQUAL ,"B.id_".$class, Sql2::$TYPE_NO_QUOTE)
 								->andWhere("B.id_".strtolower($this->_class), Sql2::$OPE_EQUAL, $this->id)
-								->andWhere("A.deleted", "=", 0)
-								->fetchClassArray();		
+								->andWhere("A.deleted", "=", 0);
+			if(array_key_exists("orderBy", $params))
+				$this->$attribut->orderBy($params["orderBy"]);
+			$this->$attribut->fetchClassArray();	
+
 			$this->$attribut->setObject($this);
 			$this->$attribut->setTarget($class);
 		}
@@ -378,8 +381,11 @@ abstract class OrmStdAbstract {
 			$this->$attribut = Sql2::create()
 								->from($class)
 								->where(strtolower($this->_class), Sql2::$OPE_EQUAL ,$this->get("id"), Sql2::$TYPE_NO_QUOTE)
-								->andWhere("deleted", "=", 0)
-								->fetchClassArray();		
+								->andWhere("deleted", "=", 0);
+			if(array_key_exists("orderBy", $params))
+				$this->$attribut->orderBy($params["orderBy"]);
+			$this->$attribut->fetchClassArray();
+			
 			$this->$attribut->setObject($this);
 			$this->$attribut->setTarget($class);
 		}
