@@ -76,17 +76,22 @@
 			    <div class="comment-header">
 				<span class="author"><a href="<?php echo Kernel::getUrl("user/profil/" . $user->get("pseudo")); ?>" id="pseudo-text"><?php echo $user->get("pseudo"); ?></a></span>
 			    </div>
-			    <textarea class="textarea" placeholder="Votre commentaire ici." id="message-text"></textarea>
 			    
-			    <input type="hidden" name="article" id="article-comment-value" value="<?php echo $article->get("id"); ?>"/>
-			    <div class="cl"></div>
-			    <div class="marginAuto">
-				<div class="button big-button">
-				    <span>
-					<input id="send-comment" type="submit" value="Envoyer" />
-				    </span>
-				</div>
-			   </div>
+			    <form method="post" action="" id="post-comment">
+				<textarea class="textarea" placeholder="Votre commentaire ici." name="message-text" id="message-text"></textarea>
+
+				<input type="hidden" name="user" value="<?php echo $user->get("pseudo"); ?>" />
+				<input type="hidden" name="article" id="article-comment-value" value="<?php echo $article->get("id"); ?>"/>
+
+				<div class="cl"></div>
+				<div class="marginAuto">
+				    <div class="button big-button">
+					<span>
+					    <input id="send-comment" type="submit" value="Envoyer" />
+					</span>
+				    </div>
+			       </div>
+			    </form>
 			</div>
 			
 			<div class="cl"></div>

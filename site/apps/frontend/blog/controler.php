@@ -15,6 +15,34 @@ class BlogControler extends Controler {
 		    	"en" => Kernel::getUrl("en/".$params[1]."/".$params[2]."/".Kernel::sanitize($article->get("category")->get("name", "en"))."/".Kernel::sanitize($article->get("title", "en"))),
 		    	"fr" => Kernel::getUrl("fr/".$params[1]."/".$params[2]."/".Kernel::sanitize($article->get("category")->get("name", "fr"))."/".Kernel::sanitize($article->get("title", "fr")))
 		    );
+		    
+		    $form = $this->getRequest();
+		    if($form->isMethod("post")) {
+			$data = $form->getData();
+			
+			$pseudo = htmlspecialchars($data["user"]);
+			$message = htmlspecialchars($data["message-text"]);
+			$article_id = intval($data["article"]);
+			
+			if(isset($message) && !empty($message)) {
+			    if($user = App::getTable("user")->getBySanitizePseudo($pseudo)){
+
+				
+				
+				$attr = array();
+				$attr["article"] = $article_id;
+				$attr["author"] = $user->get("id");
+				$attr["text"] = $message;
+				$attr["deleted"] = 0;
+				$attr["date"] = date("Y-m-d H:i:s");
+				
+				if($comment = App::getClass("comment")->hydrate($attr)->save()){
+
+				    return $this->render(array('article' => $article, 'link' => $link));
+				}
+			    }
+			}
+		    }
 		    return $this->render(array('article' => $article, 'link' => $link));
 		}
 		else
@@ -92,35 +120,6 @@ class BlogControler extends Controler {
 	    	$return[] = array("title" => "".$article->get("title"), "link" => $link, "guid" => $link, "description" => "".$article->get("text"), "date" => "".$article->get("date"));
 	    }
 	    return $this->renderRSS("articles-".Kernel::get("lang"), $return);
-	}
-	
-	public function PostCommentAction($params){
-	    
-	    $form = $this->getRequest();
-	    if($form->isMethod("post")) {
-		$data = $form->getData();
-		$pseudo = htmlspecialchars($data["pseudo"]);
-		$message = htmlspecialchars($data["message"]);
-		$article = intval($data["article"]);
-	    }
-	    
-	    if($user = App::getTable("user")->getBySanitizePseudo($pseudo) && $message != "" && $message != null){
-
-		$attr = array();
-		$attr["article"] = $article;
-		$attr["author"] = $user->get("id");
-		$attr["text"] = $message;
-		$attr["deleted"] = 0;
-		$attr["date"] = date("Y-m-d H:i:s");
-
-		if($comment = App::getClass("comment")->hydrate($attr)->save()){
-		    $url_image = get_url_image($comment->get("author"));
-		    $alt_image = "avatar de " . $comment->get("author")->get("pseudo");
-		    
-		    return $this->render(array("comment" => $comment, "url_image" => $url_image, "alt_image" => $alt_image));
-		}
-	    }
-	    return null;
 	}
 }
 
