@@ -164,6 +164,8 @@ class Kernel {
 
 	public function setKernel($url) {
 		$url = $this->parse($url);
+		// auto-save des posts
+		Kernel::get("session")->saveRequest();
 		return $this->dispatcher($url);
 	}
 

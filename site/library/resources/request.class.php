@@ -14,7 +14,8 @@ Class Request {
 	}
 
 	public function getData() {
-		$data = $_REQUEST;
+		if(!$data = Kernel::get("session")->getSavedRequest())
+			$data = $_REQUEST;
 		unset($data["url"]);
 		unset($data["PHPSESSID"]);
 		return $data;
