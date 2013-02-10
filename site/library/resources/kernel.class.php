@@ -78,7 +78,7 @@ class Kernel {
 
 	public function startCache($folder, $time = null) {
 		if($time == null)
-			$time = 10;
+			$time = 60;
 		Kernel::$CACHE = new Cache($folder, $time);
 	}
 
@@ -132,18 +132,17 @@ class Kernel {
 			$bundle = new $bundleName();
 			if(empty($route[Kernel::$CODE_ACTION]) || is_numeric($route[Kernel::$CODE_ACTION])) 
 				$route[Kernel::$CODE_ACTION] = "index";
-			if(!method_exists($bundle,$route[Kernel::$CODE_ACTION]."Action")) {
-				if($this->_KERNEL_DEBUG_)
-					return new Error(343);
-				else
-					header("Location:"._host_.$this->get("lang")."/".$route[Kernel::$CODE_CONTROLER]);
-			}
 			$controlerName = $route[Kernel::$CODE_ACTION]."Action";
+			$controlerName = ucfirst($controlerName);
+			if(!method_exists($bundle,$controlerName)) {
+				header("Location:".Kernel::getUrl("error/404"));
+			}
+
 			$params = array();
 			foreach ($route as $key => $value) {
 				$params[] = $value;
 			}
-			$controlerName = ucfirst($controlerName);
+			
 			$return = $bundle->$controlerName($route);
 			Kernel::$RESPONSE = $return;
 			if($return->hasRoute())
@@ -251,6 +250,79 @@ class Kernel {
 		$string = rtrim($string, "-");
 		$string = ltrim($string, "-");
 		return $string;
+	}
+
+	public static function BBcode($string) {
+		$tmp = str_split($string);
+		$spec = false;
+		$inter = false;
+		$buffer_inter = "";
+		$buffer_spec = "";
+		$return = "";
+		foreach ($tmp as $car) {
+			if(!$spec && !$inter) {
+				if($car=="[") {
+					$spec = true;
+					$buffer_spec = "";
+				}
+				else {
+					$return .= $car;
+				}
+			}
+			elseif($spec) {
+				
+				if($car=="]") {
+					
+					if($buffer_spec=="/link") {
+						$return .= "$buffer_inter\">$buffer_inter</a>";
+					}
+					elseif($buffer_spec=="link") {
+						$return .= "<a target=\"_BLANK\" href=\"";
+					}
+					elseif($buffer_spec=="/i") {
+						$return .= "$buffer_inter</i>";
+					}
+					elseif($buffer_spec=="i") {
+						$return .= "<i>";
+					}
+					elseif($buffer_spec=="/strong") {
+						$return .= "$buffer_inter</strong>";
+					}
+					elseif($buffer_spec=="strong") {
+						$return .= "<strong>";
+					}
+					elseif($buffer_spec=="/u") {
+						$return .= "$buffer_inter</u>";
+					}
+					elseif($buffer_spec=="u") {
+						$return .= "<u>";
+					}
+
+
+					$buffer_spec = "";
+					if(!empty($buffer_inter)) {
+						$inter = false;
+						$spec = false;
+						$buffer_inter = "";
+					}
+					else {
+						$inter = true;
+						$spec = false;
+					}
+				}
+				else
+					$buffer_spec .= $car;
+			}
+			elseif($inter) {
+				if($car=="[") {
+					$inter = false;
+					$spec = true;
+				} 
+				else
+					$buffer_inter .= $car;
+			}
+		}
+		return $return;
 	}
 
 	private function setUrl($url) {

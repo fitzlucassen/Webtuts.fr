@@ -33,7 +33,7 @@
 	/*
 		Gestion du cache pour les themes
 	*/
-	$_kernel->startCache("/cache/themes");
+	$_kernel->startCache(Cache::getDir()."kernel", 60);
 
 	/*
 		Appel de l'application et du controller par routing
@@ -53,8 +53,30 @@
 			header("Location:".$response->getRoute());
 			die();
 		}
-		unset($_kernel);
-		if($response->hasVars())
-			extract($response->getVars());
+		elseif($response->getStatus()==Response::$STATUS_XML) {
+			$type = $response->getVars();
+			$type = $type["type"];
+			if($type=="RSS"){
+				$Cache = Kernel::get("cache");
+				$name = $response->getVars();
+				$name = $name["name"];
+				header('Content-type: text/xml');
+				if(!$fichier = $Cache->start("RSS".$name)) {
+					$_params = Kernel::get("params");
+					$params = $response->getVars();
+					$params = $params["params"];
+					include(__library_dir__.'kernel_templates/rss.php');
+				} 
+				$Cache->end();
+				die();
+			}
+		}
+		else {
+			unset($_kernel);
+			if($response->hasVars())
+				extract($response->getVars());
+			$params = Kernel::get("params");
+			require_once(__themes_dir__.$params["theme"].'/index.php');
+		}
 	}
 ?>

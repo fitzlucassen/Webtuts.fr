@@ -14,7 +14,7 @@
 	    <h4>
 		<span class="date"><?php echo PUBLISHED . " " . format_date($news->get("date")); ?></span>
 		<span class="date"><?php echo BY; ?></span>
-		<span class="author"><a href="#"><?php echo $news->get("author")->get("pseudo"); ?></a></span>
+		<span class="author"><a href="<?php echo Kernel::getUrl("user/profil/" . $news->get("author")->get("pseudo")); ?>"><?php echo $news->get("author")->get("pseudo"); ?></a></span>
 	    </h4>
 	    <div class="article-tags right">
 		<?php 

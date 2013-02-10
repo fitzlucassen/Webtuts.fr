@@ -5,9 +5,18 @@
 			<?php echo minifyText(lang($page->get("title"))); ?>
 		</div>
 		<div style="overflow: hidden;padding-top:10px;padding-left: 20px;">
+			<form method="post" action="<?php echo Kernel::getUrl("page/delete"); ?>" style="margin-left: 20px;display: inline-block; float: right;padding-right: 5px;padding-left: 5px;">
+				<input type="hidden" name="id" value="<?php echo $page->get("id"); ?>"/>
+				<input type="submit" value=<?php echo ucfirst(text("delete")); ?> style="margin-top: -10px;" />
+			</form>	
+			<?php foreach(Kernel::get("langs") as $key => $langKernel) { ?>
+				<a <?php if($lang!=$langKernel) { ?>href="<?php echo createLink("/page/show/".$page->get("id")."/".$langKernel); ?>"<?php } ?> style="float: right;"><?php echo text($langKernel); ?></a> 
+				<?php if($key!=count(Kernel::get("langs"))-1) { ?>
+				<span style="float: right;">&nbsp;&nbsp;</span> 
+				<?php } ?>
+			<?php } ?>
 			<a href="<?php echo createLink("/page/show/".$page->get("id")); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;"><?php echo ucfirst(text("description")); ?></a>
 			<a href="<?php echo createLink("/page/update/".$page->get("id")); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;"><?php echo ucfirst(text("update")); ?></a>
-			<a href="<?php echo createLink("/page/delete/".$page->get("id")); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;"><?php echo ucfirst(text("delete")); ?></a>
 		</div>
 		<div style="clear: both;">
 		</div>
@@ -17,7 +26,7 @@
 		<?php echo ucfirst(text("title")); ?>
 	</div>
 	<div style="overflow: hidden;padding: 15px;">
-		<?php echo lang($page->get("title")); ?>
+		<?php echo lang($page->get("title", $lang)); ?>
 	</div>
 	<div style="clear: left;">
 	</div>
@@ -26,7 +35,7 @@
 		<?php echo ucfirst(text("content")); ?>
 	</div>
 	<div style="overflow: hidden;padding: 15px;">
-		<?php echo lang($page->get("content")); ?>
+		<?php echo lang($page->get("text", $lang)); ?>
 	</div>
 	<div style="clear: left;">
 	</div>

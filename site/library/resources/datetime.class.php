@@ -34,7 +34,7 @@ class DatetimeType implements Type {
 	}
 
 	public function __toString() {
-		return $this->_attribut;
+		return $this->_attribut."";
 	}
 }
 

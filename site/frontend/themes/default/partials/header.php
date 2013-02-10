@@ -2,9 +2,9 @@
 	<div id="top-header">
 		<?php
 		    if(Kernel::get("action") != "404" && 
-		      (Kernel::get("action") != "profil" || 
-		      (Kernel::get("action") == "profil" && !Kernel::get("session")->containsKey("first_connection")) ||
-		      (Kernel::get("action") == "profil" && Kernel::get("session")->containsKey("first_connection") && !Kernel::get("session")->get("first_connection")))){
+		      (Kernel::get("action") != "compte" || 
+		      (Kernel::get("action") == "compte" && !Kernel::get("session")->containsKey("first_connection")) ||
+		      (Kernel::get("action") == "compte" && Kernel::get("session")->containsKey("first_connection") && !Kernel::get("session")->get("first_connection")))){
 		?>
 			<div id="oiseau-anime">
 				<img src="<?php echo '/'._theme_path_ . 'images/'; ?>oeuil-oiseau.png" alt="<?php echo ALT_BIRD_EYE; ?>" class="bird-eye" id="left-eye"/>
@@ -29,7 +29,7 @@
 				<?php echo MY_PROFILE; ?>
 			</a>
 			<span>&nbsp;-&nbsp;</span>
-			<a href="<?php echo Kernel::getUrl("user/compte/" . Kernel::get("user")->get("pseudo")); ?>">
+			<a href="<?php echo Kernel::getUrl("user/compte"); ?>">
 				<?php echo MY_ACCOUNT; ?>
 			</a>
 			<span>&nbsp;-&nbsp;</span>

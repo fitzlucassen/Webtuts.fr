@@ -168,24 +168,26 @@ abstract class OrmStdAbstract {
 			$types = $this->getTypes();
 			$valid = true;
 			foreach ($this->getTypes() as $key => $value) {
-				$type = explode(" ", $value);
-				if($type[0] == "type") {
-					$typeName = $type[1]."Type";
-					if(!$typeName::check($this->$key))
-						$valid = false;
-				}
-				if($type[0] == "class") {
-					if(!is_numeric($this->$key)) {
-						$valid = false;
+				if(!empty($this->$key)) {	
+					$type = explode(" ", $value);
+					if($type[0] == "type") {
+						$typeName = $type[1]."Type";
+						if(!$typeName::check($this->$key))
+							$valid = false;
 					}
-				}
-				if($type[0] == "collection") {
-					if(!empty($this->$key)) {
-						$valid = false;
+					if($type[0] == "class") {
+						if(!is_numeric($this->$key)) {
+							$valid = false;
+						}
 					}
+					if($type[0] == "collection") {
+						if(!empty($this->$key)) {
+							$valid = false;
+						}
+					}
+					/*if(!$valid)
+						echo $key."[".$value."]";*/
 				}
-				/*if(!$valid)
-					echo $key."[".$value."]";*/
 			}
 			return $valid;
 		}
@@ -198,13 +200,14 @@ abstract class OrmStdAbstract {
 			if($this->checkData()) {
 				// enregistrement des langues
 				foreach ($this->getTypes() as $key => $value) {
-					$types = explode(" ", $value);
-					if($types[0]=="type") {
-						$type = $types[1]."Type";
-						$this->$key = $type::save($this->$key);
+					if(array_key_exists($key, $this->_attributes)) {
+						$types = explode(" ", $value);
+						if($types[0]=="type") {
+							$type = $types[1]."Type";
+							$this->$key = $type::save($this->$key);
+						}
 					}
 				}
-
 				if($id = Sql2::create()->insert($this->_class)->columnsValues($this->_attributes)->execute())
 					return Sql2::create()->from($this->_class)->where("id", Sql2::$OPE_EQUAL, $id)->fetchClass();
 				else
@@ -279,7 +282,6 @@ abstract class OrmStdAbstract {
 				$cpt++;
 			}
 
-
 			// set de tous les types
 			$types = $this->getTypes();
 			foreach ($types as $key => $value) {
@@ -300,7 +302,6 @@ abstract class OrmStdAbstract {
 					}
 				}
 			}
-
 			if(!empty($columnsValues)) {
 				if(!Sql2::create()->update(strtolower($this->_class))->columnsValues($columnsValues)->where("id", Sql2::$OPE_EQUAL, $this->id)->execute())
 					return false; 

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mer 06 Février 2013 à 21:51
+-- Généré le: Ven 08 Février 2013 à 13:59
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.3.13
 
@@ -49,17 +49,17 @@ INSERT INTO `access` (`id`, `deleted`, `code`, `description`) VALUES
 
 CREATE TABLE IF NOT EXISTS `article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `deleted` tinyint(1) NOT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `category` int(11) NOT NULL,
   `node` int(11) NOT NULL,
   `tags` int(11) NOT NULL,
   `author` int(11) NOT NULL,
   `date` datetime NOT NULL,
-  `image` int(11) NOT NULL,
+  `image` int(11) DEFAULT NULL,
   `title` int(11) NOT NULL,
   `text` int(11) NOT NULL,
-  `views` int(11) NOT NULL,
-  `comments` int(11) NOT NULL,
+  `views` int(11) NOT NULL DEFAULT '0',
+  `comments` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 

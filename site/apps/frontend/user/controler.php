@@ -17,8 +17,17 @@ class UserControler extends Controler {
 	
 	public function ProfilAction($params) {
 	    $user = App::getTable("user")->getBySanitizePseudo($params[3]);
-
-	    return $this->render(array('user' => $user));
+	    
+	    $image = "";
+	    
+	    if($user->get("image") != "" && $user->get("image") != null){
+		$image = "IN_USER";
+	    }
+	    else {
+		$image = md5(strtolower(trim($user->get("mail"))));
+	    }
+	    
+	    return $this->render(array('user' => $user, "image" => $image));
 	}
 	
 	public function SubscriptionAction($params) {
@@ -53,10 +62,17 @@ class UserControler extends Controler {
 			$attr["languages"] = htmlspecialchars($data["langage"]);
 
 			$languages_array = explode(',', $attr["languages"]);
-
+			
+			if(count($error) > 0)
+			    $bool_error = true;
+			
 			if(strlen($attr["pseudo"]) < 6){
 			    $bool_error = true;
 			    $error["pseudo"] = "error";
+			}
+			else if(App::getTable("user")->getBySanitizePseudo($attr["pseudo"])){
+			    $bool_error = true;
+			    $error["pseudo_exist"] = "error";
 			}
 			if(strlen($attr["name"]) < 1){
 			    $bool_error = true;
@@ -88,7 +104,6 @@ class UserControler extends Controler {
 				$error["languages"] = "error";
 			    }
 			}
-
 			if($bool_error){
 			    return $this->render(array("error" => $error, "attr" => $attr));
 			}
@@ -170,8 +185,107 @@ class UserControler extends Controler {
 	}
 	
 	public function CompteAction($params){
-	    return $this->render(array('user' => null));
+	    if(Kernel::get("user") == false){
+		return $this->redirect(Kernel::getUrl("home/index"));
+	    }
+	    else {
+		$user = Kernel::get("user");
+		
+		$form = $this->getRequest();
+		if($form->isMethod("post")) {
+		    $data = $form->getData();
+		    
+		    $languages = array("", "html", "css", "php", "csharp", "asp", "javascript", "jquery");
+		    $civility = array("homme", "femme");
+		    $mail = "/[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+\.[a-zA-Z]+/";
+		    $url = "/((http:\/\/|https:\/\/)(www.)?(([a-zA-Z0-9-]){2,}\.){1,4}([a-zA-Z]){2,6}(\/([a-zA-Z-_\/\.0-9#:?=&;,]*)?)?)/";
+
+		    $bool_error = false;
+		    $error = array();
+
+		    $attr = array();
+		    $attr["pseudo"] = htmlspecialchars($data["pseudo"]);
+		    $attr["name"] = htmlspecialchars($data["name"]);
+		    $attr["surname"] = htmlspecialchars($data["firstname"]);
+		    $attr["mail"] = htmlspecialchars($data["email"]);
+		    $attr["civility"] = htmlspecialchars($data["civilite"]);
+		    $attr["country"] = htmlspecialchars($data["pays"]);
+		    $attr["city"] = htmlspecialchars($data["city"]);
+		    $attr["site"] = htmlspecialchars($data["site"]);
+		    //$attr["deleted"] = 0;
+		    //$attr["banned"] = 0;
+		    //$attr["image"] = 0;
+		    //$attr["access"] = 0;
+		    $attr["languages"] = htmlspecialchars($data["langage"]);
+
+		    $languages_array = explode(',', $attr["languages"]);
+
+		    if(strlen($attr["pseudo"]) < 6){
+			$bool_error = true;
+			$error["pseudo"] = "error";
+		    }
+		    else if($user_bis = App::getTable("user")->getBySanitizePseudo($attr["pseudo"])){
+			
+			if($user->get("id") != $user_bis->get("id")){
+			    $bool_error = true;
+			    $error["pseudo_exist"] = "error";
+			}
+		    }
+		    if(strlen($attr["name"]) < 1){
+			$bool_error = true;
+			$error["name"] = "error";
+		    }
+		    if(strlen($attr["surname"]) < 1){
+			$bool_error = true;
+			$error["surname"] = "error";
+		    }
+		    if(!preg_match($mail, $attr["mail"])){
+			$bool_error = true;
+			$error["mail"] = "error";
+		    }
+		    if(!in_array($attr["civility"], $civility) ){
+			$bool_error = true;
+			$error["civility"] = "error";
+		    }
+		    if(!preg_match($url, $attr["site"]) && strlen($attr["site"]) > 0){
+			$bool_error = true;
+			$error["site"] = "error";
+		    }
+		    foreach($languages_array as $language){
+			if(!in_array($language, $languages) ){
+			    $bool_error = true;
+			    $error["languages"] = "error";
+			}
+		    }
+		    if($bool_error){
+			return $this->render(array("user" => $user, "error" => $error, "attr" => $attr));
+		    }
+		    else {
+			$id = intval($data["id"]);
+
+			if(App::getClass("user", $id)->set($attr)){
+			    
+			    return $this->redirect(Kernel::getUrl("user/compte"));
+			}
+			else{
+			    return $this->render(array("user" => $user, "attr" => $attr));
+			}
+		    }
+		}
+		else {
+		    $attr["name"] = $user->get("name");
+		    $attr["surname"] = $user->get("surname");
+		    $attr["pseudo"] = $user->get("pseudo");
+		    $attr["mail"] = $user->get("mail");
+		    $attr["city"] = $user->get("city");
+		    $attr["site"] = $user->get("site");
+		}
+		
+		return $this->render(array('user' => $user, "attr" => $attr));
+	    }
 	}
+	
+	
 }
 
 ?>

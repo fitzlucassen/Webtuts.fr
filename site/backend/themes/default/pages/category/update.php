@@ -5,29 +5,51 @@
 			<?php echo lang($category->get("name")); ?>
 		</div>
 		<div style="overflow: hidden;padding-top:10px;padding-left: 20px;">
+			<form method="post" action="/category/delete" style="margin-left: 20px;display: inline-block; float: right;padding-right: 5px;padding-left: 5px;">
+				<input type="hidden" name="id" value="<?php echo $category->get("id"); ?>"/>
+				<input type="submit" value=<?php echo ucfirst(text("delete")); ?> style="margin-top: -10px;" />
+			</form>
 			<a href="<?php echo createLink("/category/show/".$category->get("id")); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;"><?php echo ucfirst(text("description")); ?></a>
 			<a href="<?php echo createLink("/category/update/".$category->get("id")); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;"><?php echo ucfirst(text("update")); ?></a>
-			<a href="<?php echo createLink("/category/delete/".$category->get("id")); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;"><?php echo ucfirst(text("delete")); ?></a>
 		</div>
 		<div style="clear: both;">
 		</div>
 	</div>
 
-	<form action="" method="post">
+	<form action="<?php echo Kernel::getUrl("category/update"); ?>" method="post">
+		<input type="hidden" name="id" value="<?php echo $category->get("id"); ?>" />
 		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
-			<?php echo ucfirst(text("name")); ?>
+			<?php echo ucfirst(text("name")); ?> (fr)
 		</div>
 		<div style="overflow: hidden;padding: 10px;">
-			<input name="name" type="text" value="<?php echo lang($category->get("name")); ?>"/>
+			<input name="name-fr" type="text" value="<?php echo lang($category->get("name", "fr")); ?>"/>
 		</div>
 		<div style="clear: left;">
 		</div>
 
 		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
-			<?php echo ucfirst(text("description")); ?>
+			<?php echo ucfirst(text("description")); ?> (fr)
 		</div>
 		<div style="overflow: hidden;padding: 10px;">
-			<textarea name="description"><?php echo lang($category->get("description")); ?></textarea>
+			<textarea name="description-fr"><?php echo lang($category->get("description", "fr")); ?></textarea>
+		</div>
+		<div style="clear: left;">
+		</div>
+
+		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
+			<?php echo ucfirst(text("name")); ?> (en)
+		</div>
+		<div style="overflow: hidden;padding: 10px;">
+			<input name="name-en" type="text" value="<?php echo lang($category->get("name", "en")); ?>"/>
+		</div>
+		<div style="clear: left;">
+		</div>
+
+		<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
+			<?php echo ucfirst(text("description")); ?> (en)
+		</div>
+		<div style="overflow: hidden;padding: 10px;">
+			<textarea name="description-en"><?php echo lang($category->get("description", "en")); ?></textarea>
 		</div>
 		<div style="clear: left;">
 		</div>

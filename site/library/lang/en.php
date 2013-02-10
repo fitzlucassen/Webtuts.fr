@@ -104,7 +104,8 @@
     define("OPTIONAL_INFORMATIONS", "Optional Informations");
     define("SUBSCRIBE", "Subscribe");
     define("LOGIN", "Connection");
-    define("WELCOME", "Welcome in the page of");
+    define("WELCOME_PROFIL", "Welcome in the page of");
+    define("WELCOME_ACCOUNT", "Welcome on your account");
     define("NOT_SUBSCRIBER", "Not yet registered? It's over here!");
     define("IDENTITY", "Identity");
     define("AVATAR", "Avatar of");
@@ -116,6 +117,12 @@
     define("IN", "in");
     define("SEE_WORK", "See his work");
     define("WHAT_HE_DO", "What he know");
+    define("ACCOUNT_SETTINGS", "It's here that you will update your data and, later, manage your community.");
+    define("UPDATE", "Update");
+    define("CONGRATS", "Congratulation, you just have<br/>made the good choice !<br/>
+			Me, Paf, promise you to learn you<br/>the Web !");
+    define("IF_HAVE_ACCOUNT", "If you have an account on");
+    define("USE_IT", "use the same email address to keep your avatar.");
     
     define("LBL_NAME", "Name");
     define("LBL_FIRSTNAME", "firstname");
@@ -131,6 +138,8 @@
     define("LBL_LANGAGE", "Known Languages");
     define("LBL_SITE", "Website");
     define("LBL_CONFIRM_PASSWORD", "Password confirmation");
+    define("LBL_PICTURE", "Your picture");
+
 
     // Placeholders
     define("PL_NAME", "Your name");
@@ -149,6 +158,7 @@
     define("WRONG_PATTERN_EMAIL", "E-maill must be like this xxx@yyy.zzz");
     define("WRONG_PATTERN_URL", "URL must be like this http(s)://xxx.zzz");
     define("BAD_LOGIN", "This login / password combination does not exist");
+    define("ALREADY_EXIST", "This login is already used by a member !");
 
     /**********
      *  BLOG  *

@@ -80,6 +80,27 @@ class Cache {
 		echo $content;
 		$this->write($this->buffer, $content);
 	}
+
+	public function startFile($cachename) {
+		if($content = $this->read($cachename)) {
+			$this->buffer = false;
+			return true;
+		}
+		ob_start();
+		$this->buffer = $cachename;
+	}
+
+	public function endFile() {
+		if(!$this->buffer) {
+			return false;
+		}
+		$content = ob_get_clean();
+		$this->write($this->buffer, $content);
+	}
+
+	public function getFile($cachename) {
+		return $this->dirname.'/'.$cachename;
+	}
 }
 
 

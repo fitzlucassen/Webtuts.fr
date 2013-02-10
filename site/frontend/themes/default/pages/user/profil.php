@@ -3,15 +3,21 @@
     <div class="middle-column">
 	<div class="border-title border-big-title">
 		<h1 class="left-title big-title">
-		    <?php echo WELCOME . " " . ucfirst($user->get("pseudo")); ?>
+		    <?php echo WELCOME_PROFIL . " " . ucfirst($user->get("pseudo")); ?>
 		</h1>
 	    <div class="cl"></div>
 	</div>
 	
 	<div class="informations-major-container">
 	    <h2><?php echo IDENTITY; ?></h2>
-	    
-	    <img src="<?php echo get_url_image($user); ?>" alt="<?php echo AVATAR . " " . ucfirst($user->get("name")) . " " . ucfirst($user->get("surname"));?>" width="80px" height="80px"/>
+	    <?php
+		$default_image = '/' . _theme_path_ . 'images/' . 'article-image.png';
+		if($image == "IN_USER")
+		    $url_img = get_url_image($user);
+		else
+		    $url_img = 'http://www.gravatar.com/avatar/' . $image . '?d=' . urlencode('http://' . $_SERVER['HTTP_HOST'] . $default_image);
+	    ?>
+	    <img src="<?php echo $url_img; ?>" alt="<?php echo AVATAR . " " . ucfirst($user->get("name")) . " " . ucfirst($user->get("surname"));?>" width="80px" height="80px"/>
 	    
 	    <div class="pContainer">
 		<label class="label-presentation"><?php echo RECOGNIZE_HIM . " :";?></label><p> <?php echo ucfirst($user->get("name")) . " " . ucfirst($user->get("surname")); ?></p>
@@ -26,7 +32,7 @@
 	     
 	    <div class="pContainer">
 		<label class="label-presentation"><?php echo FIND_HIM . " :";?></label><p> <?php echo ucfirst($user->get("city")) . " " . IN . " " . ucfirst($user->get("country")); ?></p>
-		<label class="label-presentation"><?php echo SEE_WORK . " :";?></label><p><a href="<?php echo $user->get("site"); ?>"><?php echo $user->get("site"); ?></a></p>
+		<label class="label-presentation"><?php echo SEE_WORK . " :";?></label><p><a target="_BLANK" href="<?php echo $user->get("site"); ?>"><?php echo $user->get("site"); ?></a></p>
 		<label class="label-presentation"><?php echo WHAT_HE_DO . " :";?></label><p> <?php echo str_replace(",", ", ",$user->get("languages")); ?></p>
 	    </div>
 	    

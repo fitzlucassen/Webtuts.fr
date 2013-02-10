@@ -15,7 +15,31 @@ class ArticleControler extends Controler {
 	}
 
 	public function AddAction($params) {
-		return $this->render(array('user' => null));
+		$categories = App::getClassArray("category");
+		$nodes = App::getClassArray("node");
+	
+		$form = $this->getRequest();
+		if($form->isMethod("post")) {
+			$data = $form->getData();
+			$title = array("fr" => $data["titlefr"], "en" => $data["titleen"]);
+			$text = array("fr" => $data["textfr"], "en" => $data["texten"]);
+			
+			$attr["category"] = $data['category'];
+			$attr["node"] = $data["node"];
+			//$attr["tag"] = 1;
+			$attr["image"] = 0;
+			$attr["author"] = Kernel::get("user")->get("id");
+			$attr["date"] = date("Y-m-d H:i:s");
+			$attr["title"] = $title;
+			$attr["text"] = $text;
+			if($article = App::getClass("article")->hydrate($attr)->save())
+				return $this->redirect("category/show/".$categorie->get("id"));
+			else
+				return $this->render(array("error" => "Vous n'avez pas bien rempli le formulaire"));
+		}
+		else {
+			return $this->render(array('categories' => $categories, 'nodes' => $nodes));
+		}
 	}
 
 	public function DeleteAction($params) {
@@ -35,14 +59,12 @@ class ArticleControler extends Controler {
 	}
 
 	public function ListAction($params) {
-		/*
-		$this->setCache("backend/");
-		if(!$articles = $this->cache->read("ArticleListeAction")){
-			$articles = App::getClassArray("article");
-			$this->cache->read("ArticleListeAction", print_r(App::getClassArray("article")));
-		}*/
-		$articles = App::getClassArray("article");//, array("where" => "have category"));
-		return $this->render(array('articles' => $articles));
+		if(!empty($params[3]))
+			$lang = $params[3];
+		else
+			$lang = $params[0];
+		$articles = App::getClassArray("article", array("where" => "node != 4"));//, array("where" => "have category"));
+		return $this->render(array('articles' => $articles, "lang" => $lang));
 	}
 }
 

@@ -8,6 +8,7 @@ class Response {
 	static public $STATUS_REDIRECT = 1;
 	static public $STATUS_HTTP = 2;
 	static public $STATUS_404 = 3;
+	static public $STATUS_XML = 4;
 
 	private $status;
 	private $route;
