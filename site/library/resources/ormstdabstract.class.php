@@ -370,8 +370,10 @@ abstract class OrmStdAbstract {
 								->where("A.id", Sql2::$OPE_EQUAL ,"B.id_".$class, Sql2::$TYPE_NO_QUOTE)
 								->andWhere("B.id_".strtolower($this->_class), Sql2::$OPE_EQUAL, $this->id)
 								->andWhere("A.deleted", "=", 0);
-			if(array_key_exists("orderBy", $params))
-				$this->$attribut->orderBy($params["orderBy"]);
+			if(!empty($params))	{
+				if(array_key_exists("orderBy", $params))
+					$this->$attribut->orderBy($params["orderBy"]);
+			}
 			$this->$attribut->fetchClassArray();	
 
 			$this->$attribut->setObject($this);
@@ -382,10 +384,12 @@ abstract class OrmStdAbstract {
 								->from($class)
 								->where(strtolower($this->_class), Sql2::$OPE_EQUAL ,$this->get("id"), Sql2::$TYPE_NO_QUOTE)
 								->andWhere("deleted", "=", 0);
-			if(array_key_exists("orderBy", $params))
-				$this->$attribut->orderBy($params["orderBy"]);
+			if(!empty($params))	{
+				if(array_key_exists("orderBy", $params))
+					$this->$attribut->orderBy($params["orderBy"]);
+			}
 			$this->$attribut->fetchClassArray();
-			
+
 			$this->$attribut->setObject($this);
 			$this->$attribut->setTarget($class);
 		}
