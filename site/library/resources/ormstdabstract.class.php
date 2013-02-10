@@ -364,7 +364,7 @@ abstract class OrmStdAbstract {
    		if(!Sql2::table_exist($table))
    			$haveTable = false;
    		if($haveTable) {
-			$this->$attribut = Sql2::create()
+			$requete = Sql2::create()
 								->select($select)
 								->from($class, $table)
 								->where("A.id", Sql2::$OPE_EQUAL ,"B.id_".$class, Sql2::$TYPE_NO_QUOTE)
@@ -372,23 +372,23 @@ abstract class OrmStdAbstract {
 								->andWhere("A.deleted", "=", 0);
 			if(!empty($params))	{
 				if(array_key_exists("orderBy", $params))
-					$this->$attribut->orderBy($params["orderBy"]);
+					$requete->orderBy($params["orderBy"]);
 			}
-			$this->$attribut->fetchClassArray();	
+			$this->$attribut = $requete->fetchClassArray();	
 
 			$this->$attribut->setObject($this);
 			$this->$attribut->setTarget($class);
 		}
 		else {
-			$this->$attribut = Sql2::create()
+			$requete = Sql2::create()
 								->from($class)
 								->where(strtolower($this->_class), Sql2::$OPE_EQUAL ,$this->get("id"), Sql2::$TYPE_NO_QUOTE)
 								->andWhere("deleted", "=", 0);
 			if(!empty($params))	{
 				if(array_key_exists("orderBy", $params))
-					$this->$attribut->orderBy($params["orderBy"]);
+					$requete->orderBy($params["orderBy"]);
 			}
-			$this->$attribut->fetchClassArray();
+			$this->$attribut = $requete->fetchClassArray();	
 
 			$this->$attribut->setObject($this);
 			$this->$attribut->setTarget($class);
