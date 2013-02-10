@@ -5,9 +5,12 @@
 			<?php echo minifyText(lang($page->get("title"))); ?>
 		</div>
 		<div style="overflow: hidden;padding-top:10px;padding-left: 20px;">
+			<form method="post" action="<?php echo Kernel::getUrl("page/delete"); ?>" style="margin-left: 20px;display: inline-block; float: right;padding-right: 5px;padding-left: 5px;">
+				<input type="hidden" name="id" value="<?php echo $page->get("id"); ?>"/>
+				<input type="submit" value=<?php echo ucfirst(text("delete")); ?> style="margin-top: -10px;" />
+			</form>
 			<a href="<?php echo createLink("/page/show/".$page->get("id")); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;"><?php echo ucfirst(text("description")); ?></a>
 			<a href="<?php echo createLink("/page/update/".$page->get("id")); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;"><?php echo ucfirst(text("update")); ?></a>
-			<a href="<?php echo createLink("/page/delete/".$page->get("id")); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;"><?php echo ucfirst(text("delete")); ?></a>
 		</div>
 		<div style="clear: both;">
 		</div>

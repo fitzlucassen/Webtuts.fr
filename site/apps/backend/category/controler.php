@@ -7,8 +7,8 @@ class CategoryControler extends Controler {
 
 	public function ShowAction($params) {
 		$category = App::getClass("category", $params[3]);
-		if(!empty($params[3]))
-			$lang = $params[3];
+		if(!empty($params[4]))
+			$lang = $params[4];
 		else
 			$lang = $params[0];
 		return $this->render(array('category' => $category, "lang" => $lang));
@@ -25,7 +25,7 @@ class CategoryControler extends Controler {
 			$attr["image"] = $data["image"];
 			$attr["deleted"] = 0;
 			if($categorie = App::getClass("category")->hydrate($attr)->save())
-				return $this->redirect("category/show/".$categorie->get("id"));
+				return $this->redirect(Kernel::getURL("category/show/".$categorie->get("id")));
 			else
 				return $this->render(array("error" => "Vous n'avez pas bien rempli le formulaire"));
 		}
@@ -35,14 +35,35 @@ class CategoryControler extends Controler {
 	}
 
 	public function DeleteAction($params) {
-		$category = App::getClass("category", $params[3]);
-		return $this->render(array('category' => $category));
+		$form = $this->getRequest();
+		if($form->isMethod("post")) {
+			$data = $form->getData();
+			$id = $data["id"];
+			$category = App::getClass("category", $id);
+	
+			if($category->set(array("deleted" => true)))
+				return $this->redirect(Kernel::getUrl("category/list"));
+			else
+				return $this->redirect(Kernel::getUrl("category/delete/".$id));
+		}
+		else {
+			$category = App::getClass("category", $params[3]);
+			return $this->render(array('category' => $category));
+		}
 	}
 
 	public function UpdateAction($params) {
-		$method = $this->getRequest();
-		if($method->isMethod("post")) {
-			return $this->redirect("/category/show/".$params[3]);
+		$form = $this->getRequest();
+		if($form->isMethod("post")) {
+			$data = $form->getData();
+			$id = $data["id"];
+			$category = App::getClass("category", $id);
+			$attr["name"] = array("fr" => $data["name-fr"], "en" => $data["name-en"]);
+			$attr["description"] = array("fr" => $data["description-fr"], "en" => $data["description-en"]);
+			if($category->set($attr))
+				return $this->redirect(Kernel::getUrl("category/show/".$category->get("id")));
+			else
+				return $this->render(array('category' => $category));
 		}
 		else {
 			$category = App::getClass("category", $params[3]);
