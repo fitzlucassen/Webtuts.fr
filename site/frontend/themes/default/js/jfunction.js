@@ -31,4 +31,20 @@ $(document).ready(function(){
 	    $('#hidden-langage').val(newVal);
 	}
     });
+    
+    
+    $('#send-comment').click(function(){
+	var pseudo = $('#pseudo-text').text();
+	var message = $('#message-text').val();
+	var article = $("#article-comment-value").val();
+	
+	$.ajax({
+	    type : "post",
+	    url : "/site/frontend/themes/default/postComment.php",
+	    data : {'pseudo':pseudo, 'message':message, 'article':article},
+	    success:function(response){
+		$(".article-comments").append(response);
+	    }
+	});
+    });
 });

@@ -268,7 +268,7 @@ class UserControler extends Controler {
 			    return $this->redirect(Kernel::getUrl("user/compte"));
 			}
 			else{
-			    return $this->render(array("error" => "Vous n'avez pas bien rempli le formulaire"));
+			    return $this->render(array("user" => $user, "attr" => $attr));
 			}
 		    }
 		}
