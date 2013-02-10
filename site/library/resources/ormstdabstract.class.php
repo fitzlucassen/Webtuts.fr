@@ -337,7 +337,7 @@ abstract class OrmStdAbstract {
 		}
 	}
 */
-	private function setCollection($attribut, $class, $params) {
+	private function setCollection($attribut, $class, $params=null) {
 		$this->$attribut = new Collection();
 		// Recupération de tous les attributs de la classe à retourner 
 		$cpt = 0;
