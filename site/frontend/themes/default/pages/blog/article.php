@@ -34,11 +34,11 @@
 	
 	<div id="ancre-comments" class="article-comments">
 	    <?php
-		$text_comment = (count($article->get("comments")) > 0 ? COMMENTS_LIST : NO_COMMENT);
+		$text_comment = (count($article->get("comments", array("orderBy" => "date"))) > 0 ? COMMENTS_LIST : NO_COMMENT);
 	    ?>
 	    <h2><?php echo $text_comment; ?></h2>
 	    <?php
-		foreach($article->get("comments", array("orderBy" => "date")) as $comment){
+		foreach($article->get("comments") as $comment){
 		    $url_image = get_url_image($comment->get("author"));
 		    $alt_image = "avatar de " . $comment->get("author")->get("pseudo");
 	    ?>
