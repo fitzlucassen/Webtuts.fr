@@ -104,6 +104,8 @@ class UserControler extends Controler {
 				$error["languages"] = "error";
 			    }
 			}
+			
+			var_dump($languages_array);die();
 			if($bool_error){
 			    return $this->render(array("error" => $error, "attr" => $attr));
 			}

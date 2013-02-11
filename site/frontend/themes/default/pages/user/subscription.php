@@ -108,7 +108,7 @@
 		<input type="checkbox" name="langage-asp" value="asp" id="langage-asp" class="check-langage"/>
 		<label for="langage-asp" class="box-next">&nbsp; ASP.NET</label>
 		
-		<input type="checkbox" name="langage-javascript" value="js" id="langage-javascript" class="check-langage"/>
+		<input type="checkbox" name="langage-javascript" value="javascript" id="langage-javascript" class="check-langage"/>
 		<label for="langage-javascript" class="box-next">&nbsp; Javascript</label>
 		
 		<input type="checkbox" name="langage-jquery" value="jquery" id="langage-jquery" class="check-langage"/>

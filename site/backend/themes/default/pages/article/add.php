@@ -15,6 +15,26 @@ tinyMCE.init({
         theme_advanced_toolbar_align : "left",
         theme_advanced_statusbar_location : "bottom",
         theme_advanced_resizing : true,
+	theme_advanced_fonts : "Andale Mono=andale mono,times;"+
+                "Arial=arial,helvetica,sans-serif;"+
+                "Arial Black=arial black,avant garde;"+
+                "Book Antiqua=book antiqua,palatino;"+
+                "Comic Sans MS=comic sans ms,sans-serif;"+
+                "Courier New=courier new,courier;"+
+                "Georgia=georgia,palatino;"+
+                "Helvetica=helvetica;"+
+                "Impact=impact,chicago;"+
+                "Symbol=symbol;"+
+                "Tahoma=tahoma,arial,helvetica,sans-serif;"+
+                "Terminal=terminal,monaco;"+
+                "Times New Roman=times new roman,times;"+
+                "Trebuchet MS=trebuchet ms,geneva;"+
+                "Verdana=verdana,geneva;"+
+                "Webdings=webdings;"+
+		"Segoe ui=Segoe UI light, verdana;"+
+		"Ubuntu-c=Ubuntu-C, arial;",
+	    
+	theme_advanced_font_sizes : "10px,12px,14px,16px,18px,20px,22px,24px",
 
         // Skin options
         skin : "o2k7",
