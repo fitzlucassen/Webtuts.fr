@@ -16,7 +16,9 @@ class UserControler extends Controler {
 	}
 	
 	public function ProfilAction($params) {
-	    if($user = App::getTable("user")->getBySanitizePseudo($params[3])){
+	    $user = App::getTable("user")->getBySanitizePseudo(strtolower($params[3]));
+
+	    if($user){
 
 		$image = "";
 
@@ -29,8 +31,9 @@ class UserControler extends Controler {
 
 		return $this->render(array('user' => $user, "image" => $image));
 	    }
-	    else
+	    else{
 		return $this->redirect(Kernel::getUrl("error/404"));
+	    }
 	}
 	
 	public function SubscriptionAction($params) {
@@ -48,7 +51,7 @@ class UserControler extends Controler {
 			$error = array();
 
 			$attr = array();
-			$attr["pseudo"] = htmlspecialchars($data["pseudo"]);
+			$attr["pseudo"] = strtolower(htmlspecialchars($data["pseudo"]));
 			$attr["name"] = htmlspecialchars($data["name"]);
 			$attr["surname"] = htmlspecialchars($data["firstname"]);
 			$attr["mail"] = htmlspecialchars($data["email"]);
