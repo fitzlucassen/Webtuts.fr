@@ -18,7 +18,7 @@
 	    <a href="<?php echo Kernel::getUrl("user/profil/" . $article->get("author")->get("pseudo")); ?>"><?php echo $article->get("author")->get("pseudo"); ?></a>
 	</p>
 	<p class="content-introduction">
-	    <?php echo short_description($article->get("text")); ?>
+	    <?php echo short_description($article->get("text"), 140); ?>
 	</p>
 	<div class="more-container">
 	    <p class="show-more">
@@ -41,8 +41,16 @@
     
     <div class="article-category left">
 	<img src="<?php echo '/'._theme_path_ . 'images/'; ?>angle.png" alt="<?php echo ALT_HEADBAND; ?>" />
-	<a class="aBlock" href="<?php echo Kernel::getUrl("blog/category/" . Kernel::sanitize($article->get("category")->get("name"))); ?>">
-	    <?php echo $article->get("category")->get("name"); ?>
+	<?php 
+		$temp = $article->get("category")->get("name");
+		if(strlen($article->get("category")->get("name")) > 15){
+		    $temp_array = explode(" ", $article->get("category")->get("name"));
+		    $temp = implode("<br/>", $temp_array);
+		}
+	?>
+	<a style="<?php echo (isset($temp_array) ? 'height:40px;padding-top:13px;margin-left:-8px;' : ''); ?>" class="aBlock" href="<?php echo Kernel::getUrl("blog/category/" . Kernel::sanitize($article->get("category")->get("name"))); ?>">
+	    <?php 
+		echo $temp; ?>
 	</a>
     </div>
 

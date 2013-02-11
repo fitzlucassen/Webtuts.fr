@@ -22,7 +22,7 @@ class UserControler extends Controler {
 
 		$image = "";
 
-		if($user->get("image") != 0){
+		if($user->get("image") != null){
 		    $image = "IN_USER";
 		}
 		else {
