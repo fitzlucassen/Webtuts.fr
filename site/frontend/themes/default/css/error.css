@@ -24,9 +24,8 @@ header nav, #header #nav {
     display: block;
 }
 #bad-route-page{
-    overflow: hidden;
     position: relative;
-
+    overflow: hidden;
     min-height: 420px;
 }
 #oiseau-volant{
@@ -34,6 +33,17 @@ header nav, #header #nav {
     width: 73px;
     height: 94px;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 28px;
+    left: 30px;
+    z-index: 99999999999999;
+}
+#sang{
+    background: transparent url(../images/sang.png) center center no-repeat;
+    width: 80px;
+    height: 54px;
+    position: absolute;
+    top: 580px;
+    left: 600px;
+    z-index: 99999999999999;
+    display:none;
 }

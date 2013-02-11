@@ -466,6 +466,9 @@ footer #bottom-footer{
 	-moz-box-shadow: 0 0 5px rgba(0,0,0,0.6);
 	-o-box-shadow: 0 0 5px rgba(0,0,0,0.6);
 	-ms-box-shadow: 0 0 5px rgba(0,0,0,0.6);
+	
+	position: relative;
+	overflow: hidden;
 }
 .one-article{
 	width: 606px;

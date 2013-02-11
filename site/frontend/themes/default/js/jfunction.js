@@ -31,4 +31,10 @@ $(document).ready(function(){
 	    $('#hidden-langage').val(newVal);
 	}
     });
+    setTimeout(function(){
+	
+	    if($('#oiseau-volant').position().left > 600){
+		$('#sang').css({'display':'block'});
+	    }
+    }, 1600);
 });
