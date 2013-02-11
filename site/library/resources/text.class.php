@@ -26,7 +26,7 @@ class TextType implements Type {
 	}
 
 	public static function save($data) {
-		return htmlspecialchars($data);
+		return mysql_real_escape_string(htmlspecialchars($data));
 	}
 
 	public static function update($object, $attribut, $data = null) {
