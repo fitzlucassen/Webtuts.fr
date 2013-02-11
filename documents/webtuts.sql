@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Lun 11 Février 2013 à 16:57
+-- Généré le: Lun 11 Février 2013 à 20:42
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.3.13
 
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `article` (
   `views` int(11) NOT NULL DEFAULT '0',
   `comments` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Contenu de la table `article`
@@ -71,7 +71,8 @@ INSERT INTO `article` (`id`, `deleted`, `category`, `node`, `tags`, `author`, `d
 (1, 0, 1, 1, 1, 1, '2012-12-15 00:00:00', 0, 4, 5, 32, 0),
 (2, 0, 0, 2, 0, 1, '2013-01-11 00:00:00', 0, 31, 32, 0, 0),
 (3, 0, 0, 3, 0, 1, '2013-01-02 00:00:00', 0, 78, 79, 0, 0),
-(4, 0, 0, 3, 0, 1, '2013-01-13 18:24:36', 0, 80, 81, 0, 0);
+(4, 0, 0, 3, 0, 1, '2013-01-13 18:24:36', 0, 80, 81, 0, 0),
+(10, 0, 4, 1, 0, 5, '2013-02-11 20:40:31', 0, 90, 91, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -216,7 +217,7 @@ CREATE TABLE IF NOT EXISTS `lang` (
   `lang` text NOT NULL,
   `translation` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=285 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=289 ;
 
 --
 -- Contenu de la table `lang`
@@ -302,7 +303,11 @@ INSERT INTO `lang` (`id`, `id_lang`, `lang`, `translation`) VALUES
 (273, 23, 'en', 'Javascript'),
 (274, 25, 'en', 'JQuery'),
 (275, 24, 'en', 'All tuts using Javascript language'),
-(276, 26, 'en', 'All tuts using JQuery framework');
+(276, 26, 'en', 'All tuts using JQuery framework'),
+(285, 90, 'fr', 'Variables Session'),
+(286, 90, 'en', 'Session variables'),
+(287, 91, 'fr', '<p><span>Sur un site, il peut parfois &ecirc;tre n&eacute;cessaire de transmettre des informations sur un utilisateur d&rsquo;une page &agrave; une autre. Pour cela on utilise en PHP les variables session.</span></p>\r\n<p><span>Les informations contenues dans ces variables sont stock&eacute;es dans des fichiers sur le serveur, contrairement aux cookies qui stockent les informations sur la machine de l&rsquo;utilisateur, ce qui offre donc un plus haut niveau de s&eacute;curit&eacute;.</span></p>\r\n<ul>\r\n<li><span style="font-family: ''Segoe UI light'', verdana; font-size: 12px;">Ouverture d&rsquo;une session</span></li>\r\n</ul>\r\n<p><span>On cr&eacute;&eacute; une nouvelle session &agrave; l&rsquo;aide de la fonction session_start(). Il suffit d&rsquo;impl&eacute;menter cette fonction au d&eacute;but de votre page, avant le code HTML, afin d&rsquo;avoir acc&egrave;s aux variables de session.</span></p>\r\n<p style="margin-left: 30px;"><span style="color: #a6e22e;">&lt;?php</span><br /><span style="color: #a6e22e;">&nbsp; session_start()&nbsp;;</span><br /><span style="color: #a6e22e;">?&gt;</span></p>\r\n<p><span>Si un fichier existe sur le serveur pour cette session, les variables seront r&eacute;cup&eacute;r&eacute;es, sinon le fichier sera cr&eacute;&eacute;.</span></p>\r\n<ul>\r\n<li><span style="font-family: ''Segoe UI light'', verdana; font-size: 12px;">Utilisation des variables de session</span></li>\r\n</ul>\r\n<p><span>Les variables sont accessibles via un tableau superglobal&nbsp;: $_SESSION.</span></p>\r\n<p style="margin-left: 30px;"><span style="color: #a6e22e;">&lt;?php</span><br /><span style="color: #a6e22e;">&nbsp; session_start()&nbsp;;</span><br /><span><span style="color: #a6e22e;">&nbsp; $_SESSION[</span><span style="color: #e6db74;">&lsquo;pseudo&rsquo;</span><span style="color: #a6e22e;">] =</span><span style="color: #e6db74;"> &lsquo;Muusha&rsquo;</span>&nbsp;;</span><br /> <br /><span style="color: #a6e22e;">&nbsp; <span style="color: #f92673;">echo</span> <span style="color: #e6db74;">&lsquo;L&rsquo;utilisateur actuel est&nbsp;: &lsquo;</span>.$_SESSION[<span style="color: #e6db74;">&lsquo;pseudo&rsquo;</span>]&nbsp;;</span><br /><span style="color: #a6e22e;">?&gt;</span></p>\r\n<p><span>Une fois la session d&eacute;marr&eacute;e, nous pouvons commencer &agrave; cr&eacute;er nos variables. Dans ce cas, la variable cr&eacute;&eacute;e est &laquo;&nbsp;pseudo&nbsp;&raquo; et elle contiendra la valeur que l&rsquo;on souhaite.</span><br /><span>Les noms de ces variables ne sont pas d&eacute;finis, on peut donc donner n&rsquo;importe quelle cl&eacute; au tableau $_SESSION.</span></p>\r\n<p><span>Ensuite, pour acc&eacute;der aux informations, il suffit de r&eacute;cup&eacute;rer la valeur contenue dans le tableau $_SESSION en pr&eacute;cisant la cl&eacute;.</span></p>\r\n<p><span>Les sessions ont une dur&eacute;e limit&eacute;e de 30 minutes par d&eacute;faut. Il est donc plus prudent de v&eacute;rifier si elle existe toujours. Pour cela il faut utiliser la fonction isset().</span></p>\r\n<p style="margin-left: 30px;"><span style="color: #a6e22e;">&lt;?php</span><br /><span style="color: #a6e22e;">&nbsp; <span style="color: #f92673;">if</span>(isset($_SESSION[<span style="color: #e6db74;">&lsquo;pseudo&rsquo;</span>]))</span><br /><span style="color: #a6e22e;">&nbsp; &nbsp;<span style="color: #f92673;"> echo</span><span style="color: #e6db74;"> &lsquo;La variable existe.&rsquo;</span>&nbsp;;</span><br /><span style="color: #a6e22e;">?&gt;</span></p>\r\n<ul>\r\n<li><span style="font-family: ''Segoe UI light'', verdana; font-size: 12px;">D&eacute;truire les variables et fermer une session.</span></li>\r\n</ul>\r\n<p><span>Il existe 2 fonctions pour d&eacute;truire les variables d&rsquo;une session.</span></p>\r\n<p style="margin-left: 30px;"><span style="color: #a6e22e;">&lt;?php</span><br /><span style="color: #a6e22e;">&nbsp; session_unset()&nbsp;;</span><br /><span style="color: #a6e22e;">?&gt;</span></p>\r\n<p style="margin-left: 30px;"><span style="color: #a6e22e;">&lt;?php</span><br /><span style="color: #a6e22e;">&nbsp; unset($_SESSION[</span><span style="color: #e6db74;">&lsquo;pseudo&rsquo;<span style="color: #a6e22e;">])&nbsp;;</span></span><br /><span style="color: #a6e22e;">?&gt;</span></p>\r\n<p><span>Le premier code a pour but de supprimer toutes les variables de la session en cours alors que le second permet de supprimer uniquement la variable pseudo de notre session.</span></p>\r\n<p><span>Pour fermer une session, il faut utiliser la fonction session_destroy().</span></p>\r\n<p style="margin-left: 30px;"><span style="color: #a6e22e;">&lt;?php</span><br /><span style="color: #a6e22e;">&nbsp; session_destroy()&nbsp;;</span><br /><span style="color: #a6e22e;">?&gt;</span></p>\r\n<p><span>A noter, les sessions sont d&eacute;truites lors de la fermeture du navigateur.</span></p>'),
+(288, 91, 'en', '<p>Sorry, we will translate this tutorial as soon as possible.</p>');
 
 -- --------------------------------------------------------
 
@@ -539,7 +544,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `languages` varchar(255) DEFAULT '',
   `access` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Contenu de la table `user`
@@ -547,7 +552,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `deleted`, `banned`, `pseudo`, `name`, `surname`, `mail`, `image`, `datesignin`, `civility`, `password`, `country`, `city`, `site`, `languages`, `access`) VALUES
 (1, 0, 0, 'fozeek', 'quentin', 'deneuve', 'quentin.deneuve@gmail.com', 0, '2013-02-01 00:00:00', 'homme', 'e1d75b9a8b4d045d96180b6ec6f5e686', 'France', 'Briis-sous-forge', 'http://fozeek.fr', 'html,css,php,javascript,jquery', 0),
-(2, 0, 0, 'fitz_lucassen', 'thibault', 'dulon', 'thibault.dulon@gmail.com', 7, '2013-02-03 00:00:00', 'homme', 'ce0608b1cb5f1b15c59f9344f53729fd', 'France', 'Paris', 'http://fitz.hebergratuit.com', 'html,css,php,javascript,jquery,asp.net,csharp', 0);
+(2, 0, 0, 'fitz_lucassen', 'thibault', 'dulon', 'thibault.dulon@gmail.com', 7, '2013-02-03 00:00:00', 'homme', 'ce0608b1cb5f1b15c59f9344f53729fd', 'France', 'Paris', 'http://fitz.hebergratuit.com', 'html,css,php,javascript,jquery,asp.net,csharp', 0),
+(5, 0, 0, 'muusha', 'Jonathan', 'BICHEUX', 'bicheuxj@gmail.com', 0, '2013-02-11 20:10:40', 'homme', 'cf9ee5bcb36b4936dd7064ee9b2f139e', 'France', 'Rueil Malmaison', NULL, 'php,html,css,javascript,jquery', 1);
 
 -- --------------------------------------------------------
 
