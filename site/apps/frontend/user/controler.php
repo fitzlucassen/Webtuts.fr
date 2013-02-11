@@ -16,18 +16,21 @@ class UserControler extends Controler {
 	}
 	
 	public function ProfilAction($params) {
-	    $user = App::getTable("user")->getBySanitizePseudo($params[3]);
+	    if($user = App::getTable("user")->getBySanitizePseudo($params[3])){
 	    
-	    $image = "";
-	    
-	    if($user->get("image") != "" && $user->get("image") != null){
-		$image = "IN_USER";
+		$image = "";
+
+		if(isset($user->get("image")) && !empty($user->get("image")) && $user->get("image") != 0){
+		    $image = "IN_USER";
+		}
+		else {
+		    $image = md5(strtolower(trim($user->get("mail"))));
+		}
+
+		return $this->render(array('user' => $user, "image" => $image));
 	    }
-	    else {
-		$image = md5(strtolower(trim($user->get("mail"))));
-	    }
-	    
-	    return $this->render(array('user' => $user, "image" => $image));
+	    else
+		return $this->redirect(Kernel::getUrl("error/404"));
 	}
 	
 	public function SubscriptionAction($params) {
