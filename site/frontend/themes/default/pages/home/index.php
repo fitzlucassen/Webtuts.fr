@@ -78,13 +78,13 @@
 	</div>
 
 	<div id="social-box" class="aside-box">
-	    <a href="https://www.facebook.com/webtuts.fr" id="facebook-social">
+	    <a target="_blank" href="https://www.facebook.com/webtuts.fr" id="facebook-social">
 		Facebook
 	    </a>
-	    <a href="https://twitter.com/webtuts_fr" id="twitter-social">
+	    <a target="_blank" href="https://twitter.com/webtuts_fr" id="twitter-social">
 		Twitter
 	    </a>
-	    <a href="<?php echo Kernel::getUrl("blog/rss"); ?>" id="rss-social">
+	    <a target="_blank" href="<?php echo Kernel::getUrl("blog/rss"); ?>" id="rss-social">
 		<?php echo RSS; ?>
 	    </a>
 	    <a href="#" id="newsletter-social">

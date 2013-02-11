@@ -120,7 +120,7 @@
 	    
 	    <div class="cl"></div>
 	    
-	    <h4>*<?php echo IF_HAVE_ACCOUNT; ?> <a href="http://fr.gravatar.com">gravatar</a>, <?php echo USE_IT; ?></h4>
+	    <h4>*<?php echo IF_HAVE_ACCOUNT; ?> <a target="_blank" href="http://fr.gravatar.com">gravatar</a>, <?php echo USE_IT; ?></h4>
 	    <div class="marginAuto">
 		<div class="button big-button">
 		    <span>

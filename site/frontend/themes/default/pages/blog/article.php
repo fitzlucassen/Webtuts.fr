@@ -39,8 +39,11 @@
 	    <h2><?php echo $text_comment; ?></h2>
 	    <?php
 		foreach($article->get("comments") as $comment){
-		    $url_image = get_url_image($comment->get("author"));
-		    $alt_image = "avatar de " . $comment->get("author")->get("pseudo");
+		    $default_image = '/' . _theme_path_ . 'images/' . 'article-image.png';
+		    $image = md5(strtolower(trim($comment->get("author")->get("mail"))));
+		    
+		    $url_image = 'http://www.gravatar.com/avatar/' . $image . '?d=' . urlencode('http://' . $_SERVER['HTTP_HOST'] . $default_image);
+		    $alt_image = AVATAR . " " . $comment->get("author")->get("pseudo");
 	    ?>
 	    <div class="one-comment">
 		<div class="comment-user-image">
@@ -65,7 +68,7 @@
 		    $image = md5(strtolower(trim($user->get("mail"))));
 		    
 		    $url_image = 'http://www.gravatar.com/avatar/' . $image . '?d=' . urlencode('http://' . $_SERVER['HTTP_HOST'] . $default_image);
-		    $alt_image = AVATAR . $user->get("pseudo");
+		    $alt_image = AVATAR . " " . $user->get("pseudo");
 	    ?>
 	   	<div class="one-comment" style="background: #f2f2f2;">
 			<div class="comment-user-image">
