@@ -144,7 +144,7 @@ class UserControler extends Controler {
 			$error = array();
 
 			$attr = array();
-			$attr["pseudo"] = htmlspecialchars($data["pseudo"]);
+			$attr["pseudo"] = strtolower(htmlspecialchars($data["pseudo"]));
 			$attr["password"] = htmlspecialchars($data["password"]);
 			
 			if(strlen($attr["pseudo"]) < 6){
