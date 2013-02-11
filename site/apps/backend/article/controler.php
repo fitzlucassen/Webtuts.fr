@@ -26,14 +26,14 @@ class ArticleControler extends Controler {
 			
 			$attr["category"] = $data['category'];
 			$attr["node"] = $data["node"];
-			//$attr["tag"] = 1;
-			$attr["image"] = 0;
+			$attr["tags"] = 0;
+			//$attr["image"] = 0;
 			$attr["author"] = Kernel::get("user")->get("id");
 			$attr["date"] = date("Y-m-d H:i:s");
 			$attr["title"] = $title;
 			$attr["text"] = $text;
 			if($article = App::getClass("article")->hydrate($attr)->save())
-				return $this->redirect("category/show/".$categorie->get("id"));
+				return $this->redirect("article/show/".$article->get("id"));
 			else
 				return $this->render(array("error" => "Vous n'avez pas bien rempli le formulaire"));
 		}
