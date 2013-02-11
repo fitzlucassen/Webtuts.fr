@@ -36,5 +36,11 @@ $(document).ready(function(){
 	    if($('#oiseau-volant').position().left > 600){
 		$('#sang').css({'display':'block'});
 	    }
-    }, 1600);
+    }, 1650);
+    setTimeout(function(){
+	
+	    if($('#oiseau-volant').position().left > 1000){
+		$('#oiseau-volant').css({'display':'none'});
+	    }
+    }, 3000);
 });
