@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Dim 10 Février 2013 à 20:45
+-- Généré le: Lun 11 Février 2013 à 16:57
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.3.13
 
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `article` (
   `views` int(11) NOT NULL DEFAULT '0',
   `comments` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Contenu de la table `article`
@@ -71,10 +71,7 @@ INSERT INTO `article` (`id`, `deleted`, `category`, `node`, `tags`, `author`, `d
 (1, 0, 1, 1, 1, 1, '2012-12-15 00:00:00', 0, 4, 5, 32, 0),
 (2, 0, 0, 2, 0, 1, '2013-01-11 00:00:00', 0, 31, 32, 0, 0),
 (3, 0, 0, 3, 0, 1, '2013-01-02 00:00:00', 0, 78, 79, 0, 0),
-(4, 0, 0, 3, 0, 1, '2013-01-13 18:24:36', 0, 80, 81, 0, 0),
-(5, 0, 0, 4, 0, 1, '2013-02-14 00:00:00', 0, 84, 85, 0, 0),
-(6, 0, 0, 4, 0, 1, '2013-02-08 00:00:00', 0, 86, 87, 0, 0),
-(7, 0, 0, 4, 0, 1, '2013-02-05 00:00:00', 0, 88, 89, 0, 0);
+(4, 0, 0, 3, 0, 1, '2013-01-13 18:24:36', 0, 80, 81, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -175,15 +172,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `date` datetime NOT NULL,
   `deleted` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
-
---
--- Contenu de la table `comment`
---
-
-INSERT INTO `comment` (`id`, `article`, `author`, `text`, `date`, `deleted`) VALUES
-(1, 1, 1, 'Coooool !', '2013-02-11 00:00:00', 0),
-(2, 1, 1, 'essais', '2013-01-03 03:11:55', 0);
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
 -- --------------------------------------------------------
 
@@ -213,7 +202,7 @@ INSERT INTO `image` (`id`, `name`, `type`, `width`, `height`, `deleted`, `size`)
 (4, 'coupe', 'png', 86, 80, 0, 871),
 (5, 'dossier', 'png', 56, 76, 0, 473),
 (6, 'outils', 'png', 76, 77, 0, 727),
-(7, 'fitz-lucassen.png', '', 80, 80, 0, 790);
+(7, 'fitz-lucassen', 'png', 80, 80, 0, 790);
 
 -- --------------------------------------------------------
 
@@ -227,7 +216,7 @@ CREATE TABLE IF NOT EXISTS `lang` (
   `lang` text NOT NULL,
   `translation` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=277 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=285 ;
 
 --
 -- Contenu de la table `lang`
@@ -264,8 +253,6 @@ INSERT INTO `lang` (`id`, `id_lang`, `lang`, `translation`) VALUES
 (29, 29, 'fr', 'actualité'),
 (30, 30, 'fr', 'Les types de contenu étant des actualités'),
 (31, 31, 'fr', 'Webtuts se lance sur le web !'),
-(32, 32, 'fr', 'Cras elit ante, consequat sit amet tempor aliquet, condimentum vitae augue. Vivamus venenatis lectus et nunc auctor pulvinar a et elit. Integer vitae ipsum mauris, id posuere urna. Morbi ac dui eros, vel feugiat mi. Nam tortor sem, dictum et cursus sed, molestie non sapien. Suspendisse et ligula dolor. Vivamus commodo, nulla vel commodo convallis, nulla diam mattis magna, sed sollicitudin metus nisl sit amet arcu. Morbi et elementum dolor.'),
-(33, 33, 'fr', 'Page test'),
 (95, 75, 'fr', 'webtuts'),
 (96, 75, 'en', 'webtuts'),
 (97, 76, 'fr', 'Notification backoffice'),
@@ -446,28 +433,6 @@ INSERT INTO `orm_columns_types` (`name_table`, `name_column`, `type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `page`
---
-
-CREATE TABLE IF NOT EXISTS `page` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` int(11) NOT NULL,
-  `content` int(11) NOT NULL,
-  `date` datetime NOT NULL,
-  `author` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
---
--- Contenu de la table `page`
---
-
-INSERT INTO `page` (`id`, `title`, `content`, `date`, `author`) VALUES
-(1, 33, 34, '2013-01-11 00:00:00', 1);
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `tag`
 --
 
@@ -600,7 +565,8 @@ CREATE TABLE IF NOT EXISTS `user_access` (
 --
 
 INSERT INTO `user_access` (`id_user`, `id_access`) VALUES
-(1, 1);
+(1, 1),
+(2, 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

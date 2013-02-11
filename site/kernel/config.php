@@ -9,8 +9,8 @@
 	/* 
 		Définition de l'application
 	*/
-	define("__app__", "frontend");
-	//define("__app__", "backend");
+	//define("__app__", "frontend");
+	define("__app__", "backend");
 
 
 	/* 
