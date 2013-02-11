@@ -19,7 +19,7 @@
 	<?php foreach ($articles as $article) { ?>
 	<a class="itemlist" href="<?php echo createLink("/article/show/".$article->get("id")); ?>">
 		<div class="titleitem" style="float: left;width: 400px;">
-			<?php echo lang($article->get("title", $lang)); ?>
+			<?php echo strip_tags(lang($article->get("title", $lang))); ?>
 		</div>
 		<div class="descriptionitem" style="position: relative;overflow: hidden;padding-top: 1px;padding-left: 10px;">
 			<span style="font-size: 0.8em;color: grey;"><?php echo lang($article->get("text", $lang)); ?></span>

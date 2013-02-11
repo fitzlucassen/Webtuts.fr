@@ -2,9 +2,13 @@
 	<div style="padding-bottom: 10px;border-bottom: 1px solid #E5E5E5;margin-bottom: 10px;">
 		<div style="font-size: 1.6em;float: left;">
 			<span style="color: grey;"><?php echo ucfirst(text("article")); ?> :</span> 
-			<?php echo lang($article->get("title", $lang)); ?>
+			<?php echo strip_tags(lang($article->get("title", $lang))); ?>
 		</div>
 		<div style="overflow: hidden;padding-top:10px;padding-left: 20px;">
+			<form method="post" action="<?php echo Kernel::getURL("article/delete"); ?>" style="margin-left: 20px;display: inline-block; float: right;padding-right: 5px;padding-left: 5px;">
+				<input type="hidden" name="id" value="<?php echo $article->get("id"); ?>"/>
+				<input type="submit" value=<?php echo ucfirst(text("delete")); ?> style="margin-top: -10px;" />
+			</form>
 			<?php foreach(Kernel::get("langs") as $key => $langKernel) { ?>
 				<a <?php if($lang!=$langKernel) { ?>href="<?php echo createLink("/article/show/".$article->get("id")."/".$langKernel); ?>"<?php } ?> style="float: right;"><?php echo text($langKernel); ?></a> 
 				<?php if($key!=count(Kernel::get("langs"))-1) { ?>
@@ -13,7 +17,6 @@
 			<?php } ?>
 			<a href="<?php echo createLink("/article/show/".$article->get("id")); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;"><?php echo ucfirst(text("description")); ?></a>
 			<a href="<?php echo createLink("/article/update/".$article->get("id")); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;"><?php echo ucfirst(text("update")); ?></a>
-			<a href="<?php echo createLink("/article/delete/".$article->get("id")); ?>" style="display: inline-block;padding-right: 5px;padding-left: 5px;"><?php echo ucfirst(text("delete")); ?></a>
 		</div>
 		<div style="clear: both;">
 		</div>

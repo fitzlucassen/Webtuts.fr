@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 	
 	define("time_start", microtime(TRUE));
 

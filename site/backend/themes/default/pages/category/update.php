@@ -5,7 +5,7 @@
 			<?php echo lang($category->get("name")); ?>
 		</div>
 		<div style="overflow: hidden;padding-top:10px;padding-left: 20px;">
-			<form method="post" action="/category/delete" style="margin-left: 20px;display: inline-block; float: right;padding-right: 5px;padding-left: 5px;">
+			<form method="post" action="<?php echo Kernel::getURL("category/delete"); ?>" style="margin-left: 20px;display: inline-block; float: right;padding-right: 5px;padding-left: 5px;">
 				<input type="hidden" name="id" value="<?php echo $category->get("id"); ?>"/>
 				<input type="submit" value=<?php echo ucfirst(text("delete")); ?> style="margin-top: -10px;" />
 			</form>

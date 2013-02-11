@@ -51,7 +51,7 @@ class LangType implements Type {
 	}
 
 	public static function save($data) {
-		$id_lang = Sql2::create()->select("COUNT(DISTINCT id_lang)")->from("lang")->fetch();
+		$id_lang = Sql2::create()->select("MAX(id_lang)")->from("lang")->fetch();
 		$id_lang++;
 		foreach ($data as $key2 => $value2) { // différentes langues
 			Sql2::create()->insert("lang")->columnsValues(array("id_lang" => $id_lang, "lang" => $key2, "translation" => $value2))->execute();

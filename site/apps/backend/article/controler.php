@@ -2,7 +2,7 @@
 
 class ArticleControler extends Controler {
 	public function IndexAction($params) {
-		return $this->redirect("article/list");
+		return $this->redirect(Kernel::getURL("article/list"));
 	}
 
 	public function ShowAction($params) {
@@ -32,8 +32,9 @@ class ArticleControler extends Controler {
 			$attr["date"] = date("Y-m-d H:i:s");
 			$attr["title"] = $title;
 			$attr["text"] = $text;
-			if($article = App::getClass("article")->hydrate($attr)->save())
-				return $this->redirect("article/show/".$article->get("id"));
+			if($article = App::getClass("article")->hydrate($attr)->save()) {
+				return $this->redirect(Kernel::getURL("article/show/".$article->get("id")));
+			}
 			else
 				return $this->render(array("error" => "Vous n'avez pas bien rempli le formulaire"));
 		}
@@ -43,14 +44,34 @@ class ArticleControler extends Controler {
 	}
 
 	public function DeleteAction($params) {
-		$article = App::getClass("article", $params[3]);
-		return $this->render(array('article' => $article));
+		$form = $this->getRequest();
+		if($form->isMethod("post")) {
+			$data = $form->getData();
+			$id = $data["id"];
+			$article = App::getClass("article", $id);
+			if($article->set(array("deleted" => true))) {
+				return $this->redirect(Kernel::getURL("article/list"));
+			}
+			else
+				return $this->redirect(Kernel::getURL("article/list"));
+		}
+		else
+			return $this->redirect(Kernel::getURL("error/404"));
 	}
 
 	public function UpdateAction($params) {
-		$method = $this->getRequest();
-		if($method->isMethod("post")) {
-			return $this->redirect("/article/show/".$params[3]);
+		$form = $this->getRequest();
+		if($form->isMethod("post")) {
+			$data = $form->getData();
+			$id = $data["id"];
+			$title = array("fr" => $data["titlefr"], "en" => $data["titleen"]);
+			$text = array("fr" => $data["textfr"], "en" => $data["texten"]);
+			$attr = array("title" => $title, "text" => $text);
+			$article = App::getClass("article", $id);
+			if($article->set($attr))
+				return $this->redirect(Kernel::getURL("article/show/".$id));
+			else
+				return $this->render(array('article' => $article));
 		}
 		else {
 			$article = App::getClass("article", $params[3]);
@@ -63,7 +84,7 @@ class ArticleControler extends Controler {
 			$lang = $params[3];
 		else
 			$lang = $params[0];
-		$articles = App::getClassArray("article", array("where" => "node != 4"));//, array("where" => "have category"));
+		$articles = App::getClassArray("article", array("where" => "node != 4 AND deleted = false"));//, array("where" => "have category"));
 		return $this->render(array('articles' => $articles, "lang" => $lang));
 	}
 }
