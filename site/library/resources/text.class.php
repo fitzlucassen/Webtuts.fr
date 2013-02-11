@@ -26,11 +26,15 @@ class TextType implements Type {
 	}
 
 	public static function save($data) {
-		return mysql_real_escape_string(htmlspecialchars($data));
+		$text = Kernel::$PDO->quote(htmlspecialchars($data));
+		$text = trim($text, "\'");
+		return $text;
 	}
 
 	public static function update($object, $attribut, $data = null) {
-		return mysql_real_escape_string(htmlspecialchars($data));
+		$text = Kernel::$PDO->quote(htmlspecialchars($data));
+		$text = trim($text, "\'");
+		return $text;
 	}
 
 	public function __toString() {
