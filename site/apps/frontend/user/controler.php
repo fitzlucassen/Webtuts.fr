@@ -17,10 +17,10 @@ class UserControler extends Controler {
 	
 	public function ProfilAction($params) {
 	    if($user = App::getTable("user")->getBySanitizePseudo($params[3])){
-	    
+
 		$image = "";
 
-		if(isset($user->get("image")) && !empty($user->get("image")) && $user->get("image") != 0){
+		if($user->get("image") != 0){
 		    $image = "IN_USER";
 		}
 		else {
