@@ -37,7 +37,7 @@ abstract class OrmStdTableAbstract {
 		if(empty($this->_types)) {
 			$Cache = $this->getCache();
 			if(!$types = $Cache->read("ORM_table_".$this->_name)) {
-				$types = Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->_name))->fetchArray();
+				$types = Sql2::create()->from("orm_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->_name))->fetchArray();
 				$Cache->write("ORM_table_".$this->_name, serialize($types));
 			} 
 			else

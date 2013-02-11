@@ -27,20 +27,21 @@ class HomeControler extends Controler {
 				    $bool_error = true;
 				    $error["password"] = "error";
 				}
-				
-				
 				if($bool_error){
 				    return $this->render(array("error" => $error, "attr" => $attr));
 				}
 				else {
 				    if($user = App::getTable("user")->getBySanitizePseudo($attr["pseudo"])) {
-					if($user->get("password") == md5($attr["password"]) && $user->access("ACCESS_BO")){
-					    Kernel::get("session")->connect($user);
-					    return $this->redirect(Kernel::getUrl(""));
-					}
-					else {
-					    $error["bad_login"] = "error";
-					    return $this->render(array("error" => $error));
+					
+					if($user->access("ACCESS_BO")){
+					    if($user->get("password") == md5($attr["password"])){
+						Kernel::get("session")->connect($user);
+						return $this->redirect(Kernel::getUrl(""));
+					    }
+					    else {
+						$error["bad_login"] = "error";
+						return $this->render(array("error" => $error));
+					    }
 					}
 				    }
 				    else{

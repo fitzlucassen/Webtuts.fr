@@ -40,9 +40,9 @@ abstract class OrmStdAbstract {
 	private function setTypes() {
 		if(empty($this->_types)) {
 			$Cache = $this->getCache();
-			if(!$types = $Cache->read("ORM_table_".$this->_class)) {
-				$types = Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->_class))->fetchArray();
-				$Cache->write("ORM_table_".$this->_class, serialize($types));
+			if(!$types = $Cache->read("orm_table_".$this->_class)) {
+				$types = Sql2::create()->from("orm_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->_class))->fetchArray();
+				$Cache->write("orm_table_".$this->_class, serialize($types));
 			} 
 			else
 				$types = unserialize($types);
@@ -344,9 +344,9 @@ abstract class OrmStdAbstract {
 
 		// Récupération et/ou mise en cache
 		$Cache = $this->getCache();
-		if(!$attributs = $Cache->read("ORM_table_".$class)) {
-			$attributs = Sql2::create()->from("ORM_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($class))->fetchArray();
-			$Cache->write("ORM_table_".$class, serialize($attributs));
+		if(!$attributs = $Cache->read("orm_table_".$class)) {
+			$attributs = Sql2::create()->from("orm_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($class))->fetchArray();
+			$Cache->write("orm_table_".$class, serialize($attributs));
 		} 
 		else
 			$attributs = unserialize($attributs);

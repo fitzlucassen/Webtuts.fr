@@ -18,7 +18,7 @@
 	    <a href="<?php echo Kernel::getUrl("user/profil/" . $new->get("author")->get("pseudo")); ?>"><?php echo $new->get("author")->get("pseudo"); ?></a>
 	</p>
 	<p class="content-introduction">
-	    <?php echo short_description($new->get("text")); ?>
+	    <?php echo short_description($new->get("text"), 140); ?>
 	</p>
 	<div class="more-container">
 	    <p class="show-more">
