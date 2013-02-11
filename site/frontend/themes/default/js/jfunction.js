@@ -31,16 +31,19 @@ $(document).ready(function(){
 	    $('#hidden-langage').val(newVal);
 	}
     });
-    setTimeout(function(){
-	
-	    if($('#oiseau-volant').position().left > 600){
-		$('#sang').css({'display':'block'});
-	    }
-    }, 1650);
-    setTimeout(function(){
-	
-	    if($('#oiseau-volant').position().left > 1000){
-		$('#oiseau-volant').css({'display':'none'});
-	    }
-    }, 3000);
+    
+    if($('#oiseau-volant').length > 0){
+	setTimeout(function(){
+
+		if($('#oiseau-volant').position().left > 600){
+		    $('#sang').css({'display':'block'});
+		}
+	}, 1650);
+	setTimeout(function(){
+
+		if($('#oiseau-volant').position().left > 1000){
+		    $('#oiseau-volant').css({'display':'none'});
+		}
+	}, 3000);
+    }
 });
