@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.2deb1ubuntu1
+-- version 3.5.1
 -- http://www.phpmyadmin.net
 --
--- Serveur: localhost
--- Généré le : Mar 12 Février 2013 à 08:54
--- Version du serveur: 5.1.66
--- Version de PHP: 5.3.2-1ubuntu4.18.1~gandi
+-- Client: localhost
+-- Généré le: Mar 12 Février 2013 à 09:28
+-- Version du serveur: 5.5.24-log
+-- Version de PHP: 5.3.13
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -60,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `article` (
   `views` int(11) NOT NULL DEFAULT '0',
   `comments` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Contenu de la table `article`
@@ -70,25 +71,8 @@ INSERT INTO `article` (`id`, `deleted`, `category`, `node`, `tags`, `author`, `d
 (2, 0, 0, 2, 0, 2, '2013-02-11 00:00:00', 0, 31, 32, 0, 0),
 (3, 0, 0, 3, 0, 1, '2013-01-02 00:00:00', 0, 78, 79, 0, 0),
 (4, 0, 0, 3, 0, 1, '2013-01-13 18:24:36', 0, 80, 81, 0, 0),
-(12, 0, 4, 1, 0, 5, '2013-02-11 21:01:19', 0, 96, 97, 0, 0);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `article_category`
---
-
-CREATE TABLE IF NOT EXISTS `article_category` (
-  `id_category` int(11) NOT NULL,
-  `id_article` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Contenu de la table `article_category`
---
-
-INSERT INTO `article_category` (`id_category`, `id_article`) VALUES
-(4, 12);
+(12, 0, 4, 1, 0, 5, '2013-02-11 21:01:19', 0, 96, 97, 0, 0),
+(13, 0, 1, 1, 0, 2, '2013-02-12 08:16:16', 0, 98, 99, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -122,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   `articles` int(11) DEFAULT NULL,
   `image` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
 --
 -- Contenu de la table `category`
@@ -221,7 +205,7 @@ CREATE TABLE IF NOT EXISTS `lang` (
   `lang` text NOT NULL,
   `translation` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=303 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=323 ;
 
 --
 -- Contenu de la table `lang`
@@ -313,7 +297,7 @@ INSERT INTO `lang` (`id`, `id_lang`, `lang`, `translation`) VALUES
 (297, 96, 'en', 'How to manage sessions in your website !'),
 (298, 97, 'fr', '<p><span>Sur un site, il peut parfois &ecirc;tre n&eacute;cessaire de transmettre des informations sur un utilisateur d&rsquo;une page &agrave; une autre. Pour cela on utilise en PHP les variables session.</span></p>\r\n<p><span>Les informations contenues dans ces variables sont stock&eacute;es dans des fichiers sur le serveur, contrairement aux cookies qui stockent les informations sur la machine de l&rsquo;utilisateur, ce qui offre donc un plus haut niveau de s&eacute;curit&eacute;.</span></p>\r\n<p><span style="font-family: ''Segoe UI light'', verdana; font-size: 20px; color: #335681;">1 ) &nbsp; &nbsp;Ouverture d&rsquo;une session</span></p>\r\n<p><span>On cr&eacute;&eacute; une nouvelle session &agrave; l&rsquo;aide de la fonction session_start(). Il suffit d&rsquo;impl&eacute;menter cette fonction au d&eacute;but de votre page, avant le code HTML, afin d&rsquo;avoir acc&egrave;s aux variables de session.</span></p>\r\n<p style="margin-left: 30px;"><span style="color: #345EC5;"><!--?php </span--><span style="color: #f92673;"><!--?php </span--><span style="font-family: ''courier new'', courier;">&lt;?php</span><br /><span style="color: #345EC5; font-family: ''courier new'', courier;">&nbsp; session_start()&nbsp;;</span><br /><span style="color: #f92673; font-family: ''courier new'', courier;">?&gt;</span></span></span></p>\r\n<p><span>Si un fichier existe sur le serveur pour cette session, les variables seront r&eacute;cup&eacute;r&eacute;es, sinon le fichier sera cr&eacute;&eacute;.</span></p>\r\n\r\n<p><span style="font-family: ''Segoe UI light'', verdana; font-size: 22px; color: #335681;">2 ) &nbsp; &nbsp;Utilisation des variables de session</span></p>\r\n<p><span>Les variables sont accessibles via un tableau superglobal&nbsp;: $_SESSION.</span></p>\r\n\r\n<p style="margin-left: 30px;"><span style="color: #345EC5;"><!--?php </span--><span style="color: #f92673;"><!--?php </span--><span style="font-family: ''courier new'', courier;">&lt;?php</span><br /><span style="color: #345EC5; font-family: ''courier new'', courier;">&nbsp; session_start()&nbsp;;</span><br />\r\n\r\n<span style="font-family: ''courier new'', courier;color: #345EC5;"><span style="color: #345EC5;">&nbsp; $_SESSION[</span><span style="color: #AD81FF;">&lsquo;pseudo&rsquo;</span><span style="color: #345EC5;">] =</span><span style="color: #AD81FF;"> &lsquo;Muusha&rsquo;</span>&nbsp;;</span><br /> <br /><span style="color: #345EC5; font-family: ''courier new'', courier;">&nbsp; <span style="color: #f92673;">echo</span> <span style="color: #AD81FF;">&lsquo;L&rsquo;utilisateur actuel est&nbsp;: &lsquo;</span>.$_SESSION[<span style="color: #AD81FF;">&lsquo;pseudo&rsquo;</span>]&nbsp;;</span><br /><span style="color: #f92673; font-family: ''courier new'', courier;">?&gt;</span></span></span></p>\r\n<p><span>Une fois la session d&eacute;marr&eacute;e, nous pouvons commencer &agrave; cr&eacute;er nos variables. Dans ce cas, la variable cr&eacute;&eacute;e est &laquo;&nbsp;pseudo&nbsp;&raquo; et elle contiendra la valeur que l&rsquo;on souhaite.</span><br /><span>Les noms de ces variables ne sont pas d&eacute;finis, on peut donc donner n&rsquo;importe quelle cl&eacute; au tableau $_SESSION.</span></p>\r\n<p><span>Ensuite, pour acc&eacute;der aux informations, il suffit de r&eacute;cup&eacute;rer la valeur contenue dans le tableau $_SESSION en pr&eacute;cisant la cl&eacute;.</span></p>\r\n\r\n<p><span>Les sessions ont une dur&eacute;e limit&eacute;e de 30 minutes par d&eacute;faut. Il est donc plus prudent de v&eacute;rifier si elle existe toujours. Pour cela il faut utiliser la fonction isset().</span></p>\r\n\r\n<p style="margin-left: 30px;"><span style="color: #345EC5;"><!--?php </span--><span style="color: #f92673;"><!--?php </span--><span style="font-family: ''courier new'', courier;">&lt;?php</span><br /><span style="color: #345EC5; font-family: ''courier new'', courier;">&nbsp; <span style="color: #f92673;">if</span>(<span style="color: #345EC5;">isset</span>($_SESSION[<span style="color: #AD81FF;">&lsquo;pseudo&rsquo;</span>]))</span><br /><span style="color: #345EC5; font-family: ''courier new'', courier;">&nbsp; &nbsp;<span style="color: #f92673;"> echo</span><span style="color: #AD81FF;"> &lsquo;La variable existe.&rsquo;</span>&nbsp;;</span><br /><span style="color: #f92673; font-family: ''courier new'', courier;">?&gt;</span></span></span></p>\r\n<p><span style="font-family: ''Segoe UI light'', verdana; font-size: 22px; color: #335681;">3 ) &nbsp; &nbsp;D&eacute;truire les variables et fermer une session.</span></p>\r\n<p><span>Il existe 2 fonctions pour d&eacute;truire les variables d&rsquo;une session.</span></p>\r\n<p style="margin-left: 30px;"><span style="color: #345EC5;"><!--?php </span--><span style="color: #f92673;"><!--?php </span--><span style="font-family: ''courier new'', courier;">&lt;?php</span><br /><span style="color: #345EC5; font-family: ''courier new'', courier;">&nbsp; session_unset()&nbsp;;</span><br /><span style="color: #f92673; font-family: ''courier new'', courier;">?&gt;</span></span></span></p>\r\n<p style="margin-left: 30px;"><span style="color: #345EC5; font-family: ''courier new'', courier;"><!--?php </span--><span style="color: #f92673;"><!--?php </span-->&lt;?php<br /><span style="color: #345EC5;">&nbsp; unset($_SESSION[</span><span style="color: #AD81FF;">&lsquo;pseudo&rsquo;<span style="color: #345EC5;">])&nbsp;;</span></span><br /><span style="color: #f92673;">?&gt;</span></span></span></p>\r\n<p><span>Le premier code a pour but de supprimer toutes les variables de la session en cours alors que le second permet de supprimer uniquement la variable pseudo de notre session.</span></p>\r\n<p><span>Pour fermer une session, il faut utiliser la fonction session_destroy().</span></p>\r\n<p style="margin-left: 30px;"><span style="color: #345EC5;"><!--?php </span--><span style="color: #f92673;"><!--?php </span--><span style="font-family: ''courier new'', courier;">&lt;?php</span><br /><span style="color: #345EC5; font-family: ''courier new'', courier;">&nbsp; session_destroy()&nbsp;;</span><br /><span style="color: #f92673; font-family: ''courier new'', courier;">?&gt;</span></span></span></p>\r\n<p><span>A noter, les sessions sont d&eacute;truites lors de la fermeture du navigateur.</span></p>'),
 (299, 97, 'en', '<p>Soon</p>'),
-(300, 32, 'fr', 'Après plusieurs mois de dur labeurs, l''équipe de Webtuts lance enfin son site web.\r\nVoué aux amateurs de développement web, Webtuts se veut être un site d’entraide et, bientôt, un site communautaire.\r\nActuellement en version beta, l''équipe vous avertit qu''il est encore possible que vous rencontriez des bugs, des anomalies ou autres choses paranormales du genre. De plus, beaucoup d''amélioration vont voir le jour très prochainement. En attendant, profiter de cette petite version pour explorer les tréfonds des méandres des abysses de Webtuts !\r\n\r\nPour tout retour, avis, suggestions, signalement, n''hésitez pas à user et abuser de notre page facebook !\r\nL''équipe s''efforcera de vous répondre ainsi que de régler les bugs signalés.\r\n\r\nL''équipe vous souhaite bon courage !'),
+(300, 32, 'fr', 'Après plusieurs mois de durs labeurs, l''équipe de Webtuts lance enfin son site web.\nVoué aux amateurs de développement web, Webtuts se veut être un site d’entraide et, bientôt, un site communautaire.\nActuellement en version beta, l''équipe vous avertit qu''il est encore possible que vous rencontriez des bugs, des anomalies ou autres choses paranormales du genre. De plus, beaucoup d''améliorations vont voir le jour très prochainement. En attendant, profitez de cette petite version pour explorer les tréfonds des méandres des abysses de Webtuts !\n\nPour tout retour, avis, suggestion, signalement, n''hésitez pas à user et abuser de notre page facebook !\nL''équipe s''efforcera de vous répondre ainsi que de régler les bugs signalés.\n\nL''équipe vous souhaite bon courage !'),
 (301, 32, 'en', 'Soon...');
 
 -- --------------------------------------------------------
@@ -355,7 +339,7 @@ CREATE TABLE IF NOT EXISTS `node` (
   `name` int(11) NOT NULL,
   `description` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Contenu de la table `node`
@@ -365,7 +349,8 @@ INSERT INTO `node` (`id`, `deleted`, `name`, `description`) VALUES
 (1, 0, 3, 28),
 (2, 0, 29, 30),
 (3, 0, 76, 77),
-(4, 0, 82, 83);
+(4, 0, 82, 83),
+(5, 1, 106, 107);
 
 -- --------------------------------------------------------
 
@@ -455,7 +440,7 @@ CREATE TABLE IF NOT EXISTS `tag` (
   `description` int(11) NOT NULL,
   `articles` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Contenu de la table `tag`
@@ -466,7 +451,8 @@ INSERT INTO `tag` (`id`, `deleted`, `name`, `description`, `articles`) VALUES
 (2, 0, 19, 20, 0),
 (3, 0, 21, 22, 0),
 (4, 0, 23, 24, 0),
-(5, 0, 25, 26, 0);
+(5, 0, 25, 26, 0),
+(6, 1, 104, 105, 0);
 
 -- --------------------------------------------------------
 
@@ -585,3 +571,7 @@ INSERT INTO `user_access` (`id_user`, `id_access`) VALUES
 (1, 1),
 (2, 1),
 (5, 1);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
