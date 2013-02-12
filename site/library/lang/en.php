@@ -194,6 +194,8 @@
     define("TUTOS_BY_CATEGORY", "This category contains");
     define("CATEGORY_TUTOS", "Tuts from");
     define("NO_ARTICLE_CATEGORY", "There isn't any tuts yet in this category...");
+    define("NO_ARTICLE_TAG", "There isn't any tuts yet with this tag...");
+	
     define("HERE_ARE", "Here is the");
     define("HERE_IS", "Here is the");
     define("TAG_ARTICLES", "articles with the tag");

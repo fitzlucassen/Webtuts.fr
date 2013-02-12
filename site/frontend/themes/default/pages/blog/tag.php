@@ -13,10 +13,16 @@
 	<div class="cl"></div>
 	<div class="content-container" style="padding-top: 20px;">
 	    <?php
-		foreach ($tag_target->get("articles") as $article){
-		    $url_image = get_url_image($article);
+		$articles_tag = $tag_target->get("articles");
+		if(count($articles_tag) > 0){
+		    foreach ($tag_target->get("articles") as $article){
+			$url_image = get_url_image($article);
 
-		    include(_theme_path_ . "partials/bigArticlePreview.php");
+			include(_theme_path_ . "partials/bigArticlePreview.php");
+		    }
+		}
+		else {
+		    echo "<h2>" . NO_ARTICLE_CATEGORY . "</h2>";
 		}
 	    ?>
 	</div>
