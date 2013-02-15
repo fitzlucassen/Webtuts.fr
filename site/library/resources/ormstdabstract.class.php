@@ -155,8 +155,11 @@ abstract class OrmStdAbstract {
 			return $this;
 		}
 		else if(is_array($id)) {
-			foreach ($id as $attribut => $valeur)
-				$this->$attribut = $valeur;
+			foreach ($id as $attribut => $valeur) {	
+				if(!is_numeric($attribut)) {
+					$this->$attribut = $valeur;
+				}
+			}
 			return $this;
 		}
 		else

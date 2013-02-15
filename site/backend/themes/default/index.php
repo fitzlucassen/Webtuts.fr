@@ -1,6 +1,6 @@
 <?php define("_theme_path_", __themes_dir__ . "default/"); include("functions.php"); ?>
-<?php if(!Kernel::get("user") && Kernel::get("action") == "connect" && Kernel::get("controler") == "home") { include(_theme_path_."pages/".Kernel::get("controler").'/'.Kernel::get("action").".php"); die(); } ?>
-<?php if(!Kernel::get("user")) { header("Location:".Kernel::getUrl("home/connect")); die(); } ?>
+<?php /*if(!Kernel::get("user") && Kernel::get("action") == "connect" && Kernel::get("controler") == "home") { include(_theme_path_."pages/".Kernel::get("controler").'/'.Kernel::get("action").".php"); die(); } ?>
+<?php if(!Kernel::get("user")) { header("Location:".Kernel::getUrl("home/connect")); die(); } */ ?>
 <!DOCTYPE html>
 <html>
 	<head>

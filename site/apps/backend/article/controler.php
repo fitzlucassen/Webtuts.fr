@@ -23,9 +23,10 @@ class ArticleControler extends Controler {
 			$data = $form->getData();
 			$title = array("fr" => $data["titlefr"], "en" => $data["titleen"]);
 			$text = array("fr" => $data["textfr"], "en" => $data["texten"]);
-			
-			$attr["category"] = $data['category'];
 			$attr["node"] = $data["node"];
+			if($attr["node"]==1)
+				$attr["category"] = $data['category'];
+			
 			$attr["tags"] = 0;
 			$attr["image"] = 0;
 			$attr["author"] = Kernel::get("user")->get("id");
@@ -33,6 +34,7 @@ class ArticleControler extends Controler {
 			$attr["title"] = $title;
 			$attr["text"] = $text;
 			if($article = App::getClass("article")->hydrate($attr)->save()) {
+				
 				return $this->redirect(Kernel::getURL("article/show/".$article->get("id")));
 			}
 			else

@@ -1,8 +1,14 @@
 <?php
 
+
 class HomeControler extends Controler {
 	public function IndexAction($params) {
 		$notifications = App::getClassArray("article", array("where" => "node = 3", "orderBy" => array("date", "DESC")));
+		$test = App::getTable("article")->getById(2);
+		echo "<pre>";
+		print_r($test);
+		echo "</pre>";
+		die();
 		return $this->render(array('notifications' => $notifications));
 	}
 
