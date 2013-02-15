@@ -1,5 +1,8 @@
 <?php 
 
+
+
+// FAIRE UN SYSTEME DE CACHE AU LIEU DE CA !!
 $GLOBALS["SQL_existing_table"] = array();
 
 /*

@@ -27,17 +27,19 @@ abstract class OrmStdTableAbstract {
 	/*
 		Constructeur
 	*/
-	public function __construct($name = null) {
+	public function __construct($param = null) {
 		/* Création du cache */
 		self::setCache();
 			
 		/* $_name */
-		if(empty($name)) {
-			$name = get_class($this);
-			$name = strstr($name, 'Table', true);
-			$name = mb_strtolower($name);
+		if($param===null) {
+			$param = get_class($this);
+			$param = strstr($param, 'Table', true);
+			$param = mb_strtolower($param);
 		}
-		$this->_name = $name;
+		if(is_object($param))
+			$param = $param->_class;
+		$this->_name = $param;
 	}
 
 	/*
@@ -80,7 +82,7 @@ abstract class OrmStdTableAbstract {
 	/*
 		Récupère les types des champs de la classe avec systeme de cache
 	*/
-	private function getTypes() {
+	public function getTypes() {
 		if(empty($this->_types)) {
 			$Cache = self::getCache();
 			if(!$types = $Cache->read("ORM_table_".$this->_name)) {
@@ -131,33 +133,38 @@ abstract class OrmStdTableAbstract {
 					unset($params[count($function)-1]);
 					$params = array_values($params);
 
-					$return = new Collection();
-				
-					foreach ($this->getCollection() as $object) {
-						if($type[0]=="type") {
-							$typeClass = ucfirst(strtolower($type[1]))."Type";
-							if($typeClass::getCompare($object, $attribut, $params)==$paramsFunction[0])
-								$return->hydrate($object);
-						}
-						else {
-							return false;
-						}
-					}
-					if($return->count()==0) {
+					$collection = $this->getCollection();
+					
+					$return = $this->search($collection, $type, $attribut, $params, $paramsFunction);
+
+					if($return->count()==0)
 						return false;
-					}
-					elseif($return->count()==1) {
+					elseif($return->count()==1)
 						return $return->get(0);
-					}
 					else
 						return $return;
 				}
 				else {
-					foreach ($this->getCollection() as $object) {
-						if($object->get("id")==$paramsFunction[0])
-							return $object;
-						else
+					if(count($paramsFunction)==1) {
+						foreach ($this->getCollection() as $object) {
+							if($object->get("id")==$paramsFunction[0])
+								return $object;
+							else
+								return false;
+						}
+					}
+					else {
+						$collection = new Collection();
+						foreach ($this->getCollection() as $object) {
+							foreach ($paramsFunction as $value) {
+								if($object->get("id")==$value)
+									$collection->hydrate($object);
+							}
+						}
+						if(count($collection) == 0)
 							return false;
+						else
+							return $collection;
 					}
 				}
 			}
@@ -166,6 +173,60 @@ abstract class OrmStdTableAbstract {
 		}
 		else
 			return false;
+	}
+
+	private function search($collection, $type, $attribut, $params, $paramsFunction) {
+		if(is_array($paramsFunction[0]))
+			$paramsFunction = $paramsFunction[0];
+		$return = new Collection();
+		foreach ($collection as $object) {
+			if($type[0]=="type") {
+				$typeClass = ucfirst(strtolower($type[1]))."Type";
+				if(in_array($typeClass::getCompare($object, $attribut, $params), $paramsFunction))
+					$return->hydrate($object);
+			}
+			elseif($type[0]=="class") {
+				if(empty($params[0])) {
+					if(count($paramsFunction)==0)
+						$paramsFunction[0] = true;
+					if(($paramsFunction[0] && $object->get($attribut)) || (!$paramsFunction[0] && !$object->get($attribut)))
+						$return->hydrate($object);
+				}
+				else {
+					if($linkedObject = $object->get($attribut)) {
+						$linkedCollection = new Collection();
+						$linkedCollection->hydrate($linkedObject);
+						$nameFunction = "getBy".implode("", $params);
+						$linkedResult = $linkedCollection->$nameFunction($paramsFunction);
+						if($linkedResult)
+							$return->hydrate($object);
+					}
+				}
+			}
+			elseif($type[0]=="collection") {
+				if(empty($params[0])) {
+					if(count($paramsFunction)==0)
+						$paramsFunction[0] = true;
+					if(Sql2::table_exist($this->_name."_".$type[1]))
+						$nomTable = $this->_name."_".$type[1];
+					elseif(Sql2::table_exist($type[1]."_".$this->_name))
+						$nomTable = $type[1]."_".$this->_name;
+					$links = Sql2::create()->from($nomTable)->where("id_".$this->_name, "=", $object->get("id"))->fetchArray();
+					if(($paramsFunction[0] && count($links) > 0) || (!$paramsFunction[0] && count($links) == 0))
+						$return->hydrate($object);
+				}
+				else {
+					$linkedCollection = $object->get($attribut);
+					if(count($linkedCollection)>0) {
+						$nameFunction = "getBy".implode("", $params);
+						$linkedResult = $linkedCollection->$nameFunction($paramsFunction);
+						if($linkedResult)
+							$return->hydrate($object);
+					}
+				}
+			}
+		}
+		return $return;
 	}
 
 	/*
