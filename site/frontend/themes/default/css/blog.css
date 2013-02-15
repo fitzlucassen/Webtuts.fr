@@ -160,7 +160,7 @@
 .black{
     color: #111 !important;
 }
-#tag-page aside .article-tag {
+#tag-page aside .article-tag, #tags-page .article-tag {
     padding: 10px 10px;
     background-color: rgb(227,223,223);
     margin-right: 0;

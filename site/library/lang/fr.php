@@ -193,6 +193,8 @@
     define("TUTOS_BY_CATEGORY", "Cette catégorie contient");
     define("CATEGORY_TUTOS", "Les tutoriels de la catégorie");
     define("NO_ARTICLE_CATEGORY", "Il n'y a pas encore de tutoriel dans cette catégorie...");
+    define("NO_ARTICLE_TAG", "Il n'y a pas encore de tutoriel ayant ce tag...");
+
     define("HERE_ARE", "Voici les");
     define("HERE_IS", "Voici l'");
     define("TAG_ARTICLES", "articles ayant le tag");
