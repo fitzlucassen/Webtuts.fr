@@ -1,7 +1,9 @@
-<div style="padding :20px;">
-	<div style="padding-bottom: 10px;border-bottom: 1px solid #E5E5E5;margin-bottom: 20px;">
+
+<?php partial("user_header"); ?>
+<div style="padding: 20px;margin-top: -1px;border: 1px solid #E5E5E5;border-right: none;min-height: 500px;background: white;">
+	<div style="padding-bottom: 10px;border-bottom: 1px solid #E5E5E5;margin-bottom: 20px;"><!-- background: #323236; -->
 		<div style="font-size: 1.6em;float: left;">
-			<span style="color: grey;"><?php echo ucfirst(text("tag")); ?> :</span> 
+			<span style="color: grey;">User :</span> 
 			<?php echo minifyText(lang($user->get("pseudo"))); ?>
 		</div>
 		<div style="overflow: hidden;padding-top:10px;padding-left: 20px;">

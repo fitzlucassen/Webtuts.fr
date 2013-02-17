@@ -100,11 +100,10 @@ abstract class OrmStdTableAbstract {
 
 	/*
 		Générateur de fonctions génériques
-			- getBy
-			- 
-			- 
 	*/
 	public function __call($name, $paramsFunction) {
+		if(is_array($paramsFunction[0]))
+			$paramsFunction = $paramsFunction[0];
 		/* traitement du nom de la fonction */
 		$nameArray = str_split($name);
 		$function = array();
@@ -149,9 +148,8 @@ abstract class OrmStdTableAbstract {
 						foreach ($this->getCollection() as $object) {
 							if($object->get("id")==$paramsFunction[0])
 								return $object;
-							else
-								return false;
 						}
+						return false;
 					}
 					else {
 						$collection = new Collection();
@@ -175,6 +173,9 @@ abstract class OrmStdTableAbstract {
 			return false;
 	}
 
+	/*
+		Fonction de recherche pour les getBy génériques
+	*/
 	private function search($collection, $type, $attribut, $params, $paramsFunction) {
 		if(is_array($paramsFunction[0]))
 			$paramsFunction = $paramsFunction[0];
@@ -207,11 +208,7 @@ abstract class OrmStdTableAbstract {
 				if(empty($params[0])) {
 					if(count($paramsFunction)==0)
 						$paramsFunction[0] = true;
-					if(Sql2::table_exist($this->_name."_".$type[1]))
-						$nomTable = $this->_name."_".$type[1];
-					elseif(Sql2::table_exist($type[1]."_".$this->_name))
-						$nomTable = $type[1]."_".$this->_name;
-					$links = Sql2::create()->from($nomTable)->where("id_".$this->_name, "=", $object->get("id"))->fetchArray();
+					$links = $object->get($attribut);
 					if(($paramsFunction[0] && count($links) > 0) || (!$paramsFunction[0] && count($links) == 0))
 						$return->hydrate($object);
 				}
@@ -232,7 +229,16 @@ abstract class OrmStdTableAbstract {
 	/*
 		Création d'un objet et sauvegarde en base
 	*/
-	public function create() {
+	public function create($value) {
+		$new = App::getClass($this->_name)->hydrate($value);
+
+	}
+
+	public function checkData() {
+
+	}
+
+	public function save() {
 
 	}
 }

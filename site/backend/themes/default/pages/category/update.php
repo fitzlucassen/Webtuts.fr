@@ -1,4 +1,5 @@
-<div style="padding :20px;">
+<?php partial("taxonomy_header"); ?>
+<div style="padding: 20px;margin-top: -1px;border: 1px solid #E5E5E5;border-right: none;min-height: 500px;background: white;">
 	<div style="padding-bottom: 10px;border-bottom: 1px solid #E5E5E5;margin-bottom: 10px;">
 		<div style="font-size: 1.6em;float: left;">
 			<span style="color: grey;"><?php echo ucfirst(text("category")); ?> :</span> 

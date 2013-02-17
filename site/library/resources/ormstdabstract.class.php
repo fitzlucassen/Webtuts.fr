@@ -38,19 +38,7 @@ abstract class OrmStdAbstract {
 	}
 
 	private function setTypes() {
-		if(empty($this->_types)) {
-			$Cache = $this->getCache();
-			if(!$types = $Cache->read("orm_table_".$this->_class)) {
-				$types = Sql2::create()->from("orm_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->_class))->fetchArray();
-				$Cache->write("orm_table_".$this->_class, serialize($types));
-			} 
-			else
-				$types = unserialize($types);
-			foreach ($types as $value) {
-				$nomAttribut = "__".$value["name_column"];
-				$this->$nomAttribut = $value["type"];
-			}
-		}
+		$this->_types = App::getTable($this->_class)->getTypes();
 	}
 
 	public function __set($name, $value) {
@@ -119,7 +107,7 @@ abstract class OrmStdAbstract {
 				$typeLink = $tmp[0];
 				if($typeLink=="class") { // Object
 					$objectName = $tmp[1];
-					$this->$attribut = Sql2::create()->from($objectName)->where("id", Sql2::$OPE_EQUAL, $this->$attribut)->fetchClass();
+					$this->$attribut = App::getTable($objectName)->getById($this->$attribut);
 				}
 				elseif($typeLink=="collection") { // Collection of object
 					$this->setCollection($attribut, $tmp[1], $params);
@@ -341,60 +329,41 @@ abstract class OrmStdAbstract {
 	}
 */
 	private function setCollection($attribut, $class, $params=null) {
-		$this->$attribut = new Collection();
-		// Recupération de tous les attributs de la classe à retourner 
-		$cpt = 0;
-
-		// Récupération et/ou mise en cache
-		$Cache = $this->getCache();
-		if(!$attributs = $Cache->read("orm_table_".$class)) {
-			$attributs = Sql2::create()->from("orm_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($class))->fetchArray();
-			$Cache->write("orm_table_".$class, serialize($attributs));
-		} 
-		else
-			$attributs = unserialize($attributs);
-
-		$select = array();
-		foreach ($attributs as $row => $value)
-			$select[] = "A.".$value["name_column"];
-		
-		// Ajout de l'id
-		array_unshift($select, "A.id");
-		$haveTable = true; 
-   		$table = $class."_".strtolower($this->_class);
+		//Recherche de la table de liaison
+		$table = $class."_".strtolower($this->_class);
    		if(!Sql2::table_exist($table))
    			$table = strtolower($this->_class)."_".$class;
-   		if(!Sql2::table_exist($table))
-   			$haveTable = false;
-   		if($haveTable) {
-			$requete = Sql2::create()
-								->select($select)
-								->from($class, $table)
-								->where("A.id", Sql2::$OPE_EQUAL ,"B.id_".$class, Sql2::$TYPE_NO_QUOTE)
-								->andWhere("B.id_".strtolower($this->_class), Sql2::$OPE_EQUAL, $this->id)
-								->andWhere("A.deleted", "=", 0);
-			if(!empty($params))	{
-				if(array_key_exists("orderBy", $params))
-					$requete->orderBy($params["orderBy"]);
-			}
-			$this->$attribut = $requete->fetchClassArray();	
 
-			$this->$attribut->setObject($this);
-			$this->$attribut->setTarget($class);
+   		// Recherche des IDs correspondant
+		$requete = Sql2::create()
+			->from($table)
+			->where("id_".strtolower($this->_class), Sql2::$OPE_EQUAL, $this->id)
+			->fetchArray();
+		
+
+		if(count($requete)==0) { // Si aucun liaison n'est trouvée
+			$this->$attribut = false;
+			return false;
 		}
 		else {
-			$requete = Sql2::create()
-								->from($class)
-								->where(strtolower($this->_class), Sql2::$OPE_EQUAL ,$this->get("id"), Sql2::$TYPE_NO_QUOTE)
-								->andWhere("deleted", "=", 0);
-			if(!empty($params))	{
-				if(array_key_exists("orderBy", $params))
-					$requete->orderBy($params["orderBy"]);
+			// Formatage en tableau d'ID
+			$ids = array();
+			foreach ($requete as $key => $value) {
+			 	$namekey = "id_".$class;
+			 	$ids[] = $value[$namekey];
 			}
-			$this->$attribut = $requete->fetchClassArray();	
-
+			// Récupération de la collection
+			$this->$attribut = App::getTable($class)->getCollection()->getById($ids);
+			// Si il n'y a qu'un résultat
+			if(get_class($this->$attribut) != "Collection") {
+				$tmp = new Collection();
+				$tmp->hydrate($this->$attribut);
+				$this->$attribut = $tmp;
+			}
+			// 
 			$this->$attribut->setObject($this);
 			$this->$attribut->setTarget($class);
+			return true;
 		}
 	}
 

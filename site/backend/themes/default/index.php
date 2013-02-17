@@ -8,114 +8,86 @@
 		<title>Page d'accueil Webtuts</title>
 		<script></script>
 	</head>
-	<body style="padding: 0px;margin: 0px;font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;">
+	<body style="padding: 0px;margin: 0px;font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;background: #ECEFF6;">
+
+		<div id="panel" style="display: none;z-index: 9999;position: absolute;top: 0px;left: 0px;width: 100%;background: rgba(255, 255, 255, 0.75);min-height: 100%;">
+			<div style="border-radius: 5px;margin: 50px;box-shadow: 0px 3px 20px #ccc;">
+				<div style="border-radius: 5px 5px 0px 0px;background: #323236;padding: 20px;color: white;padding-top: 15px;padding-bottom: 15px;">
+					Title
+				</div>
+				<div style="border: 1px solid #E5E5E5;border-top: none;background: white;padding: 20px;border-radius: 0px 0px 5px 5px;">
+				
+					<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
+						Champ 1
+					</div>
+					<div style="overflow: hidden;padding: 10px;">
+						<input name="namefr" type="text"/>
+					</div>
+					<div style="clear: left;">
+					</div>
+					<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
+						Champ 2
+					</div>
+					<div style="overflow: hidden;padding: 10px;">
+						<input name="namefr" type="text"/>
+					</div>
+					<div style="clear: left;">
+					</div>
+					<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
+						Text
+					</div>
+					<div style="overflow: hidden;padding: 10px;">
+						<textarea name="descriptionfr"></textarea>
+					</div>
+					<div style="clear: left;">
+					</div>
+
+
+				</div>
+			</div>
+		</div>
 
 		<div id="global">
-			<div style="float: left;width: 240px;height: 100%;background: #ECEFF6;border-right: 1px solid #E5E5E5;">
-				Ceci est un text bien caché :D
-			</div>
-			<div style="position: fixed;top: 0px;left: 0px;width: 240px;height: 100%;border-right: 1px solid #E5E5E5;">
-				<div style="overflow: auto;height: 100%;">
-					<div style="height: 35px;">
-					</div>
-					<div style="padding: 20px;border-top: ;">
-						<a href="<?php echo createLink("/"); ?>">	
-							<img src="<?php img("logo.png"); ?>" style="float: left;width: 50px;" alt="logo"/>
-							<span style="float: left;font-size: 1.5em;padding: 6px;">Webtuts</span>
-						</a>
-						<div style="clear: left;margin-bottom: 20px;">
-						</div>
-						<a style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;"><?php echo strtoupper(text("menu_contenu")); ?></a>
-							<a href="<?php echo createLink("/article"); ?>" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
-								<img style="float: left;" src="<?php img("icons/page_green.png") ?>" />
-								<span style="display: inline-block;float: left;margin-left: 6px;"><?php echo ucfirst(text("menu_articles")); ?></span>
-								<span style="clear: left;display: block;"></span>
-							</a>
-							<a href="<?php echo createLink("/comment"); ?>" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
-								<img style="float: left;" src="<?php img("icons/comments.png") ?>" />
-								<span style="display: inline-block;float: left;margin-left: 6px;"><?php echo ucfirst(text("menu_comments")); ?></span>
-								<span style="clear: left;display: block;"></span>
-							</a>
-							<a href="<?php echo createLink("/page"); ?>" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
-								<img style="float: left;" src="<?php img("icons/page_white_stack.png") ?>" />
-								<span style="display: inline-block;float: left;margin-left: 6px;"><?php echo ucfirst(text("menu_pages")); ?></span>
-								<span style="clear: left;display: block;"></span>
-							</a>
-							<a href="<?php echo createLink("/image"); ?>" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
-								<img style="float: left;" src="<?php img("icons/images.png") ?>" />
-								<span style="display: inline-block;float: left;margin-left: 6px;"><?php echo ucfirst(text("menu_images")); ?></span>
-								<span style="clear: left;display: block;"></span>
-							</a>
-						<br />
-						<a style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;"><?php echo strtoupper(text("menu_taxonomy")); ?></a>
-							<a href="<?php echo createLink("/category"); ?>" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
-								<img style="float: left;" src="<?php img("icons/folder.png") ?>" />
-								<span style="display: inline-block;float: left;margin-left: 6px;"><?php echo ucfirst(text("menu_categories")); ?></span>
-								<span style="clear: left;display: block;"></span>
-							</a>
-							<a href="<?php echo createLink("/tag"); ?>" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
-								<img style="float: left;" src="<?php img("icons/tag_green.png") ?>" />
-								<span style="display: inline-block;float: left;margin-left: 6px;"><?php echo ucfirst(text("menu_tags")); ?></span>
-								<span style="clear: left;display: block;"></span>
-							</a>
-						<br />
-						<a style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;"><?php echo strtoupper(text("menu_blog")); ?></a>
-							<a href="<?php echo createLink("/user"); ?>" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
-								<img style="float: left;" src="<?php img("icons/group.png") ?>" />
-								<span style="display: inline-block;float: left;margin-left: 6px;"><?php echo ucfirst(text("menu_users")); ?></span>
-								<span style="clear: left;display: block;"></span>
-							</a>
-							<a href="<?php echo createLink("/node"); ?>" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
-								<img style="float: left;" src="<?php img("icons/box.png") ?>" />
-								<span style="display: inline-block;float: left;margin-left: 6px;"><?php echo ucfirst(text("menu_nodes")); ?></span>
-								<span style="clear: left;display: block;"></span>
-							</a>
-						<br />
-						<a style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;color: #595A59;"><?php echo strtoupper(text("menu_site")); ?></a>
-							<a href="<?php echo createLink("/param"); ?>" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
-								<img style="float: left;" src="<?php img("icons/cog.png") ?>" />
-								<span style="display: inline-block;float: left;margin-left: 6px;"><?php echo ucfirst(text("menu_params")); ?></span>
-								<span style="clear: left;display: block;"></span>
-							</a>
-							<a href="<?php echo createLink("/statistic"); ?>" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
-								<img style="float: left;" src="<?php img("icons/chart_bar.png") ?>" />
-								<span style="display: inline-block;float: left;margin-left: 6px;"><?php echo ucfirst(text("menu_statistics")); ?></span>
-								<span style="clear: left;display: block;"></span>
-							</a>
-							<a href="<?php echo createLink("/mail"); ?>" style="display: block;padding: 5px;font-size: 0.8em;font-weight: bold;margin-left: 10px;">
-								<img style="float: left;" src="<?php img("icons/email.png") ?>" />
-								<span style="display: inline-block;float: left;margin-left: 6px;"><?php echo ucfirst(text("menu_mail")); ?></span>
-								<span style="clear: left;display: block;"></span>
-							</a>
-					</div>
-				</div>
-			</div>
-			<div style="position: fixed;top: 0px;left: 0px;width: 100%;height: 35px;background: white;border-bottom: 1px solid #E5E5E5;">
-				<div style="position: relative;background: rgb(248, 248, 248);height: 35px;">
+			<div style="float: left;width: 130px;background: #ECEFF6;">
+				<div style="">
 					<div style="">
-						<a href="<?php echo Kernel::getUrl("home/disconnect"); ?>" style="display: inline-block;float: right;padding: 9px;cursor: pointer;">
-							Déconnexion
-						</a>
-						<a href="#" style="display: inline-block;padding: 9px;border-right: 1px solid #E5E5E5;cursor: pointer;border-top:  1px solid white;">
-							Aller au site
-						</a>
-						<a href="/article/add" style="display: inline-block;padding: 9px;border-right: 1px solid #E5E5E5;cursor: pointer;border-top:  1px solid white;">
-							Ajouter un article
-						</a>
-						<div style="clear: both;">
+						<div style="text-align: center;padding: 20px;">
+							<a href="<?php echo Kernel::getUrl("article/index"); ?>" style="display: block;padding: 5px;padding-top: 0px;font-size: 0.8em;font-weight: bold;">
+								<img src="<?php echo img("content.png"); ?>" style="border: none;" alt="contents"/>
+								<?php echo ucfirst(text("menu_contenu")); ?></span>
+							</a>
 						</div>
-					</div>
-					<div style="position: absolute;top: 36px;left: 0px;width: 100%;height: 1px;">
-						<div style="overflow: hidden;height: 1px;background: #E5E5E5;opacity: 0.6;">
+
+						<div style="text-align: center;padding: 20px;">
+							<a href="<?php echo Kernel::getUrl("category/list"); ?>" style="display: block;padding: 5px;padding-top: 0px;font-size: 0.8em;font-weight: bold;">
+								<img src="<?php echo img("taxonomy.png"); ?>" style="border: none;" alt="taxonomies"/>
+								<?php echo ucfirst(text("menu_taxonomy")); ?></span>
+							</a>
 						</div>
+
+						<div style="text-align: center;padding: 20px;">
+							<a href="<?php echo Kernel::getUrl("user/list"); ?>" style="display: block;padding: 5px;padding-top: 0px;font-size: 0.8em;font-weight: bold;">
+								<img src="<?php echo img("user.png"); ?>" style="border: none;" alt="users"/>
+								<?php echo ucfirst(text("menu_users")); ?></span>
+							</a>
+						</div>
+
+						<div style="text-align: center;padding: 20px;">
+							<a href="<?php echo Kernel::getUrl("param/index"); ?>" style="display: block;padding: 5px;padding-top: 0px;font-size: 0.8em;font-weight: bold;">
+								<img src="<?php echo img("param.png"); ?>" style="border: none;" alt="params"/>
+								<?php echo ucfirst(text("menu_params")); ?></span>
+							</a>
+						</div>
+
 					</div>
 				</div>
 			</div>
+			
 			<div style="overflow: hidden;">
-				<div style="height: 35px;">
-				</div>
-		    	<?php include(_theme_path_."pages/".Kernel::get("controler").'/'.Kernel::get("action").".php"); ?>
-		    	<div style="margin-top: 20px;border-top: 1px solid #E5E5E5;padding: 20px;font-size: 0.8em;display :none;">
+		    		<?php include(_theme_path_."pages/".Kernel::get("controler").'/'.Kernel::get("action").".php"); ?>
+		    	
+					
+		    		<?php /* ?>
 					Temps de chargement de la page : <span style="font-weight: bold;"><?php echo round(microtime(TRUE)-time_start, 3); ?></span> sec<br />
 					Nombre de requêtes : <span style="font-weight: bold;"><?php echo Sql2::$COUNT; ?></span> effectuée(s) : <br />
 					<div style="border-left: 2px solid #E5E5E5;padding: 10px;margin-top: 5px;padding-top: 5px;padding-bottom: 5px;">
@@ -123,7 +95,8 @@
 							<pre style="padding: 0px;margin: 0px;"><?php echo $requete; ?></pre>
 						<?php } ?>
 					</div>
-				</div>
+					<?php */ ?>
+				
 			</div>
 		</div>
 	</body>

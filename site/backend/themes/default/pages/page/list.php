@@ -1,4 +1,5 @@
-<div style="padding :20px;">
+<?php partial("content_header"); ?>
+<div style="padding: 20px;margin-top: -1px;border: 1px solid #E5E5E5;border-right: none;min-height: 500px;background: white;">
 	<div style="padding-bottom: 10px;border-bottom: 1px solid #E5E5E5;">
 		<div style="font-size: 1.6em;float: left;">
 			<?php echo ucfirst(text("pages")); ?>

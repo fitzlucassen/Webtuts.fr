@@ -4,6 +4,9 @@
 class HomeControler extends Controler {
 	public function IndexAction($params) {
 		$notifications = App::getClassArray("article", array("where" => "node = 3", "orderBy" => array("date", "DESC")));
+		
+		App::getClass("article", 2)->get("node");
+
 		$test = App::getTable("article")->getBySanitizeNameCategory("developpement-fonctionnel");
 		echo "<pre>";
 		print_r($test);

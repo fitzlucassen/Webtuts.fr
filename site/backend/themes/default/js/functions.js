@@ -1,4 +1,11 @@
 $("document").ready(function() {
+	
+	$('body').keyup(function(e) { //remplacez {id_img} par l'id de votre image
+	      if(e.keyCode == 27) {
+	   		$("#panel").css("display", "none");
+	       }
+	});
+
 	function closeComment(field){
 		field.css("cursor", "pointer");
 		field.children(".close").css("display", "none");

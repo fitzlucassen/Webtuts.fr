@@ -228,7 +228,26 @@ class Kernel {
 	}
 
 	public static function sanitize($string) {
-		$string = strtolower($string);
+		$string = mb_strtolower($string, 'UTF-8');
+		$string = str_replace(
+			array(
+				'à', 'â', 'ä', 'á', 'ã', 'å',
+				'î', 'ï', 'ì', 'í',
+				'ô', 'ö', 'ò', 'ó', 'õ', 'ø',
+				'ù', 'û', 'ü', 'ú',
+				'é', 'è', 'ê', 'ë',
+				'ç', 'ÿ', 'ñ',
+			),
+			array(
+				'a', 'a', 'a', 'a', 'a', 'a',
+				'i', 'i', 'i', 'i',
+				'o', 'o', 'o', 'o', 'o', 'o',
+				'u', 'u', 'u', 'u',
+				'e', 'e', 'e', 'e',
+				'c', 'y', 'n',
+			),
+			$string
+		);
 		$string = str_replace(" ", "-", $string);
 		$string = str_replace("'", "-", $string);
 		$string = str_replace(",", "-", $string);
@@ -236,18 +255,6 @@ class Kernel {
 		$string = str_replace("!", "-", $string);
 		$string = str_replace(":", "-", $string);
 		$string = str_replace(";", "-", $string);
-		$string = str_replace("é", "e", $string);
-		$string = str_replace("è", "e", $string);
-		$string = str_replace("ê", "e", $string);
-		$string = str_replace("à", "a", $string);
-		$string = str_replace("â", "a", $string);
-		$string = str_replace("ù", "u", $string);
-		$string = str_replace("û", "u", $string);
-		$string = str_replace("ï", "i", $string);
-		$string = str_replace("î", "i", $string);
-		$string = str_replace("ì", "i", $string);
-		$string = str_replace("ô", "o", $string);
-		$string = str_replace("ö", "o", $string);
 		$string = str_replace("--", "-", $string);
 		$string = rtrim($string, "-");
 		$string = ltrim($string, "-");

@@ -85,6 +85,8 @@ class Collection implements Countable, Iterator {
 	}
 
 	public function __call($name, $paramsFunction) {
+		if(is_array($paramsFunction[0]))
+			$paramsFunction = $paramsFunction[0];
 		/* traitement du nom de la fonction */
 		$nameArray = str_split($name);
 		$function = array();
@@ -207,6 +209,10 @@ class Collection implements Countable, Iterator {
 			}
 		}
 		return $return;
+	}
+
+	public function sort() {
+		return $this;
 	}
 
 }
