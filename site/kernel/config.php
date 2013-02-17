@@ -41,6 +41,6 @@
 	/* Prefix tables */
 	define("__SQL_prefix__", "");
 	/* Database */
-	define("__SQL_db__", "webtuts");
+	define("__SQL_db__", "webtutsv2");
 	
 ?>

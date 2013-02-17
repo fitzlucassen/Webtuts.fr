@@ -3,7 +3,7 @@
 
 class HomeControler extends Controler {
 	public function IndexAction($params) {
-		$notifications = App::getClassArray("article", array("where" => "node = 3", "orderBy" => array("date", "DESC")));
+		/*$notifications = App::getClassArray("article", array("where" => "node = 3", "orderBy" => array("date", "DESC")));
 		
 		App::getClass("article", 2)->get("node");
 
@@ -12,7 +12,15 @@ class HomeControler extends Controler {
 		print_r($test);
 		echo "</pre>";
 		die();
-		return $this->render(array('notifications' => $notifications));
+		return $this->render(array('notifications' => $notifications));*/
+		echo "<pre>";
+		//print_r(App::getTable("taxonomy")->getCollection());
+		foreach (App::getTable("taxonomy")->getCollection() as $value) {
+			print_r($value->get("description", "en"));
+			echo "<br />";
+		}
+		echo "</pre>";
+		die();
 	}
 
 	public function ConnectAction($params) {

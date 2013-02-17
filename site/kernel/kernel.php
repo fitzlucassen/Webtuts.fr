@@ -48,7 +48,7 @@
 
 	/* Types */
 	require(__library_dir__.'resources/lang.class.php');
-	require(__library_dir__.'resources/bool.class.php');
+	require(__library_dir__.'resources/boolean.class.php');
 	require(__library_dir__.'resources/integer.class.php');
 	require(__library_dir__.'resources/text.class.php');
 	require(__library_dir__.'resources/datetime.class.php');

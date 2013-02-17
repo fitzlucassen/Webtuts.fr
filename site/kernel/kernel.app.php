@@ -76,7 +76,7 @@
 			if($response->hasVars())
 				extract($response->getVars());
 			$params = Kernel::get("params");
-			require_once(__themes_dir__.$params["theme"].'/index.php');
+			require_once(__themes_dir__.'default/index.php');
 		}
 	}
 ?>

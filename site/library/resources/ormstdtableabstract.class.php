@@ -86,13 +86,13 @@ abstract class OrmStdTableAbstract {
 		if(empty($this->_types)) {
 			$Cache = self::getCache();
 			if(!$types = $Cache->read("ORM_table_".$this->_name)) {
-				$types = Sql2::create()->from("orm_columns_types")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->_name))->fetchArray();
+				$types = Sql2::create()->from("_orm_column_type")->where("name_table", Sql2::$OPE_EQUAL, mb_strtolower($this->_name))->fetchArray();
 				$Cache->write("ORM_table_".$this->_name, serialize($types));
 			} 
 			else
 				$types = unserialize($types);
 			foreach ($types as $value) {
-				$this->_types[$value["name_column"]] = $value["type"];
+				$this->_types[$value["name_column"]] = $value;
 			}
 		}
 		return $this->_types;

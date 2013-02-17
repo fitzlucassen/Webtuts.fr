@@ -8,7 +8,7 @@ class LangType implements Type {
 
 	public function __construct($idLang, $langForced = null) {
 		$this->idLang = $idLang;
-		$lang = Sql2::create()->from("lang")->where("id_lang", Sql2::$OPE_EQUAL, $idLang)->fetchArray();
+		$lang = Sql2::create()->from("_orm_lang")->where("id_lang", Sql2::$OPE_EQUAL, $idLang)->fetchArray();
 		foreach ($lang as $value) {
 			$lang = $value["lang"];
 			$this->$lang = $value["translation"];
@@ -54,7 +54,7 @@ class LangType implements Type {
 		$id_lang = Sql2::create()->select("MAX(id_lang)")->from("lang")->fetch();
 		$id_lang++;
 		foreach ($data as $key2 => $value2) { // différentes langues
-			Sql2::create()->insert("lang")->columnsValues(array("id_lang" => $id_lang, "lang" => $key2, "translation" => mysql_real_escape_string($value2)))->execute();
+			Sql2::create()->insert("_lang")->columnsValues(array("id_lang" => $id_lang, "lang" => $key2, "translation" => mysql_real_escape_string($value2)))->execute();
 		}
 		return $id_lang;
 	}

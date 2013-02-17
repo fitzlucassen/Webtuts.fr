@@ -66,9 +66,7 @@ class Kernel {
 		    echo 'ERREUR: ' . $e->getMessage(); 
 		}
 
-		// Paramêtres du site
-		$params = Sql2::create()->from("cms_site_params")->fetchArray();
-		Kernel::$PARAMS = $params[0];
+		
 	}
 
 
@@ -194,10 +192,10 @@ class Kernel {
 				      ->where("app", "=", __app__)
 				      ->andWhere("lang", "=", $lang)
 				      ->andWhere("controler", "=", $controler)
-				      ->andWhere("route_order", "=", 0)
+				      ->andWhere("routeorder", "=", 0)
 				      ->andWhere("action", "=", $action)->fetch();
 		
-		$route_order_max = Sql2::create()->select("MAX(route_order)")
+		$route_order_max = Sql2::create()->select("MAX(routeorder)")
 				    	 ->where("app", "=", __app__)
 				    	 ->andWhere("lang", "=", $lang)
 						 ->from("urlrewriting")->fetch();
@@ -209,7 +207,7 @@ class Kernel {
 				    ->where("app", "=", __app__)
 				    ->andWhere("lang", "=", $lang)
 					->andWhere("controler", "=", $controler)
-					->andWhere("route_order", "=", $i)
+					->andWhere("routeorder", "=", $i)
 					->andWhere("action", "=", $action)->fetch();
 		    $i++;
 		}
@@ -338,7 +336,7 @@ class Kernel {
 		$data = Sql2::create()->from("urlrewriting")
 				      ->where("app", "=", __app__)
 				      ->andWhere("lang", "=", Kernel::get("lang"))
-				      ->orderBy("route_order", "ASC")
+				      ->orderBy("routeorder", "ASC")
 				      ->fetchArray();
 		
 		foreach ($data as $key => $value) {

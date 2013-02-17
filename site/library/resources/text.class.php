@@ -22,7 +22,10 @@ class TextType implements Type {
 	}
 
 	public function get($params = null) {
-		return $this;
+		if($params)
+			return Kernel::sanitize($this);
+		else
+			return $this;
 	}
 
 	public static function save($data) {

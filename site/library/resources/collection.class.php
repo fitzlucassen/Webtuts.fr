@@ -211,6 +211,10 @@ class Collection implements Countable, Iterator {
 		return $return;
 	}
 
+	public function options($params = null) {
+		return $this;
+	}
+
 	public function sort() {
 		return $this;
 	}

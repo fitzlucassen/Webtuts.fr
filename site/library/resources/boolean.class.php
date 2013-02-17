@@ -1,7 +1,7 @@
 <?php
 
 
-class BoolType implements Type {
+class BooleanType implements Type {
 	
 	private $_attribut;
 

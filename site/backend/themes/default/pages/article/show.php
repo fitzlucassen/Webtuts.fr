@@ -62,9 +62,9 @@
 	<div style="float: left;width: 200px;padding: 15px;font-weight: bold;">
 		<?php echo ucfirst(text("tags")); ?>
 	</div>
-	<?php if(count($article->get("tags"))>0) : ?>
+	<?php if($tags = $article->get("tags")) : ?>
 	<div style="overflow: hidden;padding: 11px 15px;">
-		<?php foreach($article->get("tags") as $tag) : ?>
+		<?php foreach($tags as $tag) : ?>
 		<a href="<?php echo createLink("/tag/show/".$tag->get("id")); ?>" style="display: inline-block;padding: 4px 10px;font-size: 0.8em;background-color: rgb(227,223,223);margin-right: 5px;border-radius: 2px;-webkit-border-radius: 2px;-moz-border-radius: 2px;-o-border-radius: 2px;-ms-border-radius: 2px;">	
 			<?php echo lang($tag->get("name", $lang)); ?><br />
 		</a>

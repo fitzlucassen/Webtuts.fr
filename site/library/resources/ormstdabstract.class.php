@@ -1,7 +1,7 @@
 <?php
 
 /*
-	Class Std
+	Class OrmStdAbstract
 	Description : 
 		-
 		-
@@ -9,140 +9,111 @@
 
 abstract class OrmStdAbstract {
 
+	/*
+		Cache des classes
+	*/
 	private static $CACHE = null;
 
+	/*
+		Nom de la classe
+	*/
 	private $_class;
-	private $_attributes = array();
-	private $_types = array();
 
+	/*
+		Tableau des attributs de la classe
+	*/
+	private $_attributes = array();
+
+	/*
+		Getter pour l'objet
+	*/
+	public function __get($name) {
+		if($name[0]=="_")
+			return $this->$name;
+		else
+			return $this->_attributes[$name];
+	}
+
+	/*
+		Setter pour l'objet
+	*/
+	public function __set($name, $value) {
+		if($name[0]=="_")
+			$this->$name = $value;
+		else
+			$this->_attributes[$name] = $value;
+	}
+
+	/*
+		Constructeur
+	*/
+	public function __construct($class) {
+		// Set le nom de la classe de l'objet
+		$this->_class = $class;
+		return $this;
+	}
+
+	/*
+		Retourne le nom de la classe de l'objet
+	*/
+	public function getClass() {
+		return $this->_class;
+	}
+
+	/*
+		Retourne les types de la classe
+	*/
+	public function getTypes($attribut = null) {
+		$types = App::getTable($this->_class)->getTypes();
+		if($attribut != null && $attribut != "id")
+			return $types[$attribut];
+		elseif($attribut != null && $attribut == "id")
+			return false;
+		else
+			return $types;
+	}
+
+	/*
+		Permet de recupérer le cache
+	*/
 	public function getCache() {
 		if(OrmStdAbstract::$CACHE==null)
 			OrmStdAbstract::$CACHE = new Cache(Cache::getDir()."orm", 60);
 		return OrmStdAbstract::$CACHE;
 	}
 
-
-	public function setNameClass($class) {
-		$this->_class = $class;
-	}
-
-	public function __get($name) {
-		if($name[0]=="_" && $name[1]=="_") {
-			$this->setTypes(); // Si le typages n'est pas encore mis
-			return $this->_types[strtok($name, "__")];
-		}
-		elseif($name[0]=="_")
-			return $this->$name;
-		else
-			return $this->_attributes[$name];
-	}
-
-	private function setTypes() {
-		$this->_types = App::getTable($this->_class)->getTypes();
-	}
-
-	public function __set($name, $value) {
-		if($name[0]=="_" && $name[1]=="_")
-			$this->_types[strtok($name, "__")] = $value;
-		elseif($name[0]=="_")
-			$this->$name = $value;
-		else
-			$this->_attributes[$name] = $value;
-	}
-
-	public function exist() {
-		if(!empty($this->id)) $bool = true;
-		else $bool = false;
-		return $bool;
-	}
-
-	public function __construct($params=null, $class=null) {
-		if($class==null)
-			$this->_class=get_class($this);
-		else
-			$this->_class=$class;
-		if($params==null) {} 
-		else
-			$this->hydrate($params);
-		return $this;
-	}
-
-	static public function n($class) {
-		if(class_exists($class)) {
-			$tmp = new $class();
-			$tmp->setNameClass($class);
-			return $tmp;
-		}
-		else {
-			$tmp = new Std($class);
-			$tmp->setNameClass($class);
-			return $tmp;
-		}
-	}
-
-	public function have($attribut) {
-		if(is_object($attribut))
-			if($attribut>0) $bool = true;
-			else $bool = false;
-		else {
-			if(!empty($attribut)) $bool = true;
-			else $bool = false;
-		}
-		return $bool;
-	}
-
-	public function getClass() {
-		return $this->_class;
-	}
-
-	/* Getter */
+	/* 
+		Getter 
+	*/
 	public function get($attribut, $params = null) {
-		if($attribut == "id")
-			return $this->id;
-		$typeAttribut = "__".$attribut;
-		$typeAttribut = $this->$typeAttribut;
-		if(!empty($typeAttribut) && !is_object($this->$attribut)) {	// Pas prendre en compte $this->id et $this->_class
-			$tmp = explode(" ", $typeAttribut);
-			if(!is_object($this->$attribut) && ($tmp[0]=="class" || $tmp[0]=="collection")) {
-				$typeLink = $tmp[0];
-				if($typeLink=="class") { // Object
-					$objectName = $tmp[1];
-					$this->$attribut = App::getTable($objectName)->getById($this->$attribut);
-				}
-				elseif($typeLink=="collection") { // Collection of object
-					$this->setCollection($attribut, $tmp[1], $params);
-				}
-			} 
-			elseif(!is_object($this->$attribut) && ($tmp[0]=="type")) {
-				/*
-					Gestion des type particulier.
-				*/
-				$type = $tmp[1]."Type";
+		// Création des attributs
+		if($this->getTypes($attribut) && !is_object($this->$attribut)) {
+			$type = $this->getTypes($attribut);
+			if($type["type"]=="class")
+				$this->$attribut = App::getTable($type["class"])->getById($this->$attribut);
+			elseif ($type["type"]=="collection")
+				$this->setCollection($attribut, $type["class"], $params);
+			elseif($type["type"]=="type") {
+				$type = $type["class"]."Type";
 				$this->$attribut = new $type($this->$attribut, $params);
 			}
 		}
-
-		if(!empty($typeAttribut)) { // get() spéciaux avec params
-			$tmp = explode(" ", $typeAttribut);
-			if($tmp[0]=="type") {
-				$type = $tmp[1]."Type";
+		// Getters spéciaux
+		if($type = $this->getTypes($attribut)) {
+			if($type["type"]=="type")
 				return $this->$attribut->get($params);
-			}
+			elseif($type["type"]=="collection")
+				return $this->$attribut->options($params);
+			/*
+				Faire un systeme pour faire des getter spéciaux pour les classes du modèle
+			*/
 		}
-			
 		return $this->$attribut;		
 	}
 
-	/*functions */
-
+	/* Hydrate l'objet */
 	public function hydrate($id) {
-		if(is_numeric($id)) {
-			$clone = Sql2::create()->from(strtolower($this->_class))->where("id", Sql2::$OPE_EQUAL, $id)->fetchClass();
-			foreach ($clone as $attribut => $valeur)
-				$this->$attribut = $valeur;
-			return $this;
-		}
-		else if(is_array($id)) {
+		if(is_array($id)) {
 			foreach ($id as $attribut => $valeur) {	
 				if(!is_numeric($attribut)) {
 					$this->$attribut = $valeur;
@@ -151,7 +122,7 @@ abstract class OrmStdAbstract {
 			return $this;
 		}
 		else
-			return new Error(1);
+			return false;
 	}
 
 	public function checkData() {
@@ -160,7 +131,7 @@ abstract class OrmStdAbstract {
 			$valid = true;
 			foreach ($this->getTypes() as $key => $value) {
 				if(!empty($this->$key)) {	
-					$type = explode(" ", $value);
+					$type = $value;
 					if($type[0] == "type") {
 						$typeName = $type[1]."Type";
 						if(!$typeName::check($this->$key))
@@ -192,7 +163,7 @@ abstract class OrmStdAbstract {
 				// enregistrement des langues
 				foreach ($this->getTypes() as $key => $value) {
 					if(array_key_exists($key, $this->_attributes)) {
-						$types = explode(" ", $value);
+						$types = $value;
 						if($types[0]=="type") {
 							$type = $types[1]."Type";
 							$this->$key = $type::save($this->$key);
@@ -209,17 +180,6 @@ abstract class OrmStdAbstract {
 		}
 		else
 			return false;
-	}
-
-
-	public function getTypes($attribut = null) {
-		$this->setTypes();
-		if($attribut == null)
-			return $this->_types;
-		else {
-			$attribut = "__".$attribut;
-			return $this->$attribut;
-		}
 	}
 
 
@@ -278,7 +238,7 @@ abstract class OrmStdAbstract {
 			foreach ($types as $key => $value) {
 				if(!empty($columnsValues[$key])) {
 					$data = $columnsValues[$key];
-					$type = explode(" ", $value);
+					$type = $value;
 					if($type[0]=="type") {
 						$typeClass = ucfirst($type[1])."Type";
 						$result = $typeClass::update($this, $key, $data);
@@ -310,24 +270,7 @@ abstract class OrmStdAbstract {
 		else
 			return new Error(1);
 	}
-/*
-	private function getConnection() {
-		foreach (get_object_vars($this) as $key => $value) {
-			if($key!="_class") {
-				if($key[0]=="_" && $key[1]="_") {
-					$keyAttribut = strtok($key, "__");
-					$type = explode($value, " ");
-					if($type[0]=="collection")
-						$this->$keyAttribut = array($type[0], $type[1], $this->$keyAttribut);
-					elseif($type[0]=="class")
-						$this->$keyAttribut = array($type[0], $type[1], $this->$keyAttribut);
-					//...
-					
-				}
-			}
-		}
-	}
-*/
+
 	private function setCollection($attribut, $class, $params=null) {
 		//Recherche de la table de liaison
 		$table = $class."_".strtolower($this->_class);
@@ -366,16 +309,6 @@ abstract class OrmStdAbstract {
 			return true;
 		}
 	}
-
-	// public function __toString() {
-	// 	return json_encode($this);
-	// }
-
-	// destroy toutes ses connections
-	public function destroy($parameters) {
-		return null;
-	}
-	
 }
 
 
