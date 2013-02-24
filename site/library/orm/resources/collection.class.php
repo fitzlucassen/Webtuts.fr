@@ -108,7 +108,6 @@ class Collection implements Countable, Iterator {
 					
 					$type = App::getTable($this->_name)->getTypes();
 					$type = $type[$attribut];
-					$type = explode(" ", $type);
 					$params = $function;
 					unset($params[0]);
 					unset($params[1]);
@@ -162,12 +161,12 @@ class Collection implements Countable, Iterator {
 			$paramsFunction = $paramsFunction[0];
 		$return = new Collection();
 		foreach ($collection as $object) {
-			if($type[0]=="type") {
-				$typeClass = ucfirst(strtolower($type[1]))."Type";
+			if($type["type"]=="type") {
+				$typeClass = ucfirst(strtolower($type["class"]))."Type";
 				if(in_array($typeClass::getCompare($object, $attribut, $params), $paramsFunction))
 					$return->hydrate($object);
 			}
-			elseif($type[0]=="class") {
+			elseif($type["type"]=="class") {
 				if(empty($params[0])) {
 					if(count($paramsFunction)==0)
 						$paramsFunction[0] = true;
@@ -186,7 +185,7 @@ class Collection implements Countable, Iterator {
 					}
 				}
 			}
-			elseif($type[0]=="collection") {
+			elseif($type["type"]=="collection") {
 				if(empty($params[0])) {
 					if(count($paramsFunction)==0)
 						$paramsFunction[0] = true;
@@ -209,6 +208,13 @@ class Collection implements Countable, Iterator {
 			}
 		}
 		return $return;
+	}
+
+	public function orderBy($attr, $way = "ASC") {
+		foreach ($this->array as $key => $value) {
+			# code...
+		}
+		return $this;
 	}
 
 	public function options($params = null) {

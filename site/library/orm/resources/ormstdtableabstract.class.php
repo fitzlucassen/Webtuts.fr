@@ -102,9 +102,9 @@ abstract class OrmStdTableAbstract {
 		Générateur de fonctions génériques
 	*/
 	public function __call($name, $paramsFunction) {
-		if(is_array($paramsFunction[0]))
+		return $this->getCollection()->$name($paramsFunction);
+		/*if(is_array($paramsFunction[0]))
 			$paramsFunction = $paramsFunction[0];
-		/* traitement du nom de la fonction */
 		$nameArray = str_split($name);
 		$function = array();
 		$cpt=0;
@@ -171,11 +171,12 @@ abstract class OrmStdTableAbstract {
 		}
 		else
 			return false;
+			*/
 	}
 
 	/*
 		Fonction de recherche pour les getBy génériques
-	*/
+	*//*
 	private function search($collection, $type, $attribut, $params, $paramsFunction) {
 		if(is_array($paramsFunction[0]))
 			$paramsFunction = $paramsFunction[0];
@@ -225,7 +226,7 @@ abstract class OrmStdTableAbstract {
 		}
 		return $return;
 	}
-
+*/
 	/*
 		Création d'un objet et sauvegarde en base
 	*/

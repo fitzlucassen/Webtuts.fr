@@ -19,6 +19,7 @@ class HomeControler extends Controler {
 			print_r($value->get("description", "en"));
 			echo "<br />";
 		}
+		print_r(App::getTable("taxonomy")->getByDeleted(false));
 		echo "</pre>";
 		die();
 	}
