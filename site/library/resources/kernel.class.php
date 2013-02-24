@@ -50,14 +50,12 @@ class Kernel {
 		
 	}
 
-	public function __construct($_KERNEL_DEBUG_, $_LANG_ACCEPTED_, $_LANG_DEFAULT_) {
-		$this->_KERNEL_DEBUG_ = $_KERNEL_DEBUG_;
-		$this->_LANG_ACCEPTED_ = $_LANG_ACCEPTED_;
-		$this->_LANG_DEFAULT_ = $_LANG_DEFAULT_;
+	public function __construct($_LANG_ACCEPTED_, $_LANG_DEFAULT_) {
 		Kernel::$LANG = $_LANG_DEFAULT_;
 		Kernel::$LANG_DEFAULT = $_LANG_DEFAULT_;
-		Kernel::$LANGS = $this->_LANG_ACCEPTED_;
+		Kernel::$LANGS = $_LANG_ACCEPTED_;
 
+		// Connexion à la base de données
 		try { 
 		    $conn = new PDO('mysql:host='.__SQL_hostname__.';dbname='.__SQL_db__, __SQL_user__,  __SQL_password__, array(PDO::ATTR_PERSISTENT => true, PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 		    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 

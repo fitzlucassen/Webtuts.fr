@@ -21,7 +21,7 @@
 	*/
 
 	/* Création du kernel */
-	$_kernel = new Kernel($_KERNEL_DEBUG_, $_LANG_ACCEPTED_, $_LANG_DEFAULT_);
+	$_kernel = new Kernel($_LANG_ACCEPTED_, $_LANG_DEFAULT_);
 
 	/*
 		Gestion de l'utilisateur
