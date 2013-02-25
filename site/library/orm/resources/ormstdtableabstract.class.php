@@ -143,6 +143,18 @@ abstract class OrmStdTableAbstract {
 			->columnsValues($attributs)
 			->execute();
 	}
+
+	public function addAttribut($name, $type, $class, $null = false) {
+		return false;
+	}
+
+	public function setAttribut($name, $params) {
+		return false;
+	}
+
+	public function removeAttribut($name) {
+		return false;
+	}
 }
 
 ?>

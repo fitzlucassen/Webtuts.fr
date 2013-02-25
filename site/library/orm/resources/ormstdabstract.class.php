@@ -125,64 +125,6 @@ abstract class OrmStdAbstract {
 			return false;
 	}
 
-	public function checkData() {
-		if(empty($this->id)) {
-			$types = $this->getTypes();
-			$valid = true;
-			foreach ($this->getTypes() as $key => $value) {
-				if(!empty($this->$key)) {	
-					$type = $value;
-					if($type[0] == "type") {
-						$typeName = $type[1]."Type";
-						if(!$typeName::check($this->$key))
-							$valid = false;
-					}
-					if($type[0] == "class") {
-						if(!is_numeric($this->$key)) {
-							$valid = false;
-						}
-					}
-					if($type[0] == "collection") {
-						if(!empty($this->$key)) {
-							$valid = false;
-						}
-					}
-					/*if(!$valid)
-						echo $key."[".$value."]";*/
-				}
-			}
-			return $valid;
-		}
-		else
-			return false;
-	}
-
-	public function save() {
-		if(empty($this->id)) {
-			if($this->checkData()) {
-				// enregistrement des langues
-				foreach ($this->getTypes() as $key => $value) {
-					if(array_key_exists($key, $this->_attributes)) {
-						$types = $value;
-						if($types[0]=="type") {
-							$type = $types[1]."Type";
-							$this->$key = $type::save($this->$key);
-						}
-					}
-				}
-				if($id = Sql2::create()->insert($this->_class)->columnsValues($this->_attributes)->execute())
-					return Sql2::create()->from($this->_class)->where("id", Sql2::$OPE_EQUAL, $id)->fetchClass();
-				else
-					return false;
-			}
-			else
-				return false;
-		}
-		else
-			return false;
-	}
-
-
 	/*
 		Peut prendre 3 types de syntaxe en parametres
 
@@ -303,11 +245,18 @@ abstract class OrmStdAbstract {
 				$tmp->hydrate($this->$attribut);
 				$this->$attribut = $tmp;
 			}
-			// 
-			$this->$attribut->setObject($this);
-			$this->$attribut->setTarget($class);
 			return true;
 		}
+	}
+
+	/*
+		Set l'attribut "deleted" à true si il existe
+	*/
+	public function remove() {
+		if($this->set("deleted", true))
+			return true;
+		else
+			return false;
 	}
 }
 

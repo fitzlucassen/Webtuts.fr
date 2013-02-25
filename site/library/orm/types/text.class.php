@@ -12,6 +12,10 @@ class TextType implements Type {
 		return $valid;
 	}
 
+	public function printForm($options) {
+		return false;
+	}
+
 	public function __construct($data, $params = null) {
 		$this->_attribut = $data;
 		return $this;
